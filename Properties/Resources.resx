@@ -1,0 +1,684 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Activate" xml:space="preserve">
+    <value>Acti&amp;vate</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="AddProductTitle" xml:space="preserve">
+    <value>Validate Product</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>(All)</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ArrowDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ArrowDown.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ArrowUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ArrowUp.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BG00" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BG00.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BG01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BG01.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BG02" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BG02.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BlueButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BlueButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BlueButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BlueButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BookButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BookButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BookButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BookButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CardLevelInUse" xml:space="preserve">
+    <value>Unable to save Card Level [{0}].  Changes were not saved.</value>
+  </data>
+  <data name="ConcessionButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\concessionbuttondown.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ConcessionButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\concessionbuttonup.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ConfirmApplicationExit" xml:space="preserve">
+    <value>Are you sure you want to exit the application?</value>
+  </data>
+  <data name="ConfirmDelete" xml:space="preserve">
+    <value>Are you sure you want to delete the selected item?</value>
+  </data>
+  <data name="CannotDelete" xml:space="preserve">
+    <value>You must have at least one card level</value>
+  </data>
+  <data name="ConfirmActivate" xml:space="preserve">
+    <value>Are you sure you want to activate the selected item?</value>
+  </data>
+  <data name="ConfirmDeletePackage" xml:space="preserve">
+    <value>Are you sure you want to delete the selected item?</value>
+  </data>
+  <data name="ConfirmDeletePage" xml:space="preserve">
+    <value>This action will delete all the buttons, are you sure you want to delete this page?</value>
+  </data>
+  <data name="CreditButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CreditButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CreditButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CreditButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Deactivate" xml:space="preserve">
+    <value>Deacti&amp;vate</value>
+  </data>
+  <data name="DeleteDiscountsTitle" xml:space="preserve">
+    <value>Delete Discount</value>
+  </data>
+  <data name="DeleteInUseCardLevel" xml:space="preserve">
+    <value>Unable to delete Card Level [{0}]. Changes were not saved.</value>
+  </data>
+  <data name="DeleteLevelsTitle" xml:space="preserve">
+    <value>Delete Levels</value>
+  </data>
+  <data name="DeleteMenuTitle" xml:space="preserve">
+    <value>Delete Menu</value>
+  </data>
+  <data name="DeletePackageTitle" xml:space="preserve">
+    <value>Delete Package</value>
+  </data>
+  <data name="DeletePageTitle" xml:space="preserve">
+    <value>Delete Page</value>
+  </data>
+  <data name="DeleteProductTitle" xml:space="preserve">
+    <value>Delete Product</value>
+  </data>
+  <data name="ActivateProductTitle" xml:space="preserve">
+    <value>Activate Product</value>
+  </data>
+  <data name="DiscountButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DiscountButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DiscountButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DiscountButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DuplicatedProduct" xml:space="preserve">
+    <value>Cannot perform operation, the product is already in the package.</value>
+  </data>
+  <data name="ElectronicButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\electronicbuttondown.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ElectronicButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\electronicbuttonup.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EnterProductGroupName" xml:space="preserve">
+    <value>Enter Product Group Name</value>
+  </data>
+  <data name="FilteredByAccrualProductType" xml:space="preserve">
+    <value>Filtered by progressive: {0} product type: {1}</value>
+  </data>
+  <data name="FilteredByPackageName" xml:space="preserve">
+    <value>Filtered by: Package name {0}</value>
+  </data>
+  <data name="FilteredByProductNameAccrualProductType" xml:space="preserve">
+    <value>Filtered by product name: {0} progressive: {1} product type: {2}</value>
+  </data>
+  <data name="FilteredByProductNameProductType" xml:space="preserve">
+    <value>Filtered by product name: {0} product type: {1}</value>
+  </data>
+  <data name="FilteredByProductType" xml:space="preserve">
+    <value>Filtered by product type: {0}</value>
+  </data>
+  <data name="FilterProducts" xml:space="preserve">
+    <value>Filter Products</value>
+  </data>
+  <data name="GetDeviceInfoFailed" xml:space="preserve">
+    <value>Failed to retrieve the device and/or machine id.  Reason: {0}</value>
+  </data>
+  <data name="GetOperatorIDTitle" xml:space="preserve">
+    <value>Get Operator Id</value>
+  </data>
+  <data name="GetPackagesTitle" xml:space="preserve">
+    <value>Get Packages</value>
+  </data>
+  <data name="GetSettingsFailed" xml:space="preserve">
+    <value>Failed to get this workstation's information from the server.  Reason: {0}</value>
+  </data>
+  <data name="GetSettingsTitle" xml:space="preserve">
+    <value>Get Settings</value>
+  </data>
+  <data name="Go" xml:space="preserve">
+    <value>Go</value>
+  </data>
+  <data name="GrayButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GrayButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GrayButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GrayButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HasOpenCredit" xml:space="preserve">
+    <value>Package already has an open credit product type, only one is allowed.</value>
+  </data>
+  <data name="HideInactive" xml:space="preserve">
+    <value>Hide &amp;Inactive</value>
+  </data>
+  <data name="InvalidGameCategory" xml:space="preserve">
+    <value>Please provide a valid game category.</value>
+  </data>
+  <data name="InvalidMessageResponse" xml:space="preserve">
+    <value>Invalid {0} response received from server.</value>
+  </data>
+  <data name="InvalidMultipleNumber" xml:space="preserve">
+    <value>Card Count Error: The Card Count number should be a valid multiple of the On Game.</value>
+  </data>
+  <data name="InvalidProductGroup" xml:space="preserve">
+    <value>Please provide a valid product group.</value>
+  </data>
+  <data name="InvalidProductName" xml:space="preserve">
+    <value>Please provide a valid product name.</value>
+  </data>
+  <data name="InvalidProductType" xml:space="preserve">
+    <value>Please provide a valid product type.</value>
+  </data>
+  <data name="InvalidSalesSource" xml:space="preserve">
+    <value>Please provide a valid sales source.</value>
+  </data>
+  <data name="LoadingWorkstationInfo" xml:space="preserve">
+    <value>Retrieving this workstation's information.</value>
+  </data>
+  <data name="LogFailed" xml:space="preserve">
+    <value>Failed to create the log. Reason: {0}</value>
+  </data>
+  <data name="LogFailedTitle" xml:space="preserve">
+    <value>Initialize Logging</value>
+  </data>
+  <data name="MerchandiseButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\merchandisebuttondown.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MerchandiseButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\merchandisebuttonup.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MessagePayloadWrongSize" xml:space="preserve">
+    <value>{0} message payload is the wrong size.</value>
+  </data>
+  <data name="NoPackagesFound" xml:space="preserve">
+    <value>Please add a package prior to adding a menu.</value>
+  </data>
+  <data name="NoProductsFound" xml:space="preserve">
+    <value>No Products found.</value>
+  </data>
+  <data name="PackageSearch" xml:space="preserve">
+    <value>Package Search</value>
+  </data>
+  <data name="PaperButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PaperButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PaperButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PaperButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ProductCenterName" xml:space="preserve">
+    <value>Product Center</value>
+  </data>
+  <data name="ProductGroup" xml:space="preserve">
+    <value>Product Group</value>
+  </data>
+  <data name="ProductGroupExists" xml:space="preserve">
+    <value>Product Group already exists.</value>
+  </data>
+  <data name="ProductGroupInUse" xml:space="preserve">
+    <value>Product Group [{0}] is currently being used. Changes were not saved.</value>
+  </data>
+  <data name="ProductGroupNone" xml:space="preserve">
+    <value>(None)</value>
+  </data>
+  <data name="ProductTypeErrorTitle" xml:space="preserve">
+    <value>Product type error</value>
+  </data>
+  <data name="ProductTypeNotSupported" xml:space="preserve">
+    <value>The selected product type is not currently being supported.</value>
+  </data>
+  <data name="Rename" xml:space="preserve">
+    <value>Rename</value>
+  </data>
+  <data name="ServerCommFailed" xml:space="preserve">
+    <value>Server communication lost.</value>
+  </data>
+  <data name="ServerErrorCode" xml:space="preserve">
+    <value>Server returned error code: {0}</value>
+  </data>
+  <data name="SetButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SetButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SetButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SetButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ShowInactive" xml:space="preserve">
+    <value>Show &amp;Inactive</value>
+  </data>
+  <data name="StartingProductCenter" xml:space="preserve">
+    <value>Starting Product Center.</value>
+  </data>
+  <data name="ValidateMultiplesTitle" xml:space="preserve">
+    <value>Validate Multiples</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>1.0.3</value>
+  </data>
+  <data name="SaveProductItem" xml:space="preserve">
+    <value>Save product item</value>
+  </data>
+  <data name="InactivateProductTitle" xml:space="preserve">
+    <value>Inactivate Product</value>
+  </data>
+  <data name="ConfirmInactivation" xml:space="preserve">
+    <value>Are you sure you want to inactivate the selected item?</value>
+  </data>
+  <data name="BrownButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BrownButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BrownButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BrownButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GreenButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GreenButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GreenButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GreenButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="OrangeButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\OrangeButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="OrangeButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\OrangeButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PurpleButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PurpleButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PurpleButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PurpleButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RainbowButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RainbowButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RainbowButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RainbowButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RedButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RedButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RedButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RedButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WhiteButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WhiteButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WhiteButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WhiteButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="YellowButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\YellowButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="YellowButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\YellowButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BlackGelButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GelButtons\BlackButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BlackGelButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GelButtons\BlackButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BlueGelButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GelButtons\BlueButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BlueGelButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GelButtons\BlueButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BrownGelButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GelButtons\BrownButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BrownGelButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GelButtons\BrownButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GoldGelButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GelButtons\GoldButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GoldGelButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GelButtons\GoldButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GrayGelButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GelButtons\GrayButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GrayGelButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GelButtons\GrayButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GreenGelButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GelButtons\GreenButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GreenGelButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GelButtons\GreenButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LavenderGelButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GelButtons\LavenderButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LavenderGelButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GelButtons\LavenderButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="OrangeGelButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GelButtons\OrangeButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="OrangeGelButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GelButtons\OrangeButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="OrchidGelButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GelButtons\OrchidButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="OrchidGelButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GelButtons\OrchidButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PinkGelButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GelButtons\PinkButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PinkGelButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GelButtons\PinkButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RainbowGelButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GelButtons\RainbowButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RainbowGelButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GelButtons\RainbowButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RedGelButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GelButtons\RedButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RedGelButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GelButtons\RedButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TanGelButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GelButtons\TanButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TanGelButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GelButtons\TanButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WhiteGelButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GelButtons\WhiteButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WhiteGelButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GelButtons\WhiteButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="YellowGelButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GelButtons\YellowButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="YellowGelButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GelButtons\YellowButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BlackFlatButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlatButtons\FlatBlackButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BlackFlatButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlatButtons\FlatBlackButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BlueFlatButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlatButtons\FlatBlueButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BlueFlatButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlatButtons\FlatBlueButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BrownFlatButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlatButtons\FlatBrownButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BrownFlatButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlatButtons\FlatBrownButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GoldFlatButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlatButtons\FlatGoldButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GoldFlatButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlatButtons\FlatGoldButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GrayFlatButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlatButtons\FlatGrayButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GrayFlatButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlatButtons\FlatGrayButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GreenFlatButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlatButtons\FlatGreenButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GreenFlatButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlatButtons\FlatGreenButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LavenderFlatButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlatButtons\FlatLavenderButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LavenderFlatButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlatButtons\FlatLavenderButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="OrangeFlatButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlatButtons\FlatOrangeButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="OrangeFlatButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlatButtons\FlatOrangeButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="OrchidFlatButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlatButtons\FlatOrchidButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="OrchidFlatButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlatButtons\FlatOrchidButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PinkFlatButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlatButtons\FlatPinkButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PinkFlatButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlatButtons\FlatPinkButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RainbowFlatButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlatButtons\FlatRainbowButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RainbowFlatButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlatButtons\FlatRainbowButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RedFlatButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlatButtons\FlatRedButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RedFlatButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlatButtons\FlatRedButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TanFlatButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlatButtons\FlatTanButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TanFlatButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlatButtons\FlatTanButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WhiteFlatButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlatButtons\FlatWhiteButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WhiteFlatButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlatButtons\FlatWhiteButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="YellowFlatButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlatButtons\FlatYellowButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="YellowFlatButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlatButtons\FlatYellowButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SQLConnection" xml:space="preserve">
+    <value>Data Source=GtiServer;Persist Security Info=True;Password="Guardian1";User ID=sa;Initial Catalog=Daily</value>
+  </data>
+  <data name="CouponTypeHelpText" xml:space="preserve">
+    <value>Fixed:
+Removes a fixed amount from the sale
+Percent Value:
+Removes a set percentage of the selected package from the sale
+Alt Price:
+Uses the 'alternative price' value for the products within the package</value>
+  </data>
+  <data name="PaperBrownButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PaperBrownButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PaperBrownButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PaperBrownButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PaperGreenButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PaperGreenButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PaperGreenButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PaperGreenButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PaperOrangeButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PaperOrangeButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PaperOrangeButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PaperOrangeButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PaperPurpleButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PaperPurpleButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PaperPurpleButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PaperPurpleButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PaperRainbowButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PaperRainbowButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PaperRainbowButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PaperRainbowButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PaperRedButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PaperRedButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PaperRedButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PaperRedButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PaperTanButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PaperTanButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PaperTanButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PaperTanButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PaperWhiteButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PaperWhiteButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PaperWhiteButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PaperWhiteButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+</root>

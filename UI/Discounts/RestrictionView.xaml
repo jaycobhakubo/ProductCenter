@@ -1,0 +1,28 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:newDiscount="clr-namespace:GTI.Modules.ProductCenter.UI.Discounts"
+             x:Class="GTI.Modules.ProductCenter.UI.Discounts.RestrictionView"
+             mc:Ignorable="d" 
+             d:DesignHeight="428" d:DesignWidth="546">
+    <StackPanel>
+        <Label HorizontalAlignment="Left" x:Name="label1"
+               Content="Choose products to exclude from qualifying spend" 
+               VerticalAlignment="Bottom"
+               Margin="0,14,0,0" Padding="0"/>
+        <newDiscount:MultiSelectComboBox Margin="0,3" x:Name="MultiSelectComboBoxProductItem" HorizontalAlignment="Left" 
+                                          Width="{Binding ElementName=label1, Path=ActualWidth,Mode=OneWay}"/>
+        <Label HorizontalAlignment="Left"
+               Content="Choose packages to exclude from qualifying spend" 
+               VerticalAlignment="Bottom"
+               Margin="0,14,0,0" Padding="0"/>
+        <newDiscount:MultiSelectComboBox Margin="0,3" x:Name="MultiSelectComboBoxPackageItem" HorizontalAlignment="Left" 
+                                          Width="{Binding ElementName=label1, Path=ActualWidth,Mode=OneWay}"/>
+        <CheckBox HorizontalAlignment="Left" x:Name="chkBxIgnoreValidations"
+                  Content="Do not include the validation charge on excluded packages" 
+                  VerticalAlignment="Bottom"
+                  Margin="0,14,0,0"/>
+    </StackPanel>
+</UserControl>

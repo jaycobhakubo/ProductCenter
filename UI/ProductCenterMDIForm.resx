@@ -1,0 +1,640 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>-5, 0</value>
+  </metadata>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="menuStrip1.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="menuStrip1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 9.75pt, style=Bold</value>
+  </data>
+  <data name="fileToolStripMenuItem.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="exitToolStripMenuItem.AccessibleName" xml:space="preserve">
+    <value />
+  </data>
+  <data name="exitToolStripMenuItem.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="exitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 22</value>
+  </data>
+  <data name="exitToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Exit</value>
+  </data>
+  <data name="fileToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 9.75pt, style=Bold</value>
+  </data>
+  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 22</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;File</value>
+  </data>
+  <data name="setupToolStripMenuItem.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="productsToolStripMenuItem.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="productsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 22</value>
+  </data>
+  <data name="productsToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Products...</value>
+  </data>
+  <data name="packagesToolStripMenuItem.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="packagesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 22</value>
+  </data>
+  <data name="packagesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Pa&amp;ckages...</value>
+  </data>
+  <data name="menusToolStripMenuItem.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="menusToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 22</value>
+  </data>
+  <data name="menusToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Menus...</value>
+  </data>
+  <data name="cardLevelsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 22</value>
+  </data>
+  <data name="cardLevelsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Card &amp;Levels...</value>
+  </data>
+  <data name="couponManagementsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 22</value>
+  </data>
+  <data name="couponManagementsToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Coupons...</value>
+  </data>
+  <data name="DiscountToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 22</value>
+  </data>
+  <data name="DiscountToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Discounts...</value>
+  </data>
+  <data name="validationToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 22</value>
+  </data>
+  <data name="validationToolStripMenuItem.Text" xml:space="preserve">
+    <value>Validation...</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>189, 6</value>
+  </data>
+  <data name="m_searchMenuItem.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="m_searchMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 22</value>
+  </data>
+  <data name="m_searchMenuItem.Text" xml:space="preserve">
+    <value>&amp;Search Products...</value>
+  </data>
+  <data name="setupToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 9.75pt, style=Bold</value>
+  </data>
+  <data name="setupToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 22</value>
+  </data>
+  <data name="setupToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;View</value>
+  </data>
+  <data name="helpToolStripMenuItem.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="aboutToolStripMenuItem.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="aboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 22</value>
+  </data>
+  <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;About...</value>
+  </data>
+  <data name="helpToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 9.75pt, style=Bold</value>
+  </data>
+  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 22</value>
+  </data>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Help</value>
+  </data>
+  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1018, 26</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="menuStrip1.Text" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>1018, 685</value>
+  </data>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAMAEBAAAAEAIABoBAAANgAAACAgAAABACAAqBAAAJ4EAAAwMAAAAQAgAKglAABGFQAAKAAAABAA
+        AAAgAAAAAQAgAAAAAABABAAAAAAAAAAAAAAAAAAAAAAAAEIbNxB7I2F5qSqD1bwuk//BLpb/wS6W/8Et
+        lv/BLpb/wS6W/8Etlv/BLpb/wS6W/7wukv+pK4PVeyRheUIbNxB7JGF9yS+b/+s0tv/1N73/6DSz/60m
+        hf/2Nr7/+De///g3v//4Nr//zy2g/3YcXP9nGVH/piSA/8kum/97I2F9pCmA1ekzs//0Nrz/9Da8/1Mu
+        Rf8cLB3/OQws/5sid//0Nbz/sDqN/5+cn//LwcH/wKip/2VXWv+TIHH/pCmA1bQrjP/sM7f/8DS5/4ok
+        bP9SsV7/k+KY/0aGS/8hLiH/Ow0u/2hNXf////////T0/+++vv++nJz/jShw/7QsjP+0LI3/6jO1/90w
+        q/9Ed07/n/at/8X5yv+7/r//l+Oc/0yLUv9TYFD/++Lk///w7/+/jo7/hmlp/7MqjP+1K43/sSuK/+Yz
+        sf93MWL/gOOY/+j+6/+988X/wPTF/6zys//G/8r/kMeS/+7X2///6On/tIGB/39kZv/FK5f/siqK/60q
+        hv/fMqv/WIFm/8v/3f/I9dL/zPbU/8/31v/e+uD/sPa6/6bPp//p19r//+fn/7N/f/97YmT/wiuV/64q
+        hv+rKYT/pSyB/33PmP/Y/uL/yfjW/9b33f9O1Wj/gOGR/8781v+uzrH/6dLS///n6P+5iIj/emJj/60m
+        hf+qKYP/pSeA/3tObf+c7rL/2fng/9L53P/F9tL/X9h1/3PfiP/b/eT/o8Wn//PMz///3+D/1aOi/45x
+        cf+CHmX/pSeA/6Inff9cbF7/xfvQ/9775P/Q99j/xfbS/9/65//R+Nv/xfnU/7vBt///4+b//unq//zf
+        3v/Rt7f/bh9X/6Inff+dJnn/S31S/0PZWv914If/uPLB/9P52f/V+dv/yffS/8n61f+sxbT/0svL///a
+        2f/pxMP/o56g/6wshv+dJnn/mSV2/0x3UP8guzL/GcMv/yPKPP9P1WX/hOWV/7jzwv/W/93/eK+J/42E
+        gv/85+X/4767/0o2Qf/FK5f/mSV2/5Ikcf+fNH//cktl/0x1Tv81nT//Jbc3/x7HNv8r0EX/YOd4/1iF
+        Wf+Bfqb/RGL9/2596/+AZ3f/vyqS/5Ikcf+NNGvYyl2e/9BepP/PXKP/uV2U/5Vqe/9xh2b/WalX/1DN
+        Vf9Ma0H/fz1o/2ttq/9wYoz/uEuO/8NNl/+TPG7agUVejMiAo//ajrX/1HGm/9Jmof/RY5//z2Ce/8Jk
+        lf+hdn7/mG91/8xZnP/NWpz/zFmb/8ZXlf+zVIb/ejxYiUoxQhKke4ydv4yk6bBiiv+sUoD/q1F+/61T
+        f/+vVoD/r1V//6xTf/+sU3//qk99/6ZNev+bSW7efD9WhzQYKxAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKAAAACAAAABAAAAAAQAgAAAA
+        AACAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZxdPHXUZWnCAHGO3iB5p6owfbP+NH23/jh9t/44f
+        bf+OH23/jh9t/44fbf+OH23/jh9t/44fbf+OH23/jh9t/44fbf+OH23/jh9t/44fbf+OH23/jh9t/40f
+        bf+MH2z/iB5p6oAcY7d1GVpwZxdPHQAAAAAAAAAAAAAAAGwYUzmDHWWwnCJ4/7AmiP+9KpH/wiqW/8Qr
+        l//FK5j/xSuY/8UrmP/FK5j/xSuY/8UrmP/FK5j/xSuY/8UrmP/FK5j/xSuY/8UrmP/FK5j/xSuY/8Ur
+        mP/FK5j/xCuX/8Iqlv+9KZH/sCaI/5wieP+DHWWwbBhTOQAAAABnF08dgh1lsKYkgP/GK5j/2S+n/+Mx
+        r//nM7L/6DOz/+kys//oMrL/5jKx/+gzs//oMrP/6TKz/+gzs//oMrL/6TKy/+gzs//oMrP/6TKz/+gz
+        s//pM7P/5zKy/9svqf/UL6T/2jCo/+Axrv/ZL6f/xiuY/6UkgP+CHWWwZxdPHXMZWXCaInf/xCuX/+My
+        r//xNLn/9TW9//g2v//4N8D/+DfA/94wq/+SIHD/viqT//A0uf/5NsD/+DbA//k3wP/5N7//+DbA//k2
+        wP/5Nr//9TW8/70qkf9/HWL/ZhlQ/2IWTf9yGVj/kyBx/8Uql//hMa3/xCuW/5oid/9zGVlwfhxht60l
+        hf/VL6X/7zS4//Y2vv/3Nb7/9za+//c2vv/rM7T/fCRj/0YSN/9XE0P/fhxh/7gojv/rM7X/9zW+//c2
+        vv/3Nr7/9za+/+c3s/+AMGj/e211/6Cbm/+so6P/oZSU/3xvcv9NNUX/TxM+/7cojf/LLZz/rSaF/34c
+        YbeFHGbquCmN/94wqv/yNbr/9Ta8//U1vf/1Nrz/9jW8/5god/9PflT/QGVC/0onP/9METz/VRNB/3ka
+        XP+xJoj/5TGw//Y2vP/sNrX/ll2E/9rW1v////////r6///o6P/+2Nj/+dDR/93Cwv9rYWT/kSBw/8cr
+        mf+4KI3/hRxm6ocdaP+8KJD/4TCs//I0u//0NLr/9DW8//M1u//BK5X/U2NT/zTCQ/9a02T/RKlN/0Fn
+        Q/9KLUL/ShE7/1ERPv9vGFX/sSaI/7cpjf+2naf///z8///z8///7e3/+9vb//PIyP/ls7T/7L29/8ax
+        sP+ZKXn/0C2g/7wpkP+HHWj/hx5o/7wpkP/eMav/8TS5//A0uf/xNbr/5jKx/208X/84t0v/cN59/+P/
+        4v+9+sD/Ydds/z+tSv8+cEL/RjNA/0oTPP9UEkH/XBVI/6KNk///6ur//+vr///w8P/94uL/9c3N/7F9
+        ff+zhIT/rJmZ/6krhf/WMKX/uymQ/4cdaP+GHWf/uiiP/9wwqv/uNLf/7TO4/+40uP+eKXz/TZZc/z3Y
+        WP+98sL/6//q/9b71/+b6aH/wfvD/4rpkf9OuVj/OnZA/0Q2P/9DDzb/f2t0///n5///6Oj///Dw///o
+        6P/hubn/lmFh/6yAgP+GdXn/uyuR/90wqv+6KY//hh1n/4QdZv+4KI3/2i+o/+s0tf/rM7X/2jCo/2Rb
+        YP9I2mf/pPCx/7rwwP+s7bT/ieSV/8H1xP/o/+f/3/3f/4zok/+M6JP/YMNp/zx5Qv9rbWb//t3g///p
+        6f//7+///+nq/8yhof+UXl7/s4iI/3pjbf/LLJz/2jCn/7gojf+EHWb/gx1l/7UojP/YL6b/6TKz/+kz
+        s/+VLXb/VLdv/4r4pP/7//n/9f/0/7nywv+L5pr/pe2u/7byvf+g6qf/t/G7/+f/5f/X/9j/hOuN/2eR
+        af/009r//+vr///u7v//5+f/vI6O/5RgYP+1jY3/c1Zn/9Iuof/XL6X/tiiM/4MdZf+CHGT/tCeK/9Uu
+        pP/mMrH/2DCl/2ldZ/9Z7oL/rPG6//H88v/y/vL/s/S//+n96//m/eb/ru+3/3Tfhf+p7bH/y/rN/772
+        wv+m863/mKaV/+XN0P//7u7//+3t//7j4/+0hIP/l2Ji/7WPj/9wTmL/0y+j/9Uuo/+zJ4r/gRxk/4Ac
+        Yv+xJ4f/0i2h/+Myrv+lLIH/Xrd6/5n/uf/U89n/tO2//5vsrP+18sP/+f/4//b/9f+w8rz/1frY/9P6
+        1v+l7K7/cN6B/7L5uv+UqJP/4crO///v7///7Oz//uLi/7GBgf+XYmL/tI+P/2xIXv/QLqD/0y6h/7Em
+        iP9/HGL/fhxh/68mhv/QLaD/3zGr/3tGa/9r7Zj/1f/k///////y/vX/qfS9/7fwwv+y7bz/tfHB/8j3
+        0v/9//r/9f/z/7n0w/+488D/ufrB/3+ggf/kzND///Dw///t7f/+4uL/tISE/5diYv+1j4//aUhd/8ss
+        nP/QLZ//ryaG/34cYf98G1//riaF/84tnf/FLJf/Zox1/3v/pf+y7r7/1PTa/9P83//h/+z///////P8
+        9f9v4If/XNdy/7Xuvv/S99j/tfXC//b/8//p/+n/haCJ/+PLzf//7Oz//+vs///k5f+/kZH/lmFh/7WP
+        j/9nTl3/wCqT/84tnv+sJoX/fBtg/3sbXv+rJoP/yyyb/5kxe/9fxYH/t//Q/+777//D8s3/j+6n/7Lx
+        wf/r+u7/4fvo/0HUXf8qyUX/K8lG/1LYbP+m7bX/0vbW/8L7zf95nH//787S///j4///5eX//+Pj/8+j
+        o/+VYGD/tI2N/2tWYf+0KIr/yyyc/6olg/97Gl7/eRpd/6klgP/JLJn/e0tt/17nhv/A+s3///////P/
+        9v/H/dj/3Pfh/7zxx/+B6Jn/LMtI/ynJRf8pykf/o+60//T99f+988b/feiV/4mYh//30tb//9ra///e
+        3///3d7/5ru7/5lmZf+vhYX/cmJo/6EjfP/GK5b/qCWA/3kaXf93Glv/pyR//7stkP9mbGf/c/CU/7vv
+        w/+878X/tPTD/9H73P//////7f/0/8P71f/H8tD/e9+N/0rWZv/N9tf//////97/6f/G69H/nJeU//jX
+        2P//2Nj//9zc//zX1//1ycn/voqL/8OWlv+Lf3//hB5m/7Ypiv+nJH//eBpb/3YaWv+jJH7/pTGD/1GP
+        X/+e+bP//////+n77P+k7rX/pey0/8Hwyv++983/3/3p///////7//3/vPnP/7rwxf+z7r7/p/q9/8ra
+        z/+sn6D//tna///Y2P//4eH//N3d//XOzv/puLj/6ri3/6qXl/92H13/qyaD/6Mkff92Glr/dBlZ/6Ij
+        fP+QNnf/RKJZ/5/1r//+//v/+f/4/8f50v/r/e3/2Pfc/5ntq/+m7LT/zfPU/9T63//T/uH//////9f7
+        4v+v+sT/lseh/7Slpf//7u////b2///5+f/+9fX//PPz//rw8P/33d3/xa+v/4QkaP+yJ4n/oiN8/3Qa
+        Wf9yGlf/nyJ5/308a/9Fqlf/PddY/3LehP+h7K3/q/K3//f/9P/4//b/v/nN/+P85v/Q9db/mOyq/6ft
+        tf/W9tz/yfzY//P/+v/b2Nv/p5+h//7////98fH//uHh//bMzP/ktrf/58vL//////+4s7T/oix//7op
+        j/+fInn/chlX/3EZVv+cInj/dUNm/z+wTv8myDz/IcQ8/yfIQ/9C0lv/feOO/6rvtf+49cL/9//1//z/
+        +f/G+dD/0PjW/73zxv+M66D/vvHI/8z62P9rnHv/pp6j/+3S0///3t3/9szM/+SwsP/Yr6//tbGx/3xE
+        a//FLJf/uyiO/5wieP9xGFb/bxhV/5oidv9wSGT/NbRE/x7BMP8jvDb/J8A7/yfDPv8kxT//K8pH/03W
+        Zv+G5pf/vPXE/7T1wP/0/vH/5/7p/7r4x//Z99z/ovu4/1OTZ/9CGjf/tKCj///n6P/3ysr/67a2/7ye
+        n/82IjL/ih9p/8Ysl/+4KIz/myJ2/3AZVf9vGFP/mCJ0/3FDZP9FlE3/LbQ7/yS9NP8gvzH/IcAz/yW/
+        OP8pwT7/KMRB/yXHQf8yzk7/Ttho/5Ppof+u87r/w/jL/////P+798r/Q11M/25RYv/y3NX///br//7q
+        4f/72M3/7cjA/31xc/9qHFP/wyuU/7Uoiv+YInT/bhhT/20XU/+XIXL/pSyB/5Y3ev90Smb/VW1V/zyb
+        Rv8xsT7/KL83/yPDNf8kwTf/J8A8/ynEP/8px0P/KcpF/zPPUf9d3HX/pPOw/5bhpf88Pjz/r6Ok/9ba
+        /f9ufeT/WGfi/2hz3v+9v/H/4NnY/30rZP/AKpP/syeI/5Yhc/9sF1P/ahdR/5Mgb/+uJ4X/vSqQ/74q
+        j/+xLIj/mDZ6/3tFaf9Xa1b/P5NI/zSwQv8rwTz/JsU5/ybEOv8oxD7/LMZE/ynIRP8s0kv/UcNp/0ko
+        Pv9xUGL/XXXe/wYu8v8AIer/AyPh/0Vc2P+JfIj/py+B/74qkf+uJoX/kiBw/2oXUf9mFk3qoD55/8dk
+        m//RZqX/0GGl/89fpP/OXKP/zVih/8VWnP+wWI7/l2J+/317bv9lnl//WbpY/07KUv9JzU7/R81N/0rU
+        U/9ktGn/YjRJ/6I6ev9+ZIT/bYbc/19+7v9rgdz/eW6N/7BLif/ISZv/yU6b/79Rk/+iQnz/cSRU62EX
+        SbimVH3/0H+g/9h/q//Ze63/13er/9Vzqv/Tbqn/0mqm/9Blpf/PX6P/x12c/7dfkf+eaIL/hX5x/2+f
+        Zv9kvF3/XtVd/3G0bf92Plb/vUmQ/75Nkf+jW4H/mmKC/6Jfgv+7VZD/y1Sd/8xXn//MYJ7/wWGU/6NQ
+        e/9tJlG8XRxFc61pff/Fd5P/0Xqg/9Z4pf/VdaX/1G+l/9NspP/SaaP/0GWh/89ioP/OX5//zVyd/8xa
+        nf/IWJr/uVyP/6Nlf/+Mf3P/g5Bx/6hVf//KUpn/yVKZ/8pUmv/KVpv/y1eb/8xZnP/MW5v/yl2a/8Rd
+        k/+0WYX/mE1v/2AfRXRSGTsegj9bvbdzhP/KhZz/2puz/92duP/Whaf/0Hae/85wmv/NbZn/zGuY/8tp
+        mP/KaZf/ymiX/8pnl//JZpb/yWWX/8VmlP+2bIn/v2uP/8hklv/IZJb/yWSX/8pml//JaJf/ymqW/8hm
+        lP/CY47/tV2E/6NWdf94MVW5Uhg8HgAAAABRFTs6gD5cvbR3if/dusT/6tDY/9uruP/OjZ7/yn+S/8h8
+        kP/Heo3/x3mN/8h7jv/JfI7/yn6O/8t/kP/Lf5D/yn6P/8l8jv/Ie47/yHqO/8h5jf/Fdoz/xHSL/8N0
+        i//Cc4n/vW2F/7Nmf/+hWHL/dzNUuVEUOzoAAAAAAAAAAAAAAABJEDgdWRhCcnY4XMCWX33wmFx6/45L
+        a/+JQ2P/iUNi/4pCYf+LRGH/jkdi/49IY/+PSWP/kEpk/5FLZP+QSmP/jkdi/41GYv+MRWH/jERh/4pC
+        YP+IQF//hz9e/4Q7Xf97M1ftbypOvVsbQ3NJEDgdAAAAAAAAAADAAAADgAAAAQAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAABwAAAAygAAAAwAAAAYAAAAAEA
+        IAAAAAAAgCUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAdxpbCoAcY1aJHmmXjx9uzZQg
+        cvGWIXT/mCF1/5ghdf+ZIXb/mSF2/5khdv+ZIXb/mSF2/5khdv+ZIXb/mSF2/5khdv+ZIXb/mSF2/5kh
+        dv+ZIXb/mSF2/5khdv+ZIXb/mSF2/5khdv+ZIXb/mSF2/5khdv+ZIXb/mSF2/5khdv+YIXX/mCF1/5Yh
+        dP+UIHLxjx9uzYkeaZeAHGNWdxpbCgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB+G2FFjB9sq5oi
+        dv+lJH//riaG/7Qoiv+3KI3/uSiO/7koj/+6KY//uimP/7opj/+6KY//uimP/7opj/+6KY//uimP/7op
+        j/+6KY//uimP/7opj/+6KY//uimP/7opj/+6KY//uimP/7opj/+6KY//uimP/7opj/+6KY//uimP/7op
+        j/+5KI//uSiO/7cojf+0J4r/riaG/6Ukf/+aInb/jB9sq34bYUUAAAAAAAAAAAAAAAAAAAAAAAAAAIAc
+        Y1mSIHHVpSR//7Uni//AKpT/ySya/88toP/SLqL/0i6j/9Muo//ULqT/1S6k/9UupP/VLqT/1C6j/9Qu
+        o//ULqT/1C6k/9Uuo//ULqT/1C6k/9Quo//VLqP/1C6k/9Quo//ULqT/1C6k/9QupP/ULqT/1C6k/9Uu
+        pP/VLqT/1C6k/9QupP/TLqP/0y6j/9Euov/PLaD/ySyb/8Aqlf+1J4v/pSR//5IgcdWAHGNZAAAAAAAA
+        AAAAAAAAfRthRZMgcNWmJYH/vCmR/80tnv/XL6X/3jCs/+MysP/mMbH/5jKy/+czsv/mMrL/5zOz/+cy
+        s//nM7P/5jOy/+Yysv/mMrL/5zOy/+cysv/mM7P/5zOz/+Yysf/nMrH/5jOz/+Yzsv/mMrL/5jOy/+cy
+        s//nMrP/5jOz/+czsv/nM7P/5jKz/+Exr//gMq3/4TGt/+QysP/iMbD/3jCt/9cvp//MLJ3/uyiQ/6Yk
+        gf+RIHHVfRthRQAAAAB1GloKix9rq6Mjff+6KY//zy6g/94xrP/oM7L/7jO4//E1uf/xNLr/8zW7//Q2
+        u//0Nbv/9Da8/+oztf/OLp//4zKv//Q1vP/0Nbv/9Da6//M1vP/0Nrz/9Da8//Q2u//zNrv/9Da8//Q2
+        vP/0Nbv/9DW7//Q1vP/0Nbz/9Da7/+41tv/aMKn/xCuX/7Qoiv+tJoX/ryaG/7spkP/QLqD/4zGv/+gz
+        sv/eMKr/zi6f/7opkP+jJH7/ix9sq3YaWgp/HGFWlyF1/7Inif/KLJz/3TGr/+o0tf/zNbv/9jW9//c2
+        vf/4NsD/+Da+//g3wP/5NsD/+DfA/8ksm/9vGVX/gh1k/7spkf/mMrL/+De///k2wP/4NsD/+DfA//k3
+        wP/5N77/+DbA//g2wP/5NsD/+Ta///k2v//5Nr//2i+m/5chc/9oGVH/UxZB/0sVO/9KFDv/URQ//1wU
+        SP9uGVT/jB5r/74qkf/lMrD/3jGr/8otm/+zJ4r/mCF1/38cYVaHHmeXoiR9/74qkv/ULqT/5TKx//I1
+        uv/1Nr7/9ja+//c2vv/4Nr7/+Da+//c2v//3Nr//1zCm/3UfXP9SEj7/UBE9/1oURv9/HGL/tCeK/+Ex
+        rf/3Nr//+Da///g2v//4Nr7/9za///c2v//4Nr//+De+//c2vv+wKYj/WytN/1ZLUv9zb3D/hYGB/4mE
+        hP+AeXn/a2Jl/0xASP9DIzr/ShM6/2UWTv+xJ4j/4zGu/9Uuo/+9KpL/oyR9/4YeZ5eMH2zNqiSC/8Ur
+        l//bMKj/6zO0//M1u//1Nr3/9ja+//c1vv/2Nr3/9ja+//c2vf/xNbn/fStl/1NSU/9OKkX/URdA/1MS
+        QP9REj//VxND/3gaXP+sJoX/3C+q//Q1vf/2Nr7/9za+//c2vv/2Nr3/9De9/5c7fP9xbG//wsDA/+vo
+        6P//9PT///Dw///o6P//39//8tPT/9nAwP+mmJj/W1NY/0IaN/+AHGL/2jCo/9swqP/FK5j/qiWC/4wf
+        bM2QH2/xrieG/8ksm//eMKr/7DS1//M2u//1Nbz/9Ta8//U1vf/1Nb3/9Da8//Q1vP+nJ4H/VFBS/02o
+        V/9HiU3/UFpQ/1AsR/9QF0D/UhJA/1ERPv9VE0L/cxlZ/6Ukf//ULqX/8DW6//U2vf/1Nrz/tEGS/4eC
+        gv/17+/////////6+v//8fD//eTk//rW1v/1zc3/8MXF/+/Exf/yzMz/1r+//2NfYP91Hlv/4DGs/94w
+        qv/KLJv/ryaG/48fbvGRH3D/sCaI/8osnP/fMKv/7DO1//I1u//zNbv/9DW7//Q2vP/0Nbv/8zW7/84t
+        n/9cPFP/SpdU/yfBN/8wwj3/LLE5/z2LRf9QXVH/Ty9I/08aQP9REj7/URI+/1MSQP9sF1P/nCJ4/9Eu
+        of/zNbr/fDdo/+DPz///8vL//+7u///y8v//7+///eXl//rX1//0ysr/7b+//+m5uv/luLj/8c3N/6+h
+        oP90Jl3/7DO2/98wrP/LLJz/sSaI/5EfcP+SH2//siaI/8ssnP/eMKv/6zO1//I0uv/yNLr/8jS6//I1
+        uv/xNbr/7DS2/3MuX/9Ug1v/KsU+/z/ETf/F9cf/n+qk/1HRXP8wtz3/P5dI/05hT/9QNkr/TxtA/1AS
+        Pv9QET7/URI+/2cWT/+fI3v/aDRZ/+LMzP//5eX//+fn///w8P//8PD//ejo//rb2//1zc3/8MPD/8SR
+        kf+5iIj/6MHB/7Ghof9/KGb/6jO1/90wq//LLJz/sieI/5EgcP+RIHD/sSaI/8ssnP/dMar/6jS0//A0
+        uf/wNLn/8DS5//E1uf/xNLj/oSp//1VgV/9Cv1b/JsQ8/6vtsf/k/+P/3f/d/93/3f+U55v/OMZG/zi7
+        RP83mkH/S21P/088S/9NHUH/TxI9/1ASPv9XE0P/SShA/8a1tf//5OT//+Hh///t7f//8PD//evr//ve
+        3f/51NT/2Kqq/5VhYf+Zamr/z6qq/5GHh/+SJnP/6jS0/90xqv/LLJz/sSeI/5EfcP+RIG//sCaH/8ks
+        mv/bMKj/6DOy/+40t//vNLj/7jS3/+40uP/bMKn/YDxX/1SjY/8s0Ej/dtyE//D/7v/c/93/1//X/9v+
+        2/+B3on/tPG3/731v/9x3Hn/OMJF/zyeRv9KbU7/UD9M/0weQf9SE0D/QRo2/6ebm///5ub//9/f///s
+        7P//8PD//uvs//vf3//51dX/tYOD/5VgYP+hcnL/vZqa/3Ntbv+oJ4L/6DOy/9swqP/JLJr/sCaH/5Ag
+        b/+QH27/riaF/8gsmf/ZL6j/5jKx/+w0tv/tNLb/7DO2/+w0tv+NLHD/WXZg/0XXYv9F1GD/iuOY/6rt
+        sv/T+dX/7f/s/6XtrP+L45P/3//f/9j/2P/c/9z/xvnI/1TQX/83xEX/OJ9C/0ZzTP9OPUr/RSY+/42D
+        g///5eX//9/f///q6v//8PD//uzs//3h4v/uysr/oG1t/5hlZf+kd3f/t5iY/2ZaYf+5Ko//5jOx/9kv
+        qP/IK5r/riaG/48gb/+PH23/rSaF/8YrmP/YL6f/5TKw/+sztf/rM7X/6zO1/84voP9dTlj/Wct0/z7e
+        YP+18b//6vzq/6vttP+K5Jf/lOag/23cff/a/dr/4//i/9b/1//c/9z/r/Cz/3/ehv/M+M3/k+ua/1HO
+        Xf85pUX/PndF/3lxcv//4OH//+Hh///r6///7+///uvr//7k5P/fubn/mGNj/5pnZ/+oenr/tZmZ/19L
+        WP/GK5n/5TOw/9gwp//FK5n/rSaF/48fbv+NH23/rCaE/8Qrl//WL6X/4zKu/+ozs//qM7P/6TOz/4ct
+        bP9ejGr/S+tz/4Lqmf/2//X/7v/t//H/8P/r/+v/fuOP/3jgiP+L5pj/ru+1/9j92f/a/Nr/dduA/8b5
+        yP/Z/9n/2v/a/9T/1P+i8qf/Q79Q/2lyZ//529///+Tk///r6///7u7//enp///k5P/Rp6f/lF9f/5tp
+        af+rfn7/r5eX/1pAUv/OLZ7/4zKu/9Yvpf/EK5f/rSWE/40fbf+NHmz/qyWD/8Mqlv/WL6T/4jKt/+cy
+        sv/oM7L/0C6g/15NWf9f0oD/Wu6B/+P86P/6//n/7f/t//L/8v/F9sz/mOyn/+//7v/M99H/l+mj/4rl
+        l/9v3H//luif/+j/5//a/9r/0v/T/9r/2v+Y6p//keCX/3p7dv/t1Nb//+fn///r6///7u7//enp///j
+        4v/Gmpn/k19f/5tpaf+tgYH/rJWV/1o6UP/RLqH/4TKt/9Uuo//EKpb/qyWD/40fbP+LHmv/qSWC/8Eq
+        lP/ULqL/4DKs/+Yysf/mMbD/kS1z/2OTc/9c94n/YeN//8Hxyf/t++///f/8//b/9f+T7ab/2fvd/+3/
+        7f/p/+n/9P/y/8D0xv9q3X7/j+ab/5DnnP+79cD/4v/h/6vwsf+C4o3/0frS/3N5cf/m0NL//+np///s
+        7P//7e3//ejo///i4f+/kZH/lF5e/5xqav+ug4P/qJOT/1czTv/RLqD/4DKs/9Quo//CKpT/qiSC/4se
+        a/+KHmr/pyWB/78qk//RLaH/3jGq/+Qyr//aMKn/ZkJc/2nVjP9p/Jb/z/bY/67suv+L5Z3/q+u3/7Py
+        wP+09cT////+/+7/7v/q/+v/6v7q/43qnv/Q+dT/6v/p/8D0xf+V6KH/geKP/2LZdf/K+c3/3f/c/3V9
+        dP/izM7//+rq///s7P//7e3//efn///h4f+8jo7/lF5e/5xqav+vhYX/pJCQ/1cvTP/PLZ//3jGq/9Iu
+        of/AKpP/pySB/4oeav+JHmj/pySA/78qkv/QLZ//2zGp/+Eyrf+tLIf/XnVl/2T2lP+d/Lv/////////
+        ///2/fj/wPLK/2Lif/+P56D/wfHK/+397v////7/t/XD/6fxtf/w/+//5f/m/+j/6P/r/+r/g+WU/4/n
+        nP+G5ZT/k+me/298b//kzdD//+vr///t7f//7u7//efn///h4f++kJD/k15e/5xqav+whYX/pJCQ/1Yv
+        S//LLZv/3DGp/9Aun/++KZL/pyWA/4keaf+HHmj/pSR+/70pkP/OLZ3/2TCn/98xq/98M2X/cMKN/2r/
+        n//f/+r///////7//v//////1v3i/7r6zf/f+OT/pOux/43lnP+s7bj/mu+u//P/8//1//P/6f/p/+3/
+        7P+99sb/m+6q/+//7f/Y/dr/qe6x/2Z3Z//lzdD//+rq///s7P//7e3//efn///h4f/Dl5f/k15e/5xq
+        av+whYX/pZCQ/1IvSf/EK5b/2jCn/84tnf+9KZD/pSR//4geaP+HHWb/oyR+/7opjv/LLZ3/2DCm/8wu
+        nP9jXGH/dfGj/2Lxi/+i6rD/2/fg////////////rPvF/+z+8f////////////D78v+S66b/QdNe/5Hl
+        n//U99n/+P/3//X/9P+X76r/1vza/+b/5f/l/+T/2/rc/2t3bP/lztD//+jo///r6///7e3//ebn///h
+        4f/Oo6P/lF9f/5xqav+vhIT/ppGR/1AyR/+7KY//1zCm/8stnf+7KY7/oyR+/4YdaP+GHWb/oiR9/7op
+        jv/KLJv/1i+l/50re/9hhG3/av+d/677xv/M89P/keek/5bopv+v8r//s/rJ///////////////+////
+        //915Y//KslF/yrJRv86zlX/dd2H/5Lqo/+i8bT//f/5/+7/7f/v/+3/neis/1xzYP/v0tb//+Pj///n
+        5///6en//eXl///f3//ds7T/lmFh/5toaP+tgoL/q5WV/084SP+yJ4j/1i+l/8osnP+6KY7/oiR9/4Yd
+        Zv+EHWb/oSN7/7gpjf/JK5n/1C6i/3Y4ZP9qwof/aP6Y/97+5v//////+//8/9744/+H7aH/f+eW/6fs
+        tv/a9+D//v/+/8773P800VL/NsxP/znNUv81zE//JshC/07Yav+V6Kb/mumn/8v10f/b/uD/jeOh/3p4
+        dv/z19n//97e///g4P//5eX//eHh//zc3P/rxMP/nmpq/5lmZv+rf3//r5eX/08+S/+lJX//0y+j/8kr
+        mv+4KI3/oCN7/4QcZf+CHGT/oCN6/7Yoi//HK5j/xS+Z/2FPXP9k4Ir/ePuf//T/9P/1//T/8//z//f/
+        9/+2/8//6f3u/8Xzz/+W6Kf/neqt/23kiP8lyUH/NcxP/zjNUv82zFD/M9BR/774zf/6/vr/zPTS/57p
+        q/9p54P/g9KT/4J4e//73N3//9nZ///b2///39///d7e//rY1//3z8//r319/5ZjYv+pfX3/s5eX/1NI
+        UP+UIXL/0i+h/8crmP+2KIz/oCN6/4McZP+CHGT/niJ4/7Unif/FK5f/rjWK/1t3ZP9b8IX/ceaL/8Hw
+        yP/p++v//f/7/9z/5f+2/Mr//v/8/////v//////zPrY/4HsnP9t24H/Ns5R/yvKR/8oyEP/buaM////
+        ///6//n//////+b/6/+e+rb/lMOd/4J9ev//4eL//9fX///Z2f//3d3//dzd//rW1v/60tL/0KGh/5Ng
+        X/+hdHT/waOj/11WWv99HGD/zy2d/8Urlv+0J4n/niN4/4IcY/+AHGL/nCJ4/7Mnif/DKpX/kjh3/1iO
+        Zv9b8YT/wfPM/7nuw/+V5qX/p+q0/6Xzuv/P/Nz///////n/+f////3/wP/V/97/6v//////2Pfe/5Lm
+        of9C0l3/gueY/+778f///////////636xP/m/+7/u7m6/5aJiv//4+P//9bW///Z2f//3d3//dzb//rW
+        1v/1zc3/7r+//7yJiv+2h4f/4L6+/25qav9lGlD/xCyW/8MrlP+zJ4n/nCJ3/4EcYv9/HGH/myJ3/7En
+        iP+7K5D/ez5p/1Sxa/9s74z/9//2//7//v/1//b/0PTX/3vmlP+H5Zv/rey6/+H55v/3//r/s/7L//X/
+        9//9//z///////////++/NP/ou+0/5Tnpf+o67X/w/bQ/7b9zf//////mZ6b/6+foP//4+P//9TU///Y
+        2P//29v//dnZ//rT0//0yMj/7Lu7/+eztP/isrL/6sXE/4h/f/9ZG0f/vyqS/8Eqk/+wJ4j/myJ2/38c
+        Yv9+HGD/miF1/68mhv+vLoj/akpg/0rBZv9+7JX/9//2/+z/7f/w//H/9v/3/7H2w//j+uf/vPDG/5Tn
+        pP+L557/k+6q//D88v////////////X/+P+w/cn///////f9+P/O9NX/f+mZ/33olv/A9Mr/g4yF/862
+        uP//3t7//9jY///j4///7Oz//u/v//3t7f/65+f/9NjY/+vCwv/fsLD/6L28/6eYmP9fIU7/xSuX/78p
+        kv+uJob/miJ1/34cYf99G1//mCB0/64mhP+hMYD/XFNa/0PGXv9654//9P/0//T/8//y//L/2vvf/6by
+        t//0//T/+P/4//v/+v+19cT/ieme/5XmpP+k6rH/1vXc/8/83f/H/tj///////3//f//////uP/R/9v5
+        5P+x8r7/YH1n/9y/xP//7+////r6//////////////z8//34+P/9+vr////////////57+//8tfX/7ak
+        pP9wJlr/ySya/74pkP+uJoT/mCJ0/30bX/98HF//liBz/6wmhP+SNXf/VF9W/0TKXP850VT/YNp1/5zq
+        qP/Y+dv/uPXC/7r2xf/0//L/6f/q//P/8v+z+MT/2Pzg//P+8//I9ND/peqx/3Xkjf+e7K//4/nm////
+        ///h/+r/uP3O////////////jIeL/87Cw////////v7+//zv7//+5OT//NjY//PFxf/nuLj/47u8/+/e
+        3v///////////62kpP+FKWr/xyyY/7wpkP+sJoT/liBz/3wbX/96HF3/lSBy/6klgv+GN2//UGlV/z7L
+        VP8tyET/J8dB/yfJQ/8+0Fj/Ttho/4zonP/b+93/7v/t/+//7v+f8rH/3v3h/+z/7P/z//L/+P/3/6n1
+        u/+s7rj/luil/5vpqf+S76j/0frc////////////qLiu/319e//5+Pj///b2//jS0v/+3Nz//NfX//PE
+        xP/lsrL/2aOk/9ipqf//9/f/6Ofn/3FlbP+0MIz/xSqW/7oojv+qJYL/lSBy/3sbXf95G13/kyBx/6kl
+        gf9+Omv/TnZU/zbISf8owTz/KsNA/y3GRf8sx0X/LMlG/y/MS/9C01z/d+GK/6Lur/+d8Kz/8v/w/+3/
+        7P/p/+n/4/7l/6b0tv/u/+7/8v/y/9X42f9/6Zb/heWY/6Tqsv/T9dn/m/y6/0p5Wf96cHX/ysLC//XW
+        1v/+39///drZ//PIyP/ntrb/3q6u/9i4uP+1sbH/Zlti/5Auc//HLJn/wyqV/7gojf+pJYH/kyBx/3ka
+        Xf94Glz/kiBv/6clf/97O2n/S3xS/y7EQP8huzL/I702/ya/Ov8pwT7/LMVC/y7HRv8tyEf/KclF/y7N
+        S/9L12b/fuSP/7n0wf/k/uT/3/7h/6fztv/q/+n/5v/n/+b/6P+q973/4v3l/8j0z/+f6a3/avKP/1qG
+        af9NHj//TzxJ/9vDwv//5eX//dra//PIyf/ntrb/6bm5/6KOjv82KjT/VhZC/6slgv/HLJf/wSuT/7Yo
+        i/+nJH//kiBv/3gbXP94Glr/kSBu/6Ukfv96O2j/TX1T/y/IQP8gui7/H7gv/yG5Mf8juzT/Jb44/yjB
+        PP8rw0D/LcVE/y/IR/8tyUj/KcpG/zHOTv9W2W7/duSK/5Xtpf/n/ub/7v/t/9b92v+j87P/6f/p//D/
+        7//o/+3/beKP/09OTv9RHkL/cGBn//PW1v//3+D//dfX//PExP/lsbL/47Cx/8Onp/9JQEj/PxIy/34c
+        YP/DK5T/wCqS/7Uoiv+lJH//kSBv/3gaWv92GVr/kCBt/6Qjff96PGj/UmBT/0ecUP82rEL/K7w6/yW+
+        Nf8iujD/Ibgx/yK6M/8kvDb/Jr86/ynCPv8sxEL/LsZH/y/JSf8sykf/K8xJ/znRVv9Z23H/meum/6Xx
+        sv+x9bz/8f/v/+r/6P/M/9X/Yb96/0c3Q/9dU1n/38XG///i3///8ej///jt///z6f//59z/8s/H/+bB
+        vv+2oqL/U0pQ/4wga//CKpT/vimR/7Mnif+kJH7/kCBu/3YZWv91GVn/jh9s/6IjfP+mLIH/mDV6/3s/
+        av9fT1r/S3BP/0KOS/83s0T/Lb89/yfBN/8jvTP/I7sz/yO7Nf8mvTj/J8A8/yrDQf8uxkT/MclJ/zHK
+        S/8ty0r/Ls1M/zbSVf9d3Xb/nu6r/9b62P/M/9T/Wp9r/z0oOP+IfH7///bz/+vp9P+wuO//ipfp/32L
+        5v+Rnen/ur7s//Pv9P/76uj/hXx9/5YjdP/BKpP/vCmP/7Inh/+iI3z/jR9s/3QZWf9zGVj/jB5r/6Ei
+        ev+vJob/uimO/78qkv+2LY3/nDR+/348a/9hUFz/THBQ/0WKTf86q0b/ML9A/yjCOf8lwDb/JLw1/yW9
+        N/8nvzr/KcI+/yvEQv8ux0b/MclJ/zPMTv8vzUz/Ls9M/0bWYv9r6IX/WI1l/z8cNv99dHL/4uT3/0Vf
+        4v8BHNX/ABPX/wAQ1P8AD83/BhnF/2d33v/x8fX/c2xs/6kqg/+/KpL/uimO/68mhv+gI3r/jB9r/3MZ
+        WP9xGFf/iR5p/50ieP+tJoT/tymM/70qkP++KpD/vimQ/74pkP+4K43/ojGA/4Q5b/9kS13/UGZS/0aJ
+        Tv89pkn/M75D/yzDPf8nwjn/Jr84/ya+Of8nwDz/KsI//y3GRP8wyEj/McpL/zHNTf9F2GL/VHZb/00V
+        PP9fLUv/bnGK/0dp7f8jSu//Ejvv/w427P8VOOL/KUfh/1No0P9vbXL/izlw/7wpkP+9KZH/tyiM/60m
+        hP+dInn/iR5p/3IYV/9uGFXxhh1m/5sidv+qJIH/tSeK/7spjv+8KY//vCmP/7wpj/+8KY//vCmP/7wp
+        j/+4Ko3/oTGA/4U5b/9qRl//U2NT/0mCT/8/pkv/NrtG/y7FP/8pwzz/KMI6/yjAPP8pwT7/K8RB/zDJ
+        SP9IzWH/UF9U/0sSOv+gI3r/azlZ/2Fxov9YgPj/Q3D//zxp//9Ibvr/XXrg/1lhev+LNm//vCmP/7wp
+        j/+6KI//tCeK/6klgf+bInb/hh1m/24YVPFrF1HNgx9j/7BQhv/QeqD/2oas/9yGr//dh7H/3IKx/9uA
+        sP/Zfa//2Hmt/9Z0rP/VcKr/022o/9Nqp//QZqX/w2eb/61rjP+XcX3/g4Vx/3qhbP9yumj/asVj/2LR
+        Xv9d0Vj/Ws5V/1zRWf9vzW7/dXBi/3A8Tf+ySYb/xk6X/5tkef9/eoL/f4ip/4CKsv+ChqD/h3V7/6ti
+        hf/NWZ//zlug/9Bfov/RZqP/zWig/8Znmf+3Woz/kTRt/2sXUc1lFkyXhy1m/8F0k//blan/5qW1/+qr
+        vP/qqr7/6Ke+/+ejvf/ln7z/45m6/+KVuf/fkbb/3oyz/9yGsv/bgq//2X2t/9d5rP/Vdqn/ynWg/7h4
+        kv+kfoP/lYd5/4qkdf+Eu3H/fM5r/3jaa/+G1Hn/i3pu/5pVbv+8XI3/z16f/89en//DY5b/uGeM/7Zq
+        iv+9aZD/ymec/9Joo//Ua6X/1XCm/9d3qf/ZgKv/1X6m/8x4nP+8a47/lkNx/2UWTZdhGElXjUBp/7dr
+        h//LfZn/3JSo/+KYrv/km7L/45Wx/+OWsv/ik7H/4I2w/96Ir//dhq//24Kt/9p/q//ZfKr/2Hio/9d2
+        p//Wcqb/1XCk/9Rupf/TbKP/y26b/7pxj/+meYD/lYZ0/42icf+Rt3z/l353/8hjlv/PY53/0WOe/9Fj
+        oP/RZKD/0WWg/9JnoP/TaKH/02mi/9Rrov/VbaL/1W+i/9V1ov/TdqD/zXOZ/79ojv+uW3//jUBp/10V
+        R1ZzNU0Mjkdju6NWdf+5aoj/zoCZ/9uQpP/glKr/45mu/+OYrv/ilKz/4JCr/96Nqv/ei6n/3Ymo/9uF
+        pv/agqX/2oGm/9l+pf/YfKP/13uj/9d7pP/WeKH/1nmi/9V3of/Vd6D/znmb/8F9kf+yg4T/rIp//9F4
+        nP/VdaD/1HOg/9RzoP/WdqL/13mj/9h5ov/YfKP/2Huj/9d6ov/XfKL/1nug/9N4nf/OdZj/w2yO/7Je
+        gf+eUHT/hz5fuFYSQQoAAAABhERXVZlUb+CrY4H/w4CZ/9idr//hqbf/4qSy/+Kdrf/im6n/4pmo/+Oa
+        qf/imKf/4Zem/+CVpv/fkqX/3o+k/92Qpf/dj6P/3I2i/9yNo//cjKL/3I2i/9uKov/biqL/2omi/9mI
+        oP/XiZ7/z4yX/9eJoP/Yh6L/2Yeg/9iFoP/Zh6L/2oei/9qIof/aiaD/24qh/9iFn//XhJ3/0n+b/8x3
+        lf/Cbo3/tGCB/6BRdP+TTGnfikpbVwAAAAAAAAAAAAAAAp5qenmkaIHkxJKn/+LFz//s1d3/58PN/+Ct
+        uf/eoav/3pyj/+Cdo//ioKT/46Gj/+Kfov/gnaH/35uf/9+aoP/fm6D/35uf/+CcoP/gnJ//4Z6g/+Ge
+        oP/hnaD/4Jug/+CcoP/fm57/3Zee/92Xnv/clp7/3Jad/9yVnv/akpz/2Y+b/9eOm//Vi5n/1YqZ/9WJ
+        mP/PgJT/yHeP/71sh/+xYX7/n1Fx/5JKZ9+QUWBwAAAABQAAAAAAAAAAAAAAAAAAAAV+Q2FSmmJ/wreI
+        of/TsMH/06y8/8yXqf/JjZ3/yIST/86Nl//TlJn/1pia/9eYl//Xl5b/2JeU/9iXlP/ZmJT/2pqV/9ub
+        lf/ampX/2pqV/9uclv/dnZf/25uV/9qalf/ampX/15aU/9aVk//Vk5L/04+R/9GMkP/OiI7/yYGM/8d9
+        iv/Eeon/wHWH/7xwhP+0Zn//rF96/6FUcv+USGn/hT5duIA/VVMAAAACAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAfUFTDX5BZGSNVHarj09y2IlDa/SJQGj/jEFn/5BHav+USmz/l05t/5lPbP+ZT2v/mk9r/5xS
+        bP+dU2z/nVRs/51UbP+dU2z/nVRt/55Vbf+gV27/nlRt/55Vbf+cUmz/mlBr/5hNaf+WS2n/lUlo/5JF
+        Zv+QRGb/jkBk/4s9Y/+JO2H/hzhg/4I0Xf9/MVvzfTBY03s1V6J+PFRko2lfEgAAAAIAAAAAAAAAAAAA
+        AADwAAAAAA8AAOAAAAAABwAAwAAAAAADAACAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAB
+        AADAAAAAAAMAAOAAAAAABwAA8AAAAAAPAAA=
+</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>Manual</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Product Center -- FortuNet Inc.</value>
+  </data>
+  <data name="&gt;&gt;fileToolStripMenuItem.Name" xml:space="preserve">
+    <value>fileToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;fileToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;exitToolStripMenuItem.Name" xml:space="preserve">
+    <value>exitToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;exitToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;setupToolStripMenuItem.Name" xml:space="preserve">
+    <value>setupToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;setupToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;productsToolStripMenuItem.Name" xml:space="preserve">
+    <value>productsToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;productsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;packagesToolStripMenuItem.Name" xml:space="preserve">
+    <value>packagesToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;packagesToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menusToolStripMenuItem.Name" xml:space="preserve">
+    <value>menusToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;menusToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cardLevelsToolStripMenuItem.Name" xml:space="preserve">
+    <value>cardLevelsToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;cardLevelsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;couponManagementsToolStripMenuItem.Name" xml:space="preserve">
+    <value>couponManagementsToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;couponManagementsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DiscountToolStripMenuItem.Name" xml:space="preserve">
+    <value>DiscountToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;DiscountToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;validationToolStripMenuItem.Name" xml:space="preserve">
+    <value>validationToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;validationToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
+    <value>toolStripSeparator1</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_searchMenuItem.Name" xml:space="preserve">
+    <value>m_searchMenuItem</value>
+  </data>
+  <data name="&gt;&gt;m_searchMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;helpToolStripMenuItem.Name" xml:space="preserve">
+    <value>helpToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;helpToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;aboutToolStripMenuItem.Name" xml:space="preserve">
+    <value>aboutToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;aboutToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>ProductCenterMdiForm</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>GTI.Modules.Shared.GradientForm, ManagedEliteModule, Version=1.3.42.614, Culture=neutral, PublicKeyToken=f7ab3ec26b04c7cf</value>
+  </data>
+</root>

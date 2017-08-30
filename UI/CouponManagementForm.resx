@@ -1,0 +1,868 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="imgbtnAdd.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 9.75pt</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="imgbtnAdd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="imgbtnAdd.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 9</value>
+  </data>
+  <data name="imgbtnAdd.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="imgbtnAdd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 44</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="imgbtnAdd.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="imgbtnAdd.Text" xml:space="preserve">
+    <value>&amp;Add</value>
+  </data>
+  <data name="&gt;&gt;imgbtnAdd.Name" xml:space="preserve">
+    <value>imgbtnAdd</value>
+  </data>
+  <data name="&gt;&gt;imgbtnAdd.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.332, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;imgbtnAdd.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;imgbtnAdd.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="dtgviewCoupon.ColumnHeadersHeight" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <metadata name="cName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="cName.HeaderText" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="cName.Width" type="System.Int32, mscorlib">
+    <value>250</value>
+  </data>
+  <metadata name="StartDate.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="StartDate.HeaderText" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="StartDate.Width" type="System.Int32, mscorlib">
+    <value>200</value>
+  </data>
+  <metadata name="EndDate.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="EndDate.HeaderText" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="EndDate.Width" type="System.Int32, mscorlib">
+    <value>200</value>
+  </data>
+  <metadata name="Value.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="Value.HeaderText" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="Value.Width" type="System.Int32, mscorlib">
+    <value>250</value>
+  </data>
+  <data name="dtgviewCoupon.Location" type="System.Drawing.Point, System.Drawing">
+    <value>256, 440</value>
+  </data>
+  <data name="dtgviewCoupon.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
+  </data>
+  <data name="dtgviewCoupon.Size" type="System.Drawing.Size, System.Drawing">
+    <value>654, 24</value>
+  </data>
+  <data name="dtgviewCoupon.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="dtgviewCoupon.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;dtgviewCoupon.Name" xml:space="preserve">
+    <value>dtgviewCoupon</value>
+  </data>
+  <data name="&gt;&gt;dtgviewCoupon.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dtgviewCoupon.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;dtgviewCoupon.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="Name2.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Name2.Width" type="System.Int32, mscorlib">
+    <value>250</value>
+  </data>
+  <data name="StartDate2.Text" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="StartDate2.Width" type="System.Int32, mscorlib">
+    <value>210</value>
+  </data>
+  <data name="EndDate2.Text" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="EndDate2.Width" type="System.Int32, mscorlib">
+    <value>210</value>
+  </data>
+  <data name="Value2.Text" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Value2.Width" type="System.Int32, mscorlib">
+    <value>250</value>
+  </data>
+  <metadata name="contextMenuCoupon.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="contextMenuCoupon.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 8.25pt</value>
+  </data>
+  <data name="addToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ins</value>
+  </data>
+  <data name="addToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 22</value>
+  </data>
+  <data name="addToolStripMenuItem.Text" xml:space="preserve">
+    <value>Add...</value>
+  </data>
+  <data name="editToolStripMenuItem.ShortcutKeyDisplayString" xml:space="preserve">
+    <value>Enter</value>
+  </data>
+  <data name="editToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 22</value>
+  </data>
+  <data name="editToolStripMenuItem.Text" xml:space="preserve">
+    <value>Edit...</value>
+  </data>
+  <data name="delToolStripMenuItem.ShortcutKeyDisplayString" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="delToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Del</value>
+  </data>
+  <data name="delToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 22</value>
+  </data>
+  <data name="delToolStripMenuItem.Text" xml:space="preserve">
+    <value>Del...</value>
+  </data>
+  <data name="contextMenuCoupon.Size" type="System.Drawing.Size, System.Drawing">
+    <value>145, 70</value>
+  </data>
+  <data name="&gt;&gt;contextMenuCoupon.Name" xml:space="preserve">
+    <value>contextMenuCoupon</value>
+  </data>
+  <data name="&gt;&gt;contextMenuCoupon.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="gtiListViewCoupon.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 12pt</value>
+  </data>
+  <data name="gtiListViewCoupon.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 36</value>
+  </data>
+  <data name="gtiListViewCoupon.Size" type="System.Drawing.Size, System.Drawing">
+    <value>989, 509</value>
+  </data>
+  <data name="gtiListViewCoupon.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;gtiListViewCoupon.Name" xml:space="preserve">
+    <value>gtiListViewCoupon</value>
+  </data>
+  <data name="&gt;&gt;gtiListViewCoupon.Type" xml:space="preserve">
+    <value>GTI.Controls.GTIListView, GTIControls, Version=1.3.11.332, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;gtiListViewCoupon.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;gtiListViewCoupon.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="groupBox1.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="imgbtnAwardGroup.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 9.75pt</value>
+  </data>
+  <data name="imgbtnAwardGroup.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="imgbtnAwardGroup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>691, 9</value>
+  </data>
+  <data name="imgbtnAwardGroup.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="imgbtnAwardGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 44</value>
+  </data>
+  <data name="imgbtnAwardGroup.TabIndex" type="System.Int32, mscorlib">
+    <value>41</value>
+  </data>
+  <data name="imgbtnAwardGroup.Text" xml:space="preserve">
+    <value>Award to Player &amp;List</value>
+  </data>
+  <data name="&gt;&gt;imgbtnAwardGroup.Name" xml:space="preserve">
+    <value>imgbtnAwardGroup</value>
+  </data>
+  <data name="&gt;&gt;imgbtnAwardGroup.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.332, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;imgbtnAwardGroup.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;imgbtnAwardGroup.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="imgbtnExpiredComp.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 9.75pt</value>
+  </data>
+  <data name="imgbtnExpiredComp.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="imgbtnExpiredComp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>320, 9</value>
+  </data>
+  <data name="imgbtnExpiredComp.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="imgbtnExpiredComp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 44</value>
+  </data>
+  <data name="imgbtnExpiredComp.TabIndex" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="imgbtnExpiredComp.Text" xml:space="preserve">
+    <value>&amp;Expire</value>
+  </data>
+  <data name="&gt;&gt;imgbtnExpiredComp.Name" xml:space="preserve">
+    <value>imgbtnExpiredComp</value>
+  </data>
+  <data name="&gt;&gt;imgbtnExpiredComp.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.332, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;imgbtnExpiredComp.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;imgbtnExpiredComp.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="imgbtnUpdate.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 9.75pt</value>
+  </data>
+  <data name="imgbtnUpdate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="imgbtnUpdate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>110, 9</value>
+  </data>
+  <data name="imgbtnUpdate.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="imgbtnUpdate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 44</value>
+  </data>
+  <data name="imgbtnUpdate.TabIndex" type="System.Int32, mscorlib">
+    <value>39</value>
+  </data>
+  <data name="imgbtnUpdate.Text" xml:space="preserve">
+    <value>&amp;Edit</value>
+  </data>
+  <data name="&gt;&gt;imgbtnUpdate.Name" xml:space="preserve">
+    <value>imgbtnUpdate</value>
+  </data>
+  <data name="&gt;&gt;imgbtnUpdate.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.332, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;imgbtnUpdate.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;imgbtnUpdate.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="imgbtnDelete.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 9.75pt</value>
+  </data>
+  <data name="imgbtnDelete.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="imgbtnDelete.Location" type="System.Drawing.Point, System.Drawing">
+    <value>215, 9</value>
+  </data>
+  <data name="imgbtnDelete.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="imgbtnDelete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 44</value>
+  </data>
+  <data name="imgbtnDelete.TabIndex" type="System.Int32, mscorlib">
+    <value>38</value>
+  </data>
+  <data name="imgbtnDelete.Text" xml:space="preserve">
+    <value>&amp;Delete</value>
+  </data>
+  <data name="&gt;&gt;imgbtnDelete.Name" xml:space="preserve">
+    <value>imgbtnDelete</value>
+  </data>
+  <data name="&gt;&gt;imgbtnDelete.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.332, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;imgbtnDelete.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;imgbtnDelete.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="imgbtnAwardToPlayer.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 9.75pt</value>
+  </data>
+  <data name="imgbtnAwardToPlayer.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="imgbtnAwardToPlayer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>544, 9</value>
+  </data>
+  <data name="imgbtnAwardToPlayer.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="imgbtnAwardToPlayer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 44</value>
+  </data>
+  <data name="imgbtnAwardToPlayer.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="imgbtnAwardToPlayer.Text" xml:space="preserve">
+    <value>Award to &amp;Player</value>
+  </data>
+  <data name="&gt;&gt;imgbtnAwardToPlayer.Name" xml:space="preserve">
+    <value>imgbtnAwardToPlayer</value>
+  </data>
+  <data name="&gt;&gt;imgbtnAwardToPlayer.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.332, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;imgbtnAwardToPlayer.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;imgbtnAwardToPlayer.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="imgbtnAwardToAllPlayers.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 9.75pt</value>
+  </data>
+  <data name="imgbtnAwardToAllPlayers.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="imgbtnAwardToAllPlayers.Location" type="System.Drawing.Point, System.Drawing">
+    <value>838, 9</value>
+  </data>
+  <data name="imgbtnAwardToAllPlayers.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="imgbtnAwardToAllPlayers.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 44</value>
+  </data>
+  <data name="imgbtnAwardToAllPlayers.TabIndex" type="System.Int32, mscorlib">
+    <value>37</value>
+  </data>
+  <data name="imgbtnAwardToAllPlayers.Text" xml:space="preserve">
+    <value>A&amp;ward to All Players</value>
+  </data>
+  <data name="&gt;&gt;imgbtnAwardToAllPlayers.Name" xml:space="preserve">
+    <value>imgbtnAwardToAllPlayers</value>
+  </data>
+  <data name="&gt;&gt;imgbtnAwardToAllPlayers.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.332, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;imgbtnAwardToAllPlayers.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;imgbtnAwardToAllPlayers.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 572</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>988, 63</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>41</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblUnableToDeleteCoupon.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblUnableToDeleteCoupon.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 9.75pt, style=Bold</value>
+  </data>
+  <data name="lblUnableToDeleteCoupon.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="lblUnableToDeleteCoupon.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblUnableToDeleteCoupon.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 550</value>
+  </data>
+  <data name="lblUnableToDeleteCoupon.Size" type="System.Drawing.Size, System.Drawing">
+    <value>346, 18</value>
+  </data>
+  <data name="lblUnableToDeleteCoupon.TabIndex" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="lblUnableToDeleteCoupon.Text" xml:space="preserve">
+    <value> Can't delete the coupon because it has been awarded.</value>
+  </data>
+  <data name="lblUnableToDeleteCoupon.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;lblUnableToDeleteCoupon.Name" xml:space="preserve">
+    <value>lblUnableToDeleteCoupon</value>
+  </data>
+  <data name="&gt;&gt;lblUnableToDeleteCoupon.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblUnableToDeleteCoupon.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;lblUnableToDeleteCoupon.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="checkBox1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 9.75pt</value>
+  </data>
+  <data name="checkBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>845, 14</value>
+  </data>
+  <data name="checkBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 22</value>
+  </data>
+  <data name="checkBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>36</value>
+  </data>
+  <data name="checkBox1.Text" xml:space="preserve">
+    <value>Show expired coupons</value>
+  </data>
+  <data name="&gt;&gt;checkBox1.Name" xml:space="preserve">
+    <value>checkBox1</value>
+  </data>
+  <data name="&gt;&gt;checkBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox1.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;checkBox1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lblSavedSuccessfully.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblSavedSuccessfully.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 9.75pt, style=Bold</value>
+  </data>
+  <data name="lblSavedSuccessfully.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAAkxJREFUOE+Vkl1oUmEYx882tlaUGtLFqIuCNWpB2mo5Jqak9GFdVDdFUIwuVtEn
+        oyAX1SHmnGTzYzZ3bHaODJcyUbS5ZUZC1MWo2GDOYqGO0WS4Dy+k63/HdRhbmK0fvLwXz/M+7+953pf4
+        L2zE9hKqhK50VEZ5DI/m03wBF1kDNCEotZemzrw5iRsfm3Ga3be5qqJc9N+UUWWkMiSHeaIDmi+3YI7r
+        UeutBhcuTrm9XCxg+Hg6oUXL5+alZfqqYwvUrK3AerbnmyOX0TWpx5VP5+FIWnHh/Vns9dUauZS/s6F3
+        XVOdXwRmyoZ7sWvoThigjT2A2LcnJfKLuCFaCTE74SbCzu4ryE+Zx2zKWtibu5I6GBIknNM9UAxJsd8v
+        UvzOekYYq107cHxIBSGzGQRFLGsJ2Ke6+OEc+md60ZFshS/jwtWRS6gPileodxNoH3sIIzugzng78roV
+        zytoIc1X7BrYCe9sH6w/dPDOOWFNGXAwWJeSL6vnsRGwsE9yf/Q2yPG7S70eDR/Glj4h9N8ew51xgM5Y
+        EFh4iWMRJRoH61e1mS9gbAgcAPXdBG1cgyeTj+BO0yBjGrxa8ODFnBlvc0HcGbsOaUhCcqdWk/+e8pAU
+        zqkeGBNt0LH9BufdcM1TGM55QadtkIUko1x6YXjMRvpE5Ag8aQb2mU6Y023wZB0I5/w49U4N+WDjH+oF
+        2NpfRctCDfDMMvAuMoj+DKF1vAXKYVlh9ULsHqih1REVgoseUNOm/OHi6oWQBPaRrElW9fpQSh2WF1En
+        iF9Ndzdgf+TwuAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="lblSavedSuccessfully.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="lblSavedSuccessfully.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblSavedSuccessfully.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 550</value>
+  </data>
+  <data name="lblSavedSuccessfully.Size" type="System.Drawing.Size, System.Drawing">
+    <value>170, 18</value>
+  </data>
+  <data name="lblSavedSuccessfully.TabIndex" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="lblSavedSuccessfully.Text" xml:space="preserve">
+    <value>       Awarded Successfully</value>
+  </data>
+  <data name="lblSavedSuccessfully.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;lblSavedSuccessfully.Name" xml:space="preserve">
+    <value>lblSavedSuccessfully</value>
+  </data>
+  <data name="&gt;&gt;lblSavedSuccessfully.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblSavedSuccessfully.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;lblSavedSuccessfully.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="groupBox1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 14.25pt</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 6</value>
+  </data>
+  <data name="groupBox1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1006, 644</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Coupon Management</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <metadata name="menuStripCoupon.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>184, 17</value>
+  </metadata>
+  <data name="addToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>179, 22</value>
+  </data>
+  <data name="addToolStripMenuItem1.Text" xml:space="preserve">
+    <value>&amp;Add Coupon...</value>
+  </data>
+  <data name="editToolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>179, 22</value>
+  </data>
+  <data name="editToolStripMenuItem2.Text" xml:space="preserve">
+    <value>&amp;Edit Coupon...</value>
+  </data>
+  <data name="deleteCouponToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>179, 22</value>
+  </data>
+  <data name="deleteCouponToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Delete Coupon...</value>
+  </data>
+  <data name="editToolStripMenuItem1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 9.75pt, style=Bold</value>
+  </data>
+  <data name="editToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 22</value>
+  </data>
+  <data name="editToolStripMenuItem1.Text" xml:space="preserve">
+    <value>&amp;Edit</value>
+  </data>
+  <data name="menuStripCoupon.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 6</value>
+  </data>
+  <data name="menuStripCoupon.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1006, 26</value>
+  </data>
+  <data name="menuStripCoupon.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="menuStripCoupon.Text" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="menuStripCoupon.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;menuStripCoupon.Name" xml:space="preserve">
+    <value>menuStripCoupon</value>
+  </data>
+  <data name="&gt;&gt;menuStripCoupon.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuStripCoupon.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;menuStripCoupon.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>44</value>
+  </metadata>
+  <data name="$this.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>1018, 656</value>
+  </data>
+  <data name="$this.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>CouponManagementForm</value>
+  </data>
+  <data name="&gt;&gt;cName.Name" xml:space="preserve">
+    <value>cName</value>
+  </data>
+  <data name="&gt;&gt;cName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;StartDate.Name" xml:space="preserve">
+    <value>StartDate</value>
+  </data>
+  <data name="&gt;&gt;StartDate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;EndDate.Name" xml:space="preserve">
+    <value>EndDate</value>
+  </data>
+  <data name="&gt;&gt;EndDate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Value.Name" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="&gt;&gt;Value.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Name2.Name" xml:space="preserve">
+    <value>Name2</value>
+  </data>
+  <data name="&gt;&gt;Name2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;StartDate2.Name" xml:space="preserve">
+    <value>StartDate2</value>
+  </data>
+  <data name="&gt;&gt;StartDate2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;EndDate2.Name" xml:space="preserve">
+    <value>EndDate2</value>
+  </data>
+  <data name="&gt;&gt;EndDate2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Value2.Name" xml:space="preserve">
+    <value>Value2</value>
+  </data>
+  <data name="&gt;&gt;Value2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;addToolStripMenuItem.Name" xml:space="preserve">
+    <value>addToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;addToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;editToolStripMenuItem.Name" xml:space="preserve">
+    <value>editToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;editToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;delToolStripMenuItem.Name" xml:space="preserve">
+    <value>delToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;delToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;editToolStripMenuItem1.Name" xml:space="preserve">
+    <value>editToolStripMenuItem1</value>
+  </data>
+  <data name="&gt;&gt;editToolStripMenuItem1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;addToolStripMenuItem1.Name" xml:space="preserve">
+    <value>addToolStripMenuItem1</value>
+  </data>
+  <data name="&gt;&gt;addToolStripMenuItem1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;editToolStripMenuItem2.Name" xml:space="preserve">
+    <value>editToolStripMenuItem2</value>
+  </data>
+  <data name="&gt;&gt;editToolStripMenuItem2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;deleteCouponToolStripMenuItem.Name" xml:space="preserve">
+    <value>deleteCouponToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;deleteCouponToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>CouponManagementForm</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>GTI.Modules.Shared.GradientForm, ManagedEliteModule, Version=1.3.42.332, Culture=neutral, PublicKeyToken=f7ab3ec26b04c7cf</value>
+  </data>
+</root>

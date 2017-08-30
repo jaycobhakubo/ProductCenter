@@ -1,0 +1,856 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="packagesGroupBox.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="m_filteredbyLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="m_filteredbyLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 8.25pt, style=Bold</value>
+  </data>
+  <data name="m_filteredbyLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 29</value>
+  </data>
+  <data name="m_filteredbyLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 16</value>
+  </data>
+  <data name="m_filteredbyLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="m_filteredbyLabel.Text" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;m_filteredbyLabel.Name" xml:space="preserve">
+    <value>m_filteredbyLabel</value>
+  </data>
+  <data name="&gt;&gt;m_filteredbyLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_filteredbyLabel.Parent" xml:space="preserve">
+    <value>packagesGroupBox</value>
+  </data>
+  <data name="&gt;&gt;m_filteredbyLabel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="splitContainer.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="splitContainer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 29</value>
+  </data>
+  <data name="treeViewPackages.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <metadata name="contextMenuPackage.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>279, 3</value>
+  </metadata>
+  <data name="contextMenuAddPackage.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ins</value>
+  </data>
+  <data name="contextMenuAddPackage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 22</value>
+  </data>
+  <data name="contextMenuAddPackage.Text" xml:space="preserve">
+    <value>Add Package ...</value>
+  </data>
+  <data name="contextMenuEditPackage.ShortcutKeyDisplayString" xml:space="preserve">
+    <value>Enter</value>
+  </data>
+  <data name="contextMenuEditPackage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 22</value>
+  </data>
+  <data name="contextMenuEditPackage.Text" xml:space="preserve">
+    <value>Edit Package ...</value>
+  </data>
+  <data name="contextMenuCopyPackage.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+C</value>
+  </data>
+  <data name="contextMenuCopyPackage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 22</value>
+  </data>
+  <data name="contextMenuCopyPackage.Text" xml:space="preserve">
+    <value>Copy Package</value>
+  </data>
+  <data name="contextMenuPastePackage.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+V</value>
+  </data>
+  <data name="contextMenuPastePackage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 22</value>
+  </data>
+  <data name="contextMenuPastePackage.Text" xml:space="preserve">
+    <value>Paste Package ...</value>
+  </data>
+  <data name="contextMenuDeletePackage.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Del</value>
+  </data>
+  <data name="contextMenuDeletePackage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 22</value>
+  </data>
+  <data name="contextMenuDeletePackage.Text" xml:space="preserve">
+    <value>Delete Package</value>
+  </data>
+  <data name="contextMenuPackageSearch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 22</value>
+  </data>
+  <data name="contextMenuPackageSearch.Text" xml:space="preserve">
+    <value>Package Search</value>
+  </data>
+  <data name="contextMenuPackage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>203, 136</value>
+  </data>
+  <data name="&gt;&gt;contextMenuPackage.Name" xml:space="preserve">
+    <value>contextMenuPackage</value>
+  </data>
+  <data name="&gt;&gt;contextMenuPackage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="treeViewPackages.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Lucida Console, 11.25pt</value>
+  </data>
+  <data name="treeViewPackages.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="treeViewPackages.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
+  </data>
+  <data name="treeViewPackages.Nodes" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAAB1TeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5UcmVlTm9kZQkAAAAEVGV4dAtUb29sVGlwVGV4dAROYW1lCUlzQ2hlY2tl
+        ZApJbWFnZUluZGV4CEltYWdlS2V5ElNlbGVjdGVkSW1hZ2VJbmRleBBTZWxlY3RlZEltYWdlS2V5CkNo
+        aWxkQ291bnQBAQEAAAEAAQABCAgIAgAAAAYDAAAACFBhY2thZ2VzBgQAAAAABgUAAAAFTm9kZTAA////
+        /wkEAAAA/////wkEAAAAAAAAAAs=
+</value>
+  </data>
+  <data name="treeViewPackages.Size" type="System.Drawing.Size, System.Drawing">
+    <value>340, 514</value>
+  </data>
+  <data name="treeViewPackages.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;treeViewPackages.Name" xml:space="preserve">
+    <value>treeViewPackages</value>
+  </data>
+  <data name="&gt;&gt;treeViewPackages.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TreeView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;treeViewPackages.Parent" xml:space="preserve">
+    <value>splitContainer.Panel1</value>
+  </data>
+  <data name="&gt;&gt;treeViewPackages.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;splitContainer.Panel1.Name" xml:space="preserve">
+    <value>splitContainer.Panel1</value>
+  </data>
+  <data name="&gt;&gt;splitContainer.Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainer.Panel1.Parent" xml:space="preserve">
+    <value>splitContainer</value>
+  </data>
+  <data name="&gt;&gt;splitContainer.Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="listViewProducts.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="productNameHeader.Text" xml:space="preserve">
+    <value>Product Name</value>
+  </data>
+  <data name="quantityHeader.Text" xml:space="preserve">
+    <value>Qty</value>
+  </data>
+  <data name="quantityHeader.Width" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="priceHeader.Text" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="gameCategoryHeader.Text" xml:space="preserve">
+    <value>Game Category</value>
+  </data>
+  <data name="cardTypeHeader.Text" xml:space="preserve">
+    <value>Card Type</value>
+  </data>
+  <data name="cardLevelHeader.Text" xml:space="preserve">
+    <value>Card Level</value>
+  </data>
+  <data name="cardCountHeader.Text" xml:space="preserve">
+    <value>Card Count</value>
+  </data>
+  <data name="gameTypeHeader.Text" xml:space="preserve">
+    <value>Game Type</value>
+  </data>
+  <data name="productTypeHeader.Text" xml:space="preserve">
+    <value>Product Type</value>
+  </data>
+  <data name="cardMediaHeader.Text" xml:space="preserve">
+    <value>Card Media</value>
+  </data>
+  <data name="programGameHeader.Text" xml:space="preserve">
+    <value>Program Game</value>
+  </data>
+  <data name="isTaxedHeader.Text" xml:space="preserve">
+    <value>Is Taxed</value>
+  </data>
+  <data name="salesSourceHeader.Text" xml:space="preserve">
+    <value>Sales Source</value>
+  </data>
+  <data name="pointPerQuantityHeader.Text" xml:space="preserve">
+    <value>Points Per Quantity</value>
+  </data>
+  <data name="pointsPerDollarHeader.Text" xml:space="preserve">
+    <value>Points Per Dollar</value>
+  </data>
+  <data name="pointsToRedeemHeader.Text" xml:space="preserve">
+    <value>Points To Redeem</value>
+  </data>
+  <data name="numbersRequiredHeader.Text" xml:space="preserve">
+    <value>Numbers Required</value>
+  </data>
+  <metadata name="contextMenuProduct.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>139, 3</value>
+  </metadata>
+  <data name="contextMenuAddProduct.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ins</value>
+  </data>
+  <data name="contextMenuAddProduct.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
+  </data>
+  <data name="contextMenuAddProduct.Text" xml:space="preserve">
+    <value>Add Product ...</value>
+  </data>
+  <data name="contextMenuEditProduct.ShortcutKeyDisplayString" xml:space="preserve">
+    <value>Enter</value>
+  </data>
+  <data name="contextMenuEditProduct.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
+  </data>
+  <data name="contextMenuEditProduct.Text" xml:space="preserve">
+    <value>Edit Product ...</value>
+  </data>
+  <data name="contextMenuCopyProduct.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+C</value>
+  </data>
+  <data name="contextMenuCopyProduct.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
+  </data>
+  <data name="contextMenuCopyProduct.Text" xml:space="preserve">
+    <value>Copy Product</value>
+  </data>
+  <data name="contextMenuPasteProduct.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+V</value>
+  </data>
+  <data name="contextMenuPasteProduct.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
+  </data>
+  <data name="contextMenuPasteProduct.Text" xml:space="preserve">
+    <value>Paste Product ...</value>
+  </data>
+  <data name="contextMenuDeleteProduct.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Del</value>
+  </data>
+  <data name="contextMenuDeleteProduct.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
+  </data>
+  <data name="contextMenuDeleteProduct.Text" xml:space="preserve">
+    <value>Delete Product</value>
+  </data>
+  <data name="contextMenuProduct.Size" type="System.Drawing.Size, System.Drawing">
+    <value>201, 114</value>
+  </data>
+  <data name="&gt;&gt;contextMenuProduct.Name" xml:space="preserve">
+    <value>contextMenuProduct</value>
+  </data>
+  <data name="&gt;&gt;contextMenuProduct.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="listViewProducts.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 12pt</value>
+  </data>
+  <data name="listViewProducts.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="listViewProducts.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
+  </data>
+  <data name="listViewProducts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>581, 514</value>
+  </data>
+  <data name="listViewProducts.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;listViewProducts.Name" xml:space="preserve">
+    <value>listViewProducts</value>
+  </data>
+  <data name="&gt;&gt;listViewProducts.Type" xml:space="preserve">
+    <value>GTI.Controls.GTIListView, GTIControls, Version=1.3.11.94, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;listViewProducts.Parent" xml:space="preserve">
+    <value>splitContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;listViewProducts.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;splitContainer.Panel2.Name" xml:space="preserve">
+    <value>splitContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;splitContainer.Panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainer.Panel2.Parent" xml:space="preserve">
+    <value>splitContainer</value>
+  </data>
+  <data name="&gt;&gt;splitContainer.Panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="splitContainer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>949, 514</value>
+  </data>
+  <data name="splitContainer.SplitterDistance" type="System.Int32, mscorlib">
+    <value>340</value>
+  </data>
+  <data name="splitContainer.SplitterWidth" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="splitContainer.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;splitContainer.Name" xml:space="preserve">
+    <value>splitContainer</value>
+  </data>
+  <data name="&gt;&gt;splitContainer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainer.Parent" xml:space="preserve">
+    <value>packagesGroupBox</value>
+  </data>
+  <data name="&gt;&gt;splitContainer.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="packagesGroupBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="packagesGroupBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 14.25pt, style=Bold</value>
+  </data>
+  <data name="packagesGroupBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 6</value>
+  </data>
+  <data name="packagesGroupBox.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
+  </data>
+  <data name="packagesGroupBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>961, 549</value>
+  </data>
+  <data name="packagesGroupBox.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="packagesGroupBox.Text" xml:space="preserve">
+    <value>Package Setup</value>
+  </data>
+  <data name="&gt;&gt;packagesGroupBox.Name" xml:space="preserve">
+    <value>packagesGroupBox</value>
+  </data>
+  <data name="&gt;&gt;packagesGroupBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;packagesGroupBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;packagesGroupBox.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <metadata name="mainMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>0, 0</value>
+  </metadata>
+  <data name="mainMenuStrip.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 9.75pt, style=Bold</value>
+  </data>
+  <data name="editMenuAddPackage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 22</value>
+  </data>
+  <data name="editMenuAddPackage.Text" xml:space="preserve">
+    <value>&amp;Add Package...</value>
+  </data>
+  <data name="editMenuEditPackage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 22</value>
+  </data>
+  <data name="editMenuEditPackage.Text" xml:space="preserve">
+    <value>&amp;Edit Package...</value>
+  </data>
+  <data name="editMenuCopyPackage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 22</value>
+  </data>
+  <data name="editMenuCopyPackage.Text" xml:space="preserve">
+    <value>&amp;Copy Package</value>
+  </data>
+  <data name="editMenuPastePackage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 22</value>
+  </data>
+  <data name="editMenuPastePackage.Text" xml:space="preserve">
+    <value>&amp;Paste Package...</value>
+  </data>
+  <data name="editMenuDeletePackage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 22</value>
+  </data>
+  <data name="editMenuDeletePackage.Text" xml:space="preserve">
+    <value>&amp;Delete Package</value>
+  </data>
+  <data name="editMenuSeparator.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 6</value>
+  </data>
+  <data name="editMenuAddProduct.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 22</value>
+  </data>
+  <data name="editMenuAddProduct.Text" xml:space="preserve">
+    <value>Add P&amp;roduct...</value>
+  </data>
+  <data name="editMenuEditProduct.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 22</value>
+  </data>
+  <data name="editMenuEditProduct.Text" xml:space="preserve">
+    <value>Edi&amp;t Product...</value>
+  </data>
+  <data name="editMenuCopyProduct.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 22</value>
+  </data>
+  <data name="editMenuCopyProduct.Text" xml:space="preserve">
+    <value>C&amp;opy Product</value>
+  </data>
+  <data name="editMenuPasteProduct.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 22</value>
+  </data>
+  <data name="editMenuPasteProduct.Text" xml:space="preserve">
+    <value>Pa&amp;ste Product...</value>
+  </data>
+  <data name="editMenuDeleteProduct.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 22</value>
+  </data>
+  <data name="editMenuDeleteProduct.Text" xml:space="preserve">
+    <value>De&amp;lete Product</value>
+  </data>
+  <data name="editMainMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 22</value>
+  </data>
+  <data name="editMainMenu.Text" xml:space="preserve">
+    <value>&amp;Edit</value>
+  </data>
+  <data name="mainMenuStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 6</value>
+  </data>
+  <data name="mainMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>961, 26</value>
+  </data>
+  <data name="mainMenuStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="mainMenuStrip.Text" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="mainMenuStrip.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;mainMenuStrip.Name" xml:space="preserve">
+    <value>mainMenuStrip</value>
+  </data>
+  <data name="&gt;&gt;mainMenuStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;mainMenuStrip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;mainMenuStrip.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>39</value>
+  </metadata>
+  <data name="$this.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>973, 561</value>
+  </data>
+  <data name="$this.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Package Setup</value>
+  </data>
+  <data name="&gt;&gt;contextMenuAddPackage.Name" xml:space="preserve">
+    <value>contextMenuAddPackage</value>
+  </data>
+  <data name="&gt;&gt;contextMenuAddPackage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;contextMenuEditPackage.Name" xml:space="preserve">
+    <value>contextMenuEditPackage</value>
+  </data>
+  <data name="&gt;&gt;contextMenuEditPackage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;contextMenuCopyPackage.Name" xml:space="preserve">
+    <value>contextMenuCopyPackage</value>
+  </data>
+  <data name="&gt;&gt;contextMenuCopyPackage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;contextMenuPastePackage.Name" xml:space="preserve">
+    <value>contextMenuPastePackage</value>
+  </data>
+  <data name="&gt;&gt;contextMenuPastePackage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;contextMenuDeletePackage.Name" xml:space="preserve">
+    <value>contextMenuDeletePackage</value>
+  </data>
+  <data name="&gt;&gt;contextMenuDeletePackage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;contextMenuPackageSearch.Name" xml:space="preserve">
+    <value>contextMenuPackageSearch</value>
+  </data>
+  <data name="&gt;&gt;contextMenuPackageSearch.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;productNameHeader.Name" xml:space="preserve">
+    <value>productNameHeader</value>
+  </data>
+  <data name="&gt;&gt;productNameHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;quantityHeader.Name" xml:space="preserve">
+    <value>quantityHeader</value>
+  </data>
+  <data name="&gt;&gt;quantityHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;priceHeader.Name" xml:space="preserve">
+    <value>priceHeader</value>
+  </data>
+  <data name="&gt;&gt;priceHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gameCategoryHeader.Name" xml:space="preserve">
+    <value>gameCategoryHeader</value>
+  </data>
+  <data name="&gt;&gt;gameCategoryHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cardTypeHeader.Name" xml:space="preserve">
+    <value>cardTypeHeader</value>
+  </data>
+  <data name="&gt;&gt;cardTypeHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cardLevelHeader.Name" xml:space="preserve">
+    <value>cardLevelHeader</value>
+  </data>
+  <data name="&gt;&gt;cardLevelHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cardCountHeader.Name" xml:space="preserve">
+    <value>cardCountHeader</value>
+  </data>
+  <data name="&gt;&gt;cardCountHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gameTypeHeader.Name" xml:space="preserve">
+    <value>gameTypeHeader</value>
+  </data>
+  <data name="&gt;&gt;gameTypeHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;productTypeHeader.Name" xml:space="preserve">
+    <value>productTypeHeader</value>
+  </data>
+  <data name="&gt;&gt;productTypeHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cardMediaHeader.Name" xml:space="preserve">
+    <value>cardMediaHeader</value>
+  </data>
+  <data name="&gt;&gt;cardMediaHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;programGameHeader.Name" xml:space="preserve">
+    <value>programGameHeader</value>
+  </data>
+  <data name="&gt;&gt;programGameHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;isTaxedHeader.Name" xml:space="preserve">
+    <value>isTaxedHeader</value>
+  </data>
+  <data name="&gt;&gt;isTaxedHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;salesSourceHeader.Name" xml:space="preserve">
+    <value>salesSourceHeader</value>
+  </data>
+  <data name="&gt;&gt;salesSourceHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pointPerQuantityHeader.Name" xml:space="preserve">
+    <value>pointPerQuantityHeader</value>
+  </data>
+  <data name="&gt;&gt;pointPerQuantityHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pointsPerDollarHeader.Name" xml:space="preserve">
+    <value>pointsPerDollarHeader</value>
+  </data>
+  <data name="&gt;&gt;pointsPerDollarHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pointsToRedeemHeader.Name" xml:space="preserve">
+    <value>pointsToRedeemHeader</value>
+  </data>
+  <data name="&gt;&gt;pointsToRedeemHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numbersRequiredHeader.Name" xml:space="preserve">
+    <value>numbersRequiredHeader</value>
+  </data>
+  <data name="&gt;&gt;numbersRequiredHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;contextMenuAddProduct.Name" xml:space="preserve">
+    <value>contextMenuAddProduct</value>
+  </data>
+  <data name="&gt;&gt;contextMenuAddProduct.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;contextMenuEditProduct.Name" xml:space="preserve">
+    <value>contextMenuEditProduct</value>
+  </data>
+  <data name="&gt;&gt;contextMenuEditProduct.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;contextMenuCopyProduct.Name" xml:space="preserve">
+    <value>contextMenuCopyProduct</value>
+  </data>
+  <data name="&gt;&gt;contextMenuCopyProduct.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;contextMenuPasteProduct.Name" xml:space="preserve">
+    <value>contextMenuPasteProduct</value>
+  </data>
+  <data name="&gt;&gt;contextMenuPasteProduct.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;contextMenuDeleteProduct.Name" xml:space="preserve">
+    <value>contextMenuDeleteProduct</value>
+  </data>
+  <data name="&gt;&gt;contextMenuDeleteProduct.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;editMainMenu.Name" xml:space="preserve">
+    <value>editMainMenu</value>
+  </data>
+  <data name="&gt;&gt;editMainMenu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;editMenuAddPackage.Name" xml:space="preserve">
+    <value>editMenuAddPackage</value>
+  </data>
+  <data name="&gt;&gt;editMenuAddPackage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;editMenuEditPackage.Name" xml:space="preserve">
+    <value>editMenuEditPackage</value>
+  </data>
+  <data name="&gt;&gt;editMenuEditPackage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;editMenuCopyPackage.Name" xml:space="preserve">
+    <value>editMenuCopyPackage</value>
+  </data>
+  <data name="&gt;&gt;editMenuCopyPackage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;editMenuPastePackage.Name" xml:space="preserve">
+    <value>editMenuPastePackage</value>
+  </data>
+  <data name="&gt;&gt;editMenuPastePackage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;editMenuDeletePackage.Name" xml:space="preserve">
+    <value>editMenuDeletePackage</value>
+  </data>
+  <data name="&gt;&gt;editMenuDeletePackage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;editMenuSeparator.Name" xml:space="preserve">
+    <value>editMenuSeparator</value>
+  </data>
+  <data name="&gt;&gt;editMenuSeparator.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;editMenuAddProduct.Name" xml:space="preserve">
+    <value>editMenuAddProduct</value>
+  </data>
+  <data name="&gt;&gt;editMenuAddProduct.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;editMenuEditProduct.Name" xml:space="preserve">
+    <value>editMenuEditProduct</value>
+  </data>
+  <data name="&gt;&gt;editMenuEditProduct.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;editMenuCopyProduct.Name" xml:space="preserve">
+    <value>editMenuCopyProduct</value>
+  </data>
+  <data name="&gt;&gt;editMenuCopyProduct.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;editMenuPasteProduct.Name" xml:space="preserve">
+    <value>editMenuPasteProduct</value>
+  </data>
+  <data name="&gt;&gt;editMenuPasteProduct.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;editMenuDeleteProduct.Name" xml:space="preserve">
+    <value>editMenuDeleteProduct</value>
+  </data>
+  <data name="&gt;&gt;editMenuDeleteProduct.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>PackagesForm</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>GTI.Modules.Shared.GradientForm, ManagedEliteModule, Version=1.3.42.94, Culture=neutral, PublicKeyToken=f7ab3ec26b04c7cf</value>
+  </data>
+</root>

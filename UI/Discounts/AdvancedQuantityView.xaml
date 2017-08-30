@@ -1,0 +1,89 @@
+﻿<UserControl x:Class="GTI.Modules.ProductCenter.UI.Discounts.AdvancedQuantityView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" d:DesignHeight="350" d:DesignWidth="546">
+    <Grid>
+
+        <Border Grid.Row="0" Name="BuyGetBorder">
+            <Grid Height="350" Width="546">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="23"/>
+                    <RowDefinition Height="4"/>
+                    <RowDefinition Height="23"/>
+                    <RowDefinition Height="14"/>
+                    <RowDefinition Height="23"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="35"/>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row ="1"
+                       Grid.Column="1"
+                       Content="Quantity"
+                       Padding="0,5,5,5"/>
+
+                <Label Grid.Row ="1"
+                       Grid.Column="2"
+                       Content="Package"
+                       Padding="0,5,5,5"/>
+
+                <Label Grid.Row ="3"
+                       Grid.Column="0"
+                       Content="Buy" 
+                       Padding="0,5,5,5" />
+
+                <TextBox Grid.Row ="3"
+                         Grid.Column="1"
+                         Name="BuyTextBox"
+                         Width="50"  
+                         HorizontalAlignment="Left"
+                         Text="1" 
+                         TextAlignment="Right" 
+                         PreviewTextInput="TextBox_PreviewTextInput" 
+                         PreviewKeyDown="TextBox_PreviewKeyDown" 
+                         TextChanged="BuyTextChanged" />
+
+                <ComboBox Grid.Row ="3"
+                          Grid.Column="2"
+                          Name="BuyComboBox" 
+                          Width="200" 
+                          HorizontalAlignment="Left"
+                          SelectionChanged="ComboBoxSelectionChanged" />
+
+                <Label Grid.Row ="5"
+                       Grid.Column="0" 
+                       Content="Get" 
+                       Padding="0,5,5,5" />
+
+                <TextBox Grid.Row ="5"
+                         Grid.Column="1" 
+                         Name="GetTextBox" 
+                         Width="50" 
+                         Text="1" 
+                         TextAlignment="Right" 
+                         HorizontalAlignment="Left"
+                         PreviewTextInput="TextBox_PreviewTextInput" 
+                         PreviewKeyDown="TextBox_PreviewKeyDown" 
+                         TextChanged="GetTextChanged" />
+
+                <ComboBox Grid.Row ="5"
+                          Grid.Column="2" 
+                          Name="GetComboBox" 
+                          Width="200" 
+                          HorizontalAlignment="Left" 
+                          DisplayMemberPath="PackageName" 
+                          SelectionChanged="ComboBoxSelectionChanged" />
+
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="0" Name="ContentDisabledBorder">
+            <TextBlock Text="Award type must be set to automatic" Margin="0,10"/>
+        </Border>
+    </Grid>
+</UserControl>

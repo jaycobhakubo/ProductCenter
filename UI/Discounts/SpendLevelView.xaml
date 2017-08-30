@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="GTI.Modules.ProductCenter.UI.Discounts.SpendLevelView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="388" d:DesignWidth="450">
+    <UserControl.Resources>
+        <Color x:Key="Blue">#FF0050AA</Color>
+        <SolidColorBrush x:Key="BlueBrush" Color="{StaticResource Blue}" />
+
+    </UserControl.Resources>
+
+    <Grid>
+        <Border Name="SpendLevelBorder">
+            <Grid Height="400" Width="450">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="4"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="6*" />
+                </Grid.RowDefinitions>
+
+                <Label 
+                    Grid.Row="0" 
+                    Content="Spend:" 
+                    Height="25" 
+                    Margin="5,0" Name="label3" 
+                    HorizontalAlignment="Left" 
+                    VerticalContentAlignment="Bottom"
+                    Width="95" 
+                    Padding="0" />
+
+                <Label Content="Discount:" 
+                    Height="25" 
+                    Margin="203,0,0,0" Name="label4" 
+                    HorizontalContentAlignment="Right"
+                    HorizontalAlignment="Left" 
+                    VerticalContentAlignment="Bottom"
+                    Width="60"
+                    Padding="0"/>
+
+                <ScrollViewer 
+                        x:Name="scrlViewerSpend" 
+                        HorizontalAlignment="Left" 
+                        Grid.Row="2"
+                        Height="359" 
+                        VerticalAlignment="Top" 
+                        Width="445" 
+                        VerticalScrollBarVisibility="Auto">
+
+                    <StackPanel     
+                            HorizontalAlignment="Left"                     
+                            Name="SpendLevelStackPanel" 
+                            Width="430" />
+                </ScrollViewer>
+
+            </Grid>
+        </Border>
+        <Border Grid.Row="0" Name="ContentDisabledBorder">
+            <TextBlock Text="Award type must be set to automatic" Margin="0,10"/>
+        </Border>
+    </Grid>
+</UserControl>

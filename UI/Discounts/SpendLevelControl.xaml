@@ -1,0 +1,284 @@
+﻿<UserControl x:Class="GTI.Modules.ProductCenter.UI.Discounts.SpendLevelControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="32
+             " d:DesignWidth="400">
+    <UserControl.Resources>
+        <Color x:Key="Blue">#FF0050AA</Color>
+        <SolidColorBrush x:Key="BlueBrush" Color="{StaticResource Blue}" />
+        <!-- Add remove button-->
+        <Style x:Key="SpendAddRemoveButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border 
+                            x:Name="bdr" 
+                            CornerRadius="50" 
+                            Margin="0" 
+                            BorderBrush="Gray" 
+                            BorderThickness="2" 
+                            Background="{TemplateBinding Background}"
+                            Height="30" Width="30">
+                            <!-- ContentPresenter properties. Set the content source as the content from each control define below -->
+                            <Grid>
+                                <TextBlock Text="{TemplateBinding Content}" 
+                                           FontSize="{TemplateBinding FontSize}" 
+                                           TextWrapping="Wrap" 
+                                           HorizontalAlignment="Center" 
+                                           VerticalAlignment="Center" 
+                                           Margin="0,0,0,0" 
+                                           Padding="0,0,0,0"/>
+                            </Grid>
+                        </Border>
+                        <!-- Required triggers define here -->
+                        <ControlTemplate.Triggers>
+
+                            <Trigger Property="IsEnabled" Value="true">
+                                <Setter TargetName="bdr" Property="BorderBrush" Value="Gray"/>
+                                <Setter Property="Foreground" Value="Black"/>
+                            </Trigger>
+
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter  TargetName="bdr" Property="BorderBrush" Value="LightGray"/>
+                                <Setter Property="Foreground" Value="Gray"/>
+                            </Trigger>
+
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FF6388B4"/>
+                                <Setter Property="Foreground" Value="White"  />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#FF10253F" />
+                                <Setter Property="Foreground" Value="White"  />
+                            </Trigger>
+
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SpendFrom" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="BorderBrush" Value="{StaticResource BlueBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource BlueBrush}"/>
+            <Setter Property="HorizontalContentAlignment" Value="Right"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Text" Value="0"/>
+            <Setter Property="MaxLength" Value="9"/>
+            <Setter Property="Height" Value="23"/>
+            <Setter Property="Width" Value="70"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Foreground" Value="DarkGray"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border SnapsToDevicePixels="True"  
+                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                Background="{TemplateBinding Background}">
+                            <ScrollViewer 
+                                x:Name="PART_ContentHost" 
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                VerticalScrollBarVisibility="Disabled" 
+                                HorizontalScrollBarVisibility="Hidden" 
+                                Template="{DynamicResource ScrollViewerControlTemplate1}"  />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter  Property="Background" Value="LightGray"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <ControlTemplate x:Key="ScrollViewerControlTemplate1" TargetType="{x:Type ScrollViewer}">
+            <Grid x:Name="Grid" Background="{TemplateBinding Background}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Rectangle x:Name="Corner" Grid.Column="1" Fill="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Grid.Row="1"/>
+                <ScrollContentPresenter x:Name="PART_ScrollContentPresenter" 
+                                        CanContentScroll="{TemplateBinding CanContentScroll}"
+                                        CanHorizontallyScroll="False" 
+                                        CanVerticallyScroll="False" 
+                                        ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                        Content="{TemplateBinding Content}"
+                                        Grid.Column="0" Margin="0" 
+                                        Grid.Row="0"/>
+                <ScrollBar x:Name="PART_VerticalScrollBar" AutomationProperties.AutomationId="VerticalScrollBar" Cursor="Arrow" Grid.Column="1" Maximum="{TemplateBinding ScrollableHeight}" Minimum="0" Grid.Row="0" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportHeight}"/>
+                <ScrollBar x:Name="PART_HorizontalScrollBar" AutomationProperties.AutomationId="HorizontalScrollBar" Cursor="Arrow" Grid.Column="0" Maximum="{TemplateBinding ScrollableWidth}" Minimum="0" Orientation="Horizontal" Grid.Row="1" Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportWidth}"/>
+                <Label 
+                    Content=".00" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Margin="0,0,2,0"
+                    Padding="0" 
+                    Foreground="DarkGray"
+                    Grid.Column="1"
+                    Height="48"/>
+            </Grid>
+        </ControlTemplate>
+        
+        <ControlTemplate x:Key="ScrollViewerControlTemplate2" TargetType="{x:Type ScrollViewer}">
+            <Grid x:Name="Grid" Background="{TemplateBinding Background}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Rectangle x:Name="Corner" Grid.Column="1" Fill="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Grid.Row="1"/>
+                <ScrollContentPresenter x:Name="PART_ScrollContentPresenter" 
+                                        CanContentScroll="{TemplateBinding CanContentScroll}"
+                                        CanHorizontallyScroll="False" 
+                                        CanVerticallyScroll="False" 
+                                        ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                        Content="{TemplateBinding Content}"
+                                        Grid.Column="0" Margin="0" 
+                                        Grid.Row="0"/>
+                <ScrollBar x:Name="PART_VerticalScrollBar" AutomationProperties.AutomationId="VerticalScrollBar" Cursor="Arrow" Grid.Column="1" Maximum="{TemplateBinding ScrollableHeight}" Minimum="0" Grid.Row="0" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportHeight}"/>
+                <ScrollBar x:Name="PART_HorizontalScrollBar" AutomationProperties.AutomationId="HorizontalScrollBar" Cursor="Arrow" Grid.Column="0" Maximum="{TemplateBinding ScrollableWidth}" Minimum="0" Orientation="Horizontal" Grid.Row="1" Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportWidth}"/>
+                <Label 
+                    Content=".99" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Margin="0,0,2,0"
+                    Padding="0" 
+                    Foreground="DarkGray"
+                    Grid.Column="1"
+                    Height="48"/>
+            </Grid>
+        </ControlTemplate>
+        
+        <Style x:Key="SpendTo" TargetType="{x:Type TextBox}" BasedOn="{StaticResource SpendFrom}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border SnapsToDevicePixels="True"  
+                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                Background="{TemplateBinding Background}">
+                            <ScrollViewer 
+                                x:Name="PART_ContentHost" 
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                VerticalScrollBarVisibility="Disabled" 
+                                HorizontalScrollBarVisibility="Hidden" 
+                                Template="{DynamicResource ScrollViewerControlTemplate2}" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter  Property="Background" Value="LightGray"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SpendValue" TargetType="{x:Type TextBox}" BasedOn="{StaticResource SpendFrom}">
+            <Setter Property="Text" Value="0.00"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border SnapsToDevicePixels="True"  
+                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                Background="{TemplateBinding  Background}"  >
+                            <ScrollViewer 
+                                x:Name="PART_ContentHost" 
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter  Property="Background" Value="LightGray"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid Height="35" Margin="5,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="75"/>
+            <ColumnDefinition Width="25"/>
+            <ColumnDefinition Width="75"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="75"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <TextBox  Grid.Column="0"
+                  VerticalAlignment="Center"
+                  Name="SpendFromTextbox"
+                  Style="{DynamicResource SpendFrom }" 
+                  TabIndex="1" />
+
+        <Label Grid.Column="1"
+               Content="To" 
+               Name="label1" 
+               VerticalAlignment="Center" />
+
+        <TextBox Grid.Column="2"
+                 VerticalAlignment="Center"
+                 Name="SpendToTextbox"
+                 Style="{DynamicResource SpendTo}"
+                 TabIndex="2"  />
+
+
+        <TextBox Grid.Column="3"            
+                 VerticalAlignment="Center"               
+                 Name="SpendValueTextbox" 
+                 Tag="DiscountSpendValue"
+                 HorizontalAlignment="Right"
+                 Style="{DynamicResource SpendValue}"
+                 TabIndex="3"/>
+
+
+        <Button Grid.Column="4"
+                Style="{DynamicResource SpendAddRemoveButtonStyle}" 
+                Content="+" 
+                Height="30" 
+                Name="AddButton" 
+                Width="39"                           
+                FontWeight="Light" 
+                BorderThickness="10" 
+                TabIndex="4"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right"
+                VerticalContentAlignment="Top"/>
+
+        <Button Grid.Column="5"
+                Content="-"  
+                Height="30" 
+                Name="RemoveButton" 
+                Style="{DynamicResource SpendAddRemoveButtonStyle}" 
+                Width="39"
+                FontWeight="Light"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left"
+                VerticalContentAlignment="Top"
+                TabIndex="5"/>
+    </Grid>
+</UserControl>
