@@ -33,9 +33,6 @@
             this.importCmd = new GTI.Controls.ImageButton();
             this.saveCmd = new GTI.Controls.ImageButton();
             this.revertCmd = new GTI.Controls.ImageButton();
-            this.importCmd2 = new System.Windows.Forms.Button();
-            this.revertCmd2 = new System.Windows.Forms.Button();
-            this.saveCmd2 = new System.Windows.Forms.Button();
             this.positionMapsDGV = new System.Windows.Forms.DataGridView();
             this.mapNameDGVC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.allowOnElecDGVChk = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -52,9 +49,6 @@
             this.mainGB.Controls.Add(this.importCmd);
             this.mainGB.Controls.Add(this.saveCmd);
             this.mainGB.Controls.Add(this.revertCmd);
-            this.mainGB.Controls.Add(this.importCmd2);
-            this.mainGB.Controls.Add(this.revertCmd2);
-            this.mainGB.Controls.Add(this.saveCmd2);
             this.mainGB.Controls.Add(this.positionMapsDGV);
             this.mainGB.Name = "mainGB";
             this.mainGB.TabStop = false;
@@ -87,27 +81,6 @@
             this.revertCmd.Name = "revertCmd";
             this.revertCmd.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.revertCmd.Click += new System.EventHandler(this.revertCmd_Click);
-            // 
-            // importCmd2
-            // 
-            resources.ApplyResources(this.importCmd2, "importCmd2");
-            this.importCmd2.Name = "importCmd2";
-            this.importCmd2.UseVisualStyleBackColor = false;
-            this.importCmd2.Click += new System.EventHandler(this.importCmd_Click);
-            // 
-            // revertCmd2
-            // 
-            resources.ApplyResources(this.revertCmd2, "revertCmd2");
-            this.revertCmd2.Name = "revertCmd2";
-            this.revertCmd2.UseVisualStyleBackColor = false;
-            this.revertCmd2.Click += new System.EventHandler(this.revertCmd_Click);
-            // 
-            // saveCmd2
-            // 
-            resources.ApplyResources(this.saveCmd2, "saveCmd2");
-            this.saveCmd2.Name = "saveCmd2";
-            this.saveCmd2.UseVisualStyleBackColor = false;
-            this.saveCmd2.Click += new System.EventHandler(this.saveCmd_Click);
             // 
             // positionMapsDGV
             // 
@@ -174,9 +147,6 @@
 
         private System.Windows.Forms.GroupBox mainGB;
         private System.Windows.Forms.DataGridView positionMapsDGV;
-        private System.Windows.Forms.Button importCmd2;
-        private System.Windows.Forms.Button revertCmd2;
-        private System.Windows.Forms.Button saveCmd2;
         private System.Windows.Forms.DataGridViewTextBoxColumn mapNameDGVC;
         private System.Windows.Forms.DataGridViewCheckBoxColumn allowOnElecDGVChk;
         private System.Windows.Forms.DataGridViewTextBoxColumn mapUUIDDGVCol;

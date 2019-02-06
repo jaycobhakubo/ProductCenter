@@ -216,108 +216,6 @@
   <data name="&gt;&gt;revertCmd.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="importCmd2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="importCmd2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="importCmd2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>355, 509</value>
-  </data>
-  <data name="importCmd2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 26</value>
-  </data>
-  <data name="importCmd2.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="importCmd2.Text" xml:space="preserve">
-    <value>Import</value>
-  </data>
-  <data name="importCmd2.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;importCmd2.Name" xml:space="preserve">
-    <value>importCmd2</value>
-  </data>
-  <data name="&gt;&gt;importCmd2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;importCmd2.Parent" xml:space="preserve">
-    <value>mainGB</value>
-  </data>
-  <data name="&gt;&gt;importCmd2.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="revertCmd2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="revertCmd2.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="revertCmd2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="revertCmd2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>594, 513</value>
-  </data>
-  <data name="revertCmd2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 23</value>
-  </data>
-  <data name="revertCmd2.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="revertCmd2.Text" xml:space="preserve">
-    <value>Revert</value>
-  </data>
-  <data name="revertCmd2.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;revertCmd2.Name" xml:space="preserve">
-    <value>revertCmd2</value>
-  </data>
-  <data name="&gt;&gt;revertCmd2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;revertCmd2.Parent" xml:space="preserve">
-    <value>mainGB</value>
-  </data>
-  <data name="&gt;&gt;revertCmd2.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="saveCmd2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="saveCmd2.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="saveCmd2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>487, 513</value>
-  </data>
-  <data name="saveCmd2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 21</value>
-  </data>
-  <data name="saveCmd2.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="saveCmd2.Text" xml:space="preserve">
-    <value>Save</value>
-  </data>
-  <data name="saveCmd2.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;saveCmd2.Name" xml:space="preserve">
-    <value>saveCmd2</value>
-  </data>
-  <data name="&gt;&gt;saveCmd2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;saveCmd2.Parent" xml:space="preserve">
-    <value>mainGB</value>
-  </data>
-  <data name="&gt;&gt;saveCmd2.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
   <data name="positionMapsDGV.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
@@ -370,7 +268,7 @@
     <value>mainGB</value>
   </data>
   <data name="&gt;&gt;positionMapsDGV.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>3</value>
   </data>
   <data name="mainGB.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
