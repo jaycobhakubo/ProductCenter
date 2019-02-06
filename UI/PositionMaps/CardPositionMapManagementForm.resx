@@ -121,12 +121,97 @@
   <data name="mainGB.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
   </data>
+  <data name="splitContainer1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="splitContainer1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 12pt</value>
+  </data>
+  <data name="splitContainer1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 29</value>
+  </data>
+  <data name="splitContainer1.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
+    <value>Horizontal</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="positionMapsDGV.ColumnHeadersHeight" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <metadata name="mapNameDGVC.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="mapNameDGVC.HeaderText" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="mapNameDGVC.Width" type="System.Int32, mscorlib">
+    <value>75</value>
+  </data>
+  <metadata name="allowOnElecDGVChk.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="allowOnElecDGVChk.HeaderText" xml:space="preserve">
+    <value>Allow on Electronic</value>
+  </data>
+  <data name="allowOnElecDGVChk.Width" type="System.Int32, mscorlib">
+    <value>154</value>
+  </data>
+  <metadata name="mapUUIDDGVCol.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="mapUUIDDGVCol.HeaderText" xml:space="preserve">
+    <value>UUID</value>
+  </data>
+  <data name="mapUUIDDGVCol.Width" type="System.Int32, mscorlib">
+    <value>69</value>
+  </data>
+  <data name="positionMapsDGV.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="positionMapsDGV.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="positionMapsDGV.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
+  </data>
+  <data name="positionMapsDGV.Size" type="System.Drawing.Size, System.Drawing">
+    <value>949, 640</value>
+  </data>
+  <data name="positionMapsDGV.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;positionMapsDGV.Name" xml:space="preserve">
+    <value>positionMapsDGV</value>
+  </data>
+  <data name="&gt;&gt;positionMapsDGV.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;positionMapsDGV.Parent" xml:space="preserve">
+    <value>splitContainer1.Panel1</value>
+  </data>
+  <data name="&gt;&gt;positionMapsDGV.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="splitContainer1.Panel1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 12pt</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel1.Name" xml:space="preserve">
+    <value>splitContainer1.Panel1</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel1.Parent" xml:space="preserve">
+    <value>splitContainer1</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="importCmd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="importCmd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 513</value>
+    <value>6, 15</value>
   </data>
   <data name="importCmd.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
@@ -134,7 +219,6 @@
   <data name="importCmd.Size" type="System.Drawing.Size, System.Drawing">
     <value>130, 30</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="importCmd.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
@@ -148,49 +232,16 @@
     <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1324, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;importCmd.Parent" xml:space="preserve">
-    <value>mainGB</value>
+    <value>splitContainer1.Panel2</value>
   </data>
   <data name="&gt;&gt;importCmd.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="saveCmd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="saveCmd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="saveCmd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>679, 510</value>
-  </data>
-  <data name="saveCmd.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>30, 30</value>
-  </data>
-  <data name="saveCmd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 30</value>
-  </data>
-  <data name="saveCmd.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="saveCmd.Text" xml:space="preserve">
-    <value>Save</value>
-  </data>
-  <data name="&gt;&gt;saveCmd.Name" xml:space="preserve">
-    <value>saveCmd</value>
-  </data>
-  <data name="&gt;&gt;saveCmd.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1324, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
-  </data>
-  <data name="&gt;&gt;saveCmd.Parent" xml:space="preserve">
-    <value>mainGB</value>
-  </data>
-  <data name="&gt;&gt;saveCmd.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="revertCmd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
   <data name="revertCmd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>819, 510</value>
+    <value>809, 13</value>
   </data>
   <data name="revertCmd.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
@@ -211,64 +262,76 @@
     <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1324, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;revertCmd.Parent" xml:space="preserve">
-    <value>mainGB</value>
+    <value>splitContainer1.Panel2</value>
   </data>
   <data name="&gt;&gt;revertCmd.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="saveCmd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="saveCmd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="saveCmd.Location" type="System.Drawing.Point, System.Drawing">
+    <value>669, 13</value>
+  </data>
+  <data name="saveCmd.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="saveCmd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 30</value>
+  </data>
+  <data name="saveCmd.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="saveCmd.Text" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="&gt;&gt;saveCmd.Name" xml:space="preserve">
+    <value>saveCmd</value>
+  </data>
+  <data name="&gt;&gt;saveCmd.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1324, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;saveCmd.Parent" xml:space="preserve">
+    <value>splitContainer1.Panel2</value>
+  </data>
+  <data name="&gt;&gt;saveCmd.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="positionMapsDGV.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
+  <data name="&gt;&gt;splitContainer1.Panel2.Name" xml:space="preserve">
+    <value>splitContainer1.Panel2</value>
   </data>
-  <metadata name="mapNameDGVC.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="mapNameDGVC.HeaderText" xml:space="preserve">
-    <value>Name</value>
+  <data name="&gt;&gt;splitContainer1.Panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="mapNameDGVC.Width" type="System.Int32, mscorlib">
-    <value>85</value>
+  <data name="&gt;&gt;splitContainer1.Panel2.Parent" xml:space="preserve">
+    <value>splitContainer1</value>
   </data>
-  <metadata name="allowOnElecDGVChk.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="allowOnElecDGVChk.HeaderText" xml:space="preserve">
-    <value>Allow on Electronic</value>
+  <data name="&gt;&gt;splitContainer1.Panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="allowOnElecDGVChk.Width" type="System.Int32, mscorlib">
-    <value>174</value>
+  <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>949, 694</value>
   </data>
-  <metadata name="mapUUIDDGVCol.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="mapUUIDDGVCol.HeaderText" xml:space="preserve">
-    <value>UUID</value>
+  <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
+    <value>640</value>
   </data>
-  <data name="mapUUIDDGVCol.Width" type="System.Int32, mscorlib">
-    <value>78</value>
+  <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
   </data>
-  <data name="positionMapsDGV.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 32</value>
+  <data name="&gt;&gt;splitContainer1.Name" xml:space="preserve">
+    <value>splitContainer1</value>
   </data>
-  <data name="positionMapsDGV.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
-    <value>Vertical</value>
+  <data name="&gt;&gt;splitContainer1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="positionMapsDGV.Size" type="System.Drawing.Size, System.Drawing">
-    <value>943, 471</value>
-  </data>
-  <data name="positionMapsDGV.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;positionMapsDGV.Name" xml:space="preserve">
-    <value>positionMapsDGV</value>
-  </data>
-  <data name="&gt;&gt;positionMapsDGV.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;positionMapsDGV.Parent" xml:space="preserve">
+  <data name="&gt;&gt;splitContainer1.Parent" xml:space="preserve">
     <value>mainGB</value>
   </data>
-  <data name="&gt;&gt;positionMapsDGV.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;splitContainer1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="mainGB.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -283,7 +346,7 @@
     <value>6, 6, 6, 6</value>
   </data>
   <data name="mainGB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>961, 549</value>
+    <value>961, 729</value>
   </data>
   <data name="mainGB.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -309,14 +372,11 @@
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="$this.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>973, 561</value>
+    <value>973, 741</value>
   </data>
   <data name="$this.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>6, 6, 6, 6</value>

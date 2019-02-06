@@ -41,11 +41,11 @@ namespace GTI.Modules.ProductCenter.UI
             this.couponManagementsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DiscountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.validationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cardPositionMapsTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.m_searchMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cardPositionMapsTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -144,6 +144,12 @@ namespace GTI.Modules.ProductCenter.UI
             resources.ApplyResources(this.validationToolStripMenuItem, "validationToolStripMenuItem");
             this.validationToolStripMenuItem.Click += new System.EventHandler(this.validationToolStripMenuItem_Click);
             // 
+            // cardPositionMapsTSMI
+            // 
+            this.cardPositionMapsTSMI.Name = "cardPositionMapsTSMI";
+            resources.ApplyResources(this.cardPositionMapsTSMI, "cardPositionMapsTSMI");
+            this.cardPositionMapsTSMI.Click += new System.EventHandler(this.cardPositionMapsTSMI_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -169,12 +175,6 @@ namespace GTI.Modules.ProductCenter.UI
             resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
-            // 
-            // cardPositionMapsTSMI
-            // 
-            this.cardPositionMapsTSMI.Name = "cardPositionMapsTSMI";
-            resources.ApplyResources(this.cardPositionMapsTSMI, "cardPositionMapsTSMI");
-            this.cardPositionMapsTSMI.Click += new System.EventHandler(this.cardPositionMapsTSMI_Click);
             // 
             // ProductCenterMdiForm
             // 

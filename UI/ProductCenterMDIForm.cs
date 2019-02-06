@@ -112,7 +112,7 @@ namespace GTI.Modules.ProductCenter.UI
             // DE14108 display coupon management if the setting is enabled and they have permission to
             couponManagementsToolStripMenuItem.Visible = m_productCenterSettings.AllowCouponManagement && m_staffPermissions.Any(x => x == (int)ModuleFeature.CouponManagement);
 
-            cardPositionMapsTSMI.Visible = true; //m_staffPermissions.Any(p => p == (int)ModuleFeature.CardPositionMapManagement);
+            cardPositionMapsTSMI.Visible = m_staffPermissions.Any(p => p == (int)ModuleFeature.CardPositionMapManagement);
 
             StartPosition = FormStartPosition.CenterScreen;
             productsToolStripMenuItem_Click(null, null);
