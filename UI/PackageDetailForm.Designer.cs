@@ -39,6 +39,10 @@ namespace GTI.Modules.ProductCenter.UI
             this.OverrideValidationCalculationCheckbox = new System.Windows.Forms.CheckBox();
             this.ValidationQuantityTextbox = new System.Windows.Forms.TextBox();
             this.ValidationQuantityLabel = new System.Windows.Forms.Label();
+            this.ScanCodeText = new System.Windows.Forms.Label();
+            this.ScanCodeEditButton = new GTI.Controls.ImageButton();
+            this.ScanCodeLabel = new System.Windows.Forms.Label();
+            this.RequiresValidationCheckbox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // txtReceipt
@@ -80,6 +84,7 @@ namespace GTI.Modules.ProductCenter.UI
             this.btnAccept.ImageNormal = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonUp;
             this.btnAccept.ImagePressed = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonDown;
             this.btnAccept.Name = "btnAccept";
+            this.btnAccept.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.btnAccept.UseVisualStyleBackColor = false;
             this.btnAccept.Click += new System.EventHandler(this.AcceptClick);
             // 
@@ -93,6 +98,7 @@ namespace GTI.Modules.ProductCenter.UI
             this.btnCancel.ImageNormal = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonUp;
             this.btnCancel.ImagePressed = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonDown;
             this.btnCancel.Name = "btnCancel";
+            this.btnCancel.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.CancelClick);
             // 
@@ -126,11 +132,48 @@ namespace GTI.Modules.ProductCenter.UI
             this.ValidationQuantityLabel.BackColor = System.Drawing.Color.Transparent;
             this.ValidationQuantityLabel.Name = "ValidationQuantityLabel";
             // 
+            // ScanCodeText
+            // 
+            this.ScanCodeText.BackColor = System.Drawing.Color.Transparent;
+            this.ScanCodeText.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            resources.ApplyResources(this.ScanCodeText, "ScanCodeText");
+            this.ScanCodeText.Name = "ScanCodeText";
+            // 
+            // ScanCodeEditButton
+            // 
+            this.ScanCodeEditButton.BackColor = System.Drawing.Color.Transparent;
+            this.ScanCodeEditButton.FocusColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.ScanCodeEditButton, "ScanCodeEditButton");
+            this.ScanCodeEditButton.ImageNormal = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonUp;
+            this.ScanCodeEditButton.ImagePressed = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonDown;
+            this.ScanCodeEditButton.Name = "ScanCodeEditButton";
+            this.ScanCodeEditButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.ScanCodeEditButton.UseVisualStyleBackColor = false;
+            this.ScanCodeEditButton.Click += new System.EventHandler(this.ScanCodeEditButton_Click);
+            // 
+            // ScanCodeLabel
+            // 
+            this.ScanCodeLabel.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.ScanCodeLabel, "ScanCodeLabel");
+            this.ScanCodeLabel.Name = "ScanCodeLabel";
+            // 
+            // RequiresValidationCheckbox
+            // 
+            this.RequiresValidationCheckbox.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.RequiresValidationCheckbox, "RequiresValidationCheckbox");
+            this.RequiresValidationCheckbox.Name = "RequiresValidationCheckbox";
+            this.RequiresValidationCheckbox.UseVisualStyleBackColor = false;
+            this.RequiresValidationCheckbox.CheckedChanged += new System.EventHandler(this.chkChargeDeviceFee_CheckedChanged);
+            // 
             // PackageDetailForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
+            this.Controls.Add(this.RequiresValidationCheckbox);
+            this.Controls.Add(this.ScanCodeText);
+            this.Controls.Add(this.ScanCodeEditButton);
+            this.Controls.Add(this.ScanCodeLabel);
             this.Controls.Add(this.ValidationQuantityTextbox);
             this.Controls.Add(this.ValidationQuantityLabel);
             this.Controls.Add(this.OverrideValidationCalculationCheckbox);
@@ -146,6 +189,7 @@ namespace GTI.Modules.ProductCenter.UI
             this.Name = "PackageDetailForm";
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.Shown += new System.EventHandler(this.PackageDetailForm_Shown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,6 +206,10 @@ namespace GTI.Modules.ProductCenter.UI
         private System.Windows.Forms.CheckBox OverrideValidationCalculationCheckbox;
         private System.Windows.Forms.TextBox ValidationQuantityTextbox;
         private System.Windows.Forms.Label ValidationQuantityLabel;
+        private System.Windows.Forms.Label ScanCodeText;
+        private Controls.ImageButton ScanCodeEditButton;
+        private System.Windows.Forms.Label ScanCodeLabel;
+        private System.Windows.Forms.CheckBox RequiresValidationCheckbox;
 
     }
 }

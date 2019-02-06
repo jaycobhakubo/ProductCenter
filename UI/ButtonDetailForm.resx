@@ -122,10 +122,10 @@
     <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="KeyTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 94</value>
+    <value>18, 132</value>
   </data>
   <data name="KeyTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>325, 26</value>
+    <value>428, 26</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="KeyTextBox.TabIndex" type="System.Int32, mscorlib">
@@ -141,7 +141,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;KeyTextBox.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>8</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -154,7 +154,7 @@
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 97</value>
+    <value>14, 107</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 22</value>
@@ -175,7 +175,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>9</value>
   </data>
   <data name="lblButtonGraphic.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -187,16 +187,16 @@
     <value>NoControl</value>
   </data>
   <data name="lblButtonGraphic.Location" type="System.Drawing.Point, System.Drawing">
-    <value>36, 16</value>
+    <value>5, 16</value>
   </data>
   <data name="lblButtonGraphic.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="lblButtonGraphic.TabIndex" type="System.Int32, mscorlib">
     <value>45</value>
   </data>
   <data name="lblButtonGraphic.Text" xml:space="preserve">
-    <value>Button Color Preview</value>
+    <value>Button Design Preview</value>
   </data>
   <data name="&gt;&gt;lblButtonGraphic.Name" xml:space="preserve">
     <value>lblButtonGraphic</value>
@@ -208,7 +208,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;lblButtonGraphic.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="FunctionComboBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Lucida Console, 11.25pt</value>
@@ -286,7 +286,7 @@
     <value>5</value>
   </data>
   <data name="btnDelete.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Left</value>
+    <value>Bottom, Left</value>
   </data>
   <data name="btnDelete.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 9.75pt, style=Bold</value>
@@ -295,7 +295,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnDelete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 279</value>
+    <value>12, 430</value>
   </data>
   <data name="btnDelete.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
@@ -313,16 +313,16 @@
     <value>btnDelete</value>
   </data>
   <data name="&gt;&gt;btnDelete.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.461, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1244, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;btnDelete.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnDelete.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>10</value>
   </data>
   <data name="btnAccept.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Left</value>
+    <value>Bottom, Left</value>
   </data>
   <data name="btnAccept.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 9.75pt, style=Bold</value>
@@ -331,7 +331,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnAccept.Location" type="System.Drawing.Point, System.Drawing">
-    <value>169, 279</value>
+    <value>166, 430</value>
   </data>
   <data name="btnAccept.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
@@ -349,16 +349,16 @@
     <value>btnAccept</value>
   </data>
   <data name="&gt;&gt;btnAccept.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.461, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1244, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;btnAccept.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnAccept.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>11</value>
   </data>
   <data name="btnCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Left</value>
+    <value>Bottom, Left</value>
   </data>
   <data name="btnCancel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 9.75pt, style=Bold</value>
@@ -367,7 +367,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>323, 279</value>
+    <value>320, 430</value>
   </data>
   <data name="btnCancel.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
@@ -385,13 +385,13 @@
     <value>btnCancel</value>
   </data>
   <data name="&gt;&gt;btnCancel.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.461, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1244, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;btnCancel.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>12</value>
   </data>
   <data name="PackageRB.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -483,17 +483,14 @@
   <data name="&gt;&gt;FunctionRB.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="checkBoxPlayerRequired.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="checkBoxPlayerRequired.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt, style=Bold</value>
   </data>
   <data name="checkBoxPlayerRequired.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 126</value>
+    <value>18, 183</value>
   </data>
   <data name="checkBoxPlayerRequired.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 26</value>
+    <value>196, 26</value>
   </data>
   <data name="checkBoxPlayerRequired.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -511,10 +508,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;checkBoxPlayerRequired.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="checkBoxKeyLocked.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+    <value>6</value>
   </data>
   <data name="checkBoxKeyLocked.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt, style=Bold</value>
@@ -523,10 +517,10 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxKeyLocked.Location" type="System.Drawing.Point, System.Drawing">
-    <value>178, 126</value>
+    <value>18, 237</value>
   </data>
   <data name="checkBoxKeyLocked.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 26</value>
+    <value>196, 26</value>
   </data>
   <data name="checkBoxKeyLocked.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -544,7 +538,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;checkBoxKeyLocked.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>5</value>
   </data>
   <data name="groupBoxMode.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 12</value>
@@ -565,13 +559,43 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;groupBoxMode.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>7</value>
+  </data>
+  <data name="productNameHeader.Text" xml:space="preserve">
+    <value>Product Name</value>
+  </data>
+  <data name="productNameHeader.Width" type="System.Int32, mscorlib">
+    <value>165</value>
+  </data>
+  <data name="cardMediaHeader.Text" xml:space="preserve">
+    <value>Card Media</value>
+  </data>
+  <data name="cardMediaHeader.Width" type="System.Int32, mscorlib">
+    <value>70</value>
+  </data>
+  <data name="qtyHeader.Text" xml:space="preserve">
+    <value>Qty</value>
+  </data>
+  <data name="qtyHeader.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="qtyHeader.Width" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="priceHeader.Text" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="priceHeader.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="priceHeader.Width" type="System.Int32, mscorlib">
+    <value>50</value>
   </data>
   <data name="listViewProducts.Location" type="System.Drawing.Point, System.Drawing">
     <value>465, 16</value>
   </data>
   <data name="listViewProducts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>239, 294</value>
+    <value>320, 296</value>
   </data>
   <data name="listViewProducts.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -580,28 +604,16 @@
     <value>listViewProducts</value>
   </data>
   <data name="&gt;&gt;listViewProducts.Type" xml:space="preserve">
-    <value>GTI.Controls.GTIListView, GTIControls, Version=1.3.11.461, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.GTIListView, GTIControls, Version=1.3.11.1244, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;listViewProducts.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;listViewProducts.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="productNameHeader.Text" xml:space="preserve">
-    <value>Product Name</value>
-  </data>
-  <data name="productNameHeader.Width" type="System.Int32, mscorlib">
-    <value>160</value>
-  </data>
-  <data name="cardMediaHeader.Text" xml:space="preserve">
-    <value>Card Media</value>
-  </data>
-  <data name="cardMediaHeader.Width" type="System.Int32, mscorlib">
-    <value>74</value>
+    <value>4</value>
   </data>
   <data name="imgButtonGraphic.Location" type="System.Drawing.Point, System.Drawing">
-    <value>234, 16</value>
+    <value>9, 41</value>
   </data>
   <data name="imgButtonGraphic.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
@@ -612,11 +624,14 @@
   <data name="imgButtonGraphic.TabIndex" type="System.Int32, mscorlib">
     <value>49</value>
   </data>
+  <data name="imgButtonGraphic.Text" xml:space="preserve">
+    <value>Select Design</value>
+  </data>
   <data name="&gt;&gt;imgButtonGraphic.Name" xml:space="preserve">
     <value>imgButtonGraphic</value>
   </data>
   <data name="&gt;&gt;imgButtonGraphic.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.461, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1244, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;imgButtonGraphic.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -624,41 +639,11 @@
   <data name="&gt;&gt;imgButtonGraphic.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="btnSelect.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 9.75pt, style=Bold</value>
-  </data>
-  <data name="btnSelect.Location" type="System.Drawing.Point, System.Drawing">
-    <value>61, 54</value>
-  </data>
-  <data name="btnSelect.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>30, 30</value>
-  </data>
-  <data name="btnSelect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 38</value>
-  </data>
-  <data name="btnSelect.TabIndex" type="System.Int32, mscorlib">
-    <value>48</value>
-  </data>
-  <data name="btnSelect.Text" xml:space="preserve">
-    <value>Select</value>
-  </data>
-  <data name="&gt;&gt;btnSelect.Name" xml:space="preserve">
-    <value>btnSelect</value>
-  </data>
-  <data name="&gt;&gt;btnSelect.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.461, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
-  </data>
-  <data name="&gt;&gt;btnSelect.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;btnSelect.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 158</value>
+    <value>10, 280</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>437, 107</value>
+    <value>437, 129</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>50</value>
@@ -673,7 +658,142 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>13</value>
+  </data>
+  <data name="btnAddProduct.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 9.75pt, style=Bold</value>
+  </data>
+  <data name="btnAddProduct.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnAddProduct.Location" type="System.Drawing.Point, System.Drawing">
+    <value>465, 318</value>
+  </data>
+  <data name="btnAddProduct.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="btnAddProduct.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 30</value>
+  </data>
+  <data name="btnAddProduct.TabIndex" type="System.Int32, mscorlib">
+    <value>54</value>
+  </data>
+  <data name="btnAddProduct.Text" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="&gt;&gt;btnAddProduct.Name" xml:space="preserve">
+    <value>btnAddProduct</value>
+  </data>
+  <data name="&gt;&gt;btnAddProduct.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1244, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;btnAddProduct.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnAddProduct.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="btnEditProduct.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btnEditProduct.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 9.75pt, style=Bold</value>
+  </data>
+  <data name="btnEditProduct.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnEditProduct.Location" type="System.Drawing.Point, System.Drawing">
+    <value>705, 318</value>
+  </data>
+  <data name="btnEditProduct.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="btnEditProduct.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 30</value>
+  </data>
+  <data name="btnEditProduct.TabIndex" type="System.Int32, mscorlib">
+    <value>53</value>
+  </data>
+  <data name="btnEditProduct.Text" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="&gt;&gt;btnEditProduct.Name" xml:space="preserve">
+    <value>btnEditProduct</value>
+  </data>
+  <data name="&gt;&gt;btnEditProduct.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1244, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;btnEditProduct.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnEditProduct.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="btnDeleteProduct.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btnDeleteProduct.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 9.75pt, style=Bold</value>
+  </data>
+  <data name="btnDeleteProduct.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnDeleteProduct.Location" type="System.Drawing.Point, System.Drawing">
+    <value>585, 318</value>
+  </data>
+  <data name="btnDeleteProduct.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="btnDeleteProduct.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 30</value>
+  </data>
+  <data name="btnDeleteProduct.TabIndex" type="System.Int32, mscorlib">
+    <value>55</value>
+  </data>
+  <data name="btnDeleteProduct.Text" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="&gt;&gt;btnDeleteProduct.Name" xml:space="preserve">
+    <value>btnDeleteProduct</value>
+  </data>
+  <data name="&gt;&gt;btnDeleteProduct.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1244, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;btnDeleteProduct.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnDeleteProduct.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="checkBoxDefaultValidation.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 12pt, style=Bold</value>
+  </data>
+  <data name="checkBoxDefaultValidation.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxDefaultValidation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>220, 176</value>
+  </data>
+  <data name="checkBoxDefaultValidation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>227, 41</value>
+  </data>
+  <data name="checkBoxDefaultValidation.TabIndex" type="System.Int32, mscorlib">
+    <value>56</value>
+  </data>
+  <data name="checkBoxDefaultValidation.Text" xml:space="preserve">
+    <value>Use as default validation</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDefaultValidation.Name" xml:space="preserve">
+    <value>checkBoxDefaultValidation</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDefaultValidation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDefaultValidation.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDefaultValidation.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -682,7 +802,7 @@
     <value>Stretch</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>716, 326</value>
+    <value>794, 472</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
@@ -702,10 +822,22 @@
   <data name="&gt;&gt;cardMediaHeader.Type" xml:space="preserve">
     <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;qtyHeader.Name" xml:space="preserve">
+    <value>qtyHeader</value>
+  </data>
+  <data name="&gt;&gt;qtyHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;priceHeader.Name" xml:space="preserve">
+    <value>priceHeader</value>
+  </data>
+  <data name="&gt;&gt;priceHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>ButtonDetailForm</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>GTI.Modules.Shared.GradientForm, ManagedEliteModule, Version=1.3.42.461, Culture=neutral, PublicKeyToken=f7ab3ec26b04c7cf</value>
+    <value>GTI.Modules.Shared.GradientForm, ManagedEliteModule, Version=1.3.42.1245, Culture=neutral, PublicKeyToken=f7ab3ec26b04c7cf</value>
   </data>
 </root>

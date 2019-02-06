@@ -44,6 +44,7 @@ namespace GTI.Modules.ProductCenter.UI
             this.copyPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pastePageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deletePageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.m_chkShowDaily = new System.Windows.Forms.CheckBox();
             this.DeviceTypeLinkLabel = new System.Windows.Forms.LinkLabel();
             this.DeviceInfoLabel = new System.Windows.Forms.Label();
             this.DragInfoLabel = new System.Windows.Forms.Label();
@@ -89,6 +90,7 @@ namespace GTI.Modules.ProductCenter.UI
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.MenuTreeView);
+            this.splitContainer1.Panel1.Controls.Add(this.m_chkShowDaily);
             // 
             // splitContainer1.Panel2
             // 
@@ -111,7 +113,8 @@ namespace GTI.Modules.ProductCenter.UI
             this.MenuTreeView.HideSelection = false;
             this.MenuTreeView.Name = "MenuTreeView";
             this.MenuTreeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            ((System.Windows.Forms.TreeNode)(resources.GetObject("MenuTreeView.Nodes")))});
+            ((System.Windows.Forms.TreeNode)(resources.GetObject("MenuTreeView.Nodes"))),
+            ((System.Windows.Forms.TreeNode)(resources.GetObject("MenuTreeView.Nodes1")))});
             this.MenuTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.AfterSelectMenuList);
             this.MenuTreeView.DoubleClick += new System.EventHandler(this.EditMenuClick);
             this.MenuTreeView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.m_menuList_KeyDown);
@@ -197,6 +200,14 @@ namespace GTI.Modules.ProductCenter.UI
             this.deletePageToolStripMenuItem.Name = "deletePageToolStripMenuItem";
             resources.ApplyResources(this.deletePageToolStripMenuItem, "deletePageToolStripMenuItem");
             this.deletePageToolStripMenuItem.Click += new System.EventHandler(this.DeletePageClick);
+            // 
+            // m_chkShowDaily
+            // 
+            resources.ApplyResources(this.m_chkShowDaily, "m_chkShowDaily");
+            this.m_chkShowDaily.ForeColor = System.Drawing.Color.Black;
+            this.m_chkShowDaily.Name = "m_chkShowDaily";
+            this.m_chkShowDaily.UseVisualStyleBackColor = true;
+            this.m_chkShowDaily.CheckedChanged += new System.EventHandler(this.ShowDaily_CheckedChanged);
             // 
             // DeviceTypeLinkLabel
             // 
@@ -390,6 +401,7 @@ namespace GTI.Modules.ProductCenter.UI
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -447,5 +459,6 @@ namespace GTI.Modules.ProductCenter.UI
         private System.Windows.Forms.ToolStripMenuItem assignPageToDeviceToolStripMenuItem;
         private System.Windows.Forms.LinkLabel DeviceTypeLinkLabel;
         private System.Windows.Forms.Label DeviceInfoLabel;
+        private System.Windows.Forms.CheckBox m_chkShowDaily;
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 using System.IO;
 using GTI.Modules.Shared;
 using System.Globalization;
-using GTI.Modules.ProductCenter.Data.TempSQL;
+using GTI.Modules.Shared.Business;
 
 //US4852: Product Center > Coupons: Require spend
 
@@ -82,7 +82,8 @@ namespace GTI.Modules.ProductCenter.Data
                        // Value
                        compdata.Value = decimal.Parse(ReadString(responseReader), CultureInfo.InvariantCulture);
                        //Max Usage
-                       compdata.CouponMaxUsage = responseReader.ReadUInt16();
+                       int maxUseVal = responseReader.ReadInt16();
+                       compdata.CouponMaxUsage = maxUseVal < 0 ? (int?)null : maxUseVal;
                        // Last Date awarded.
                        string tempDate = ReadString(responseReader);
                        if(!String.IsNullOrWhiteSpace(tempDate))
@@ -92,29 +93,39 @@ namespace GTI.Modules.ProductCenter.Data
                        // Comp Type Id
                        compdata.CouponType = (PlayerComp.CouponTypes)responseReader.ReadInt32();
                        // Award Type
-                       compdata.AwardType = responseReader.ReadBoolean() ? PlayerComp.AwardTypes.Auto : PlayerComp.AwardTypes.Manual;
+                       compdata.AwardType = (PlayerComp.AwardTypes)responseReader.ReadInt32();
                        // Unlock Spend
                        compdata.UnlockSpend = ReadDecimal(responseReader) ?? 0;
                        // Unlock Session Count
                        compdata.UnlockSessionCount = responseReader.ReadInt32();
+
+                       // Birthday Window Days Before
+                       compdata.WindowAwardDaysBefore = responseReader.ReadInt32();
+                       if(compdata.WindowAwardDaysBefore < 0)
+                           compdata.WindowAwardDaysBefore = null;
+                       // Birthday Window Days Following
+                       compdata.WindowAwardDaysFollowing = responseReader.ReadInt32();
+                       if(compdata.WindowAwardDaysFollowing < 0)
+                           compdata.WindowAwardDaysFollowing = null;
+
                        //Minimum spend to qualify //US4852
                        compdata.MinimumSpendToQualify = decimal.Parse(ReadString(responseReader), CultureInfo.InvariantCulture);
                        //count of restricted products //US4852
-                       var count = responseReader.ReadInt16();
+                       var count = responseReader.ReadUInt16();
                        for (var i = 0; i < count; i++)
                        {
                            //restricted product ID //US4852
                            compdata.RestrictedProductIds.Add(responseReader.ReadInt32());
                        }
                        // Count of Qualifying Packages US4941
-                       count = responseReader.ReadInt16();
+                       count = responseReader.ReadUInt16();
                        for (var i = 0; i < count; i++)
                        {
                            //Qualifying Packages ID
                            compdata.EarnedPackageIDs.Add(responseReader.ReadInt32());
                        }
                        // Count of Package Restrictions US4932
-                       count = responseReader.ReadInt16();
+                       count = responseReader.ReadUInt16();
                        for (var i = 0; i < count; i++)
                        {
                            //Package Restriction ID
@@ -122,7 +133,47 @@ namespace GTI.Modules.ProductCenter.Data
                        }
                        compdata.IgnoreValidationsForIgnoredPackages = responseReader.ReadBoolean();
 
+                       compdata.ProgramLimit = responseReader.ReadInt16();
+                       compdata.DailyLimit = responseReader.ReadInt16();
+                       compdata.WeeklyLimit = responseReader.ReadInt16();
+                       compdata.MonthlyLimit = responseReader.ReadInt16();
+                       compdata.YearlyLimit = responseReader.ReadInt16();
+
+                       for(int i = 0; i < 7; i++)
+                       {
+                           int? useLimit = responseReader.ReadInt16();
+                           if(useLimit < 0)
+                               useLimit = null;
+                           compdata.DayOfWeekLimits.Add((DayOfWeek)i, useLimit);
+                       }
+                       for(int i = 1; i <= 12; i++)
+                       {
+                           int? useLimit = responseReader.ReadInt16();
+                           if(useLimit < 0)
+                               useLimit = null;
+                           compdata.MonthOfYearLimits.Add(i, useLimit);
+                       }
+                       count = responseReader.ReadUInt16();
+                       for (int i = 0; i < count; i++)
+                       {
+                           var programId = responseReader.ReadInt32();
+                           int? useLimit = responseReader.ReadInt16();
+                           if (useLimit < 0)
+                               useLimit = null;
+                           compdata.ProgramLimits.Add(programId, useLimit);
+                       }
+                       count = responseReader.ReadUInt16();
+                       for(int i = 0; i < count; i++)
+                       {
+                           var sessionNum = responseReader.ReadInt32();
+                           int? useLimit = responseReader.ReadInt16();
+                           if(useLimit < 0)
+                               useLimit = null;
+                           compdata.SessionNumberLimits.Add(sessionNum, useLimit);
+                       }
+
                        m_coupons.Add(compdata);
+                       
                    }
                }
            }

@@ -94,38 +94,5 @@ namespace GTI.Modules.ProductCenter.Data
         }
 
 
-
-        public List<PlayerListDefinition> get_playerListdefSQL()
-        {
-            SqlConnection sc = new SqlConnection(Properties.Resources.SQLConnection);
-            try
-            {
-                sc.Open();
-
-                using (SqlCommand cmd = new SqlCommand(@"select DefID, [Definition]  from PlayerListDefinition", sc))
-                {
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        PlayerListDefinition pld = new PlayerListDefinition();
-                        pld.DefId = reader.GetInt32(0);
-                        pld.DefinitionName = reader.GetString(1);
-                        List_pld.Add(pld);
-                    }
-                }
-            }
-            catch
-            {
-
-            }
-            finally
-            {
-                sc.Close();
-            }
-
-            return List_pld;
-        }
-
-
     }
 }

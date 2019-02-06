@@ -43,12 +43,15 @@ namespace GTI.Modules.ProductCenter.Data
         public string Price;
         public string AltPrice; // US4543 used for coupons
         public bool CountsTowardsQualifyingSpend; // US4587
+        public bool Prepaid;
+        public int CardPositionsMapId;
+        public SortedList<byte, byte> PositionStarCodes;
         public string PointsPerQuantity;
         public string PointsPerDollar;
         public string PointsToRedeem;
         public ushort NumbersRequired; //ljv added
         public List<Accrual> AccrualList { get; set; }//RALLY US1796
-        public bool Equals(PackageProduct other) 
+        public bool Equals(PackageProduct other)
         {
             var isSame = (ProductId.Equals(other.ProductId) && ProductName.Equals(other.ProductName)
                           && ProductTypeId.Equals(other.ProductTypeId) && ProductTypeName.Equals(other.ProductTypeName)
@@ -66,9 +69,13 @@ namespace GTI.Modules.ProductCenter.Data
                           && PointsPerDollar.Equals(other.PointsPerDollar)
                           && PointsToRedeem.Equals(other.PointsToRedeem)
                           && NumbersRequired.Equals(other.NumbersRequired)
-                          && CountsTowardsQualifyingSpend == other.CountsTowardsQualifyingSpend);
+                          && CountsTowardsQualifyingSpend == other.CountsTowardsQualifyingSpend
+                          && Prepaid == other.Prepaid
+                          && CardPositionsMapId == other.CardPositionsMapId
+                          && PositionStarCodes.Count == other.PositionStarCodes.Count
+                          );
 
-            if (isSame) // short-circuit if the two are already not equal
+            if(isSame) // short-circuit if the two are already not equal
             {
                 var p1 = decimal.Parse(Price ?? "0");
                 var p2 = decimal.Parse(other.Price ?? "0");
@@ -77,6 +84,16 @@ namespace GTI.Modules.ProductCenter.Data
                 var ap1 = decimal.Parse(AltPrice ?? "0");
                 var ap2 = decimal.Parse(other.AltPrice ?? "0");
                 isSame &= ap1.Equals(ap2);
+
+                if(isSame)
+                {
+                    foreach(var kvp in PositionStarCodes)
+                        if(!other.PositionStarCodes.ContainsKey(kvp.Key) || other.PositionStarCodes[kvp.Key] != kvp.Value)
+                        {
+                            isSame = false;
+                            break;
+                        }
+                }
             }
             return isSame;
         }
@@ -85,7 +102,7 @@ namespace GTI.Modules.ProductCenter.Data
     /// <summary>
     /// Represents a Get Package Product Message
     /// </summary>
-    internal class GetPackageProductMessage : ServerMessage 
+    internal class GetPackageProductMessage : ServerMessage
     {
         #region Constants and Data Types
         protected const int MinResponseMessageLength = 6;
@@ -109,7 +126,7 @@ namespace GTI.Modules.ProductCenter.Data
         /// Initializes a new instance of the GetPackageProductMessage class.
         /// </summary>
         public GetPackageProductMessage()
-            : this(0,0)
+            : this(0, 0)
         {
         }
 
@@ -139,7 +156,7 @@ namespace GTI.Modules.ProductCenter.Data
             {
                 msg.Send();
             }
-            catch (ServerCommException ex)
+            catch(ServerCommException ex)
             {
                 throw new Exception("GetPackageProductMessage: " + ex.Message);
             }
@@ -170,7 +187,7 @@ namespace GTI.Modules.ProductCenter.Data
             var responseReader = new BinaryReader(responseStream, Encoding.Unicode);
 
             // Check the response length.
-            if (responseStream.Length < MinResponseMessageLength)
+            if(responseStream.Length < MinResponseMessageLength)
                 throw new MessageWrongSizeException("Get Package Product Item");
 
             // Try to unpack the data.
@@ -201,9 +218,9 @@ namespace GTI.Modules.ProductCenter.Data
                 PackageProducts.Clear();
 
                 // Get all the Items
-                for (ushort x = 0; x < itemCount; x++)
+                for(ushort x = 0; x < itemCount; x++)
                 {
-                    var packageProduct = new PackageProduct {ProductId = responseReader.ReadInt32()};
+                    var packageProduct = new PackageProduct { ProductId = responseReader.ReadInt32() };
 
                     // Product Name
                     packageProduct.ProductName = ReadString(responseReader) ?? string.Empty;
@@ -231,7 +248,7 @@ namespace GTI.Modules.ProductCenter.Data
 
                     // Card Level Name
                     packageProduct.CardLevelName = ReadString(responseReader) ?? string.Empty;
- 
+
                     // Card Media Id
                     packageProduct.CardMediaId = responseReader.ReadInt32();
 
@@ -280,10 +297,26 @@ namespace GTI.Modules.ProductCenter.Data
                     // Is Qualifying
                     packageProduct.CountsTowardsQualifyingSpend = responseReader.ReadBoolean();
 
+                    // Prepaid
+                    packageProduct.Prepaid = responseReader.ReadBoolean();
+
+                    packageProduct.PositionStarCodes = new SortedList<byte, byte>();
+                    if(packageProduct.CardTypeId == (int)CardType.Star)
+                    {
+                        packageProduct.CardPositionsMapId = responseReader.ReadInt32();
+                        var starCount = responseReader.ReadByte();
+                        for(int s = 0; s < starCount; ++s)
+                        {
+                            var positionIndex = responseReader.ReadByte();
+                            var starCode = responseReader.ReadByte();
+                            packageProduct.PositionStarCodes.Add(positionIndex, starCode);
+                        }
+                    }
+
                     //START RALLY US1796
                     packageProduct.AccrualList = new List<Accrual>();
                     ushort accrualCount = responseReader.ReadUInt16();
-                    for (int i = 0; i < accrualCount; i++)
+                    for(int i = 0; i < accrualCount; i++)
                     {
                         Accrual accrual = new Accrual();
                         accrual.Id = responseReader.ReadInt32();
@@ -294,11 +327,11 @@ namespace GTI.Modules.ProductCenter.Data
                     PackageProducts.Add(packageProduct);
                 }
             }
-            catch (EndOfStreamException e)
+            catch(EndOfStreamException e)
             {
                 throw new MessageWrongSizeException("Get Package Product Item", e);
             }
-            catch (Exception e)
+            catch(Exception e)
             {
                 throw new ServerException("Get Package Product Item", e);
             }

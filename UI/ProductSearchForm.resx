@@ -325,7 +325,7 @@
     <value>100</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>*Leave blank to not filter by name</value>
+    <value>*Leave blank not to filter by name</value>
   </data>
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>

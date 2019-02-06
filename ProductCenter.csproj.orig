@@ -1,0 +1,677 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BAA39D3A-0833-4190-9536-931FE9E9CEC7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GTI.Modules.ProductCenter</RootNamespace>
+    <AssemblyName>ProductCenter</AssemblyName>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <SignAssembly>false</SignAssembly>
+    <ApplicationIcon>Resources\Products.ico</ApplicationIcon>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <PublishUrl>http://localhost/ProductCenter/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RegisterForComInterop>true</RegisterForComInterop>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RegisterForComInterop>true</RegisterForComInterop>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EliteMCPLib, Version=1.0.3.0, Culture=neutral, PublicKeyToken=ff6ec3863080ef2d, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="IDAutomation.NetAssembly, Version=6.7.9.0, Culture=neutral, PublicKeyToken=5fc6adb61ca442c5" />
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Business\PositionMapFile.cs" />
+    <Compile Include="Business\Configuration.cs" />
+    <Compile Include="Business\IGTIModule.cs" />
+    <Compile Include="Business\IPositionMap.cs" />
+    <Compile Include="Business\PositionSet.cs" />
+    <Compile Include="Business\ProductCenter.cs" />
+    <Compile Include="Business\ProductCenterException.cs" />
+    <Compile Include="Business\ProductCenterModule.cs" />
+    <Compile Include="Business\ProductCenterSettings.cs" />
+    <Compile Include="Data\CardLevelItems.cs" />
+    <Compile Include="Data\DailyItems.cs" />
+    <Compile Include="Data\DelMenuMessage.cs" />
+    <Compile Include="Data\DelPackageItemMessage.cs" />
+    <Compile Include="Data\DelProductItemMessage.cs" />
+    <Compile Include="Data\EnumToString.cs" />
+    <Compile Include="Data\GetButtonGraphicsMessage.cs" />
+    <Compile Include="Data\GetCardCutMessage.cs" />
+    <Compile Include="Data\GetCardMediaMesage.cs" />
+    <Compile Include="Data\GetCardsetLevelDataMessage.cs" />
+    <Compile Include="Data\GetCardTypeMessage.cs" />
+    <Compile Include="Data\GetCBBProgramGameMessage.cs" />
+    <Compile Include="Data\GetCompMessage.cs" />
+    <Compile Include="Data\GetDailyStaffMenusMessage.cs" />
+    <Compile Include="Data\GetFunctionMessage.cs" />
+    <Compile Include="Data\GetGameTypeMessage.cs" />
+    <Compile Include="Data\GetMenuButtonMessage.cs" />
+    <Compile Include="Data\GetMenuTypesMessage.cs" />
+    <Compile Include="Data\GetPackageProductMessage.cs" />
+    <Compile Include="Data\GetPackagesForProductMessage.cs" />
+    <Compile Include="Data\GetPaperLayoutMessage.cs" />
+    <Compile Include="Data\GetPlayerByMagCardMessage.cs" />
+    <Compile Include="Data\GetPlayerGroupList.cs" />
+    <Compile Include="Data\GetPOSMenuMessage.cs" />
+    <Compile Include="Data\GetProductGroupMessage.cs" />
+    <Compile Include="Data\GetProductItemMessage.cs" />
+    <Compile Include="Data\GetProductTypesMessage.cs" />
+    <Compile Include="Data\GetSalesSourceMessage.cs" />
+    <Compile Include="Data\MenuItems.cs" />
+    <Compile Include="Data\PackageItems.cs" />
+    <Compile Include="Data\ProductItems.cs" />
+    <Compile Include="Data\SetCardLevelMessage.cs" />
+    <Compile Include="Data\SetCardsetLevelDataMessage.cs" />
+    <Compile Include="Data\SetCompAwardedToGroupPlayer.cs" />
+    <Compile Include="Data\SetCompAwardedToPlayer.cs" />
+    <Compile Include="Data\SetDeleteCompMessage.cs" />
+    <Compile Include="Data\SetDiscountMessage.cs" />
+    <Compile Include="Data\SetMenuButtonMessage.cs" />
+    <Compile Include="Data\SetMenuMessage.cs" />
+    <Compile Include="Data\SetPackageProductMessage.cs" />
+    <Compile Include="Data\SetProductGroupMessage.cs" />
+    <Compile Include="Data\SetProductItemMessage.cs" />
+    <Compile Include="Data\CouponItems.cs" />
+    <Compile Include="Data\UpdateDailyMenuDataMessage.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Data\SetCompMessage.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ButtonGraphicSelection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ButtonGraphicSelection.Designer.cs">
+      <DependentUpon>ButtonGraphicSelection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PositionMaps\CardPositionMapManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\PositionMaps\CardPositionMapManagementForm.Designer.cs">
+      <DependentUpon>CardPositionMapManagementForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Coupons\CouponLimitColumn.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Coupons\CouponLimitColumn.Designer.cs">
+      <DependentUpon>CouponLimitColumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Coupons\CouponLimitUsageControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Coupons\CouponLimitUsageControl.Designer.cs">
+      <DependentUpon>CouponLimitUsageControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MenuPageDeviceTypeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MenuPageDeviceTypeForm.Designer.cs">
+      <DependentUpon>MenuPageDeviceTypeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Discounts\AdvancedQuantityView.xaml.cs">
+      <DependentUpon>AdvancedQuantityView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Discounts\MultiSelectComboBox.xaml.cs">
+      <DependentUpon>MultiSelectComboBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Discounts\RelayCommand.cs" />
+    <Compile Include="UI\Discounts\RestrictionView.xaml.cs">
+      <DependentUpon>RestrictionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Discounts\SpendLevelControl.xaml.cs">
+      <DependentUpon>SpendLevelControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Discounts\SpendLevelView.xaml.cs">
+      <DependentUpon>SpendLevelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\BingoProductDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\BingoProductDetailForm.designer.cs">
+      <DependentUpon>BingoProductDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ButtonDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ButtonDetailForm.Designer.cs">
+      <DependentUpon>ButtonDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\BasicProductDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\BasicProductDetailForm.designer.cs">
+      <DependentUpon>BasicProductDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CardLevelForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\CardLevelForm.Designer.cs">
+      <DependentUpon>CardLevelForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CardLevelDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\CardLevelDetailForm.Designer.cs">
+      <DependentUpon>CardLevelDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Coupons\CouponAwardToGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Coupons\CouponAwardToGroup.Designer.cs">
+      <DependentUpon>CouponAwardToGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Coupons\CouponAwardToPlayer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Coupons\CouponAwardToPlayer.Designer.cs">
+      <DependentUpon>CouponAwardToPlayer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CouponManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\CouponManagementForm.Designer.cs">
+      <DependentUpon>CouponManagementForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Coupons\CouponMangementAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Coupons\CouponMangementAddForm.Designer.cs">
+      <DependentUpon>CouponMangementAddForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Discounts\DiscountDetailView.xaml.cs">
+      <DependentUpon>DiscountDetailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PaperProductDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\PaperProductDetailForm.designer.cs">
+      <DependentUpon>PaperProductDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PackageSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\PackageSearchForm.Designer.cs">
+      <DependentUpon>PackageSearchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ProductPackage\StarCardPositionMapsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ProductPackage\StarCardPositionMapsForm.Designer.cs">
+      <DependentUpon>StarCardPositionMapsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ProductSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ProductSearchForm.Designer.cs">
+      <DependentUpon>ProductSearchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CrystalBallProductDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\CrystalBallProductDetailForm.designer.cs">
+      <DependentUpon>CrystalBallProductDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Helper.cs" />
+    <Compile Include="UI\MenuDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MenuDetailForm.Designer.cs">
+      <DependentUpon>MenuDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MenusForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MenusForm.Designer.cs">
+      <DependentUpon>MenusForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PackageDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\PackageDetailForm.Designer.cs">
+      <DependentUpon>PackageDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PackagesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\PackagesForm.Designer.cs">
+      <DependentUpon>PackagesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ProductCenterMDIForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ProductCenterMDIForm.Designer.cs">
+      <DependentUpon>ProductCenterMDIForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ProductDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ProductDetailForm.Designer.cs">
+      <DependentUpon>ProductDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ProductGroups.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ProductGroups.Designer.cs">
+      <DependentUpon>ProductGroups.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ProductsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ProductsForm.Designer.cs">
+      <DependentUpon>ProductsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ProgressPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ProgressPopup.Designer.cs">
+      <DependentUpon>ProgressPopup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ScanCodeEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ScanCodeEditForm.Designer.cs">
+      <DependentUpon>ScanCodeEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SelectProductForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SelectProductForm.Designer.cs">
+      <DependentUpon>SelectProductForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Discounts\DiscountView.xaml.cs">
+      <DependentUpon>DiscountView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ValidationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ValidationForm.Designer.cs">
+      <DependentUpon>ValidationForm.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\BingoProductDetailForm.resx">
+      <DependentUpon>BingoProductDetailForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ButtonDetailForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ButtonDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\BasicProductDetailForm.resx">
+      <DependentUpon>BasicProductDetailForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ButtonGraphicSelection.resx">
+      <DependentUpon>ButtonGraphicSelection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\CardLevelForm.resx">
+      <DependentUpon>CardLevelForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\CardLevelDetailForm.resx">
+      <DependentUpon>CardLevelDetailForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\PositionMaps\CardPositionMapManagementForm.resx">
+      <DependentUpon>CardPositionMapManagementForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Coupons\CouponAwardToGroup.resx">
+      <DependentUpon>CouponAwardToGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Coupons\CouponAwardToPlayer.resx">
+      <DependentUpon>CouponAwardToPlayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\CouponManagementForm.resx">
+      <DependentUpon>CouponManagementForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Coupons\CouponLimitColumn.resx">
+      <DependentUpon>CouponLimitColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Coupons\CouponLimitUsageControl.resx">
+      <DependentUpon>CouponLimitUsageControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Coupons\CouponMangementAddForm.resx">
+      <DependentUpon>CouponMangementAddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MenuPageDeviceTypeForm.resx">
+      <DependentUpon>MenuPageDeviceTypeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\PaperProductDetailForm.resx">
+      <DependentUpon>PaperProductDetailForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\PackageSearchForm.resx">
+      <DependentUpon>PackageSearchForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ProductPackage\StarCardPositionMapsForm.resx">
+      <DependentUpon>StarCardPositionMapsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ProductSearchForm.resx">
+      <DependentUpon>ProductSearchForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\CrystalBallProductDetailForm.resx">
+      <DependentUpon>CrystalBallProductDetailForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MenuDetailForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>MenuDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MenusForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>MenusForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\PackageDetailForm.resx">
+      <DependentUpon>PackageDetailForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\PackagesForm.resx">
+      <DependentUpon>PackagesForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ProductCenterMDIForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ProductCenterMDIForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ProductDetailForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ProductDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ProductGroups.resx">
+      <DependentUpon>ProductGroups.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ProductsForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ProductsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ProgressPopup.resx">
+      <DependentUpon>ProgressPopup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ScanCodeEditForm.resx">
+      <DependentUpon>ScanCodeEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SelectProductForm.resx">
+      <DependentUpon>SelectProductForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ValidationForm.resx">
+      <DependentUpon>ValidationForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PleaseWait.gif" />
+    <None Include="Resources\PaperWhiteButtonUp.png" />
+    <None Include="Resources\PaperWhiteButtonDown.png" />
+    <None Include="Resources\PaperTanButtonUp.png" />
+    <None Include="Resources\PaperTanButtonDown.png" />
+    <None Include="Resources\PaperRedButtonUp.png" />
+    <None Include="Resources\PaperRedButtonDown.png" />
+    <None Include="Resources\PaperRainbowButtonUp.png" />
+    <None Include="Resources\PaperRainbowButtonDown.png" />
+    <None Include="Resources\PaperPurpleButtonUp.png" />
+    <None Include="Resources\PaperPurpleButtonDown.png" />
+    <None Include="Resources\PaperOrangeButtonUp.png" />
+    <None Include="Resources\PaperOrangeButtonDown.png" />
+    <None Include="Resources\PaperGreenButtonUp.png" />
+    <None Include="Resources\PaperGreenButtonDown.png" />
+    <None Include="Resources\PaperBrownButtonUp.png" />
+    <None Include="Resources\PaperBrownButtonDown.png" />
+    <None Include="Resources\YellowButtonUp.png" />
+    <None Include="Resources\YellowButtonDown.png" />
+    <None Include="Resources\WhiteButtonUp.png" />
+    <None Include="Resources\WhiteButtonDown.png" />
+    <None Include="Resources\RedButtonUp.png" />
+    <None Include="Resources\RedButtonDown.png" />
+    <None Include="Resources\RainbowButtonUp.png" />
+    <None Include="Resources\RainbowButtonDown.png" />
+    <None Include="Resources\PurpleButtonUp.png" />
+    <None Include="Resources\PurpleButtonDown.png" />
+    <None Include="Resources\OrangeButtonUp.png" />
+    <None Include="Resources\OrangeButtonDown.png" />
+    <None Include="Resources\GrayButtonDown.png" />
+    <None Include="Resources\GrayButtonUp.png" />
+    <None Include="Resources\BG00.jpg" />
+    <None Include="Resources\BG01.jpg" />
+    <None Include="Resources\BG02.jpg" />
+    <None Include="Resources\ArrowDown.png" />
+    <None Include="Resources\ArrowUp.png" />
+    <None Include="Resources\Products.ico" />
+    <Content Include="Resources\BlueButtonDown.png" />
+    <Content Include="Resources\BlueButtonUp.png" />
+    <None Include="Resources\BrownButtonDown.png" />
+    <None Include="Resources\BrownButtonUp.png" />
+    <Resource Include="Resources\cal.png" />
+    <Content Include="Resources\ConcessionButtonDown.png" />
+    <Content Include="Resources\ConcessionButtonUp.png" />
+    <Content Include="Resources\ElectronicButtonDown.png" />
+    <Content Include="Resources\ElectronicButtonUp.png" />
+    <None Include="Resources\GreenButtonDown.png" />
+    <None Include="Resources\GreenButtonUp.png" />
+    <Content Include="Resources\FlatButtons\FlatBlackButtonDown.png" />
+    <Content Include="Resources\FlatButtons\FlatBlackButtonUp.png" />
+    <Content Include="Resources\FlatButtons\FlatBlueButtonDown.png" />
+    <Content Include="Resources\FlatButtons\FlatBlueButtonUp.png" />
+    <Content Include="Resources\FlatButtons\FlatBrownButtonDown.png" />
+    <Content Include="Resources\FlatButtons\FlatBrownButtonUp.png" />
+    <Content Include="Resources\FlatButtons\FlatGoldButtonDown.png" />
+    <Content Include="Resources\FlatButtons\FlatGoldButtonUp.png" />
+    <Content Include="Resources\FlatButtons\FlatGrayButtonDown.png" />
+    <Content Include="Resources\FlatButtons\FlatGrayButtonUp.png" />
+    <Content Include="Resources\FlatButtons\FlatGreenButtonDown.png" />
+    <Content Include="Resources\FlatButtons\FlatGreenButtonUp.png" />
+    <Content Include="Resources\FlatButtons\FlatLavenderButtonDown.png" />
+    <Content Include="Resources\FlatButtons\FlatLavenderButtonUp.png" />
+    <Content Include="Resources\FlatButtons\FlatOrangeButtonDown.png" />
+    <Content Include="Resources\FlatButtons\FlatOrangeButtonUp.png" />
+    <Content Include="Resources\FlatButtons\FlatOrchidButtonDown.png" />
+    <Content Include="Resources\FlatButtons\FlatOrchidButtonUp.png" />
+    <Content Include="Resources\FlatButtons\FlatPinkButtonDown.png" />
+    <Content Include="Resources\FlatButtons\FlatPinkButtonUp.png" />
+    <Content Include="Resources\FlatButtons\FlatRainbowButtonDown.png" />
+    <Content Include="Resources\FlatButtons\FlatRainbowButtonUp.png" />
+    <Content Include="Resources\FlatButtons\FlatRedButtonDown.png" />
+    <Content Include="Resources\FlatButtons\FlatRedButtonUp.png" />
+    <Content Include="Resources\FlatButtons\FlatTanButtonDown.png" />
+    <Content Include="Resources\FlatButtons\FlatTanButtonUp.png" />
+    <Content Include="Resources\FlatButtons\FlatWhiteButtonDown.png" />
+    <Content Include="Resources\FlatButtons\FlatWhiteButtonUp.png" />
+    <Content Include="Resources\FlatButtons\FlatYellowButtonDown.png" />
+    <Content Include="Resources\FlatButtons\FlatYellowButtonUp.png" />
+    <Content Include="Resources\GelButtons\BlackButtonDown.png" />
+    <Content Include="Resources\GelButtons\BlackButtonUp.png" />
+    <Content Include="Resources\GelButtons\BlueButtonDown.png" />
+    <Content Include="Resources\GelButtons\BlueButtonUp.png" />
+    <Content Include="Resources\GelButtons\BrownButtonDown.png" />
+    <Content Include="Resources\GelButtons\BrownButtonUp.png" />
+    <Content Include="Resources\GelButtons\GoldButtonDown.png" />
+    <Content Include="Resources\GelButtons\GoldButtonUp.png" />
+    <Content Include="Resources\GelButtons\GrayButtonDown.png" />
+    <Content Include="Resources\GelButtons\GrayButtonUp.png" />
+    <Content Include="Resources\GelButtons\GreenButtonDown.png" />
+    <Content Include="Resources\GelButtons\GreenButtonUp.png" />
+    <Content Include="Resources\GelButtons\LavenderButtonDown.png" />
+    <Content Include="Resources\GelButtons\LavenderButtonUp.png" />
+    <Content Include="Resources\GelButtons\OrangeButtonDown.png" />
+    <Content Include="Resources\GelButtons\OrangeButtonUp.png" />
+    <Content Include="Resources\GelButtons\OrchidButtonDown.png" />
+    <Content Include="Resources\GelButtons\OrchidButtonUp.png" />
+    <Content Include="Resources\GelButtons\PinkButtonDown.png" />
+    <Content Include="Resources\GelButtons\PinkButtonUp.png" />
+    <Content Include="Resources\GelButtons\RainbowButtonDown.png" />
+    <Content Include="Resources\GelButtons\RainbowButtonUp.png" />
+    <Content Include="Resources\GelButtons\RedButtonDown.png" />
+    <Content Include="Resources\GelButtons\RedButtonUp.png" />
+    <Content Include="Resources\GelButtons\TanButtonDown.png" />
+    <Content Include="Resources\GelButtons\TanButtonUp.png" />
+    <Content Include="Resources\GelButtons\WhiteButtonDown.png" />
+    <Content Include="Resources\GelButtons\WhiteButtonUp.png" />
+    <Content Include="Resources\GelButtons\YellowButtonDown.png" />
+    <Content Include="Resources\GelButtons\YellowButtonUp.png" />
+    <None Include="Resources\GradientFull.png" />
+    <Content Include="Resources\MerchandiseButtonDown.png" />
+    <Content Include="Resources\MerchandiseButtonUp.png" />
+    <None Include="Resources\SetButtonDown.png" />
+    <None Include="Resources\PaperButtonUp.png" />
+    <None Include="Resources\PaperButtonDown.png" />
+    <None Include="Resources\DiscountButtonUp.png" />
+    <None Include="Resources\DiscountButtonDown.png" />
+    <None Include="Resources\CreditButtonUp.png" />
+    <None Include="Resources\CreditButtonDown.png" />
+    <None Include="Resources\BookButtonUp.png" />
+    <None Include="Resources\BookButtonDown.png" />
+    <None Include="Resources\SetButtonUp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\DLLs\EliteBase\EliteBase.csproj">
+      <Project>{D4D6E9F2-A627-413E-9B45-A20E29680A84}</Project>
+      <Name>EliteBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DLLs\EliteUI\EliteUI.csproj">
+      <Project>{F38D464E-631F-45F3-942F-2C36AA77D04D}</Project>
+      <Name>EliteUI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DLLs\GTIControls\GTIControls.csproj">
+      <Project>{A2B9C7C4-AE7E-48DC-B39C-C9442CF017F6}</Project>
+      <Name>GTIControls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DLLs\ManagedEliteModule\ManagedEliteModule.csproj">
+      <Project>{308EF933-6B4E-48B2-9C54-85318FE50C63}</Project>
+      <Name>ManagedEliteModule</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="UI\Discounts\AdvancedQuantityView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Discounts\DiscountView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Discounts\MultiSelectComboBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Discounts\DiscountDetailView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Discounts\RestrictionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Discounts\SpendLevelControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Discounts\SpendLevelView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

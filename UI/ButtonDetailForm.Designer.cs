@@ -47,9 +47,14 @@ namespace GTI.Modules.ProductCenter.UI
             this.listViewProducts = new GTI.Controls.GTIListView();
             this.productNameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cardMediaHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.qtyHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.priceHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.imgButtonGraphic = new GTI.Controls.ImageButton();
-            this.btnSelect = new GTI.Controls.ImageButton();
+            this.btnAddProduct = new GTI.Controls.ImageButton();
+            this.btnEditProduct = new GTI.Controls.ImageButton();
+            this.btnDeleteProduct = new GTI.Controls.ImageButton();
+            this.checkBoxDefaultValidation = new System.Windows.Forms.CheckBox();
             this.groupBoxMode.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -115,6 +120,7 @@ namespace GTI.Modules.ProductCenter.UI
             this.btnDelete.ImageNormal = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonUp;
             this.btnDelete.ImagePressed = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonDown;
             this.btnDelete.Name = "btnDelete";
+            this.btnDelete.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.DeleteClick);
             // 
@@ -122,12 +128,12 @@ namespace GTI.Modules.ProductCenter.UI
             // 
             resources.ApplyResources(this.btnAccept, "btnAccept");
             this.btnAccept.BackColor = System.Drawing.Color.Transparent;
-            this.btnAccept.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnAccept.FocusColor = System.Drawing.Color.Black;
             this.btnAccept.ForeColor = System.Drawing.Color.Black;
             this.btnAccept.ImageNormal = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonUp;
             this.btnAccept.ImagePressed = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonDown;
             this.btnAccept.Name = "btnAccept";
+            this.btnAccept.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.btnAccept.UseVisualStyleBackColor = false;
             this.btnAccept.Click += new System.EventHandler(this.AcceptClick);
             // 
@@ -141,6 +147,7 @@ namespace GTI.Modules.ProductCenter.UI
             this.btnCancel.ImageNormal = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonUp;
             this.btnCancel.ImagePressed = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonDown;
             this.btnCancel.Name = "btnCancel";
+            this.btnCancel.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.CancelClick);
             // 
@@ -173,15 +180,15 @@ namespace GTI.Modules.ProductCenter.UI
             // 
             // checkBoxPlayerRequired
             // 
-            resources.ApplyResources(this.checkBoxPlayerRequired, "checkBoxPlayerRequired");
             this.checkBoxPlayerRequired.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.checkBoxPlayerRequired, "checkBoxPlayerRequired");
             this.checkBoxPlayerRequired.Name = "checkBoxPlayerRequired";
             this.checkBoxPlayerRequired.UseVisualStyleBackColor = false;
             // 
             // checkBoxKeyLocked
             // 
-            resources.ApplyResources(this.checkBoxKeyLocked, "checkBoxKeyLocked");
             this.checkBoxKeyLocked.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.checkBoxKeyLocked, "checkBoxKeyLocked");
             this.checkBoxKeyLocked.Name = "checkBoxKeyLocked";
             this.checkBoxKeyLocked.UseVisualStyleBackColor = false;
             // 
@@ -203,7 +210,9 @@ namespace GTI.Modules.ProductCenter.UI
             this.listViewProducts.AllowEraseBackground = true;
             this.listViewProducts.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.productNameHeader,
-            this.cardMediaHeader});
+            this.cardMediaHeader,
+            this.qtyHeader,
+            this.priceHeader});
             this.listViewProducts.FullRowSelect = true;
             this.listViewProducts.GridLines = true;
             resources.ApplyResources(this.listViewProducts, "listViewProducts");
@@ -213,6 +222,8 @@ namespace GTI.Modules.ProductCenter.UI
             this.listViewProducts.SortColumn = 0;
             this.listViewProducts.UseCompatibleStateImageBehavior = false;
             this.listViewProducts.View = System.Windows.Forms.View.Details;
+            this.listViewProducts.SelectedIndexChanged += new System.EventHandler(this.listViewProducts_SelectedIndexChanged);
+            this.listViewProducts.DoubleClick += new System.EventHandler(this.btnEditProduct_Click);
             // 
             // productNameHeader
             // 
@@ -224,11 +235,18 @@ namespace GTI.Modules.ProductCenter.UI
             this.cardMediaHeader.Tag = "alpha";
             resources.ApplyResources(this.cardMediaHeader, "cardMediaHeader");
             // 
+            // qtyHeader
+            // 
+            resources.ApplyResources(this.qtyHeader, "qtyHeader");
+            // 
+            // priceHeader
+            // 
+            resources.ApplyResources(this.priceHeader, "priceHeader");
+            // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.imgButtonGraphic);
-            this.groupBox1.Controls.Add(this.btnSelect);
             this.groupBox1.Controls.Add(this.lblButtonGraphic);
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
@@ -239,25 +257,65 @@ namespace GTI.Modules.ProductCenter.UI
             this.imgButtonGraphic.FocusColor = System.Drawing.Color.Black;
             resources.ApplyResources(this.imgButtonGraphic, "imgButtonGraphic");
             this.imgButtonGraphic.Name = "imgButtonGraphic";
+            this.imgButtonGraphic.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.imgButtonGraphic.Stretch = false;
+            this.imgButtonGraphic.Click += new System.EventHandler(this.SelectClick);
             // 
-            // btnSelect
+            // btnAddProduct
             // 
-            this.btnSelect.BackColor = System.Drawing.Color.Transparent;
-            this.btnSelect.FocusColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.btnSelect, "btnSelect");
-            this.btnSelect.ForeColor = System.Drawing.Color.Black;
-            this.btnSelect.ImageNormal = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonUp;
-            this.btnSelect.ImagePressed = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonDown;
-            this.btnSelect.Name = "btnSelect";
-            this.btnSelect.UseVisualStyleBackColor = false;
-            this.btnSelect.Click += new System.EventHandler(this.SelectClick);
+            this.btnAddProduct.BackColor = System.Drawing.Color.Transparent;
+            this.btnAddProduct.FocusColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.btnAddProduct, "btnAddProduct");
+            this.btnAddProduct.ForeColor = System.Drawing.Color.Black;
+            this.btnAddProduct.ImageNormal = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonUp;
+            this.btnAddProduct.ImagePressed = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonDown;
+            this.btnAddProduct.Name = "btnAddProduct";
+            this.btnAddProduct.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.btnAddProduct.UseVisualStyleBackColor = false;
+            this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
+            // 
+            // btnEditProduct
+            // 
+            this.btnEditProduct.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.btnEditProduct, "btnEditProduct");
+            this.btnEditProduct.FocusColor = System.Drawing.Color.Black;
+            this.btnEditProduct.ForeColor = System.Drawing.Color.Black;
+            this.btnEditProduct.ImageNormal = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonUp;
+            this.btnEditProduct.ImagePressed = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonDown;
+            this.btnEditProduct.Name = "btnEditProduct";
+            this.btnEditProduct.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.btnEditProduct.UseVisualStyleBackColor = false;
+            this.btnEditProduct.Click += new System.EventHandler(this.btnEditProduct_Click);
+            // 
+            // btnDeleteProduct
+            // 
+            this.btnDeleteProduct.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.btnDeleteProduct, "btnDeleteProduct");
+            this.btnDeleteProduct.FocusColor = System.Drawing.Color.Black;
+            this.btnDeleteProduct.ForeColor = System.Drawing.Color.Black;
+            this.btnDeleteProduct.ImageNormal = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonUp;
+            this.btnDeleteProduct.ImagePressed = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonDown;
+            this.btnDeleteProduct.Name = "btnDeleteProduct";
+            this.btnDeleteProduct.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.btnDeleteProduct.UseVisualStyleBackColor = false;
+            this.btnDeleteProduct.Click += new System.EventHandler(this.btnDeleteProduct_Click);
+            // 
+            // checkBoxDefaultValidation
+            // 
+            this.checkBoxDefaultValidation.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.checkBoxDefaultValidation, "checkBoxDefaultValidation");
+            this.checkBoxDefaultValidation.Name = "checkBoxDefaultValidation";
+            this.checkBoxDefaultValidation.UseVisualStyleBackColor = false;
             // 
             // ButtonDetailForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
+            this.Controls.Add(this.checkBoxDefaultValidation);
+            this.Controls.Add(this.btnDeleteProduct);
+            this.Controls.Add(this.btnAddProduct);
+            this.Controls.Add(this.btnEditProduct);
             this.Controls.Add(this.listViewProducts);
             this.Controls.Add(this.checkBoxKeyLocked);
             this.Controls.Add(this.checkBoxPlayerRequired);
@@ -310,8 +368,13 @@ namespace GTI.Modules.ProductCenter.UI
         private System.Windows.Forms.ColumnHeader productNameHeader;
         private System.Windows.Forms.ColumnHeader cardMediaHeader;
         private System.Windows.Forms.GroupBox groupBox1;
-        private Controls.ImageButton btnSelect;
         private Controls.ImageButton imgButtonGraphic;
+        private Controls.ImageButton btnAddProduct;
+        private Controls.ImageButton btnEditProduct;
+        private System.Windows.Forms.ColumnHeader priceHeader;
+        private Controls.ImageButton btnDeleteProduct;
+        private System.Windows.Forms.ColumnHeader qtyHeader;
+        private System.Windows.Forms.CheckBox checkBoxDefaultValidation;
 
     }
 }

@@ -37,17 +37,10 @@ namespace GTI.Modules.ProductCenter.UI
         private PlayerName playername = new PlayerName();
         private string m_compSelected;// = CouponManagementForm.compSelected;
         private int m_compIDSelected;// = CouponManagementForm.compIdSelected;
-        private int m_maxUsage;
         public static bool isAwarded = false;
 
 
         #region Constructors
-
-        public int maxUsage
-        {
-            get { return m_maxUsage; }
-            set { m_maxUsage = value; }
-        }
 
         public string compSelected
         {
@@ -119,7 +112,7 @@ namespace GTI.Modules.ProductCenter.UI
             {
                 FormBorderStyle = FormBorderStyle.FixedSingle;
                 BackgroundImage = null;
-                DrawGradient = true;  
+                DrawAsGradient = true;  
             }
 
             System.Drawing.Color defaultBackground = System.Drawing.ColorTranslator.FromHtml("#44658D");
@@ -217,10 +210,7 @@ namespace GTI.Modules.ProductCenter.UI
 
                 if (dialogResult == DialogResult.Yes)
                 {
-                    SetCompAwardedToPlayer scatp = new SetCompAwardedToPlayer();
-                    scatp.DefID = 0;
-                    scatp.AwardTypeID = GTI.Modules.ProductCenter.UI.CouponManagementForm.CompAwardTypeID;
-                    scatp.set(m_compIDSelected, playername.PlayerID, m_maxUsage);          
+                    SetCompAwardedToPlayer.SetCompAwardToPlayer(m_compIDSelected, playername.PlayerID);
                     //if (lblSavedSuccessfully.Visible != true) { lblSavedSuccessfully.Visible = true; } No need since the UI closes after accept button.
                     isAwarded = true;
                     this.Close();

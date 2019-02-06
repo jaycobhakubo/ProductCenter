@@ -33,6 +33,8 @@ namespace GTI.Modules.ProductCenter.Data
         public decimal DiscountPointsPerDollar;
         public byte RemoveButton;
         public int ButtonGraphicId;
+        public bool DefaultValidation;
+
         /// <summary>
         /// The device list this button is valid for
         /// </summary>
@@ -191,6 +193,9 @@ namespace GTI.Modules.ProductCenter.Data
 
                     // Button Graphic Id (was Key Color)
                     menuItem.ButtonGraphicId = responseReader.ReadInt32();
+
+                    // Use as default validation
+                    menuItem.DefaultValidation = responseReader.ReadBoolean();
 
                     // Remove Button
                     menuItem.RemoveButton = 0;

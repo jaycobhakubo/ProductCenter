@@ -9,40 +9,57 @@ namespace GTI.Modules.ProductCenter.Data
 {
     class SetCompAwardedToPlayer : ServerMessage
     {
+        private CompAwardType m_AwardTypeID;
         private int m_compID;
         private int m_playerID;
-        private int m_maxUsage;
-        private int m_AwardTypeID;
-        private int m_DefID;
+        private int m_groupID;
 
-
-        public int AwardTypeID
-        {
-            get { return m_AwardTypeID; }
-            set { m_AwardTypeID = value; }
-        }
-
-
-        public int DefID
-        {
-            get { return m_DefID; }
-            set { m_DefID = value; }
-        }
-
-        public void set(int compID, int playerID, int maxUsage)
+        private SetCompAwardedToPlayer() : base()
         {
             m_id = 18213;
-            m_compID = compID;
-            m_playerID = playerID;
-            m_maxUsage = maxUsage;
+        }
+        
+        public enum CompAwardType
+        {
+            Player = 1,
+            Group = 2
+        }
+
+        public static void SetCompAwardToPlayer(int compID, int playerID)
+        {
+            var m = new SetCompAwardedToPlayer()
+            {
+                m_AwardTypeID = CompAwardType.Player,
+                m_compID = compID,
+                m_playerID = playerID,
+            };
 
             try
             {
-                Send();
+                m.Send();
             }
             catch (ServerCommException ex)
             {
                 throw new Exception("Set coupon to a player: " + ex.Message);
+            }
+        }
+
+        public static void SetCompAwardToGroup(int compID, int groupId)
+        {
+            var m = new SetCompAwardedToPlayer()
+            {
+                m_AwardTypeID = CompAwardType.Group,
+                m_compID = compID,
+                m_groupID = groupId
+            };
+
+            try
+            {
+                m.Send();
+            }
+            catch(ServerCommException ex)
+            {
+                throw new Exception("Set coupon to a group: " + ex.Message);
             }
         }
     
@@ -51,26 +68,19 @@ namespace GTI.Modules.ProductCenter.Data
             MemoryStream requestStream = new MemoryStream();
             BinaryWriter requestWriter = new BinaryWriter(requestStream, Encoding.Unicode);
 
-            if (m_AwardTypeID == 1)//Single player or all players.
+            switch(m_AwardTypeID)
             {
-                requestWriter.Write((byte)1);
-                requestWriter.Write(m_compID);
-                requestWriter.Write(m_playerID);
-                if (m_maxUsage != 0)
-                {
-                    requestWriter.Write((ushort)m_maxUsage);
-                }
-                else
-                {
-                    requestWriter.Write((ushort)0);
-                }
 
-            }
-            else if (m_AwardTypeID == 2)//Award to multi Player or group players.
-            {
-                requestWriter.Write((byte)2);
-                requestWriter.Write(m_compID);
-                requestWriter.Write(m_DefID);
+                case CompAwardType.Player:
+                    requestWriter.Write((byte)m_AwardTypeID);
+                    requestWriter.Write(m_compID);
+                    requestWriter.Write(m_playerID);
+                    break;
+                case CompAwardType.Group:
+                    requestWriter.Write((byte)m_AwardTypeID);
+                    requestWriter.Write(m_compID);
+                    requestWriter.Write(m_groupID);
+                    break;
             }
 
             m_requestPayload = requestStream.ToArray();
@@ -86,7 +96,6 @@ namespace GTI.Modules.ProductCenter.Data
 
             MemoryStream responseStream = new MemoryStream(m_responsePayload);
             BinaryReader responseReader = new BinaryReader(responseStream, Encoding.Unicode);
-
 
             try
             {

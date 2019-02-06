@@ -37,10 +37,10 @@
             this.EndDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gtiListViewCoupon = new GTI.Controls.GTIListView();
-            this.Name2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.StartDate2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.EndDate2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Value2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.NameClm = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.StartDateClm = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.EndDateClm = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.AwardClm = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuCoupon = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,6 +61,8 @@
             this.addToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteCouponToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TypeClm = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ValueClm = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.dtgviewCoupon)).BeginInit();
             this.contextMenuCoupon.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -75,6 +77,7 @@
             this.imgbtnAdd.ForeColor = System.Drawing.Color.Black;
             this.imgbtnAdd.ImageNormal = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonUp;
             this.imgbtnAdd.Name = "imgbtnAdd";
+            this.imgbtnAdd.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.imgbtnAdd.Click += new System.EventHandler(this.AddCouponClick);
             this.imgbtnAdd.Enter += new System.EventHandler(this.imgbtnAdd_Enter);
             // 
@@ -131,12 +134,15 @@
             // 
             // gtiListViewCoupon
             // 
+            this.gtiListViewCoupon.AllowEraseBackground = true;
             this.gtiListViewCoupon.CheckBoxes = true;
             this.gtiListViewCoupon.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.Name2,
-            this.StartDate2,
-            this.EndDate2,
-            this.Value2});
+            this.NameClm,
+            this.TypeClm,
+            this.ValueClm,
+            this.StartDateClm,
+            this.EndDateClm,
+            this.AwardClm});
             this.gtiListViewCoupon.ContextMenuStrip = this.contextMenuCoupon;
             resources.ApplyResources(this.gtiListViewCoupon, "gtiListViewCoupon");
             this.gtiListViewCoupon.FullRowSelect = true;
@@ -154,21 +160,21 @@
             this.gtiListViewCoupon.DoubleClick += new System.EventHandler(this.gtiListViewCoupon_DoubleClick);
             this.gtiListViewCoupon.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gtiListViewCoupon_KeyDown);
             // 
-            // Name2
+            // NameClm
             // 
-            resources.ApplyResources(this.Name2, "Name2");
+            resources.ApplyResources(this.NameClm, "NameClm");
             // 
-            // StartDate2
+            // StartDateClm
             // 
-            resources.ApplyResources(this.StartDate2, "StartDate2");
+            resources.ApplyResources(this.StartDateClm, "StartDateClm");
             // 
-            // EndDate2
+            // EndDateClm
             // 
-            resources.ApplyResources(this.EndDate2, "EndDate2");
+            resources.ApplyResources(this.EndDateClm, "EndDateClm");
             // 
-            // Value2
+            // AwardClm
             // 
-            resources.ApplyResources(this.Value2, "Value2");
+            resources.ApplyResources(this.AwardClm, "AwardClm");
             // 
             // contextMenuCoupon
             // 
@@ -233,6 +239,7 @@
             this.imgbtnAwardGroup.ForeColor = System.Drawing.Color.Black;
             this.imgbtnAwardGroup.ImageNormal = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonUp;
             this.imgbtnAwardGroup.Name = "imgbtnAwardGroup";
+            this.imgbtnAwardGroup.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.imgbtnAwardGroup.Click += new System.EventHandler(this.imgbtnAwardGroup_Click);
             // 
             // imgbtnExpiredComp
@@ -242,6 +249,7 @@
             this.imgbtnExpiredComp.ForeColor = System.Drawing.Color.Black;
             this.imgbtnExpiredComp.ImageNormal = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonUp;
             this.imgbtnExpiredComp.Name = "imgbtnExpiredComp";
+            this.imgbtnExpiredComp.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.imgbtnExpiredComp.Click += new System.EventHandler(this.imgbtnExpiredComp_Click);
             // 
             // imgbtnUpdate
@@ -251,6 +259,7 @@
             this.imgbtnUpdate.ForeColor = System.Drawing.Color.Black;
             this.imgbtnUpdate.ImageNormal = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonUp;
             this.imgbtnUpdate.Name = "imgbtnUpdate";
+            this.imgbtnUpdate.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.imgbtnUpdate.Click += new System.EventHandler(this.editToolStripMenuItem2_Click);
             // 
             // imgbtnDelete
@@ -260,6 +269,7 @@
             this.imgbtnDelete.ForeColor = System.Drawing.Color.Black;
             this.imgbtnDelete.ImageNormal = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonUp;
             this.imgbtnDelete.Name = "imgbtnDelete";
+            this.imgbtnDelete.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.imgbtnDelete.Click += new System.EventHandler(this.imgbtnDelete_Click);
             // 
             // imgbtnAwardToPlayer
@@ -269,6 +279,7 @@
             this.imgbtnAwardToPlayer.ForeColor = System.Drawing.Color.Black;
             this.imgbtnAwardToPlayer.ImageNormal = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonUp;
             this.imgbtnAwardToPlayer.Name = "imgbtnAwardToPlayer";
+            this.imgbtnAwardToPlayer.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.imgbtnAwardToPlayer.Click += new System.EventHandler(this.imageButton1_Click_1);
             // 
             // imgbtnAwardToAllPlayers
@@ -278,6 +289,7 @@
             this.imgbtnAwardToAllPlayers.ForeColor = System.Drawing.Color.Black;
             this.imgbtnAwardToAllPlayers.ImageNormal = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonUp;
             this.imgbtnAwardToAllPlayers.Name = "imgbtnAwardToAllPlayers";
+            this.imgbtnAwardToAllPlayers.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.imgbtnAwardToAllPlayers.Click += new System.EventHandler(this.imgbtnAwardToAllPlayer_Click);
             // 
             // lblUnableToDeleteCoupon
@@ -339,6 +351,14 @@
             resources.ApplyResources(this.deleteCouponToolStripMenuItem, "deleteCouponToolStripMenuItem");
             this.deleteCouponToolStripMenuItem.Click += new System.EventHandler(this.imgbtnDelete_Click);
             // 
+            // TypeClm
+            // 
+            resources.ApplyResources(this.TypeClm, "TypeClm");
+            // 
+            // ValueClm
+            // 
+            resources.ApplyResources(this.ValueClm, "ValueClm");
+            // 
             // CouponManagementForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -377,10 +397,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn EndDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn Value;
         private Controls.GTIListView gtiListViewCoupon;
-        public System.Windows.Forms.ColumnHeader Name2;
-        public System.Windows.Forms.ColumnHeader StartDate2;
-        public System.Windows.Forms.ColumnHeader EndDate2;
-        public System.Windows.Forms.ColumnHeader Value2;
+        public System.Windows.Forms.ColumnHeader NameClm;
+        public System.Windows.Forms.ColumnHeader StartDateClm;
+        public System.Windows.Forms.ColumnHeader EndDateClm;
+        public System.Windows.Forms.ColumnHeader AwardClm;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ContextMenuStrip contextMenuCoupon;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
@@ -401,6 +421,8 @@
         private Controls.ImageButton imgbtnUpdate;
         private Controls.ImageButton imgbtnExpiredComp;
         private Controls.ImageButton imgbtnAwardGroup;
+        private System.Windows.Forms.ColumnHeader TypeClm;
+        private System.Windows.Forms.ColumnHeader ValueClm;
 
 
     }

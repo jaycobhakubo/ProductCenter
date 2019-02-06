@@ -1,9 +1,10 @@
 ﻿// This is an unpublished work protected under the copyright laws of the
 // United States and other countries.  All rights reserved.  Should
-// publication occur the following will apply:  © 2016 Fortunet
+// publication occur the following will apply:  © 2018 Fortunet
 
-//US4852: Product Center > Coupons: Require spend
-//DE13319: Product Center > Coupons: Error when deleting a coupon
+// US4852: Product Center > Coupons: Require spend
+// DE13319: Product Center > Coupons: Error when deleting a coupon
+// US5417: Advanced coupon limits
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -24,10 +25,8 @@ namespace GTI.Modules.ProductCenter.UI
         #region Private Properties
 
         private List<PlayerComp> lCouponItem;
-        private static CouponMangementAddForm couponManagementAddForm;
         public static string compSelected;
         public static int compIdSelected;
-        public static int CompAwardTypeID;
         internal MagneticCardReader MagCardReader { get; private set; }
         private bool isShowAllCoupon = false;
         private PlayerComp couponItemSelected = new PlayerComp();
@@ -63,7 +62,7 @@ namespace GTI.Modules.ProductCenter.UI
             {
                 m_packages = PackageItems.Sorted;
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 string err = "Error loading coupon packages " + ex.ToString();
                 Logger.LogSevere(err, "CouponMangementAddForm.cs", 0);
@@ -88,14 +87,14 @@ namespace GTI.Modules.ProductCenter.UI
         //Clear the message "Awarded Successfully"."
         public void clearAnyDisplayMessage()
         {
-            if (CouponAwardToPlayer.isAwarded == false)
+            if(CouponAwardToPlayer.isAwarded == false)
             {
-                if (lblSavedSuccessfully.Visible != false)
+                if(lblSavedSuccessfully.Visible != false)
                 {
                     lblSavedSuccessfully.Visible = false;
                 }
 
-                if (lblUnableToDeleteCoupon.Visible != false)
+                if(lblUnableToDeleteCoupon.Visible != false)
                 {
                     lblUnableToDeleteCoupon.Visible = false;
                 }
@@ -109,7 +108,7 @@ namespace GTI.Modules.ProductCenter.UI
         #endregion
 
         #region EVENT
-        
+
         private void OnIdle(object sender, EventArgs e)
         {
             editToolStripMenuItem.Enabled = gtiListViewCoupon.SelectedIndices.Count > 0;
@@ -119,7 +118,7 @@ namespace GTI.Modules.ProductCenter.UI
             deleteCouponToolStripMenuItem.Enabled = gtiListViewCoupon.SelectedIndices.Count > 0;
 
             //Enable the award to player and award to all players button if the coupon is not expired.
-            if (/*m_isCouponExpired == false*/couponItemSelected.IsExpired == false)
+            if(/*m_isCouponExpired == false*/couponItemSelected.IsExpired == false)
             {
                 imgbtnAwardToAllPlayers.Enabled = gtiListViewCoupon.SelectedIndices.Count > 0;
                 imgbtnAwardToPlayer.Enabled = gtiListViewCoupon.SelectedIndices.Count > 0;
@@ -143,13 +142,13 @@ namespace GTI.Modules.ProductCenter.UI
         private void gtiListViewCoupon_KeyDown(object sender, KeyEventArgs e)
         {
             clearAnyDisplayMessage();
-            switch (e.KeyCode)
+            switch(e.KeyCode)
             {
                 case Keys.Insert:
                     AddCouponClick(this, e);
                     break;
                 case Keys.Enter://Edit if the coupon selected is not = 0
-                    if (gtiListViewCoupon.SelectedItems.Count > 0)
+                    if(gtiListViewCoupon.SelectedItems.Count > 0)
                     {
                         editToolStripMenuItem2_Click(this, e);
                     }
@@ -169,21 +168,20 @@ namespace GTI.Modules.ProductCenter.UI
         private void contextMenuCoupon_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
             clearAnyDisplayMessage();
-            if (Keys.Enter == e.KeyCode)
+            if(Keys.Enter == e.KeyCode)
             {
-                if (gtiListViewCoupon.SelectedItems.Count > 0)
+                if(gtiListViewCoupon.SelectedItems.Count > 0)
                 {
                     editToolStripMenuItem2_Click(this, e);
                 }
             }
-            else if (Keys.Delete == e.KeyCode)
+            else if(Keys.Delete == e.KeyCode)
             {
-                if (gtiListViewCoupon.SelectedItems.Count > 0)
+                if(gtiListViewCoupon.SelectedItems.Count > 0)
                 {
                     imgbtnDelete_Click(this, e);
                 }
             }
-
         }
 
         /// <summary>
@@ -193,21 +191,16 @@ namespace GTI.Modules.ProductCenter.UI
         /// <param name="e"></param>
         private void imgbtnAwardToAllPlayer_Click(object sender, EventArgs e)
         {
-            CompAwardTypeID = 1;
             clearAnyDisplayMessage();
             //MessageBox.Show("1");
 
             DialogResult dialogResult = MessageForm.Show("Do you want to award " + compSelected + " to all players?", "Award to All Players", MessageFormTypes.YesCancel /*MessageFormTypes.YesCancelComp*/);
 
-            if (dialogResult == DialogResult.Yes)
+            if(dialogResult == DialogResult.Yes)
             {
-                SetCompAwardedToPlayer scatp = new SetCompAwardedToPlayer();
-                scatp.DefID = 0;
-                scatp.AwardTypeID = CompAwardTypeID;
-                scatp.set(CouponManagementForm.compIdSelected, 0, couponItemSelected.CouponMaxUsage);
-                //SetCompAwardedToPlayer.RunMessage(CouponManagementForm.compIdSelected, 0, couponItemSelected.CouponMaxUsage);
+                SetCompAwardedToPlayer.SetCompAwardToPlayer(CouponManagementForm.compIdSelected, 0);
                 // if (lblSavedSuccessfully.Visible != true) { lblSavedSuccessfully.Visible = true; }  
-                if (lblSavedSuccessfully.Visible != true)
+                if(lblSavedSuccessfully.Visible != true)
                 {
                     lblSavedSuccessfully.Visible = true;
                     lblSavedSuccessfully.Text = "       Awarded Successfully";
@@ -215,11 +208,6 @@ namespace GTI.Modules.ProductCenter.UI
 
                 PopulateCoupon = CouponItems.Sorted("");//Repopulate the listview coupon.
             }
-            else
-            {
-
-            }
-
         }
 
         /// <summary>
@@ -258,19 +246,17 @@ namespace GTI.Modules.ProductCenter.UI
 
 
             clearAnyDisplayMessage();
-            CompAwardTypeID = 1;
             CouponAwardToPlayer catp = new CouponAwardToPlayer(Settings.MSRSettingInfo);
             catp.compSelected = couponItemSelected.Name;
             catp.compIDSeleccted = couponItemSelected.Id;
-            catp.maxUsage = couponItemSelected.CouponMaxUsage;
 
             catp.ShowDialog();
-            if (CouponAwardToPlayer.isAwarded == true)
+            if(CouponAwardToPlayer.isAwarded == true)
             {
                 ListViewItem singleItem = gtiListViewCoupon.Items[gtiListViewCoupon.FocusedItem.Index];
                 singleItem.Selected = false;
 
-                if (lblSavedSuccessfully.Visible != true)
+                if(lblSavedSuccessfully.Visible != true)
                 {
                     lblSavedSuccessfully.Visible = true;
                     lblSavedSuccessfully.Text = "       Awarded Successfully";
@@ -281,7 +267,7 @@ namespace GTI.Modules.ProductCenter.UI
 
             }
         }
-        
+
         /// <summary>
         /// Award to group of player.
         /// </summary>
@@ -290,7 +276,6 @@ namespace GTI.Modules.ProductCenter.UI
         private void imgbtnAwardGroup_Click(object sender, EventArgs e)
         {
             clearAnyDisplayMessage();
-            CompAwardTypeID = 2;
             CouponAwardToGroup catg = new CouponAwardToGroup();
             catg.CompID = couponItemSelected.Id;
             catg.Comp = couponItemSelected.Name;
@@ -298,40 +283,38 @@ namespace GTI.Modules.ProductCenter.UI
             catg.OperatorID = m_OperatorID;
             catg.ShowDialog();
 
-            if (catg.isAwarded == true)
+            if(catg.isAwarded == true)
             {
                 ListViewItem singleItem = gtiListViewCoupon.Items[gtiListViewCoupon.FocusedItem.Index];
                 singleItem.Selected = false;
 
-                if (lblSavedSuccessfully.Visible != true)
+                if(lblSavedSuccessfully.Visible != true)
                 {
                     lblSavedSuccessfully.Visible = true;
                     lblSavedSuccessfully.Text = "       Awarded Successfully";
                 }
                 PopulateCoupon = CouponItems.Sorted("");
             }
-
         }
-        
+
         private void gtiListViewCoupon_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
-
             clearAnyDisplayMessage();
 
             var selectedItems = gtiListViewCoupon.SelectedItems;
 
-            if (selectedItems.Count > 0)
+            if(selectedItems.Count > 0)
             {
                 // Display text of first item selected.
-                if (tempindex != -1 && couponItemSelected.IsExpired == true)
+                if(tempindex != -1 && couponItemSelected.IsExpired == true)
                 {
- //                   gtiListViewCoupon.Items[tempindex].ForeColor = Color.Gray;
+                    //                   gtiListViewCoupon.Items[tempindex].ForeColor = Color.Gray;
                 }
 
                 compSelected = selectedItems[0].Text;
 
                 //check for null
-                if (gtiListViewCoupon.FocusedItem == null)
+                if(gtiListViewCoupon.FocusedItem == null)
                 {
                     tempindex = -1;
                     return;
@@ -344,45 +327,39 @@ namespace GTI.Modules.ProductCenter.UI
                 couponItemSelected = lCouponItem[tempindex];
 
                 //Make expired coupon readable.
-                if (couponItemSelected.IsExpired == true)
+                if(couponItemSelected.IsExpired == true)
                 {
- //                   gtiListViewCoupon.Items[tempindex].ForeColor = Color.White;
+                    //                   gtiListViewCoupon.Items[tempindex].ForeColor = Color.White;
                 }
             }
             else //Not selecting any item
             {
-                if (tempindex != -1 && couponItemSelected.IsExpired == true)
+                if(tempindex != -1 && couponItemSelected.IsExpired == true)
                 {
-  //                  gtiListViewCoupon.Items[tempindex].ForeColor = Color.Gray;
+                    //                  gtiListViewCoupon.Items[tempindex].ForeColor = Color.Gray;
                 }
                 tempindex = -1;
             }
-
-
         }
-        
+
         private void imgbtnAdd_Enter(object sender, EventArgs e)
         {
             clearAnyDisplayMessage();
-            //MessageBox.Show("6");
         }
 
         private void contextMenuCoupon_Click(object sender, EventArgs e)
         {
             clearAnyDisplayMessage();
-            //MessageBox.Show("7");
         }
 
         private void menuStripCoupon_Enter(object sender, EventArgs e)
         {
             clearAnyDisplayMessage();
-            //MessageBox.Show("8");
         }
 
         private void CouponManagementForm_Activated(object sender, EventArgs e)
         {
             clearAnyDisplayMessage();
-            //MessageBox.Show("9");
         }
 
         /// <summary>
@@ -393,10 +370,9 @@ namespace GTI.Modules.ProductCenter.UI
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             clearAnyDisplayMessage();
-            if (checkBox1.Checked == true)//Show all coupon
+            if(checkBox1.Checked == true)//Show all coupon
             {
                 isShowAllCoupon = true;
-
             }
             else
             {
@@ -405,7 +381,7 @@ namespace GTI.Modules.ProductCenter.UI
             PopulateCoupon = CouponItems.Sorted("");
             tempindex = -1;
         }
-        
+
         /// <summary>
         /// Show add coupon UI.
         /// </summary>
@@ -415,14 +391,13 @@ namespace GTI.Modules.ProductCenter.UI
         {
             clearAnyDisplayMessage();
             Cursor = Cursors.WaitCursor;
-            couponManagementAddForm = new CouponMangementAddForm(OperatorID, m_productCenterSettings);
-            couponManagementAddForm.dIsNew = true;
+            var couponManagementAddForm = new CouponMangementAddForm(OperatorID, m_productCenterSettings);
             couponManagementAddForm.dIsCouponExpired = false;
 
 
             Cursor = Cursors.Default;
 
-            if (couponManagementAddForm.ShowDialog(this) == DialogResult.OK)
+            if(couponManagementAddForm.ShowDialog(this) == DialogResult.OK)
             {
                 Cursor = Cursors.WaitCursor;
                 try
@@ -433,14 +408,14 @@ namespace GTI.Modules.ProductCenter.UI
                     int tempCompID = SetCompMessage.RunMessage(couponItem);//Save coupon to Daily db.
                     PopulateCoupon = CouponItems.Sorted("");//Repopulate the listview coupon.
                     tempindex = -1;
-                    if (lblSavedSuccessfully.Visible != true)
+                    if(lblSavedSuccessfully.Visible != true)
                     {
                         lblSavedSuccessfully.Visible = true;
                         lblSavedSuccessfully.Text = "       Saved successfully.";
                         lblSavedSuccessfully.ForeColor = Color.Black;
                     }
                 }
-                catch (Exception ex)
+                catch(Exception ex)
                 {
                     string error = "Error adding coupon. {0}";
                     Logger.LogSevere(String.Format(error, ex.ToString()), "CouponManagementForm.cs", 0);
@@ -462,11 +437,11 @@ namespace GTI.Modules.ProductCenter.UI
             try
             {
                 int status = SetDeleteCompMessage.RunMessage(compIdSelected);
-                if (status == 0)
+                if(status == 0)
                 {
                     //Display message if success.
-                    if (lblUnableToDeleteCoupon.Visible != false) { lblUnableToDeleteCoupon.Visible = false; }
-                    if (lblSavedSuccessfully.Visible != true)
+                    if(lblUnableToDeleteCoupon.Visible != false) { lblUnableToDeleteCoupon.Visible = false; }
+                    if(lblSavedSuccessfully.Visible != true)
                     {
                         lblSavedSuccessfully.Visible = true;
                         lblSavedSuccessfully.Text = "       Deleted Successfully";
@@ -480,13 +455,13 @@ namespace GTI.Modules.ProductCenter.UI
                 else
                 {
                     lblUnableToDeleteCoupon.Text = "Can't delete the coupon because it has been awarded.";
-                    if (lblUnableToDeleteCoupon.Visible != true)
+                    if(lblUnableToDeleteCoupon.Visible != true)
                     {
                         lblUnableToDeleteCoupon.Visible = true;
                     }
                 }
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 string error = "Error deleting selected coupon. {0}";
                 Logger.LogSevere(String.Format(error, ex.ToString()), "CouponManagementForm.cs", 0);
@@ -508,56 +483,35 @@ namespace GTI.Modules.ProductCenter.UI
             compMgmtAddForm.Text = "Edit Coupon";
 
             Cursor = Cursors.Default;
-            bool IsModified = false;
 
-            if (compMgmtAddForm.ShowDialog(this) == DialogResult.OK)
+            var dr = compMgmtAddForm.ShowDialog(this);
+
+            if(dr == DialogResult.OK && compMgmtAddForm.Modified)
             {
-                //Check if something has changed.
-                if (
-                    compMgmtAddForm.dCouponID != couponItemSelected.Id
-                    || compMgmtAddForm.dCouponName != couponItemSelected.Name
-                    || compMgmtAddForm.dStartDate != couponItemSelected.StartDate
-                    || compMgmtAddForm.dEndDate != couponItemSelected.EndDate
-                    || compMgmtAddForm.dValue != couponItemSelected.Value
-                    || compMgmtAddForm.dCouponMaxUsage != couponItemSelected.CouponMaxUsage
-                    || compMgmtAddForm.SelectedCouponType != couponItemSelected.CouponType
-                    || !Enumerable.Equals(compMgmtAddForm.AwardedPackageIds, couponItemSelected.EarnedPackageIDs)
-                    || compMgmtAddForm.AwardType != couponItemSelected.AwardType
-                    || compMgmtAddForm.UnlockSessionCount != couponItemSelected.UnlockSessionCount
-                    || compMgmtAddForm.UnlockSpend != couponItemSelected.UnlockSpend
-                    || compMgmtAddForm.MinimumSpendToQualify != couponItemSelected.MinimumSpendToQualify //US4852
-                    || compMgmtAddForm.IsRestrictionsModified//US4852
-                    || compMgmtAddForm.IgnoreValidationsForIgnoredPackages != couponItemSelected.IgnoreValidationsForIgnoredPackages // DE13267
-                    )
-                { IsModified = true; }
+                Cursor = Cursors.WaitCursor;
+                PlayerComp couponItem = compMgmtAddForm.GenerateCoupon();
 
-                if (IsModified == true)
+                try
                 {
-                    Cursor = Cursors.WaitCursor;
-                    PlayerComp couponItem = compMgmtAddForm.GenerateCoupon();
-
-                    try
+                    int tempCompID = SetCompMessage.RunMessage(couponItem);//Save coupon to Daily db.
+                    PopulateCoupon = CouponItems.Sorted("");//Repopulate the listview coupon.
+                    tempindex = -1; //No item selection
+                    if(lblSavedSuccessfully.Visible != true)
                     {
-                        int tempCompID = SetCompMessage.RunMessage(couponItem);//Save coupon to Daily db.
-                        PopulateCoupon = CouponItems.Sorted("");//Repopulate the listview coupon.
-                        tempindex = -1; //No item selection
-                        if (lblSavedSuccessfully.Visible != true)
-                        {
-                            lblSavedSuccessfully.Visible = true;
-                            lblSavedSuccessfully.Text = "       Updated successfully.";
-                            lblSavedSuccessfully.ForeColor = Color.Black;
-                        }
+                        lblSavedSuccessfully.Visible = true;
+                        lblSavedSuccessfully.Text = "       Updated successfully.";
+                        lblSavedSuccessfully.ForeColor = Color.Black;
                     }
-                    catch (Exception ex)
-                    {
-                        string error = "Error editing selected coupon. {0}";
-                        Logger.LogSevere(String.Format(error, ex.ToString()), "CouponManagementForm.cs", 0);
-                        MessageForm.Show(String.Format(error, ex.Message));
-                    }
-
-                    Cursor = Cursors.Default;
-                    Application.DoEvents();
                 }
+                catch(Exception ex)
+                {
+                    string error = "Error editing selected coupon. {0}";
+                    Logger.LogSevere(String.Format(error, ex.ToString()), "CouponManagementForm.cs", 0);
+                    MessageForm.Show(String.Format(error, ex.Message));
+                }
+
+                Cursor = Cursors.Default;
+                Application.DoEvents();
             }
         }
 
@@ -571,7 +525,7 @@ namespace GTI.Modules.ProductCenter.UI
             clearAnyDisplayMessage();
             DialogResult dialogResult = MessageForm.Show("Do you want to expire " + compSelected + "?", "Confirm", MessageFormTypes.YesNo_regular_DefNo);
 
-            if (dialogResult == DialogResult.Yes)
+            if(dialogResult == DialogResult.Yes)
             {
                 Cursor = Cursors.WaitCursor;
                 PlayerComp couponItem = new PlayerComp(couponItemSelected);
@@ -581,7 +535,7 @@ namespace GTI.Modules.ProductCenter.UI
                 PopulateCoupon = CouponItems.Sorted("");//Repopulate the listview coupon.
 
                 //Display message if the coupon was forcefully expire.
-                if (lblSavedSuccessfully.Visible != true)
+                if(lblSavedSuccessfully.Visible != true)
                 {
                     lblSavedSuccessfully.Visible = true;
                     lblSavedSuccessfully.Text = "       Expired successfully.";
@@ -633,53 +587,25 @@ namespace GTI.Modules.ProductCenter.UI
             {
                 gtiListViewCoupon.Items.Clear();
                 lCouponItem.Clear();
-                foreach (var coupon in value)
+                foreach(var coupon in value)
                 {
-                    if (isShowAllCoupon || !coupon.IsExpired) //Either show all coupons or only the ones that haven't expired yet
+                    if(isShowAllCoupon || !coupon.IsExpired) //Either show all coupons or only the ones that haven't expired yet
                     {
                         ListViewItem lvi = gtiListViewCoupon.Items.Add(coupon.Name);
+                        lvi.SubItems.Add(EnumToString.GetDescription(coupon.CouponType));
+                        if(coupon.CouponType == PlayerComp.CouponTypes.FixedValue)
+                            lvi.SubItems.Add(Helper.DecimalStringToMoneyString(coupon.Value));
+                        else if(coupon.CouponType == PlayerComp.CouponTypes.PercentPackage)
+                            lvi.SubItems.Add(String.Format("{0}%", coupon.Value));
+                        else
+                            lvi.SubItems.Add("");
                         lvi.SubItems.Add(coupon.StartDate.ToString());
                         lvi.SubItems.Add(coupon.EndDate.ToString());
-                        if (coupon.CouponType == PlayerComp.CouponTypes.FixedValue)
-                        {
-                            lvi.SubItems.Add(String.Format("{0} Off", Helper.DecimalStringToMoneyString(coupon.Value.ToString())));
-                        }
-                        else if (coupon.CouponType == PlayerComp.CouponTypes.PercentPackage)
-                        {
-                            string packageName = "Multiple Packages";
+                        lvi.SubItems.Add(EnumToString.GetDescription(coupon.AwardType));
 
-                            if (coupon.EarnedPackageIDs.Count == 1)
-                            {
-                                int packageID = coupon.EarnedPackageIDs.First();
-                                PackageItem match = m_packages.FirstOrDefault(x => x.PackageId == packageID); // find the package name for display
-
-                                if (match != null)
-                                    packageName = match.PackageName;
-                                else
-                                    packageName = "Package " + packageID;
-                            }
-                            lvi.SubItems.Add(String.Format("{0}% off {1}", coupon.Value.ToString(), packageName));
-                        }
-                        else // Alt Price Package
-                        {
-                            string packageName = "Multiple Packages";
-
-                            if (coupon.EarnedPackageIDs.Count == 1)
-                            {
-                                int packageID = coupon.EarnedPackageIDs.First();
-                                PackageItem match = m_packages.FirstOrDefault(x => x.PackageId == packageID); // find the package name for display
-
-                                if (match != null)
-                                    packageName = match.PackageName;
-                                else
-                                    packageName = "Package " + packageID;
-                            }
-
-                            lvi.SubItems.Add(String.Format("Alt Price {0}", packageName));
-                        }
                         lvi.Tag = coupon;
 
-                        if (coupon.IsExpired)
+                        if(coupon.IsExpired)
                         {
                             lvi.ForeColor = Color.Gray;
                         }
@@ -692,7 +618,7 @@ namespace GTI.Modules.ProductCenter.UI
 
         private void gtiListViewCoupon_DrawItem(object sender, DrawListViewItemEventArgs e)
         {
-            if (lCouponItem[e.ItemIndex].IsExpired)
+            if(lCouponItem[e.ItemIndex].IsExpired)
             {
                 if(gtiListViewCoupon.Items[e.ItemIndex].Selected)
                     gtiListViewCoupon.ForeColor = Color.Black;
@@ -711,9 +637,9 @@ namespace GTI.Modules.ProductCenter.UI
 
         private void gtiListViewCoupon_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
         {
-            if (e.Item.Selected)
+            if(e.Item.Selected)
             {
-                using (var brush = new LinearGradientBrush(e.Bounds, ControlPaint.LightLight(gtiListViewCoupon.SelectedBackgroundColor),
+                using(var brush = new LinearGradientBrush(e.Bounds, ControlPaint.LightLight(gtiListViewCoupon.SelectedBackgroundColor),
                     gtiListViewCoupon.SelectedBackgroundColor, LinearGradientMode.Vertical))
                 {
                     e.Graphics.FillRectangle(brush, e.Bounds);
@@ -721,17 +647,22 @@ namespace GTI.Modules.ProductCenter.UI
             }
             else
             {
-                using (var brush = new LinearGradientBrush(e.Bounds, ControlPaint.LightLight(gtiListViewCoupon.UnSelectedBackgroundColor),
+                Rectangle r = new Rectangle(e.Bounds.X, e.Bounds.Y, e.Bounds.Width, e.Bounds.Height);
+
+                if(e.ColumnIndex == 0)
+                    r.Inflate(0, -1);
+
+                using(var brush = new LinearGradientBrush(e.Bounds, ControlPaint.LightLight(gtiListViewCoupon.UnSelectedBackgroundColor),
                     gtiListViewCoupon.UnSelectedBackgroundColor, LinearGradientMode.Vertical))
                 {
-                    e.Graphics.FillRectangle(brush, e.Bounds);
+                    e.Graphics.FillRectangle(brush, r);
                 }
             }
 
             bool isColor = e.SubItem.Tag is bool ? (bool)e.SubItem.Tag : false;
-            if (isColor)
+            if(isColor)
             {
-                using (var brush = new SolidBrush(e.SubItem.BackColor))
+                using(var brush = new SolidBrush(e.SubItem.BackColor))
                 {
                     Rectangle r1 = e.Bounds;
                     r1.Inflate(-4, -4);
@@ -739,9 +670,9 @@ namespace GTI.Modules.ProductCenter.UI
                 }
             }
 
-            using (var sf = new StringFormat())
+            using(var sf = new StringFormat())
             {
-                switch (e.Header.TextAlign)
+                switch(e.Header.TextAlign)
                 {
                     case HorizontalAlignment.Center:
                         sf.Alignment = StringAlignment.Center;
@@ -751,38 +682,48 @@ namespace GTI.Modules.ProductCenter.UI
                         break;
                 }
 
-                if (lCouponItem[e.ItemIndex].IsExpired)
+                if(lCouponItem[e.ItemIndex].IsExpired)
                 {
-                    if (e.Item.Selected)
+                    if(e.Item.Selected)
                     {
-                        using (var brush = new SolidBrush(Color.LightGray))
+                        using(var brush = new SolidBrush(Color.LightGray))
                             e.Graphics.DrawString(e.SubItem.Text, e.SubItem.Font, brush, e.Bounds, sf);
                     }
                     else
                     {
-                        using (var brush = new SolidBrush(Color.Gray))
-                            e.Graphics.DrawString(e.SubItem.Text, e.SubItem.Font, brush, e.Bounds, sf);
+                        Rectangle r = new Rectangle(e.Bounds.X, e.Bounds.Y, e.Bounds.Width, e.Bounds.Height);
+
+                        if(e.ColumnIndex == 0)
+                            r.Inflate(0, -1);
+
+                        using(var brush = new SolidBrush(Color.Gray))
+                            e.Graphics.DrawString(e.SubItem.Text, e.SubItem.Font, brush, r, sf);
                     }
                 }
                 else
                 {
-                    if (!(e.Item.ForeColor.A == 255 && e.Item.ForeColor.B == 0 &&
+                    if(!(e.Item.ForeColor.A == 255 && e.Item.ForeColor.B == 0 &&
                         e.Item.ForeColor.G == 0 && e.Item.ForeColor.R == 0))
                     {
-                        using (var brush = new SolidBrush(e.Item.ForeColor))
+                        using(var brush = new SolidBrush(e.Item.ForeColor))
                             e.Graphics.DrawString(e.SubItem.Text, e.SubItem.Font, brush, e.Bounds, sf);
                     }
                     else
                     {
-                        if (e.Item.Selected)
+                        if(e.Item.Selected)
                         {
-                            using (var brush = new SolidBrush(gtiListViewCoupon.SelectedForegroundColor))
+                            using(var brush = new SolidBrush(gtiListViewCoupon.SelectedForegroundColor))
                                 e.Graphics.DrawString(e.SubItem.Text, e.SubItem.Font, brush, e.Bounds, sf);
                         }
                         else
                         {
-                            using (var brush = new SolidBrush(gtiListViewCoupon.UnSelectedForegroundColor))
-                                e.Graphics.DrawString(e.SubItem.Text, e.SubItem.Font, brush, e.Bounds, sf);
+                            Rectangle r = new Rectangle(e.Bounds.X, e.Bounds.Y, e.Bounds.Width, e.Bounds.Height);
+
+                            if(e.ColumnIndex == 0)
+                                r.Inflate(0, -1);
+
+                            using(var brush = new SolidBrush(gtiListViewCoupon.UnSelectedForegroundColor))
+                                e.Graphics.DrawString(e.SubItem.Text, e.SubItem.Font, brush, r, sf);
                         }
                     }
                 }
@@ -790,159 +731,3 @@ namespace GTI.Modules.ProductCenter.UI
         }
     }
 }
-
-
-#region Fordatagridviewreference
-
-//private void gtiListViewCoupon_KeyUp(object sender, KeyEventArgs e)
-//{
-//    if (m_isCouponExpired == true)
-//    {
-//        int T_index = gtiListViewCoupon.FocusedItem.Index;
-//        gtiListViewCoupon.Items[T_index].ForeColor = Color.Gray;
-//    }
-//}
-
-//private void gtiListViewCoupon_Enter(object sender, EventArgs e)
-//{
-//    //if (CouponAwardToPlayer.isAwarded == true)
-//    //{
-//        clearAnyDisplayMessage();
-//        MessageBox.Show("5");
-//    //}
-//}
-
-//public void LoadCoupondgv()
-//{
-//    //Delete this method once the listview is solid
-//    Data.TempSQL.GetCoupon gc = new Data.TempSQL.GetCoupon();
-//    lcouponData = gc.getCoupon();
-//    dtgviewCoupon.DataSource = null;
-//    dtgviewCoupon.Rows.Clear();
-//    dtgviewCoupon.DataSource = lcouponData;
-//}
-
-//private void gtiListViewCoupon_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
-//  {
-
-//      clearAnyDisplayMessage();
-
-//      var selectedItems = gtiListViewCoupon.SelectedItems;
-//      if (selectedItems.Count > 0)
-//      {
-//          // Display text of first item selected.
-//          if (tempindex != -1 && couponItemSelected.isExpired == true)
-//          {
-//              gtiListViewCoupon.Items[tempindex].ForeColor = Color.Gray;
-//          }
-
-//          compSelected = selectedItems[0].Text;
-//          tempindex = gtiListViewCoupon.FocusedItem.Index;
-//          compIdSelected = LCouponItem2.lCouponItem[tempindex].cID2;
-
-//          //Get the whole package data.
-//          couponItemSelected = LCouponItem2.lCouponItem[tempindex];
-
-//          //Make expired coupon readable.
-//          if (couponItemSelected.isExpired == true)
-//          {
-//              gtiListViewCoupon.Items[tempindex].ForeColor = Color.White;
-//          }
-//      }
-//      else //Not selecting any item
-//      {
-//          if (tempindex != -1 && couponItemSelected.isExpired == true)
-//          {
-//              gtiListViewCoupon.Items[tempindex].ForeColor = Color.Gray;
-//          }
-//          tempindex = -1;
-//      }
-
-//      //var test = e.Item;
-//      ////Revert back coupon item to gray("or disable status") if its expired before selecting a new coupon item.
-//      ////if (m_isCouponExpired == true)
-//      ////{
-//      ////    gtiListViewCoupon.Items[tempindex].ForeColor = Color.Gray;
-//      ////}
-//      ////MessageBox.Show("Item Changed");
-
-//      //DateTime exprDate = Convert.ToDateTime(gtiListViewCoupon.Items[test.Index].SubItems[2].Text);
-
-//      //if (exprDate > DateTime.Now)
-//      //{
-//      //    //MessageBox.Show("Its not expired");
-//      //    //fire the event
-//      //    m_isCouponExpired = false;
-
-
-//      //    //gtiListViewCoupon.SelectedIndexChanged += new EventHandler(gtiListViewCoupon_SelectedIndexChanged);
-
-//      //}
-//      //else
-//      //{
-//      //    //MessageBox.Show("Its expired");
-//      //    //if (e.IsSelected) { e.Item.Selected = false; }//Unable to select the item if it expired.
-
-//      //    //Stop the other event execution
-//      //   // gtiListViewCoupon.SelectedIndexChanged -= new EventHandler(gtiListViewCoupon_SelectedIndexChanged);
-//      //    m_isCouponExpired = true;
-//      //  //  gtiListViewCoupon.SelectedIndexChanged += new EventHandler(gtiListViewCoupon_SelectedIndexChanged);
-//      //   // return;
-//      //}
-//      ////gtiListViewCoupon.SelectedIndexChanged += new EventHandler(gtiListViewCoupon_SelectedIndexChanged);
-//      //runOnce = false;
-//  }
-
-
-//  //private int countTestSelectedIndexChanged = 0;
-
-//  private void gtiListViewCoupon_SelectedIndexChanged(object sender, EventArgs e)
-//  {
-
-//     //// MessageBox.Show("SelectedIndexChanged");
-
-//     // //if (count == 0)
-//     // //{
-//     // if (runOnce == false)
-//     // {
-
-//     //     countTestSelectedIndexChanged = countTestSelectedIndexChanged + 1;
-//     //     MessageBox.Show(countTestSelectedIndexChanged.ToString());
-
-//     //     var selectedItems = gtiListViewCoupon.SelectedItems;
-//     //     if (selectedItems.Count > 0)
-//     //     {
-//     //         // Display text of first item selected.
-//     //         compSelected = selectedItems[0].Text;
-//     //         tempindex = gtiListViewCoupon.FocusedItem.Index;
-//     //         compIdSelected = LCouponItem2.lCouponItem[tempindex].cID2;
-
-//     //         //Get the whole package data.
-//     //         couponItemSelected = LCouponItem2.lCouponItem[tempindex];
-
-//     //         //Make expired coupon readable.
-//     //         //if (m_isCouponExpired == true)
-//     //         //{
-//     //         //    gtiListViewCoupon.Items[tempindex].ForeColor = Color.White;
-//     //         //}
-//     //     }
-
-//     //     runOnce = true;
-//     // }    
-
-//     // //    }
-//     // //    else
-//     // //    {
-
-//     // //    }
-//     // //}
-//     // //count = count + 1;
-//     // //if (count == 2)
-//     // //{
-//     // //    count = 0;
-//     // //}
-//  }
-
-
-
-#endregion

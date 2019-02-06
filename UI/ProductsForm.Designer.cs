@@ -89,6 +89,7 @@ namespace GTI.Modules.ProductCenter.UI
             // 
             // productListView
             // 
+            this.productListView.AllowEraseBackground = true;
             resources.ApplyResources(this.productListView, "productListView");
             this.productListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.productNameHeader,

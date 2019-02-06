@@ -122,7 +122,7 @@
     <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="txtReceipt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 113</value>
+    <value>18, 88</value>
   </data>
   <data name="txtReceipt.Size" type="System.Drawing.Size, System.Drawing">
     <value>288, 26</value>
@@ -141,13 +141,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtReceipt.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>8</value>
   </data>
   <data name="txtPackageName.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="txtPackageName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 50</value>
+    <value>18, 30</value>
   </data>
   <data name="txtPackageName.Size" type="System.Drawing.Size, System.Drawing">
     <value>288, 26</value>
@@ -165,7 +165,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtPackageName.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>9</value>
   </data>
   <data name="lblReceipt.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -178,7 +178,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblReceipt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 89</value>
+    <value>18, 64</value>
   </data>
   <data name="lblReceipt.Size" type="System.Drawing.Size, System.Drawing">
     <value>105, 22</value>
@@ -199,7 +199,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblReceipt.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>10</value>
   </data>
   <data name="lblPackageName.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -211,7 +211,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblPackageName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 26</value>
+    <value>18, 6</value>
   </data>
   <data name="lblPackageName.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 22</value>
@@ -232,7 +232,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblPackageName.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>11</value>
   </data>
   <data name="btnAccept.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
@@ -244,7 +244,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnAccept.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 292</value>
+    <value>18, 360</value>
   </data>
   <data name="btnAccept.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
@@ -253,7 +253,7 @@
     <value>130, 30</value>
   </data>
   <data name="btnAccept.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>11</value>
   </data>
   <data name="btnAccept.Text" xml:space="preserve">
     <value>Accept</value>
@@ -262,13 +262,13 @@
     <value>btnAccept</value>
   </data>
   <data name="&gt;&gt;btnAccept.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.162, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1244, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;btnAccept.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnAccept.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>12</value>
   </data>
   <data name="btnCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
@@ -280,7 +280,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>176, 292</value>
+    <value>182, 360</value>
   </data>
   <data name="btnCancel.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
@@ -289,7 +289,7 @@
     <value>130, 30</value>
   </data>
   <data name="btnCancel.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+    <value>12</value>
   </data>
   <data name="btnCancel.Text" xml:space="preserve">
     <value>Cancel</value>
@@ -298,13 +298,13 @@
     <value>btnCancel</value>
   </data>
   <data name="&gt;&gt;btnCancel.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.162, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1244, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;btnCancel.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>13</value>
   </data>
   <data name="chkChargeDeviceFee.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -316,7 +316,7 @@
     <value>NoControl</value>
   </data>
   <data name="chkChargeDeviceFee.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 154</value>
+    <value>18, 124</value>
   </data>
   <data name="chkChargeDeviceFee.Size" type="System.Drawing.Size, System.Drawing">
     <value>169, 26</value>
@@ -337,7 +337,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkChargeDeviceFee.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>7</value>
   </data>
   <data name="OverrideValidationCalculationCheckbox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -349,7 +349,7 @@
     <value>NoControl</value>
   </data>
   <data name="OverrideValidationCalculationCheckbox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 195</value>
+    <value>18, 214</value>
   </data>
   <data name="OverrideValidationCalculationCheckbox.Size" type="System.Drawing.Size, System.Drawing">
     <value>264, 26</value>
@@ -370,13 +370,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;OverrideValidationCalculationCheckbox.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>6</value>
   </data>
   <data name="ValidationQuantityTextbox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="ValidationQuantityTextbox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>184, 233</value>
+    <value>184, 250</value>
   </data>
   <data name="ValidationQuantityTextbox.Size" type="System.Drawing.Size, System.Drawing">
     <value>122, 26</value>
@@ -397,7 +397,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;ValidationQuantityTextbox.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>4</value>
   </data>
   <data name="ValidationQuantityLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -409,7 +409,7 @@
     <value>NoControl</value>
   </data>
   <data name="ValidationQuantityLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 236</value>
+    <value>18, 253</value>
   </data>
   <data name="ValidationQuantityLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>154, 22</value>
@@ -430,7 +430,125 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;ValidationQuantityLabel.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="ScanCodeText.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 12pt</value>
+  </data>
+  <data name="ScanCodeText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 313</value>
+  </data>
+  <data name="ScanCodeText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 30</value>
+  </data>
+  <data name="ScanCodeText.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="ScanCodeText.Text" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="ScanCodeText.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;ScanCodeText.Name" xml:space="preserve">
+    <value>ScanCodeText</value>
+  </data>
+  <data name="&gt;&gt;ScanCodeText.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ScanCodeText.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ScanCodeText.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="ScanCodeEditButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 9.75pt, style=Bold</value>
+  </data>
+  <data name="ScanCodeEditButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>231, 313</value>
+  </data>
+  <data name="ScanCodeEditButton.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="ScanCodeEditButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 30</value>
+  </data>
+  <data name="ScanCodeEditButton.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="ScanCodeEditButton.Text" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="&gt;&gt;ScanCodeEditButton.Name" xml:space="preserve">
+    <value>ScanCodeEditButton</value>
+  </data>
+  <data name="&gt;&gt;ScanCodeEditButton.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1244, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;ScanCodeEditButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ScanCodeEditButton.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="ScanCodeLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 12pt, style=Bold</value>
+  </data>
+  <data name="ScanCodeLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 290</value>
+  </data>
+  <data name="ScanCodeLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 23</value>
+  </data>
+  <data name="ScanCodeLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="ScanCodeLabel.Text" xml:space="preserve">
+    <value>Assigned Scan Code(s)</value>
+  </data>
+  <data name="&gt;&gt;ScanCodeLabel.Name" xml:space="preserve">
+    <value>ScanCodeLabel</value>
+  </data>
+  <data name="&gt;&gt;ScanCodeLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ScanCodeLabel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ScanCodeLabel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="RequiresValidationCheckbox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 12pt, style=Bold</value>
+  </data>
+  <data name="RequiresValidationCheckbox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="RequiresValidationCheckbox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 156</value>
+  </data>
+  <data name="RequiresValidationCheckbox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>269, 52</value>
+  </data>
+  <data name="RequiresValidationCheckbox.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="RequiresValidationCheckbox.Text" xml:space="preserve">
+    <value>May only be purchased when
+POS is in Validation Mode</value>
+  </data>
+  <data name="&gt;&gt;RequiresValidationCheckbox.Name" xml:space="preserve">
+    <value>RequiresValidationCheckbox</value>
+  </data>
+  <data name="&gt;&gt;RequiresValidationCheckbox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;RequiresValidationCheckbox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;RequiresValidationCheckbox.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -439,7 +557,7 @@
     <value>Stretch</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>327, 355</value>
+    <value>324, 402</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
@@ -451,6 +569,6 @@
     <value>PackageDetailForm</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>GTI.Modules.Shared.GradientForm, ManagedEliteModule, Version=1.3.42.162, Culture=neutral, PublicKeyToken=f7ab3ec26b04c7cf</value>
+    <value>GTI.Modules.Shared.GradientForm, ManagedEliteModule, Version=1.3.42.1245, Culture=neutral, PublicKeyToken=f7ab3ec26b04c7cf</value>
   </data>
 </root>

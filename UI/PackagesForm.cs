@@ -7,6 +7,7 @@
 // US4460: (US4428) Product Center: Set primary validation
 //DE12848: Error found in US4459: (US4428) Product Center: Create validation package > Can copy a validation product
 //DE12974: Error found in US4587: Product Center: Set if a products spend qualifies for points.
+//US5361: Added Support for bonus validation
 
 using System;
 using System.Collections.Generic;
@@ -87,7 +88,8 @@ namespace GTI.Modules.ProductCenter.UI
                     ChargeDeviceFee = packageItemList.ChargeDeviceFee,
                     ReceiptText = packageItemList.ReceiptText,
                     OverrideValidation =  packageItemList.OverrideValidation,
-                    ValidationQuantity = packageItemList.ValidationQuantity
+                    ValidationQuantity = packageItemList.ValidationQuantity,
+                    RequiresValidation = packageItemList.RequiresValidation
                 };
 
                 string strPackName = String.Format("{0,-25}{1,6}", packageItemList.PackageName,
@@ -206,7 +208,26 @@ namespace GTI.Modules.ProductCenter.UI
                                                 packageDetailForm.PackageName,
                                                 packageDetailForm.ReceiptText,
                                                 packageDetailForm.OverrideValidation, 
-                                                packageDetailForm.ValidationQuantity);
+                                                packageDetailForm.ValidationQuantity,
+                                                packageDetailForm.RequiresValidation);
+
+                    foreach (string code in packageDetailForm.ScanCodes)
+                    {
+                        try
+                        {
+
+                            AddRemoveFindScanCodeMessage msg = new AddRemoveFindScanCodeMessage(Operation.Add, ItemType.Package, pkgId, code);
+
+                            msg.Send();
+
+                            if (!msg.WasSuccessful)
+                                MessageForm.Show(string.Format("Scan code {0} is being used by:\n\n{1}-  {2}", code, msg.ItemUsingScanCodeType == ItemType.Package? "Package" : "Product", msg.ItemUsingScanCodeName));
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageForm.Show(ex.Message + "\n\n" + ex.InnerException != null && ex.InnerException.Message != null ? "\n\n" + ex.InnerException.Message : "");
+                        }
+                    }
 
                     // Create a new Package Item object to set in the node's tag.
                     PackageItem packItm = new PackageItem
@@ -216,7 +237,8 @@ namespace GTI.Modules.ProductCenter.UI
                                       ChargeDeviceFee = packageDetailForm.ChargeDeviceFee,
                                       ReceiptText = packageDetailForm.ReceiptText,
                                       OverrideValidation = packageDetailForm.OverrideValidation,
-                                      ValidationQuantity = packageDetailForm.ValidationQuantity
+                                      ValidationQuantity = packageDetailForm.ValidationQuantity,
+                                      RequiresValidation = packageDetailForm.RequiresValidation
                                   };
 
                     // FIX: DE2369 TA3143 Add another product deselects package
@@ -252,11 +274,13 @@ namespace GTI.Modules.ProductCenter.UI
 
                 //Set the values to be edited in the detail form
                 var packageItem = (PackageItem)treeViewPackages.SelectedNode.Tag;
+                packageDetailForm.PackageID = packageItem.PackageId;
                 packageDetailForm.PackageName = packageItem.PackageName;
                 packageDetailForm.ChargeDeviceFee = packageItem.ChargeDeviceFee;
                 packageDetailForm.ReceiptText = packageItem.ReceiptText;
                 packageDetailForm.OverrideValidation = packageItem.OverrideValidation;
                 packageDetailForm.ValidationQuantity = packageItem.ValidationQuantity;
+                packageDetailForm.RequiresValidation = packageItem.RequiresValidation;
 
                 Cursor = Cursors.Default;
 
@@ -272,6 +296,8 @@ namespace GTI.Modules.ProductCenter.UI
                     packageItem.ReceiptText = packageDetailForm.ReceiptText;
                     packageItem.OverrideValidation = packageDetailForm.OverrideValidation;
                     packageItem.ValidationQuantity = packageDetailForm.ValidationQuantity;
+                    packageItem.RequiresValidation = packageDetailForm.RequiresValidation;
+
                     treeViewPackages.SelectedNode.Tag = packageItem;
 
                     // Update the package in the database.
@@ -280,7 +306,8 @@ namespace GTI.Modules.ProductCenter.UI
                                                      packageItem.PackageName,
                                                      packageItem.ReceiptText,
                                                      packageItem.OverrideValidation,
-                                                     packageItem.ValidationQuantity);
+                                                     packageItem.ValidationQuantity,
+                                                     packageItem.RequiresValidation);
                     LoadPackageTreeView(treeViewPackages.SelectedNode.Index, lastPackageName);//RALLY US1796
                     Cursor = Cursors.Default;
                 }
@@ -365,6 +392,8 @@ namespace GTI.Modules.ProductCenter.UI
             lvi.SubItems.Add(packageProductListItem.PointsPerDollar); // 14
             lvi.SubItems.Add(packageProductListItem.PointsToRedeem); // 15
             lvi.SubItems.Add(packageProductListItem.NumbersRequired.ToString()); // 16
+            lvi.SubItems.Add(packageProductListItem.CountsTowardsQualifyingSpend.ToString()); // 17
+            lvi.SubItems.Add(packageProductListItem.Prepaid.ToString()); // 18
 
             // Set the ListViewItem tag with the Package Product Object.
             lvi.Tag = packageProductListItem;
@@ -432,6 +461,7 @@ namespace GTI.Modules.ProductCenter.UI
                 packageDetailForm.ReceiptText = packageItem.ReceiptText;
                 packageDetailForm.OverrideValidation = packageItem.OverrideValidation;
                 packageDetailForm.ValidationQuantity = packageItem.ValidationQuantity;
+                packageDetailForm.RequiresValidation = packageItem.RequiresValidation;
 
                 Cursor = Cursors.Default;
 
@@ -445,7 +475,8 @@ namespace GTI.Modules.ProductCenter.UI
                                                                  packageDetailForm.PackageName,
                                                                  packageDetailForm.ReceiptText,
                                                                  packageDetailForm.OverrideValidation,
-                                                                 packageDetailForm.ValidationQuantity);
+                                                                 packageDetailForm.ValidationQuantity,
+                                                                 packageDetailForm.RequiresValidation);
 
                     // Create a new Package Item object to set in the node's tag.
                     var packageItemNew = new PackageItem
@@ -455,7 +486,8 @@ namespace GTI.Modules.ProductCenter.UI
                                                 ChargeDeviceFee = packageDetailForm.ChargeDeviceFee,
                                                 ReceiptText = packageDetailForm.ReceiptText,
                                                 OverrideValidation = packageDetailForm.OverrideValidation,
-                                                ValidationQuantity = packageDetailForm.ValidationQuantity
+                                                ValidationQuantity = packageDetailForm.ValidationQuantity,
+                                                RequiresValidation = packageDetailForm.RequiresValidation
                                             };
 
                     // Set the root node as default node.
@@ -518,7 +550,18 @@ namespace GTI.Modules.ProductCenter.UI
                     // FIX: DE8818 - Don't allow packages in use to be deleted.
                     try
                     {
-                        DelPackageItemMessage.DeletePackage(packageItem.PackageId);                        
+                        DelPackageItemMessage.DeletePackage(packageItem.PackageId);
+
+                        AddRemoveFindScanCodeMessage msg = new AddRemoveFindScanCodeMessage(Operation.Remove, ItemType.Package, packageItem.PackageId, "");
+
+                        try
+                        {
+                            msg.Send();
+                        }
+                        catch (Exception)
+                        {
+                        }
+
                         listViewProducts.Items.Clear();     //RALLY DE9674
                         SavePackageProducts();              //RALLY DE9674  
                         treeViewPackages.SelectedNode.Remove();
@@ -588,6 +631,7 @@ namespace GTI.Modules.ProductCenter.UI
                     PackageSearchForm form = new PackageSearchForm(ProdCenterSettings);
                     
                     form.SetLastPackageName(lastPackageName);
+
                     if (form.ShowDialog(this) == DialogResult.OK)
                     {               
                         lastPackageName = form.PackageName;                     
@@ -878,10 +922,15 @@ namespace GTI.Modules.ProductCenter.UI
                     break;
                 //END RALLY DE 6644
                 case ProductType.Validation:
-                    getMore = DisplayBasicProductDetailForm("Validation ", productItem, products, isEdit, isPaste, true);
+                    getMore = DisplayBasicProductDetailForm("Validation", productItem, products, isEdit, isPaste, true);
+                    break;
+                case ProductType.BonusValidation://US5361
+                    getMore = DisplayBasicProductDetailForm("Bonus Validation", productItem, products, isEdit, isPaste, true);
                     break;
                 default:
-                    MessageForm.Show(Resources.ProductTypeNotSupported, Resources.ProductTypeErrorTitle, MessageFormTypes.OK);
+                    ProductCenter.Business.ProductCenter.Log(String.Format("Unknown product type {0} being added to a package", productItem.ProductTypeId), LoggerLevel.Warning);
+                    getMore = DisplayBasicProductDetailForm(productItem.ProductTypeName, productItem, products, isEdit, isPaste);
+                    //MessageForm.Show(Resources.ProductTypeNotSupported, Resources.ProductTypeErrorTitle, MessageFormTypes.OK);
                     break;
             }
             // FIX : DE3796
@@ -967,8 +1016,7 @@ namespace GTI.Modules.ProductCenter.UI
                                                  GameCategoryList = gameCategoryList,
                                                  GameTypeList = gameTypeList,
                                                  CardTypeName = CardType.Standard.ToString(),
-                                                 GameTypeName =
-                                                     GameTypeNameFromId((int)GameType.SeventyFiveNumberBingo, gameTypeList),
+                                                 GameTypeName = GameTypeNameFromId((int)GameType.SeventyFiveNumberBingo, gameTypeList),
                                                  CardLevelName = CardLevelName1Multiple(cardLevelList),
                                                  
                                                  GameCategoryName = "Regular",
@@ -995,9 +1043,12 @@ namespace GTI.Modules.ProductCenter.UI
                         bingoProductDetailForm.Price = packageProduct.Price;
                         bingoProductDetailForm.AltPrice = packageProduct.AltPrice;// US4543
                         bingoProductDetailForm.CountsTowardsQualifyingSpend = packageProduct.CountsTowardsQualifyingSpend; // US4587
+                        bingoProductDetailForm.Prepaid = packageProduct.Prepaid;
                         bingoProductDetailForm.PointsPerQuantity = packageProduct.PointsPerQuantity;
                         bingoProductDetailForm.PointsPerDollar = packageProduct.PointsPerDollar;
                         bingoProductDetailForm.PointsToRedeem = packageProduct.PointsToRedeem;
+                        bingoProductDetailForm.CardPositionsMapId = packageProduct.CardPositionsMapId;
+                        bingoProductDetailForm.PositionStarCodes = new SortedList<byte,byte>(packageProduct.PositionStarCodes);
                     }
                     // FIX TA5873
                     else
@@ -1054,8 +1105,10 @@ namespace GTI.Modules.ProductCenter.UI
                                                          NumbersRequired = (ushort)((bingoProductDetailForm.GameTypeName.Contains("Pick Yur Platter")) ? 12 : 0),
                                                          // END : TA5759
                                                          ProgramCBBGameId = 0,
-                                                         CountsTowardsQualifyingSpend = bingoProductDetailForm.CountsTowardsQualifyingSpend //DE12974
-
+                                                         CountsTowardsQualifyingSpend = bingoProductDetailForm.CountsTowardsQualifyingSpend, //DE12974
+                                                         Prepaid = bingoProductDetailForm.Prepaid,
+                                                         CardPositionsMapId = bingoProductDetailForm.CardPositionsMapId,
+                                                         PositionStarCodes = bingoProductDetailForm.PositionStarCodes,
                                                      };
 
                         if (IsProductADuplicate(packageProductListItem))
@@ -1076,7 +1129,7 @@ namespace GTI.Modules.ProductCenter.UI
                 }
                 catch (Exception ex)
                 {
-                    MessageForm.Show("DisplayBingoProductDetailForm(): " + ex.Message);
+                    MessageForm.Show(this, "DisplayBingoProductDetailForm(): " + ex.Message);
                 }
             }
             return result == DialogResult.Retry ? true : false;
@@ -1141,6 +1194,7 @@ namespace GTI.Modules.ProductCenter.UI
                         crystalBallProductDetailForm.Price = packageProduct.Price;
                         crystalBallProductDetailForm.AltPrice = packageProduct.AltPrice; // US4543
                         crystalBallProductDetailForm.CountsTowardsQualifyingSpend = packageProduct.CountsTowardsQualifyingSpend;// US4587
+                        crystalBallProductDetailForm.Prepaid = packageProduct.Prepaid;
                         crystalBallProductDetailForm.PointsPerQuantity = packageProduct.PointsPerQuantity;
                         crystalBallProductDetailForm.PointsPerDollar = packageProduct.PointsPerDollar;
                         crystalBallProductDetailForm.PointsToRedeem = packageProduct.PointsToRedeem;
@@ -1180,6 +1234,7 @@ namespace GTI.Modules.ProductCenter.UI
                                                          Price = crystalBallProductDetailForm.Price,
                                                          AltPrice = crystalBallProductDetailForm.AltPrice, // US4543
                                                          CountsTowardsQualifyingSpend = crystalBallProductDetailForm.CountsTowardsQualifyingSpend, // US4587
+                                                         Prepaid = crystalBallProductDetailForm.Prepaid,
                                                          PointsPerQuantity = crystalBallProductDetailForm.PointsPerQuantity,
                                                          PointsPerDollar = crystalBallProductDetailForm.PointsPerDollar,
                                                          PointsToRedeem = crystalBallProductDetailForm.PointsToRedeem,
@@ -1248,6 +1303,7 @@ namespace GTI.Modules.ProductCenter.UI
                         basicProductDetailForm.Price = packageProduct.Price;
                         basicProductDetailForm.AltPrice = packageProduct.AltPrice;// US4543
                         basicProductDetailForm.CountsTowardsQualifyingSpend = packageProduct.CountsTowardsQualifyingSpend;// US4587
+                        basicProductDetailForm.Prepaid = packageProduct.Prepaid;
                         basicProductDetailForm.PointsPerQuantity = packageProduct.PointsPerQuantity;
                         basicProductDetailForm.PointsPerDollar = packageProduct.PointsPerDollar;
                         basicProductDetailForm.PointsToRedeem = packageProduct.PointsToRedeem;
@@ -1295,12 +1351,14 @@ namespace GTI.Modules.ProductCenter.UI
                             Price = basicProductDetailForm.Price,
                             AltPrice = basicProductDetailForm.AltPrice,// US4543
                             CountsTowardsQualifyingSpend = basicProductDetailForm.CountsTowardsQualifyingSpend, // US4587
+                            Prepaid = basicProductDetailForm.Prepaid,
                             PointsPerQuantity = basicProductDetailForm.PointsPerQuantity,
                             PointsPerDollar = basicProductDetailForm.PointsPerDollar,
                             PointsToRedeem = basicProductDetailForm.PointsToRedeem,
                             ProgramGameName = string.Empty,
                             NumbersRequired = 0,
-                            ProgramCBBGameId = 0
+                            ProgramCBBGameId = 0,
+                            PositionStarCodes = new SortedList<byte, byte>()
                         };
 
                         if (IsProductADuplicate(packageProductListItem))
@@ -1349,6 +1407,9 @@ namespace GTI.Modules.ProductCenter.UI
                         PackageProduct = packageProduct,
                         CardLevelList = cardLevelList, // US4516
                         CardLevelName = CardLevelName1Multiple(cardLevelList),
+                        CardTypeList = GetCardTypeMessage.GetArray(),
+
+                        CardTypeName = CardType.Standard.ToString(),
                         PointsPerDollar = "0",
                         PointsPerQuantity = "0",
                         PointsToRedeem = "0",
@@ -1357,6 +1418,7 @@ namespace GTI.Modules.ProductCenter.UI
                         CountsTowardsQualifyingSpend = true,
                         Quantity = "1",
                         GameCategoryList = gameCategoryList,
+                        GameCategoryName = "Regular",
                         AllowAddAnother = !(isEdit || isPaste),
                         WholePoints = ProdCenterSettings.WholeProductPoints
                     };
@@ -1364,12 +1426,14 @@ namespace GTI.Modules.ProductCenter.UI
                     {
                         // Set the form's value for editing.
                         paperProductDetailForm.CardLevelName = packageProduct.CardLevelName; // US4516
+                        paperProductDetailForm.CardTypeId = packageProduct.CardTypeId;
 
                         paperProductDetailForm.Quantity = packageProduct.Quantity.ToString();
                         paperProductDetailForm.IsTaxed = packageProduct.IsTaxed;
                         paperProductDetailForm.Price = packageProduct.Price;
                         paperProductDetailForm.AltPrice = packageProduct.AltPrice;
                         paperProductDetailForm.CountsTowardsQualifyingSpend = packageProduct.CountsTowardsQualifyingSpend; // US4587
+                        paperProductDetailForm.Prepaid = packageProduct.Prepaid;
                         paperProductDetailForm.PointsPerQuantity = packageProduct.PointsPerQuantity;
                         paperProductDetailForm.PointsPerDollar = packageProduct.PointsPerDollar;
                         paperProductDetailForm.PointsToRedeem = packageProduct.PointsToRedeem;
@@ -1401,8 +1465,8 @@ namespace GTI.Modules.ProductCenter.UI
                             CardLevelName = paperProductDetailForm.CardLevelName,
                             CardMediaId = 0,
                             CardMediaName = string.Empty,
-                            CardTypeId = 0,
-                            CardTypeName = string.Empty,
+                            CardTypeId = paperProductDetailForm.CardTypeId,
+                            CardTypeName = paperProductDetailForm.CardTypeName,
                             GameCategoryId = paperProductDetailForm.GameCategoryId,
                             GameCategoryName = paperProductDetailForm.GameCategoryName,
                             Quantity = byte.Parse(paperProductDetailForm.Quantity),
@@ -1411,6 +1475,7 @@ namespace GTI.Modules.ProductCenter.UI
                             Price = paperProductDetailForm.Price,
                             AltPrice = paperProductDetailForm.AltPrice,
                             CountsTowardsQualifyingSpend = paperProductDetailForm.CountsTowardsQualifyingSpend, // US4587
+                            Prepaid = paperProductDetailForm.Prepaid,
                             PointsPerQuantity = paperProductDetailForm.PointsPerQuantity,
                             PointsPerDollar = paperProductDetailForm.PointsPerDollar,
                             PointsToRedeem = paperProductDetailForm.PointsToRedeem,

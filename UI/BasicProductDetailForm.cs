@@ -102,6 +102,7 @@ namespace GTI.Modules.ProductCenter.UI
                     PointsToRedeem != PackageProduct.PointsToRedeem ||
                     price1 != price2 || altPrice1 != altPrice2 ||
                     CountsTowardsQualifyingSpend != PackageProduct.CountsTowardsQualifyingSpend || // US4587
+                    Prepaid != PackageProduct.Prepaid ||
                     IsTaxed != PackageProduct.IsTaxed ||
                     Quantity != PackageProduct.Quantity.ToString())
                     && (qty > 0);
@@ -215,7 +216,22 @@ namespace GTI.Modules.ProductCenter.UI
             get { return checkBoxPointQualify.Checked; }
             set { checkBoxPointQualify.Checked = value; }
         }
-
+        #endregion
+        #region Prepaid
+        /// <summary>
+        /// Get/Set whether the product has been pre-paid
+        /// </summary>
+        public bool Prepaid
+        {
+            get
+            {
+                return checkBoxPrepaid.Checked;
+            }
+            set
+            {
+                checkBoxPrepaid.Checked = value;
+            }
+        }
         #endregion
         #region Price
         public string Price

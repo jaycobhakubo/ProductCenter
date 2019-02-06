@@ -26,12 +26,6 @@ namespace GTI.Modules.ProductCenter.UI
             Application.Idle += OnIdle;
             AcceptButton = m_next;
             CancelButton = m_cancel;
-
-                //System.Drawing.Color defaultBackground = System.Drawing.ColorTranslator.FromHtml("#44658D");
-                //this.BackColor = defaultBackground;
-                //this.ForeColor = System.Drawing.Color.White;
-        
-         
         }
 
         private void OnIdle(object sender, EventArgs e)

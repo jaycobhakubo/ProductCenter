@@ -5,14 +5,44 @@ using System.Windows;
 using System.Windows.Forms;
 using GTI.Modules.ProductCenter.Properties;
 using GTI.Modules.Shared;
+using System.Collections.Generic;
 
 namespace GTI.Modules.ProductCenter.UI
 {
     public partial class PackageDetailForm : GradientForm
     {
         protected DisplayMode DisplayMode = new NormalDisplayMode();
+        protected int m_packageID = 0;
+        protected List<string> m_scanCodes = new List<string>();
 
         #region Member Properties
+        /// <summary>
+        /// Gets or sets the package ID (used for scan codes).
+        /// </summary>
+        public int PackageID
+        {
+            get
+            {
+                return m_packageID;
+            }
+
+            set
+            {
+                m_packageID = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets the scan codes for the package.
+        /// </summary>
+        public List<string> ScanCodes
+        {
+            get
+            {
+                return m_scanCodes;
+            }
+        }
+
         /// <summary>
         /// Get or Set the Package Name
         /// </summary>
@@ -23,7 +53,23 @@ namespace GTI.Modules.ProductCenter.UI
         /// </summary>
         public string ReceiptText { get { return txtReceipt.Text; } set { txtReceipt.Text = value; } }
         public bool ChargeDeviceFee { get { return chkChargeDeviceFee.Checked; } set { chkChargeDeviceFee.Checked = value; } }
-        
+
+        /// <summary>
+        /// Gets or sets if the package requires validation mode at POS to purchase.
+        /// </summary>
+        public bool RequiresValidation
+        {
+            get
+            {
+                return RequiresValidationCheckbox.Checked;
+            }
+
+            set
+            {
+                RequiresValidationCheckbox.Checked = value;
+            }
+        }
+
         public bool OverrideValidation { get { return OverrideValidationCalculationCheckbox.Checked; } set { OverrideValidationCalculationCheckbox.Checked = value; } }
         
         public int ValidationQuantity 
@@ -92,6 +138,11 @@ namespace GTI.Modules.ProductCenter.UI
             }
         }
         #endregion
+
+        private void PackageDetailForm_Shown(object sender, EventArgs e)
+        {
+            UpdateScanCode();
+        }
 
         private void AcceptClick(object sender, EventArgs e)
         {
@@ -165,6 +216,66 @@ namespace GTI.Modules.ProductCenter.UI
             else
             {
                 e.Handled = true;
+            }
+        }
+
+        private void ScanCodeEditButton_Click(object sender, EventArgs e)
+        {
+            ScanCodeEditForm editForm = new ScanCodeEditForm();
+
+            editForm.ItemIs = ItemType.Package;
+            editForm.ItemID = PackageID;
+
+            if (PackageID == 0)
+                editForm.ScanCodes = m_scanCodes;
+
+            editForm.ShowDialog(this);
+
+            if (PackageID == 0)
+            {
+                m_scanCodes.Clear();
+
+                foreach (string code in editForm.ScanCodes)
+                    m_scanCodes.Add(code);
+            }
+
+            UpdateScanCode();
+        }
+
+        private void UpdateScanCode()
+        {
+            if (PackageID != 0) //get the scan codes
+            {
+                GetScanCodesMessage getCodes = new GetScanCodesMessage(true, PackageID);
+
+                Cursor = Cursors.WaitCursor;
+
+                try
+                {
+                    getCodes.Send();
+
+                    if (getCodes.ScanCodes.Count == 1)
+                        ScanCodeText.Text = getCodes.ScanCodes[0];
+                    else if (getCodes.ScanCodes.Count > 1)
+                        ScanCodeText.Text = "Multiple";
+                    else
+                        ScanCodeText.Text = "None";
+                }
+                catch (Exception ex)
+                {
+                    MessageForm.Show(ex.Message);
+                }
+
+                Cursor = Cursors.Default;
+            }
+            else
+            {
+                if (ScanCodes.Count == 1)
+                    ScanCodeText.Text = ScanCodes[0];
+                else if (ScanCodes.Count > 1)
+                    ScanCodeText.Text = "Multiple";
+                else
+                    ScanCodeText.Text = "None";
             }
         }
     }

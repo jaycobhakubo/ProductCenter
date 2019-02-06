@@ -51,7 +51,6 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
         #endregion
 
         #region VARIABLES
-        private readonly RestrictionView m_restrictionView;
         private readonly SpendLevelView m_spendLevelsView;
         private readonly AdvancedQuantityView m_advancedQuantityView;
         private bool m_isFixed;
@@ -68,10 +67,10 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
         {
             get
             {
-                if (SelectedType.HasValue && 
-                    SelectedType.Value != DiscountType.Open && 
-                    CurrentDiscount != null && 
-                    CurrentDiscount.AdvancedType != DiscountItem.AdvanceDiscountType.Quantity )
+                if(SelectedType.HasValue &&
+                    SelectedType.Value != DiscountType.Open &&
+                    CurrentDiscount != null &&
+                    CurrentDiscount.AdvancedType != DiscountItem.AdvanceDiscountType.Quantity)
                     return txtbxPrice.Foreground != NO_INPUT_BRUSH;
                 else
                     return true; // price is being ignored
@@ -82,14 +81,14 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
 
         public List<ProductItemList> AvailableProducts
         {
-            set 
+            set
             {
                 m_productItems = new List<ProductItemList>();
-                if (value != null)
+                if(value != null)
                 {
                     foreach(var productItem in value)
                     {
-                        if (productItem.ProductItemId > 0 && productItem.IsActive) // shouldn't be able to selet inactive products (taken from SelectProductForm)
+                        if(productItem.ProductItemId > 0 && productItem.IsActive) // shouldn't be able to selet inactive products (taken from SelectProductForm)
                             m_productItems.Add(productItem);
                     }
                 }
@@ -100,11 +99,11 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
             set
             {
                 m_packageItems = new List<PackageItem>();
-                if (value != null)
+                if(value != null)
                 {
-                    foreach (var productItem in value)
+                    foreach(var productItem in value)
                     {
-                        if (productItem.PackageId > 0 )
+                        if(productItem.PackageId > 0)
                             m_packageItems.Add(productItem);
                     }
                 }
@@ -135,12 +134,12 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
         /// </remarks>
         public DiscountType? SelectedType
         {
-            get 
+            get
             {
-                if (cmbxDiscountType.SelectedIndex == -1)
+                if(cmbxDiscountType.SelectedIndex == -1)
                     return null;
                 else
-                    return (DiscountType)(cmbxDiscountType.SelectedIndex+1);
+                    return (DiscountType)(cmbxDiscountType.SelectedIndex + 1);
             }
         }
 
@@ -151,10 +150,10 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
         {
             get
             {
-                if (cmbxAwardType.SelectedIndex == -1)
+                if(cmbxAwardType.SelectedIndex == -1)
                     return null;
                 else
-                    return (DiscountItem.AwardTypes)(cmbxAwardType.SelectedIndex +1);
+                    return (DiscountItem.AwardTypes)(cmbxAwardType.SelectedIndex + 1);
             }
         }
 
@@ -166,7 +165,7 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
             set
             {
                 txtblckErr.Content = value;
-                if (String.IsNullOrWhiteSpace(value))
+                if(String.IsNullOrWhiteSpace(value))
                     errIcon.Visibility = errBackground.Visibility = System.Windows.Visibility.Hidden;
                 else
                     errIcon.Visibility = errBackground.Visibility = System.Windows.Visibility.Visible;
@@ -186,13 +185,12 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
             m_advancedQuantityView = new AdvancedQuantityView();
             m_advancedQuantityView.AdvancedQuantityChanged += AdvancedSettingsChanged;
 
-            m_restrictionView = new RestrictionView(m_productCenterSettings);
+            if(!m_productCenterSettings.EnableValidation)
+                excludeValidationChargesOnExcludedPackagesChk.Visibility = System.Windows.Visibility.Hidden;
 
             m_spendLevelsView = new SpendLevelView();
             m_spendLevelsView.SpendLevelCountChanged += SpendLevelsChanged;
 
-
-            QualificationsControl.Content = m_restrictionView;
             AdvancedContentControl.Content = m_spendLevelsView;
 
             DiscountView.SavedButton = btnSave;
@@ -202,11 +200,11 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
 
             m_dayOfWeek = new List<string>();
             m_dayOfWeek.Add("All");
-            foreach (DayOfWeek value in Enum.GetValues(typeof(DayOfWeek)))
+            foreach(DayOfWeek value in Enum.GetValues(typeof(DayOfWeek)))
             {
                 m_dayOfWeek.Add(value.ToString());
             }
-            
+
             ScheduleItems = new ObservableCollection<ScheduleItem>();
             AddScheduleButton_Click(this, null);
 
@@ -233,13 +231,13 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
         /// </summary>
         private void CustomValidation()
         {
-            if (ValidateDiscountData())
+            if(ValidateDiscountData())
             {
-                if (btnSave.IsEnabled != true) { btnSave.IsEnabled = true; }
+                if(btnSave.IsEnabled != true) { btnSave.IsEnabled = true; }
             }
             else
             {
-                if (btnSave.IsEnabled != false) { btnSave.IsEnabled = false; }
+                if(btnSave.IsEnabled != false) { btnSave.IsEnabled = false; }
             }
         }
 
@@ -252,25 +250,25 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
             //MainTab.IsSelected = true;
             txtbxDiscountName.Text = CurrentDiscount.DiscountName;
 
-            if (CurrentDiscount.Type == DiscountType.Fixed)
+            if(CurrentDiscount.Type == DiscountType.Fixed)
             {
                 cmbxDiscountType.SelectedIndex = 0;
             }
-            else if (CurrentDiscount.Type == DiscountType.Open)
+            else if(CurrentDiscount.Type == DiscountType.Open)
             {
                 cmbxDiscountType.SelectedIndex = 1;
             }
-            else if (CurrentDiscount.Type == DiscountType.Percent)
+            else if(CurrentDiscount.Type == DiscountType.Percent)
             {
                 cmbxDiscountType.SelectedIndex = 2;
             }
 
             //Award Type
-            if (CurrentDiscount.DiscountAwardType == DiscountItem.AwardTypes.Manual)//Manual
+            if(CurrentDiscount.DiscountAwardType == DiscountItem.AwardTypes.Manual)//Manual
             {
                 cmbxAwardType.SelectedIndex = 0;
             }
-            else if (CurrentDiscount.DiscountAwardType == DiscountItem.AwardTypes.Automatic)//Automatic
+            else if(CurrentDiscount.DiscountAwardType == DiscountItem.AwardTypes.Automatic)//Automatic
             {
                 cmbxAwardType.SelectedIndex = 1;
             }
@@ -284,17 +282,19 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
             txtbxPrice.Text = Helper.DecimalStringToMoneyString(CurrentDiscount.DiscountAmount.ToString());
             txtbxPointsPerDollar.Text = Helper.DecimalStringToMoneyString(CurrentDiscount.PointsPerDollar.ToString());
             txtbxMinPrice.Text = Helper.DecimalStringToMoneyString(CurrentDiscount.MinimumSpend.ToString());
+            txtbxMinPacks.Text = CurrentDiscount.MinimumPacks.ToString();
             txtbxMaxDiscount.Text = Helper.DecimalStringToMoneyString(CurrentDiscount.MaximumDiscount.ToString());
-            txtbxPointsPerDollar.Foreground = txtbxMinPrice.Foreground = txtbxMaxDiscount.Foreground = txtbxPrice.Foreground = VALID_BRUSH;
-            m_restrictionView.LoadProductItems(m_productItems);
-            m_restrictionView.LoadPackageItems(m_packageItems); // US4942
-            m_restrictionView.SetRestrictedProducts(CurrentDiscount.RestrictedProductIds);
-            m_restrictionView.SetRestrictedPackages(CurrentDiscount.RestrictedPackageIds);
-            m_restrictionView.IgnoreValidationsForPackages = CurrentDiscount.IgnoreValidationsForIgnoredPackages;
+            txtbxPointsPerDollar.Foreground = txtbxMinPrice.Foreground = txtbxMinPacks.Foreground = txtbxMaxDiscount.Foreground = txtbxPrice.Foreground = VALID_BRUSH;
+
+            LoadSpendExcludedProducts(m_productItems, CurrentDiscount);
+            LoadSpendExcludedPackages(m_packageItems, CurrentDiscount);
+            excludeValidationChargesOnExcludedPackagesChk.IsChecked = CurrentDiscount.IgnoreValidationsForIgnoredPackages;
+            LoadCountQualifyingMSC(m_packageItems, CurrentDiscount);
+
             m_spendLevelsView.LoadSpendLevels(CurrentDiscount.SpendLevels.OrderBy(x => x.Sequence).ToList());
-            
+
             //JKIM Quantity Discount
-            AdvancedTypeComboBox.SelectedIndex = (int) CurrentDiscount.AdvancedType;
+            AdvancedTypeComboBox.SelectedIndex = (int)CurrentDiscount.AdvancedType;
             m_advancedQuantityView.Load(CurrentDiscount);
 
             datePkrEndDate.SelectedDate = CurrentDiscount.EndDate;
@@ -303,15 +303,15 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
 
             //4320
             txtbxMaxUsePerSession.Text = CurrentDiscount.MaximumUsePerSession.ToString(CultureInfo.InvariantCulture);
-            
+
             ScheduleItems.Clear(); // US3956
-            if (CurrentDiscount.DiscountSchedule != null && CurrentDiscount.DiscountSchedule.Count != 0)
+            if(CurrentDiscount.DiscountSchedule != null && CurrentDiscount.DiscountSchedule.Count != 0)
             {
                 List<ScheduleItem> schedItems = new List<ScheduleItem>(); // use this to group everything
-                foreach (var schedule in CurrentDiscount.DiscountSchedule)
+                foreach(var schedule in CurrentDiscount.DiscountSchedule)
                 {
                     ScheduleItem match = schedItems.FirstOrDefault(x => x.Schedule.DayOfWeek == schedule.DayOfWeek);
-                    if (match == null)
+                    if(match == null)
                     {
                         match = new ScheduleItem(schedule); // just re-use it..
                         match.ShowAddButton = System.Windows.Visibility.Hidden;
@@ -325,7 +325,7 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
                     }
                 }
 
-                if (schedItems.Count > 0)
+                if(schedItems.Count > 0)
                 {
                     schedItems.Last().ShowAddButton = System.Windows.Visibility.Visible;
                 }
@@ -341,9 +341,75 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
             DisplayTabs();
             txtbxDiscountName.Focus();
 
-            if (AwardType == DiscountItem.AwardTypes.Manual && ScheduleTab.IsSelected)
+            if(AwardType == DiscountItem.AwardTypes.Manual && ScheduleTab.IsSelected)
             {
                 ScheduleTab.IsSelected = false;
+            }
+        }
+
+        private void LoadSpendExcludedProducts(List<ProductItemList> productItems, DiscountItem selectFromDiscount = null)
+        {
+            var cqp = new Dictionary<int, string>();
+            var cqpSel = new Dictionary<int, string>();
+            foreach(var pil in productItems)
+            {
+                if(pil.ProductItemId > 0)
+                    cqp.Add(pil.ProductItemId, pil.ProductItemName);
+                if(selectFromDiscount != null && selectFromDiscount.RestrictedProductIds.Contains(pil.ProductItemId))
+                    cqpSel.Add(pil.ProductItemId, pil.ProductItemName);
+            }
+            spendExcludedProductsMSC.ItemsSource = cqp;
+
+            if(selectFromDiscount != null)
+                spendExcludedProductsMSC.SelectedItems = cqpSel;
+            else
+            {
+                spendExcludedProductsMSC.SetToEmpty();
+                spendExcludedProductsMSC.UncheckAllItems();
+            }
+        }
+
+        private void LoadSpendExcludedPackages(List<PackageItem> packageItems, DiscountItem selectFromDiscount = null)
+        {
+            var cqp = new Dictionary<int, string>();
+            var cqpSel = new Dictionary<int, string>();
+            foreach(var p in packageItems)
+            {
+                if(p.PackageId > 0)
+                    cqp.Add(p.PackageId, p.PackageName);
+                if(selectFromDiscount != null && selectFromDiscount.RestrictedPackageIds.Contains(p.PackageId))
+                    cqpSel.Add(p.PackageId, p.PackageName);
+            }
+            spendExcludedPackagesMSC.ItemsSource = cqp;
+
+            if(selectFromDiscount != null)
+                spendExcludedPackagesMSC.SelectedItems = cqpSel;
+            else
+            {
+                spendExcludedPackagesMSC.SetToEmpty();
+                spendExcludedPackagesMSC.UncheckAllItems();
+            }
+        }
+
+        private void LoadCountQualifyingMSC(List<PackageItem> packageItems, DiscountItem selectFromDiscount = null)
+        {
+            var cqp = new Dictionary<int, string>();
+            var cqpSel = new Dictionary<int, string>();
+            foreach(var p in packageItems)
+            {
+                if(p.PackageId > 0)
+                    cqp.Add(p.PackageId, p.PackageName);
+                if(selectFromDiscount != null && selectFromDiscount.MinimumPacksEligibleIds.Contains(p.PackageId))
+                    cqpSel.Add(p.PackageId, p.PackageName);
+            }
+            countQualifyingPackagesMSC.ItemsSource = cqp;
+
+            if(selectFromDiscount != null)
+                countQualifyingPackagesMSC.SelectedItems = cqpSel;
+            else
+            {
+                countQualifyingPackagesMSC.SetToEmpty();
+                countQualifyingPackagesMSC.UncheckAllItems();
             }
         }
 
@@ -357,7 +423,8 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
             txtbxDiscountName.Text = string.Empty;
             cmbxDiscountType.SelectedIndex = cmbxAwardType.SelectedIndex = -1;
             txtbxPointsPerDollar.Text = txtbxMinPrice.Text = txtbxMaxDiscount.Text = txtbxPrice.Text = Helper.DecimalStringToMoneyString(string.Empty);
-            txtbxPointsPerDollar.Foreground = txtbxMinPrice.Foreground = txtbxMaxDiscount.Foreground = txtbxPrice.Foreground = NO_INPUT_BRUSH;
+            txtbxMinPacks.Text = "0";
+            txtbxPointsPerDollar.Foreground = txtbxMinPrice.Foreground = txtbxMinPacks.Foreground = txtbxMaxDiscount.Foreground = txtbxPrice.Foreground = NO_INPUT_BRUSH;
             chkbxIsActive.IsChecked = false;
             chkBxRequiredPlayer.IsChecked = false;
             btnSave.Content = "Save";
@@ -365,9 +432,11 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
             m_spendLevelsView.ResetSpendLevels();
             AdvancedTypeComboBox.SelectedIndex = (int)CurrentDiscount.AdvancedType;
             m_advancedQuantityView.Load(CurrentDiscount);
-            m_restrictionView.LoadProductItems(m_productItems);
-            m_restrictionView.LoadPackageItems(m_packageItems); // US4942
-            m_restrictionView.ResetControl();
+
+            LoadSpendExcludedProducts(m_productItems);
+            LoadSpendExcludedPackages(m_packageItems);
+            LoadCountQualifyingMSC(m_packageItems, null);
+
             datePkrStartDate.SelectedDate = DateTime.Now;
             datePkrEndDate.SelectedDate = null;
             ScheduleItems = new ObservableCollection<ScheduleItem>();
@@ -421,41 +490,7 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
         public void ControlReadOnlyFalse()
         {
             SetDiscountUIStatus(true);
-            txtbxDiscountName.Focus();
-
-            //txtbxDiscountName.IsReadOnly = false;
-            //txtbxDiscountName.Focusable = true;
-            //txtbxDiscountName.IsHitTestVisible = true;
-            //cmbxDiscountType.IsReadOnly = false;
-            //cmbxDiscountType.IsHitTestVisible = true;
-            //cmbxDiscountType.Focusable = true;
-            //txtbxPrice.IsReadOnly = false;
-            //txtbxPrice.Focusable = true;
-            //txtbxPrice.IsHitTestVisible = true;
-            //txtbxPointsPerDollar.IsReadOnly = false;
-            //txtbxPointsPerDollar.Focusable = true;
-            //txtbxPointsPerDollar.IsHitTestVisible = true;
-            //chkBxRequiredPlayer.IsEnabled = true;
-            //chkbxIsActive.IsEnabled = true;
-            //MainWindowTransitionControl.IsEnabled = true;
-            //if (m_isSave == true)
-            //{
-            //    m_RestrictionView.ListProductItem = MemberListProductItem;
-            //    m_RestrictionView.LoadProductItem();
-            //}
-
-            //if (cmbxAwardType.SelectedIndex != 0)
-            //{
-            //    cmbxAwardType.IsReadOnly = false;
-            //    cmbxAwardType.IsHitTestVisible = true;
-            //    cmbxAwardType.Focusable = true;
-            //}
-            //datePkrStartDate.IsEnabled = true;
-            //datePkrStartDate.Focusable = true;
-            //if(chkBxExpires.IsChecked.Value)
-            //    datePkrEndDate.IsEnabled = true;
-            //datePkrEndDate.Focusable = true;
-            //chkBxExpires.IsEnabled = true;       
+            txtbxDiscountName.Focus(); 
         }
 
         /// <summary>
@@ -471,11 +506,11 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
             children.AddRange(ScheduleGrid.Children.Cast<UIElement>());
             children.AddRange(RulesGrid.Children.Cast<UIElement>());
 
-            foreach (UIElement child in children) // all discount data is contained within the grids
+            foreach(UIElement child in children) // all discount data is contained within the grids
             {
-                if (child is TextBox)
+                if(child is TextBox)
                     (child as TextBox).IsReadOnly = !enabled; // looks nicer. Could theme, but this is easier
-                else if (child is ComboBox)
+                else if(child is ComboBox)
                     (child as ComboBox).IsReadOnly = !enabled;
 
                 child.IsEnabled = enabled;
@@ -485,23 +520,29 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
 
             //US4320
             // if player is unchecked, we need to update max usage per session controls
-            if (chkBxRequiredPlayer.IsChecked == false && chkBxRequiredPlayer.IsEnabled)
+            if(chkBxRequiredPlayer.IsChecked == false && chkBxRequiredPlayer.IsEnabled)
             {
                 chkBxRequiredPlayer_Unchecked(null, null);
             }
 
             // do any special logic here
             AdvancedContentControl.IsEnabled = enabled;
-            QualificationsControl.IsEnabled = enabled;
-            if (enabled)
+
+            spendExcludedProductsMSC.IsEnabled = enabled;
+            spendExcludedPackagesMSC.IsEnabled = enabled;
+            excludeValidationChargesOnExcludedPackagesChk.IsEnabled = enabled;
+            countQualifyingPackagesMSC.IsEnabled = enabled;
+
+            if(enabled)
             {
-                if (IsSave == true)
+                if(IsSave == true)
                 {
-                    m_restrictionView.LoadProductItems(m_productItems);
-                    m_restrictionView.LoadPackageItems(m_packageItems); // US4942
+                    LoadSpendExcludedProducts(m_productItems);
+                    LoadSpendExcludedPackages(m_packageItems);
+                    LoadCountQualifyingMSC(m_packageItems);
                 }
 
-                if (cmbxAwardType.SelectedIndex != 0)
+                if(cmbxAwardType.SelectedIndex != 0)
                 {
                     cmbxAwardType.IsReadOnly = false;
                     cmbxAwardType.IsHitTestVisible = true;
@@ -530,17 +571,17 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
         private bool ScheduleOverlapsWithExisting(DiscountItem inProgressDiscount)
         {
             bool hasConflict = false;
-            foreach (DiscountItem discount in DiscountView.ListOfDiscountsItem)
+            foreach(DiscountItem discount in DiscountView.ListOfDiscountsItem)
             {
-                if (discount.IsActive && discount.DiscountAwardType == DiscountItem.AwardTypes.Automatic && discount.Type == DiscountType.Percent
-                    && (!discount.StartDate.HasValue || discount.StartDate <= inProgressDiscount.StartDate ) 
-                    && (!discount.EndDate.HasValue || discount.EndDate >= inProgressDiscount.EndDate ) )
+                if(discount.IsActive && discount.DiscountAwardType == DiscountItem.AwardTypes.Automatic && discount.Type == DiscountType.Percent
+                    && (!discount.StartDate.HasValue || discount.StartDate <= inProgressDiscount.StartDate)
+                    && (!discount.EndDate.HasValue || discount.EndDate >= inProgressDiscount.EndDate))
                 {
-                    if (discount.DiscountSchedule != null && inProgressDiscount.DiscountSchedule != null)
+                    if(discount.DiscountSchedule != null && inProgressDiscount.DiscountSchedule != null)
                     {
-                        foreach (var sched in discount.DiscountSchedule)
+                        foreach(var sched in discount.DiscountSchedule)
                         {
-                            if(inProgressDiscount.DiscountSchedule.Any(x=>x.Equals(sched)))
+                            if(inProgressDiscount.DiscountSchedule.Any(x => x.Equals(sched)))
                             {
                                 hasConflict = true;
                                 break;
@@ -552,10 +593,10 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
                         hasConflict = true;
                     }
 
-                    if (hasConflict)
+                    if(hasConflict)
                     {
                         System.Windows.Forms.DialogResult result = MessageForm.Show(String.Format("Discount '{0}' has a schedule that overlaps with this discount; only one can apply to sale. Save anyway?", discount.DiscountName), "", MessageFormTypes.YesCancel);
-                        if (result == System.Windows.Forms.DialogResult.OK || result == System.Windows.Forms.DialogResult.Yes) // ignore overlap
+                        if(result == System.Windows.Forms.DialogResult.OK || result == System.Windows.Forms.DialogResult.Yes) // ignore overlap
                             hasConflict = false;
                     }
                 }
@@ -574,7 +615,7 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
             bool exists = false;
             List<string> matchingMenus = new List<string>();
 
-            if (DiscountView.GettingMenus) // should really be a "please wait" spinner
+            if(DiscountView.GettingMenus) // should really be a "please wait" spinner
             {
                 //WaitForm waitForm = new WaitForm(); // this doesn't work. Waitform expects an image
                 //waitForm.UseWaitCursor = true;
@@ -589,13 +630,13 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
             }
 
             List<FullMenuItem> menus = DiscountView.Menus;
-            if (menus != null)
+            if(menus != null)
             {
-                foreach (var menu in menus)
+                foreach(var menu in menus)
                 {
-                    if (menu.MenuPages != null)
+                    if(menu.MenuPages != null)
                     {
-                        if(menu.MenuPages.Any(x=>x.DiscountId == discountID))
+                        if(menu.MenuPages.Any(x => x.DiscountId == discountID))
                         {   // could break out early here, but since the "normal" case of it not finding anything will go through them all, it will take the same amount of time
                             exists = true;
                             matchingMenus.Add(menu.MenuName);
@@ -605,9 +646,9 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
             }
             if(exists)
             {
-                string message = String.Format("Can't inactivate '{0}' because it is in use. The discount is currently being used in the following menu(s): {1}", 
+                string message = String.Format("Can't deactivate '{0}' because it is in use. The discount is currently being used in the following menu(s): {1}",
                     discountName, String.Join(", ", matchingMenus));
-                MessageForm.Show(message, "Inactivate Discount", MessageFormTypes.OK);
+                MessageForm.Show(message, "Deactivate Discount", MessageFormTypes.OK);
             }
 
             return exists;
@@ -619,7 +660,7 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
         private void DisplayTabs()
         {
             //Schedule Tab
-            if (!AwardType.HasValue || AwardType.Value == DiscountItem.AwardTypes.Manual)
+            if(!AwardType.HasValue || AwardType.Value == DiscountItem.AwardTypes.Manual)
             {
                 ScheduleTab.Visibility = Visibility.Collapsed;
                 ScheduleTab.IsSelected = false;
@@ -631,7 +672,7 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
             }
 
             //Advanced Tab
-            if (CurrentDiscount != null && 
+            if(CurrentDiscount != null &&
                 CurrentDiscount.AdvancedType != DiscountItem.AdvanceDiscountType.None)
             {
                 AdvancedTab.Visibility = Visibility.Visible;
@@ -643,20 +684,20 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
             }
 
             //Qualification Tab
-            if (!SelectedType.HasValue)
+            if(!SelectedType.HasValue)
             {
                 QualificationTab.Visibility = Visibility.Collapsed;
                 QualificationTab.IsSelected = false;
             }
-            else if (SelectedType.Value == DiscountType.Open)
+            else if(SelectedType.Value == DiscountType.Open)
             {
                 AdvancedTab.Visibility = QualificationTab.Visibility = Visibility.Collapsed;
                 AdvancedTab.IsSelected = QualificationTab.IsSelected = false;
             }
-            else if (SelectedType.Value == DiscountType.Percent)
+            else if(SelectedType.Value == DiscountType.Percent)
             {
-                if (AwardType == DiscountItem.AwardTypes.Automatic && 
-                    CurrentDiscount != null && 
+                if(AwardType == DiscountItem.AwardTypes.Automatic &&
+                    CurrentDiscount != null &&
                     CurrentDiscount.AdvancedType == DiscountItem.AdvanceDiscountType.Quantity)
                 {
                     QualificationTab.Visibility = Visibility.Collapsed;
@@ -667,9 +708,9 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
                     QualificationTab.Visibility = Visibility.Visible;
                 }
             }
-            else if (SelectedType.Value == DiscountType.Fixed && AwardType == DiscountItem.AwardTypes.Automatic)
+            else if(SelectedType.Value == DiscountType.Fixed && AwardType == DiscountItem.AwardTypes.Automatic)
             {
-                if (CurrentDiscount != null &&
+                if(CurrentDiscount != null &&
                     CurrentDiscount.AdvancedType == DiscountItem.AdvanceDiscountType.Quantity)
                 {
                     QualificationTab.Visibility = Visibility.Collapsed;
@@ -709,7 +750,7 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             Button btn = (Button)sender;
-            if (Convert.ToInt32(btn.Tag) == 1)
+            if(Convert.ToInt32(btn.Tag) == 1)
                 EditClick();
             else
                 SaveClick();
@@ -734,12 +775,12 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
         /// </summary>
         private void SaveClick()
         {
-            if (!m_spendLevelsView.IsValidForSave)
+            if(!m_spendLevelsView.IsValidForSave)
             {
                 return;
             }
 
-            if (!ValidateDiscountData(true))
+            if(!ValidateDiscountData(true))
                 return;
 
             bool TempIsActive;
@@ -747,55 +788,56 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
             int tempDiscountID = 0;
             List<int> restrictedProducts = new List<int>();
             List<int> restrictedPackages = new List<int>();
+            List<int> countQualifyingPackages = new List<int>();
 
             TempIsActive = chkbxIsActive.IsChecked ?? false;
             TempIsPlayeredRequired = chkBxRequiredPlayer.IsChecked ?? false;
-            
-            if (IsNew == false) { tempDiscountID = CurrentDiscount.DiscountId; }
 
-            if (!IsNew && AwardType.Value == DiscountItem.AwardTypes.Manual && TempIsActive != CurrentDiscount.IsActive && !TempIsActive)
+            if(IsNew == false) { tempDiscountID = CurrentDiscount.DiscountId; }
+
+            if(!IsNew && AwardType.Value == DiscountItem.AwardTypes.Manual && TempIsActive != CurrentDiscount.IsActive && !TempIsActive)
             { // if it's existing and the active status has changed, check to see if this discount exists in sales menus
-                if (DiscountExistsInMenu(tempDiscountID, txtbxDiscountName.Text))
+                if(DiscountExistsInMenu(tempDiscountID, txtbxDiscountName.Text))
                     return;
             }
 
-            foreach (KeyValuePair<int, string> d in m_restrictionView.SelectedProducts)
-            {
-                restrictedProducts.Add(d.Key);
-            }
-            foreach (KeyValuePair<int, string> d in m_restrictionView.SelectedPackages)
-            {
-                restrictedPackages.Add(d.Key);
-            }            
+            foreach(var kvp in spendExcludedProductsMSC.SelectedItems)
+                restrictedProducts.Add(kvp.Key);
+            foreach(var kvp in spendExcludedPackagesMSC.SelectedItems)
+                restrictedPackages.Add(kvp.Key);
+            foreach(var kvp in countQualifyingPackagesMSC.SelectedItems)
+                countQualifyingPackages.Add(kvp.Key);
 
             decimal discountAmt, pointsPerDollar, maxDiscount, minSpend;
+            byte minPacks;
             byte maxUsePerSession; //US4320
 
             Decimal.TryParse(txtbxPrice.Text, out discountAmt);
             Decimal.TryParse(txtbxPointsPerDollar.Text, out pointsPerDollar);
             Decimal.TryParse(txtbxMaxDiscount.Text, out maxDiscount);
             Decimal.TryParse(txtbxMinPrice.Text, out minSpend);
+            byte.TryParse(txtbxMinPacks.Text, out minPacks);
             byte.TryParse(txtbxMaxUsePerSession.Text, out maxUsePerSession);//US4320
 
 
             List<DiscountItem.Schedule> scheduleItems = new List<Shared.Business.DiscountItem.Schedule>(); // US3956
-            if (ScheduleItems != null)
+            if(ScheduleItems != null)
             {
-                foreach (var schedule in ScheduleItems)
+                foreach(var schedule in ScheduleItems)
                 {
                     DiscountItem.Schedule sched = new DiscountItem.Schedule();
                     sched.DayOfWeek = schedule.Schedule.DayOfWeek;
 
-                    if (schedule.SelectedSessions.Count > 0)
+                    if(schedule.SelectedSessions.Count > 0)
                     {
-                        if (!schedule.SelectedSessions.Any(x => String.Equals(x.Value, ScheduleItem.ALL_SCHEDULE_ITEMS)))
+                        if(!schedule.SelectedSessions.Any(x => String.Equals(x.Value, ScheduleItem.ALL_SCHEDULE_ITEMS)))
                         {
-                            foreach (KeyValuePair<int, string> pair in schedule.SelectedSessions)
+                            foreach(KeyValuePair<int, string> pair in schedule.SelectedSessions)
                             {
-                                DiscountItem.Schedule sched2 = new DiscountItem.Schedule() 
-                                { 
-                                    DayOfWeek = sched.DayOfWeek, 
-                                    SessionNumber = pair.Key 
+                                DiscountItem.Schedule sched2 = new DiscountItem.Schedule()
+                                {
+                                    DayOfWeek = sched.DayOfWeek,
+                                    SessionNumber = pair.Key
                                 };
                                 scheduleItems.Add(sched2);
                             }
@@ -824,13 +866,15 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
                 SpendLevels = m_spendLevelsView.ListOfSpendLevels,
                 RestrictedProductIds = restrictedProducts,
                 RestrictedPackageIds = restrictedPackages,
-                IgnoreValidationsForIgnoredPackages = m_restrictionView.IgnoreValidationsForPackages,
+                IgnoreValidationsForIgnoredPackages = excludeValidationChargesOnExcludedPackagesChk.IsChecked ?? false,
+                MinimumPacksEligibleIds = countQualifyingPackages,
                 IsPlayerRequired = TempIsPlayeredRequired,
                 StartDate = datePkrStartDate.SelectedDate,
                 EndDate = datePkrEndDate.SelectedDate,
                 AllowPartialDiscounts = chkBxAllowPartialDiscount.IsChecked ?? false,
                 MaximumDiscount = maxDiscount,
                 MinimumSpend = minSpend,
+                MinimumPacks = minPacks,
                 DiscountSchedule = scheduleItems,
                 AdvancedType = (DiscountItem.AdvanceDiscountType)AdvancedTypeComboBox.SelectedIndex,
                 AdvancedQuantityDiscount =
@@ -845,7 +889,7 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
             };
 
             //check for advance type. Can only be with award type auto 
-            if (discItem.DiscountAwardType == DiscountItem.AwardTypes.Manual &&
+            if(discItem.DiscountAwardType == DiscountItem.AwardTypes.Manual &&
                 discItem.AdvancedType == DiscountItem.AdvanceDiscountType.Quantity)
             {
                 discItem.AdvancedType = DiscountItem.AdvanceDiscountType.None;
@@ -860,7 +904,7 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
                 ReturnDiscountID = Data.SetDiscountMessage.Save(discItem);
                 IsSave = true;
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 string error = "Error saving new discount " + ex.ToString();
                 MessageBox.Show(error);
@@ -877,50 +921,50 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
         {
             bool retVal = true;
             string message = String.Empty;
-            
-            if (datePkrStartDate.SelectedDate.HasValue && datePkrEndDate.SelectedDate.HasValue &&
+
+            if(datePkrStartDate.SelectedDate.HasValue && datePkrEndDate.SelectedDate.HasValue &&
                 datePkrStartDate.SelectedDate > datePkrEndDate.SelectedDate)
             {
                 message = String.Format("The start date must be before the end date.");
                 retVal = false;
             }
-            else if (String.IsNullOrWhiteSpace(txtbxDiscountName.Text))
+            else if(String.IsNullOrWhiteSpace(txtbxDiscountName.Text))
             {
                 message = String.Format("Must specify a discount name.");
                 retVal = false;
             }
-            else if (!PriceIsValid 
-                && ( m_spendLevelsView == null || m_spendLevelsView.ListOfSpendLevels == null || m_spendLevelsView.ListOfSpendLevels.Count == 0))
+            else if(!PriceIsValid
+                && (m_spendLevelsView == null || m_spendLevelsView.ListOfSpendLevels == null || m_spendLevelsView.ListOfSpendLevels.Count == 0))
             {
                 message = String.Format("Must specify a price or spend level.");
                 retVal = false;
             }
-            else if (cmbxDiscountType.SelectedIndex == -1)
+            else if(cmbxDiscountType.SelectedIndex == -1)
             {
                 message = String.Format("Please select a valid discount type.");
                 retVal = false;
             }
-            else if (cmbxAwardType.SelectedIndex == -1)
+            else if(cmbxAwardType.SelectedIndex == -1)
             {
                 message = String.Format("Please select a valid award type.");
                 retVal = false;
             }
-            else if (!AwardType.HasValue)
+            else if(!AwardType.HasValue)
             {
                 message = String.Format("Please select the award type");
                 retVal = false;
             }
-            else if (!SelectedType.HasValue)
+            else if(!SelectedType.HasValue)
             {
                 message = String.Format("Please select the discount type");
                 retVal = false;
             }
-            else if (AwardType.Value == DiscountItem.AwardTypes.Automatic && SelectedType.Value == DiscountType.Open)
+            else if(AwardType.Value == DiscountItem.AwardTypes.Automatic && SelectedType.Value == DiscountType.Open)
             {
                 message = String.Format("Cannot have an 'Open' automatic discount");
                 retVal = false;
             }
-            else if (CurrentDiscount.AdvancedType == DiscountItem.AdvanceDiscountType.Quantity && 
+            else if(CurrentDiscount.AdvancedType == DiscountItem.AdvanceDiscountType.Quantity &&
                     CurrentDiscount.DiscountAwardType == DiscountItem.AwardTypes.Automatic &&
                     !string.IsNullOrEmpty(m_advancedQuantityView.IsValid()))
             {
@@ -928,10 +972,9 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
                 retVal = false;
             }
 
-
-            if (!retVal)
+            if(!retVal)
             {
-                if (showPopup)
+                if(showPopup)
                     MessageForm.Show(message);
                 else
                     ErrorText = message;
@@ -959,37 +1002,37 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
             x = x.Insert(y.SelectionStart, e.Text);
             int count = x.Split('.').Length - 1;
 
-            if (count > 1)//One decimal point only.
+            if(count > 1)//One decimal point only.
             {
                 NotAllow = true;
             }
-            else if ((Convert.ToChar(e.Text)) == '.')
+            else if((Convert.ToChar(e.Text)) == '.')
             {
                 NotAllow = false;
             }
-            else if (Char.IsNumber(Convert.ToChar(e.Text)))
+            else if(Char.IsNumber(Convert.ToChar(e.Text)))
             {
                 NotAllow = false;
-                if (m_isFixed == true || sender != txtbxPrice)
+                if(m_isFixed == true || sender != txtbxPrice)
                 {
-                    if (Regex.IsMatch(x, @"\.\d\d\d"))//Only allow .## 
+                    if(Regex.IsMatch(x, @"\.\d\d\d"))//Only allow .## 
                     {
                         NotAllow = true;
                     }
                 }
                 else//Percent
                 {
-                    if (Regex.IsMatch(x, @"\.\d\d\d"))//Only allow .## 
+                    if(Regex.IsMatch(x, @"\.\d\d\d"))//Only allow .## 
                     {
                         NotAllow = true;
                     }
                     //Limit only to 100 percent
                     decimal PercentValue;
-                    bool result =  decimal.TryParse(x, out PercentValue );
-                    if (result == true && PercentValue > 100M)
+                    bool result = decimal.TryParse(x, out PercentValue);
+                    if(result == true && PercentValue > 100M)
                     {
                         NotAllow = true;
-                    }                    
+                    }
                 }
             }
             else
@@ -998,8 +1041,19 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
             }
             e.Handled = NotAllow;
         }
-        
-        private void txtbxPrice_PreviewTextInput2(object sender, TextCompositionEventArgs e)
+        private void txtbxByte_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            TextBox bTxt = sender as TextBox;
+            string str = bTxt.Text;
+            str = str.Remove(bTxt.SelectionStart, bTxt.SelectionLength);
+            str = str.Insert(bTxt.SelectionStart, e.Text);
+            byte parseVal;
+
+            if(!byte.TryParse(str, out parseVal))
+                e.Handled = true;
+        }
+
+        private void txtbxPtsPerDollar_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             bool NotAllow = false;
             TextBox y = (TextBox)sender;
@@ -1007,19 +1061,19 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
             x = x.Insert(y.SelectionStart, e.Text);
             int count = x.Split('.').Length - 1;//Count how many decimal places on the text input
 
-            if (count > 1)//One decimal point only.
+            if(count > 1)//One decimal point only.
             {
                 NotAllow = true;
             }
-            else if ((Convert.ToChar(e.Text)) == '.')
+            else if((Convert.ToChar(e.Text)) == '.')
             {
                 NotAllow = false;
             }
-            else if (Char.IsNumber(Convert.ToChar(e.Text)))
+            else if(Char.IsNumber(Convert.ToChar(e.Text)))
             {
                 NotAllow = false;
 
-                if (Regex.IsMatch(x, @"\.\d\d\d"))//Only allow .## 
+                if(Regex.IsMatch(x, @"\.\d\d\d"))//Only allow .## 
                 {
                     NotAllow = true;
                 }
@@ -1031,7 +1085,7 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
 
             e.Handled = NotAllow;
         }
-        
+
         /// <summary>
         /// Handle keyinput for space and and backspace.
         /// </summary>
@@ -1041,15 +1095,25 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
         {
             bool notAllow = false;
 
-            if (e.Key == Key.Space)
+            if(e.Key == Key.Space)
             {
                 notAllow = true;
             }
-            else if (e.Key == Key.Back)
+            else if(e.Key == Key.Back)
             {
                 notAllow = false;
             }
             e.Handled = notAllow;
+        }
+
+        private void txtbxByte_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if((e.Key >= Key.D0 && e.Key <= Key.D9)
+                || (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9)
+                || e.Key == Key.Back || e.Key == Key.Delete || e.Key == Key.Tab)
+                return;
+
+            e.Handled = true;
         }
 
         /// <summary>
@@ -1060,10 +1124,10 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
         private void txtbxPrice_LostFocus(object sender, RoutedEventArgs e)
         {
             TextBox txtBx = (TextBox)sender;
-            if (string.IsNullOrWhiteSpace(txtBx.Text)) // put in empty text
+            if(string.IsNullOrWhiteSpace(txtBx.Text)) // put in empty text
             {
                 txtBx.Foreground = NO_INPUT_BRUSH;
-                if (txtBx == txtbxPointsPerDollar)
+                if(txtBx == txtbxPointsPerDollar)
                     txtBx.Text = "0.00";
             }
             if(txtBx != txtbxPointsPerDollar) // don't format this one as money
@@ -1074,7 +1138,27 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
         private void txtbxPrice_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox txtBx = (TextBox)sender;
-            if (txtBx.Foreground == NO_INPUT_BRUSH) // displaying placeholder text
+            if(txtBx.Foreground == NO_INPUT_BRUSH) // displaying placeholder text
+            {
+                txtBx.Text = string.Empty;
+                txtBx.Foreground = VALID_BRUSH;
+            }
+        }
+        private void txtbxMinPacks_LostFocus(object sender, RoutedEventArgs e)
+        {
+            var txtBx = sender as TextBox;
+            if(string.IsNullOrWhiteSpace(txtBx.Text)) // put in empty text
+            {
+                txtBx.Foreground = NO_INPUT_BRUSH;
+                txtBx.Text = "0";
+            }
+            //CustomValidation();
+        }
+
+        private void txtbxMinPacks_GotFocus(object sender, RoutedEventArgs e)
+        {
+            var txtBx = sender as TextBox;
+            if(txtBx.Foreground == NO_INPUT_BRUSH) // displaying placeholder text
             {
                 txtBx.Text = string.Empty;
                 txtBx.Foreground = VALID_BRUSH;
@@ -1084,12 +1168,12 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
 
         private void cmbxAwardType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if ((DiscountItem.AdvanceDiscountType)AdvancedTypeComboBox.SelectedIndex == 
+            if((DiscountItem.AdvanceDiscountType)AdvancedTypeComboBox.SelectedIndex ==
                 DiscountItem.AdvanceDiscountType.Quantity)
             {
                 m_advancedQuantityView.EnableQuantityDiscountControls(AwardType == DiscountItem.AwardTypes.Automatic);
             }
-            else if ((DiscountItem.AdvanceDiscountType) AdvancedTypeComboBox.SelectedIndex ==
+            else if((DiscountItem.AdvanceDiscountType)AdvancedTypeComboBox.SelectedIndex ==
                      DiscountItem.AdvanceDiscountType.SpendLevel)
             {
                 m_spendLevelsView.EnableSpendLevelContent(AwardType == DiscountItem.AwardTypes.Automatic);
@@ -1109,20 +1193,20 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
                                 : Visibility.Visible;
             txtblckPrice.Visibility = txtbxPrice.Visibility = txtbxPointsPerDollar.Visibility = txtblckPointsPerDollar.Visibility = visibility;
 
-            if (cmbx.SelectedIndex == 0)//Fixed
+            if(cmbx.SelectedIndex == 0)//Fixed
             {
                 txtblckPrice.Content = "* Price: ";
                 txtbxPrice.Text = Helper.DecimalStringToMoneyString("0");
                 txtbxPrice.HorizontalContentAlignment = HorizontalAlignment.Right;
                 m_isFixed = true;
             }
-            else if (cmbx.SelectedIndex == 1)//Open
+            else if(cmbx.SelectedIndex == 1)//Open
             {
                 cmbxAwardType.Visibility = txtBlckAwardType.Visibility = txtblckPrice.Visibility = txtbxPrice.Visibility = AdvancedTypeLabel.Visibility = AdvancedTypeComboBox.Visibility = Visibility.Collapsed;
-                m_isFixed = false;              
-                cmbxAwardType.SelectedIndex = 0;           
+                m_isFixed = false;
+                cmbxAwardType.SelectedIndex = 0;
             }
-            else if (cmbx.SelectedIndex == 2)//Percent
+            else if(cmbx.SelectedIndex == 2)//Percent
             {
                 txtblckPrice.Content = "* Percent: ";
                 txtbxPrice.Text = Helper.DecimalStringToMoneyString("0");
@@ -1153,7 +1237,7 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
         {
             CustomValidation();
         }
-        
+
         private void txtbxDiscountName_KeyUp(object sender, KeyEventArgs e)
         {
             CustomValidation();
@@ -1163,7 +1247,7 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
         {
             CustomValidation();
         }
-        
+
         /// <summary>
         /// Actions that occur when the user presses the add button next to a schedule
         /// </summary>
@@ -1185,22 +1269,22 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
         /// <param name="e"></param>
         private void RemoveScheduleButton_Click(object sender, EventArgs e)
         {
-            if (ScheduleItems.Contains(sender))
+            if(ScheduleItems.Contains(sender))
             {
                 bool enableAdd = false;
                 ScheduleItem schedule = (sender as ScheduleItem);
-                if (schedule.ShowAddButton == System.Windows.Visibility.Visible)
+                if(schedule.ShowAddButton == System.Windows.Visibility.Visible)
                     enableAdd = true;
 
                 schedule.RemoveScheduleButtonPressed -= RemoveScheduleButton_Click;
                 schedule.AddScheduleButtonPressed -= AddScheduleButton_Click;
                 ScheduleItems.Remove(schedule);
 
-                if (enableAdd && ScheduleItems.Count > 0)
+                if(enableAdd && ScheduleItems.Count > 0)
                     ScheduleItems.Last().ShowAddButton = System.Windows.Visibility.Visible;
             }
 
-            if (ScheduleItems.Count == 0) // basically refreshing the list
+            if(ScheduleItems.Count == 0) // basically refreshing the list
                 AddScheduleButton_Click(this, null);
             else
                 RaisePropertyChanged("ScheduleItems");
@@ -1208,18 +1292,18 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
 
         private void AdvancedTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var visibility = (DiscountItem.AdvanceDiscountType) AdvancedTypeComboBox.SelectedIndex ==
+            var visibility = (DiscountItem.AdvanceDiscountType)AdvancedTypeComboBox.SelectedIndex ==
                              DiscountItem.AdvanceDiscountType.Quantity
                 ? Visibility.Collapsed
                 : Visibility.Visible;
             txtblckPrice.Visibility = txtbxPrice.Visibility = txtbxPointsPerDollar.Visibility = txtblckPointsPerDollar.Visibility = visibility;
 
-            switch ((DiscountItem.AdvanceDiscountType)AdvancedTypeComboBox.SelectedIndex)
+            switch((DiscountItem.AdvanceDiscountType)AdvancedTypeComboBox.SelectedIndex)
             {
                 case DiscountItem.AdvanceDiscountType.Quantity:
                     //AdvancedTab.Visibility = Visibility.Visible;
                     AdvancedTab.Header = "Quantity";
-                    if (CurrentDiscount != null)
+                    if(CurrentDiscount != null)
                     {
                         CurrentDiscount.AdvancedType = DiscountItem.AdvanceDiscountType.Quantity;
                     }
@@ -1234,25 +1318,25 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
                 case DiscountItem.AdvanceDiscountType.SpendLevel:
                     //AdvancedTab.Visibility = Visibility.Visible;
                     AdvancedTab.Header = "Spend Level";
-                    if (CurrentDiscount != null)
+                    if(CurrentDiscount != null)
                     {
                         CurrentDiscount.AdvancedType = DiscountItem.AdvanceDiscountType.SpendLevel;
                     }
 
                     m_spendLevelsView.EnableSpendLevelContent(AwardType == DiscountItem.AwardTypes.Automatic);
-                    
+
                     AdvancedContentControl.Visibility = Visibility.Visible;
                     AdvancedContentControl.Content = m_spendLevelsView;
 
                     AdvancedTab.IsSelected = true;
                     break;
                 default:
-                    if (CurrentDiscount != null)
+                    if(CurrentDiscount != null)
                     {
                         CurrentDiscount.AdvancedType = DiscountItem.AdvanceDiscountType.None;
                         AdvancedTab.Visibility = Visibility.Hidden;
                     }
-                    
+
                     AdvancedContentControl.Visibility = Visibility.Hidden;
                     AdvancedTab.IsSelected = false;
                     break;
@@ -1278,10 +1362,10 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
         //prevent pasting for numeric textbox
         private void TextBoxPastingNumericOnly(object sender, DataObjectPastingEventArgs e)
         {
-            if (e.DataObject.GetDataPresent(typeof(String)))
+            if(e.DataObject.GetDataPresent(typeof(String)))
             {
                 String text = (String)e.DataObject.GetData(typeof(String));
-                if (!IsTextAllowed(text))
+                if(!IsTextAllowed(text))
                 {
                     e.CancelCommand();
                 }
@@ -1295,7 +1379,7 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
         //prevent spaces for numeric textbox
         private void txtbxMaxDiscountPerSession_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Space)
+            if(e.Key == Key.Space)
             {
                 e.Handled = true;
             }
@@ -1303,7 +1387,7 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
 
         private void chkBxRequiredPlayer_Checked(object sender, RoutedEventArgs e)
         {
-            if (txtbxDiscountName.IsEnabled)
+            if(txtbxDiscountName.IsEnabled)
             {
                 txtbxMaxUsePerSession.IsEnabled = true;
                 txtbxMaxUsePerSession.IsReadOnly = false;
@@ -1314,7 +1398,7 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
 
         private void chkBxRequiredPlayer_Unchecked(object sender, RoutedEventArgs e)
         {
-            if (txtbxDiscountName.IsEnabled)
+            if(txtbxDiscountName.IsEnabled)
             {
                 txtbxMaxUsePerSession.IsEnabled = false;
                 txtbxMaxUsePerSession.IsReadOnly = true;
@@ -1325,14 +1409,14 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
 
         private void txtbxMaxDiscountPerSession_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(txtbxMaxUsePerSession.Text.Trim()))
+            if(string.IsNullOrEmpty(txtbxMaxUsePerSession.Text.Trim()))
             {
                 txtbxMaxUsePerSession.Text = "0";
             }
 
             int maxUsePerSession = int.Parse(txtbxMaxUsePerSession.Text);
 
-            if (maxUsePerSession > byte.MaxValue)
+            if(maxUsePerSession > byte.MaxValue)
             {
                 txtbxMaxUsePerSession.Text = byte.MaxValue.ToString();
             }
@@ -1357,7 +1441,7 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
         {
             PropertyChangedEventHandler handler = PropertyChanged;
 
-            if (handler != null)
+            if(handler != null)
                 handler(this, new PropertyChangedEventArgs(propertyName));
         }
 
@@ -1382,7 +1466,7 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
 
         public event EventHandler AddScheduleButtonPressed;
         public event EventHandler RemoveScheduleButtonPressed;
-        
+
         #endregion
 
         #region Private Members
@@ -1390,7 +1474,7 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
         private Visibility _showAddButton = Visibility.Visible;
 
         #endregion
-        
+
         #region Public Properties
 
         /// <summary>
@@ -1417,7 +1501,7 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
         {
             get
             {
-                if (Schedule.DayOfWeek.HasValue)
+                if(Schedule.DayOfWeek.HasValue)
                     return Schedule.DayOfWeek.Value.ToString();
                 else
                     return ALL_SCHEDULE_ITEMS;
@@ -1425,15 +1509,15 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
             set
             {
                 // Convert it from something readable to something that can be stored easily
-                if (String.Equals(ALL_SCHEDULE_ITEMS, value))
+                if(String.Equals(ALL_SCHEDULE_ITEMS, value))
                 {
                     Schedule.DayOfWeek = null;
                 }
                 else
                 {
-                    foreach (DayOfWeek day in Enum.GetValues(typeof(DayOfWeek)))
+                    foreach(DayOfWeek day in Enum.GetValues(typeof(DayOfWeek)))
                     {
-                        if (String.Equals(day.ToString(), value))
+                        if(String.Equals(day.ToString(), value))
                         {
                             Schedule.DayOfWeek = day;
                             break;
@@ -1443,7 +1527,7 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
                 RaisePropertyChanged("DayOfWeekDisplay");
             }
         }
-        
+
         /// <summary>
         /// All the available sessions of the day that this object can be
         /// </summary>
@@ -1464,7 +1548,7 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
         {
             get
             {
-                if (Schedule.SessionNumber.HasValue)
+                if(Schedule.SessionNumber.HasValue)
                     return "Session " + Schedule.SessionNumber.Value;
                 else
                     return ALL_SCHEDULE_ITEMS;
@@ -1480,7 +1564,7 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
                 {
                     string[] tokens = value.Split(' ');
                     int sess = 0;
-                    if (int.TryParse(tokens.Last(), out sess))
+                    if(int.TryParse(tokens.Last(), out sess))
                         Schedule.SessionNumber = sess;
                     else
                         Schedule.SessionNumber = null;
@@ -1493,14 +1577,14 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
             get { return _showAddButton; }
             set
             {
-                if (_showAddButton != value)
+                if(_showAddButton != value)
                 {
                     _showAddButton = value;
                     RaisePropertyChanged("ShowAddButton");
                 }
             }
         }
-        
+
         #endregion
 
         public ScheduleItem(DiscountItem.Schedule schedule = null)
@@ -1508,14 +1592,14 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
             SelectedSessions = new Dictionary<int, string>();
             SessionsOfDay = new Dictionary<int, string>();
             SessionsOfDay.Add(ALL_SCHEDULE_ITEMS_KEY, ALL_SCHEDULE_ITEMS);
-            for(int i=1; i <=SESSION_MAX; i++)
+            for(int i = 1; i <= SESSION_MAX; i++)
             {
                 SessionsOfDay.Add(i, "Session " + i);
             }
 
             DaysOfWeek = new ObservableCollection<string>(DiscountDetailView.m_dayOfWeek);
             Schedule = schedule;
-            if (Schedule == null)
+            if(Schedule == null)
             {
                 SelectedSessions.Add(0, ALL_SCHEDULE_ITEMS);
                 Schedule = new DiscountItem.Schedule();
@@ -1533,10 +1617,10 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
         public void AppendAdditionalSchedule(DiscountItem.Schedule schedule)
         {
             int mappedSessId = schedule.SessionNumber ?? ALL_SCHEDULE_ITEMS_KEY;
-            if (mappedSessId == ALL_SCHEDULE_ITEMS_KEY) // should only display "all"
+            if(mappedSessId == ALL_SCHEDULE_ITEMS_KEY) // should only display "all"
                 SelectedSessions.Clear();
 
-            if (!SelectedSessions.ContainsKey(mappedSessId) && !SelectedSessions.ContainsKey(ALL_SCHEDULE_ITEMS_KEY))
+            if(!SelectedSessions.ContainsKey(mappedSessId) && !SelectedSessions.ContainsKey(ALL_SCHEDULE_ITEMS_KEY))
             {
                 SelectedSessions.Add(mappedSessId, SessionsOfDay[mappedSessId]);
             }
@@ -1551,7 +1635,7 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
         {
             get
             {
-                if (addScheduleCommand == null)
+                if(addScheduleCommand == null)
                     addScheduleCommand = new RelayCommand(param => this.OnAddScheduleCommand());
                 return addScheduleCommand;
             }
@@ -1559,7 +1643,7 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
         private void OnAddScheduleCommand()
         {
             var handler = AddScheduleButtonPressed;
-            if (handler != null)
+            if(handler != null)
             {
                 ShowAddButton = Visibility.Hidden;
                 handler(this, new EventArgs());
@@ -1576,7 +1660,7 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
         {
             get
             {
-                if (removeScheduleCommand == null)
+                if(removeScheduleCommand == null)
                     removeScheduleCommand = new RelayCommand(param => this.OnRemoveScheduleCommand());
                 return removeScheduleCommand;
             }
@@ -1584,7 +1668,7 @@ namespace GTI.Modules.ProductCenter.UI.Discounts
         private void OnRemoveScheduleCommand()
         {
             var handler = RemoveScheduleButtonPressed;
-            if (handler != null)
+            if(handler != null)
                 handler(this, new EventArgs());
         }
         #endregion

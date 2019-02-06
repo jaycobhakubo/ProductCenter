@@ -113,6 +113,9 @@ namespace GTI.Modules.ProductCenter.Data
                     foreach (var device in menuButtonList.ValidDevices)
                         requestWriter.Write((int)device.Id);
                 }
+
+                // Use as default validation
+                requestWriter.Write(menuButtonList.DefaultValidation);
             }
 
             // Set the bytes to be sent.

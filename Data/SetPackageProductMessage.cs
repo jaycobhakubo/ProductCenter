@@ -50,7 +50,7 @@ namespace GTI.Modules.ProductCenter.Data
             {
                 msg.Send();
             }
-            catch (ServerCommException ex)
+            catch(ServerCommException ex)
             {
                 throw new Exception("SetPackageProductMessage: " + ex.Message);
             }
@@ -69,62 +69,89 @@ namespace GTI.Modules.ProductCenter.Data
             requestWriter.Write(itemCount);
 
             // Package Product List
-            foreach (var packageProductList in PackageProductList)
+            foreach(var packageProduct in PackageProductList)
             {
                 // Product Id
-                requestWriter.Write(packageProductList.ProductId);
+                requestWriter.Write(packageProduct.ProductId);
 
                 // Game Type Id
-                requestWriter.Write(packageProductList.GameTypeId);
+                requestWriter.Write(packageProduct.GameTypeId);
 
                 // Card Level Id
-                requestWriter.Write(packageProductList.CardLevelId);
+                requestWriter.Write(packageProduct.CardLevelId);
 
                 // Card Media Id
-                requestWriter.Write(packageProductList.CardMediaId);
+                requestWriter.Write(packageProduct.CardMediaId);
 
                 // Card Type Id
-                requestWriter.Write(packageProductList.CardTypeId);
+                requestWriter.Write(packageProduct.CardTypeId);
 
                 // Game Caegory Id
-                requestWriter.Write(packageProductList.GameCategoryId);
+                requestWriter.Write(packageProduct.GameCategoryId);
 
                 // Is Taxed
-                requestWriter.Write(packageProductList.IsTaxed);
+                requestWriter.Write(packageProduct.IsTaxed);
 
                 // Quantity
-                requestWriter.Write(packageProductList.Quantity);
+                requestWriter.Write(packageProduct.Quantity);
 
                 // Card Count
-                requestWriter.Write(packageProductList.CardCount);
+                requestWriter.Write(packageProduct.CardCount);
 
                 // Price
-                WriteString(requestWriter, packageProductList.Price);
+                WriteString(requestWriter, packageProduct.Price);
 
                 // Points Per Quantity
-                WriteString(requestWriter, packageProductList.PointsPerQuantity);
+                WriteString(requestWriter, packageProduct.PointsPerQuantity);
 
                 // Points Per Dollar
-                WriteString(requestWriter, packageProductList.PointsPerDollar);
+                WriteString(requestWriter, packageProduct.PointsPerDollar);
 
                 // Points To Redeem
-                WriteString(requestWriter, packageProductList.PointsToRedeem);
+                WriteString(requestWriter, packageProduct.PointsToRedeem);
 
                 // Numbers Required (CBB)
-                requestWriter.Write(packageProductList.NumbersRequired);
+                requestWriter.Write(packageProduct.NumbersRequired);
 
                 // Alt Price
-                WriteString(requestWriter, packageProductList.AltPrice);
+                WriteString(requestWriter, packageProduct.AltPrice);
 
                 // Is Qualifying
-                requestWriter.Write((bool)packageProductList.CountsTowardsQualifyingSpend);
+                requestWriter.Write((bool)packageProduct.CountsTowardsQualifyingSpend);
+
+                // Prepaid
+                requestWriter.Write((bool)packageProduct.Prepaid);
+
+                if(packageProduct.CardTypeId == (int)CardType.Star)
+                {
+                    if(packageProduct.CardPositionsMapId == 0)
+                        requestWriter.Write((int)1);
+                    else
+                        requestWriter.Write(packageProduct.CardPositionsMapId);
+
+                    if(packageProduct.PositionStarCodes == null || packageProduct.PositionStarCodes.Count == 0)
+                    {
+                        requestWriter.Write((byte)1);
+                        requestWriter.Write((byte)0);
+                        requestWriter.Write((byte)1);
+                    }
+                    else
+                    {
+                        requestWriter.Write((byte)packageProduct.PositionStarCodes.Count);
+                        foreach(var kvp in packageProduct.PositionStarCodes)
+                        {
+                            requestWriter.Write(kvp.Key);
+                            requestWriter.Write(kvp.Value);
+                        }
+                    }
+                }
             }
 
             // Set the bytes to be sent.
             m_requestPayload = requestStream.ToArray();
 
             // Close the streams.
-            requestWriter.Close();            
+            requestWriter.Close();
         }
         #endregion
 

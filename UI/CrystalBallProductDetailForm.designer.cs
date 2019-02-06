@@ -64,6 +64,9 @@
             this.txtPrice = new GTI.Controls.TextBoxNumeric();
             this.txtQuantity = new GTI.Controls.TextBoxNumeric();
             this.btnAdd = new GTI.Controls.ImageButton();
+            this.checkBoxPrepaid = new System.Windows.Forms.CheckBox();
+            this.lblTaxed = new System.Windows.Forms.Label();
+            this.lblPrepaid = new System.Windows.Forms.Label();
             this.groupProduct.SuspendLayout();
             this.groupBoxPoints.SuspendLayout();
             this.groupBoxCards.SuspendLayout();
@@ -173,13 +176,14 @@
             // 
             // checkBoxTaxed
             // 
+            this.checkBoxTaxed.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBoxTaxed.Font = new System.Drawing.Font("Trebuchet MS", 11F, System.Drawing.FontStyle.Bold);
-            this.checkBoxTaxed.Location = new System.Drawing.Point(91, 77);
+            this.checkBoxTaxed.Location = new System.Drawing.Point(145, 97);
             this.checkBoxTaxed.Name = "checkBoxTaxed";
             this.checkBoxTaxed.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.checkBoxTaxed.Size = new System.Drawing.Size(71, 24);
+            this.checkBoxTaxed.Size = new System.Drawing.Size(20, 20);
             this.checkBoxTaxed.TabIndex = 1;
-            this.checkBoxTaxed.Text = "Taxed";
+            this.checkBoxTaxed.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBoxTaxed.UseVisualStyleBackColor = true;
             // 
             // groupBoxPoints
@@ -355,22 +359,24 @@
             this.lblPrice.BackColor = System.Drawing.Color.Transparent;
             this.lblPrice.Font = new System.Drawing.Font("Trebuchet MS", 11F, System.Drawing.FontStyle.Bold);
             this.lblPrice.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblPrice.Location = new System.Drawing.Point(98, 13);
+            this.lblPrice.Location = new System.Drawing.Point(94, 16);
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(45, 20);
             this.lblPrice.TabIndex = 99;
             this.lblPrice.Text = "Price";
+            this.lblPrice.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblQuantity
             // 
             this.lblQuantity.BackColor = System.Drawing.Color.Transparent;
             this.lblQuantity.Font = new System.Drawing.Font("Trebuchet MS", 11F, System.Drawing.FontStyle.Bold);
             this.lblQuantity.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblQuantity.Location = new System.Drawing.Point(73, 110);
+            this.lblQuantity.Location = new System.Drawing.Point(69, 123);
             this.lblQuantity.Name = "lblQuantity";
             this.lblQuantity.Size = new System.Drawing.Size(70, 20);
             this.lblQuantity.TabIndex = 99;
             this.lblQuantity.Text = "Quantity";
+            this.lblQuantity.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // btnDone
             // 
@@ -386,6 +392,7 @@
             this.btnDone.Location = new System.Drawing.Point(222, 448);
             this.btnDone.MinimumSize = new System.Drawing.Size(30, 30);
             this.btnDone.Name = "btnDone";
+            this.btnDone.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.btnDone.Size = new System.Drawing.Size(117, 30);
             this.btnDone.TabIndex = 5;
             this.btnDone.Text = "Done";
@@ -406,6 +413,7 @@
             this.btnCancel.Location = new System.Drawing.Point(411, 448);
             this.btnCancel.MinimumSize = new System.Drawing.Size(30, 30);
             this.btnCancel.Name = "btnCancel";
+            this.btnCancel.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.btnCancel.Size = new System.Drawing.Size(117, 30);
             this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "Cancel";
@@ -471,6 +479,9 @@
             // groupPricing
             // 
             this.groupPricing.BackColor = System.Drawing.Color.Transparent;
+            this.groupPricing.Controls.Add(this.lblTaxed);
+            this.groupPricing.Controls.Add(this.lblPrepaid);
+            this.groupPricing.Controls.Add(this.checkBoxPrepaid);
             this.groupPricing.Controls.Add(this.txtAltPrice);
             this.groupPricing.Controls.Add(this.lblAltPrice);
             this.groupPricing.Controls.Add(this.txtPrice);
@@ -503,11 +514,12 @@
             this.lblAltPrice.BackColor = System.Drawing.Color.Transparent;
             this.lblAltPrice.Font = new System.Drawing.Font("Trebuchet MS", 11F, System.Drawing.FontStyle.Bold);
             this.lblAltPrice.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblAltPrice.Location = new System.Drawing.Point(69, 45);
+            this.lblAltPrice.Location = new System.Drawing.Point(65, 48);
             this.lblAltPrice.Name = "lblAltPrice";
             this.lblAltPrice.Size = new System.Drawing.Size(74, 20);
             this.lblAltPrice.TabIndex = 101;
             this.lblAltPrice.Text = "Alt Price";
+            this.lblAltPrice.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // txtPrice
             // 
@@ -526,7 +538,7 @@
             // 
             this.txtQuantity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(251)))), ((int)(((byte)(193)))));
             this.txtQuantity.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQuantity.Location = new System.Drawing.Point(145, 110);
+            this.txtQuantity.Location = new System.Drawing.Point(145, 119);
             this.txtQuantity.Mask = GTI.Controls.TextBoxNumeric.TextBoxType.Integer;
             this.txtQuantity.MaxLength = 10;
             this.txtQuantity.Name = "txtQuantity";
@@ -548,11 +560,48 @@
             this.btnAdd.Location = new System.Drawing.Point(33, 443);
             this.btnAdd.MinimumSize = new System.Drawing.Size(30, 30);
             this.btnAdd.Name = "btnAdd";
+            this.btnAdd.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.btnAdd.Size = new System.Drawing.Size(117, 40);
             this.btnAdd.TabIndex = 4;
             this.btnAdd.Text = "Add Another Product";
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.AddClick);
+            // 
+            // checkBoxPrepaid
+            // 
+            this.checkBoxPrepaid.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBoxPrepaid.Font = new System.Drawing.Font("Trebuchet MS", 11F, System.Drawing.FontStyle.Bold);
+            this.checkBoxPrepaid.Location = new System.Drawing.Point(145, 79);
+            this.checkBoxPrepaid.Name = "checkBoxPrepaid";
+            this.checkBoxPrepaid.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.checkBoxPrepaid.Size = new System.Drawing.Size(19, 15);
+            this.checkBoxPrepaid.TabIndex = 102;
+            this.checkBoxPrepaid.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBoxPrepaid.UseVisualStyleBackColor = true;
+            // 
+            // lblTaxed
+            // 
+            this.lblTaxed.BackColor = System.Drawing.Color.Transparent;
+            this.lblTaxed.Font = new System.Drawing.Font("Trebuchet MS", 11F, System.Drawing.FontStyle.Bold);
+            this.lblTaxed.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblTaxed.Location = new System.Drawing.Point(79, 96);
+            this.lblTaxed.Name = "lblTaxed";
+            this.lblTaxed.Size = new System.Drawing.Size(60, 20);
+            this.lblTaxed.TabIndex = 106;
+            this.lblTaxed.Text = "Taxed";
+            this.lblTaxed.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // lblPrepaid
+            // 
+            this.lblPrepaid.BackColor = System.Drawing.Color.Transparent;
+            this.lblPrepaid.Font = new System.Drawing.Font("Trebuchet MS", 11F, System.Drawing.FontStyle.Bold);
+            this.lblPrepaid.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblPrepaid.Location = new System.Drawing.Point(74, 75);
+            this.lblPrepaid.Name = "lblPrepaid";
+            this.lblPrepaid.Size = new System.Drawing.Size(65, 20);
+            this.lblPrepaid.TabIndex = 105;
+            this.lblPrepaid.Text = "Prepaid";
+            this.lblPrepaid.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // CrystalBallProductDetailForm
             // 
@@ -626,5 +675,8 @@
         private Controls.TextBoxNumeric txtAltPrice;
         private System.Windows.Forms.Label lblAltPrice;
         private System.Windows.Forms.CheckBox checkBoxPointQualify;
+        private System.Windows.Forms.CheckBox checkBoxPrepaid;
+        private System.Windows.Forms.Label lblTaxed;
+        private System.Windows.Forms.Label lblPrepaid;
     }
 }

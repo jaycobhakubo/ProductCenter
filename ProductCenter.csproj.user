@@ -3,7 +3,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <StartAction>Program</StartAction>
     <StartProgram>D:\GameTech\Common\EliteMCP.exe</StartProgram>
-    <StartArguments>-window -runonce -guid={A1F3370A-B627-4082-B505-574BF7D7D011} -server=betaserver</StartArguments>
+    <StartArguments>-window -runonce -guid={A1F3370A-B627-4082-B505-574BF7D7D011} -server=10.0.11.107</StartArguments>
     <StartWorkingDirectory>D:\GameTech\Common</StartWorkingDirectory>
   </PropertyGroup>
 </Project>

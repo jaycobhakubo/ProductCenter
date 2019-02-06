@@ -12,12 +12,12 @@ using GTI.Modules.ProductCenter.Data;
 
 namespace GTI.Modules.ProductCenter.UI
 {
-    public partial class CouponAwardToGroup  : GradientForm 
+    public partial class CouponAwardToGroup : GradientForm
     {
         #region MEMBER VARIABLES
         private int m_CompID;
         private string m_Comp;
-        private int m_maxUsage;
+        private int? m_maxUsage;
         private bool m_IsAwarded;
         private int m_DefID;
         private int m_OperatorID;
@@ -43,7 +43,7 @@ namespace GTI.Modules.ProductCenter.UI
             set { m_Comp = value; }
         }
 
-        public int MaxUsage
+        public int? MaxUsage
         {
             get { return m_maxUsage; }
             set { m_maxUsage = value; }
@@ -90,7 +90,7 @@ namespace GTI.Modules.ProductCenter.UI
                 var sortPlayerListDef = List_pld.OrderBy(x => x.DefinitionName);
                 foreach (PlayerListDefinition pld in sortPlayerListDef)
                 {
-                    cmbxGroupList.Items.Add(pld.DefinitionName);                 
+                    cmbxGroupList.Items.Add(pld.DefinitionName);
                     IndexToDefID.Add(indexOf, pld.DefId);
                     indexOf = indexOf + 1;
                 }
@@ -124,25 +124,11 @@ namespace GTI.Modules.ProductCenter.UI
         {
             if (cmbxGroupList.SelectedIndex != -1)
             {
-
-                SetCompAwardedToPlayer scatp = new SetCompAwardedToPlayer();
-                scatp.DefID = m_DefID;
-                scatp.AwardTypeID =
-                scatp.AwardTypeID = GTI.Modules.ProductCenter.UI.CouponManagementForm.CompAwardTypeID;
-                 
-                //SQL - Direct
-                //SetCompAwardedToGroupPlayer scatgp = new SetCompAwardedToGroupPlayer();
-                //scatgp.CompID = m_CompID;
-                //scatgp.defID = m_DefID;
-                //scatgp.MaxCompUsage = m_maxUsage;
-                //scatgp.OperatorID = m_OperatorID;
-                //Cursor.Current = Cursors.WaitCursor;
-
+                var groupId = cmbxGroupList.SelectedItem;
                 this.Cursor = Cursors.WaitCursor;
-                var task1 = System.Threading.Tasks.Task.Factory.StartNew(() =>  scatp.set(m_CompID, 0, m_maxUsage));
+                var task1 = System.Threading.Tasks.Task.Factory.StartNew(() => SetCompAwardedToPlayer.SetCompAwardToGroup(m_CompID, m_DefID));
                 task1.Wait();
                 this.Cursor = Cursors.Default;
-                //Cursor.Current = Cursors.Default;
                 m_IsAwarded = true;
 
                 this.Close();

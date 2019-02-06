@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using GTI.Modules.Shared;
-using GTI.Modules.ProductCenter.Data.TempSQL;
 using System.Globalization;//CultureInfo
 
 

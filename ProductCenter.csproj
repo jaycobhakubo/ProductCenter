@@ -84,13 +84,17 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\PositionMapFile.cs" />
     <Compile Include="Business\Configuration.cs" />
     <Compile Include="Business\IGTIModule.cs" />
+    <Compile Include="Business\IPositionMap.cs" />
+    <Compile Include="Business\PositionSet.cs" />
     <Compile Include="Business\ProductCenter.cs" />
     <Compile Include="Business\ProductCenterException.cs" />
     <Compile Include="Business\ProductCenterModule.cs" />
     <Compile Include="Business\ProductCenterSettings.cs" />
     <Compile Include="Data\CardLevelItems.cs" />
+    <Compile Include="Data\DailyItems.cs" />
     <Compile Include="Data\DelMenuMessage.cs" />
     <Compile Include="Data\DelPackageItemMessage.cs" />
     <Compile Include="Data\DelProductItemMessage.cs" />
@@ -102,6 +106,7 @@
     <Compile Include="Data\GetCardTypeMessage.cs" />
     <Compile Include="Data\GetCBBProgramGameMessage.cs" />
     <Compile Include="Data\GetCompMessage.cs" />
+    <Compile Include="Data\GetDailyStaffMenusMessage.cs" />
     <Compile Include="Data\GetFunctionMessage.cs" />
     <Compile Include="Data\GetGameTypeMessage.cs" />
     <Compile Include="Data\GetMenuButtonMessage.cs" />
@@ -121,7 +126,6 @@
     <Compile Include="Data\ProductItems.cs" />
     <Compile Include="Data\SetCardLevelMessage.cs" />
     <Compile Include="Data\SetCardsetLevelDataMessage.cs" />
-    <Compile Include="Data\SetCompAwardedToGroupPlayer.cs" />
     <Compile Include="Data\SetCompAwardedToPlayer.cs" />
     <Compile Include="Data\SetDeleteCompMessage.cs" />
     <Compile Include="Data\SetDiscountMessage.cs" />
@@ -131,9 +135,7 @@
     <Compile Include="Data\SetProductGroupMessage.cs" />
     <Compile Include="Data\SetProductItemMessage.cs" />
     <Compile Include="Data\CouponItems.cs" />
-    <Compile Include="Data\TempSQL\DeleteCoupon.cs" />
-    <Compile Include="Data\TempSQL\GetCoupon.cs" />
-    <Compile Include="Data\TempSQL\SavedCoupon.cs" />
+    <Compile Include="Data\UpdateDailyMenuDataMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Data\SetCompMessage.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -146,6 +148,19 @@
     </Compile>
     <Compile Include="UI\ButtonGraphicSelection.Designer.cs">
       <DependentUpon>ButtonGraphicSelection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PositionMaps\CardPositionMapManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\CardColorSets\CardColorSetManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\CardColorSets\CardColorSetManagementForm.Designer.cs">
+      <DependentUpon>CardColorSetManagementForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CardColorSets\PaletteColor.cs" />
+    <Compile Include="UI\PositionMaps\CardPositionMapManagementForm.Designer.cs">
+      <DependentUpon>CardPositionMapManagementForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\MenuPageDeviceTypeForm.cs">
       <SubType>Form</SubType>
@@ -160,9 +175,6 @@
       <DependentUpon>MultiSelectComboBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\Discounts\RelayCommand.cs" />
-    <Compile Include="UI\Discounts\RestrictionView.xaml.cs">
-      <DependentUpon>RestrictionView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\Discounts\SpendLevelControl.xaml.cs">
       <DependentUpon>SpendLevelControl.xaml</DependentUpon>
     </Compile>
@@ -199,16 +211,16 @@
     <Compile Include="UI\CardLevelDetailForm.Designer.cs">
       <DependentUpon>CardLevelDetailForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\CouponAwardToGroup.cs">
+    <Compile Include="UI\Coupons\CouponAwardToGroup.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\CouponAwardToGroup.Designer.cs">
+    <Compile Include="UI\Coupons\CouponAwardToGroup.Designer.cs">
       <DependentUpon>CouponAwardToGroup.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\CouponAwardToPlayer.cs">
+    <Compile Include="UI\Coupons\CouponAwardToPlayer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\CouponAwardToPlayer.Designer.cs">
+    <Compile Include="UI\Coupons\CouponAwardToPlayer.Designer.cs">
       <DependentUpon>CouponAwardToPlayer.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\CouponManagementForm.cs">
@@ -217,10 +229,10 @@
     <Compile Include="UI\CouponManagementForm.Designer.cs">
       <DependentUpon>CouponManagementForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\CouponMangementAddForm.cs">
+    <Compile Include="UI\Coupons\CouponMangementAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\CouponMangementAddForm.Designer.cs">
+    <Compile Include="UI\Coupons\CouponMangementAddForm.Designer.cs">
       <DependentUpon>CouponMangementAddForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Discounts\DiscountDetailView.xaml.cs">
@@ -237,6 +249,12 @@
     </Compile>
     <Compile Include="UI\PackageSearchForm.Designer.cs">
       <DependentUpon>PackageSearchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ProductPackage\StarCardPositionMapsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ProductPackage\StarCardPositionMapsForm.Designer.cs">
+      <DependentUpon>StarCardPositionMapsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\ProductSearchForm.cs">
       <SubType>Form</SubType>
@@ -299,6 +317,18 @@
     <Compile Include="UI\ProductsForm.Designer.cs">
       <DependentUpon>ProductsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\ProgressPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ProgressPopup.Designer.cs">
+      <DependentUpon>ProgressPopup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ScanCodeEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ScanCodeEditForm.Designer.cs">
+      <DependentUpon>ScanCodeEditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\SelectProductForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -336,6 +366,10 @@
     <EmbeddedResource Include="UI\ButtonGraphicSelection.resx">
       <DependentUpon>ButtonGraphicSelection.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\CardColorSets\CardColorSetManagementForm.resx">
+      <DependentUpon>CardColorSetManagementForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\CardLevelForm.resx">
       <DependentUpon>CardLevelForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -344,17 +378,20 @@
       <DependentUpon>CardLevelDetailForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\CouponAwardToGroup.resx">
+    <EmbeddedResource Include="UI\PositionMaps\CardPositionMapManagementForm.resx">
+      <DependentUpon>CardPositionMapManagementForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Coupons\CouponAwardToGroup.resx">
       <DependentUpon>CouponAwardToGroup.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\CouponAwardToPlayer.resx">
+    <EmbeddedResource Include="UI\Coupons\CouponAwardToPlayer.resx">
       <DependentUpon>CouponAwardToPlayer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\CouponManagementForm.resx">
       <DependentUpon>CouponManagementForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\CouponMangementAddForm.resx">
+    <EmbeddedResource Include="UI\Coupons\CouponMangementAddForm.resx">
       <DependentUpon>CouponMangementAddForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\MenuPageDeviceTypeForm.resx">
@@ -367,6 +404,9 @@
     <EmbeddedResource Include="UI\PackageSearchForm.resx">
       <DependentUpon>PackageSearchForm.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ProductPackage\StarCardPositionMapsForm.resx">
+      <DependentUpon>StarCardPositionMapsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ProductSearchForm.resx">
       <DependentUpon>ProductSearchForm.cs</DependentUpon>
@@ -408,6 +448,12 @@
       <SubType>Designer</SubType>
       <DependentUpon>ProductsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\ProgressPopup.resx">
+      <DependentUpon>ProgressPopup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ScanCodeEditForm.resx">
+      <DependentUpon>ScanCodeEditForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\SelectProductForm.resx">
       <DependentUpon>SelectProductForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -417,6 +463,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\PleaseWait.gif" />
     <None Include="Resources\PaperWhiteButtonUp.png" />
     <None Include="Resources\PaperWhiteButtonDown.png" />
     <None Include="Resources\PaperTanButtonUp.png" />
@@ -524,6 +571,7 @@
     <Content Include="Resources\GelButtons\WhiteButtonUp.png" />
     <Content Include="Resources\GelButtons\YellowButtonDown.png" />
     <Content Include="Resources\GelButtons\YellowButtonUp.png" />
+    <None Include="Resources\GradientFull.png" />
     <Content Include="Resources\MerchandiseButtonDown.png" />
     <Content Include="Resources\MerchandiseButtonUp.png" />
     <None Include="Resources\SetButtonDown.png" />
@@ -589,10 +637,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Discounts\RestrictionView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="UI\Discounts\SpendLevelControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -602,6 +646,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>

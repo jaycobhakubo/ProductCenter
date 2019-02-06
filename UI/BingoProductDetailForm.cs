@@ -13,6 +13,8 @@ using GTI.Modules.Shared;
 using GTI.Modules.ProductCenter.Properties;
 using GTI.Modules.ProductCenter.Data;
 using GTI.Modules.Shared.Data;
+using GTI.Modules.ProductCenter.UI.ProductPackage;
+using System.Collections.Generic;
 
 namespace GTI.Modules.ProductCenter.UI
 {
@@ -37,6 +39,7 @@ namespace GTI.Modules.ProductCenter.UI
         public BingoProductDetailForm()
         {
             InitializeComponent();
+            PositionStarCodes = new SortedList<byte, byte>();
 
             // Create and assign the form's idle event
             Application.Idle += OnIdle;
@@ -50,7 +53,7 @@ namespace GTI.Modules.ProductCenter.UI
 
         public void CheckForWholePoints()
         {
-            if (Settings.WholeProductPoints)
+            if(Settings.WholeProductPoints)
             {
                 lblPointsPerDollarLabel.Visible = false;
                 txtPointsPerDollar.Visible = false;
@@ -62,15 +65,15 @@ namespace GTI.Modules.ProductCenter.UI
 
         private void BingoProductDetailForm_Load(object sender, EventArgs e)
         {
-          
+
             cboCardLevelList.Focus();
 
             CheckForWholePoints();
         }
 
-        private void OnIdle(object sender, EventArgs e)
+        private void UpdateDoneAdd()
         {
-            if (ProductItem.ProductTypeId > 0)
+            if(ProductItem.ProductTypeId > 0)
             {
                 int cardcount;
                 int.TryParse(CardCount, out cardcount);
@@ -96,8 +99,30 @@ namespace GTI.Modules.ProductCenter.UI
                     PointsToRedeem != PackageProduct.PointsToRedeem ||
                     price1 != price2 || altPrice1 != altPrice2 ||
                     CountsTowardsQualifyingSpend != PackageProduct.CountsTowardsQualifyingSpend || // US4587
+                    Prepaid != PackageProduct.Prepaid ||
                     IsTaxed != PackageProduct.IsTaxed ||
-                    qty != PackageProduct.Quantity);
+                    qty != PackageProduct.Quantity ||
+                    CardPositionsMapId != PackageProduct.CardPositionsMapId
+                    );
+
+                // Check to see if stars have changed
+                if(!doEnable)
+                {
+                    if(PositionStarCodes.Count != PackageProduct.PositionStarCodes.Count)
+                        doEnable = true;
+                    else
+                    {
+                        foreach(var kvp in PositionStarCodes)
+                        {
+                            if(!PackageProduct.PositionStarCodes.ContainsKey(kvp.Key)
+                                || PackageProduct.PositionStarCodes[kvp.Key] != kvp.Value)
+                            {
+                                doEnable = true;
+                                break;
+                            }
+                        }
+                    }
+                }
                 doEnable = doEnable
                     && (qty > 0)
                     && ValidateMultiples()
@@ -113,17 +138,22 @@ namespace GTI.Modules.ProductCenter.UI
                 btnAdd.Enabled = doEnable && AllowAddAnother;
             }
         }
+
+        private void OnIdle(object sender, EventArgs e)
+        {
+            UpdateDoneAdd();
+        }
         #endregion Constructors
 
         #region Add, Done and Cancel Click event handlers
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (ValidateProductCardCount())//If true then cancel.
+            if(ValidateProductCardCount())//If true then cancel.
             {
                 return;
             }
 
-            if (!ValidateMultiples())
+            if(!ValidateMultiples())
             {
                 MessageForm.Show(Resources.InvalidMultipleNumber, Resources.ValidateMultiplesTitle, MessageFormTypes.OK);//RALLY DE 6657
             }
@@ -137,13 +167,13 @@ namespace GTI.Modules.ProductCenter.UI
 
         private void DoneClick(object sender, EventArgs e)
         {
-            if (ValidateProductCardCount())//If true then cancel.
+            if(ValidateProductCardCount())//If true then cancel.
             {
                 //Application.Idle -= OnIdle;
                 return;
             }
 
-            if (!ValidateMultiples())
+            if(!ValidateMultiples())
             {
                 MessageForm.Show(Resources.InvalidMultipleNumber, Resources.ValidateMultiplesTitle, MessageFormTypes.OK);//RALLY DE 6657
             }
@@ -167,13 +197,13 @@ namespace GTI.Modules.ProductCenter.UI
         {
             return false; //JKIM disable validation for now
             bool result = false;
-            if (productItem.ProductTypeId == 5 || productItem.ProductTypeId == 16)
+            if(productItem.ProductTypeId == 5 || productItem.ProductTypeId == 16)
             {
                 //Check if the card is validate
-                if (productItem.Validate == true)
+                if(productItem.Validate == true)
                 {
                     //Get the validate product count.
-                    if (ValidateCardCount != Convert.ToInt32(txtCardCount.Text))
+                    if(ValidateCardCount != Convert.ToInt32(txtCardCount.Text))
                     {
                         MessageForm.Show("Validate Card Count Error: The Card Count should be divisible by " + ValidateCardCount.ToString() + "." /*to be validated."*/, "Validate Card Count", /*MessageFormTypes.OK_FlatDesign*/ MessageFormTypes.OK);//RALLY DE 6657
                         result = true;
@@ -188,7 +218,7 @@ namespace GTI.Modules.ProductCenter.UI
         private bool ValidateMultiples()
         {
             // Game Type Multiple Number
-            switch (GameTypeId)
+            switch(GameTypeId)
             {
                 case 5:
                     gameTypeMultipleNumber = (int)GameTypeMultiples.Enum2On;
@@ -222,30 +252,30 @@ namespace GTI.Modules.ProductCenter.UI
                     break;
             }
 
-            if (gameTypeMultipleNumber != 0)
+            if(gameTypeMultipleNumber != 0)
             {
                 // Verify if is an integer number
                 decimal dCardCount;
-                if (!decimal.TryParse(txtCardCount.Text, out dCardCount))
+                if(!decimal.TryParse(txtCardCount.Text, out dCardCount))
                     return false;
 
                 var dCardCountReminder = dCardCount % 1;
 
-                if (dCardCountReminder != 0)
+                if(dCardCountReminder != 0)
                 {
                     return false;
                 }
 
                 // Verify if Card Count is greater or equal than the Multiple
                 int iCardCount = (int)dCardCount;
-                if (iCardCount < gameTypeMultipleNumber)
+                if(iCardCount < gameTypeMultipleNumber)
                 {
                     return false;
                 }
 
                 // Verify if is a Multiple of the On game
                 var iCardCountReminder = iCardCount % gameTypeMultipleNumber;
-                if (iCardCountReminder != 0)
+                if(iCardCountReminder != 0)
                 {
                     return false;
                 }
@@ -271,13 +301,13 @@ namespace GTI.Modules.ProductCenter.UI
         /// </summary>
         public ProductItemList ProductItem
         {
-            private get { return productItem; } 
+            private get { return productItem; }
             set
             {
                 productItem = value;
                 txtProductName.Text = value.ProductItemName;
                 txtProductType.Text = value.ProductTypeName;
-                if ((value.ProductTypeId == 5 || value.ProductTypeId == 16) && value.Validate == true)//Paper and electronic and validate = true
+                if((value.ProductTypeId == 5 || value.ProductTypeId == 16) && value.Validate == true)//Paper and electronic and validate = true
                 {
                     lblNoteValidation.Visible = true;
                 }
@@ -298,9 +328,9 @@ namespace GTI.Modules.ProductCenter.UI
             set
             {
                 cboCardLevelList.Items.Clear();
-                foreach (CardLevelItem cardLevelListItem in value)
+                foreach(CardLevelItem cardLevelListItem in value)
                 {
-                    cboCardLevelList.Items.Add(new ListItem(cardLevelListItem.CardLevelName, 
+                    cboCardLevelList.Items.Add(new ListItem(cardLevelListItem.CardLevelName,
                                                             cardLevelListItem.CardLevelId.ToString()));
                 }
             }
@@ -314,7 +344,7 @@ namespace GTI.Modules.ProductCenter.UI
             {
                 ListItem li = (ListItem)cboCardLevelList.SelectedItem;
                 int num = 0;
-                if (li != null)
+                if(li != null)
                     int.TryParse(li.Value, out num);
                 return num;
             }
@@ -342,9 +372,9 @@ namespace GTI.Modules.ProductCenter.UI
             set
             {
                 cboCardTypeList.Items.Clear();
-                foreach (CardTypeListItem cardTypeListItem in value)
+                foreach(CardTypeListItem cardTypeListItem in value)
                 {
-                    cboCardTypeList.Items.Add(new ListItem(cardTypeListItem.CardTypeName, 
+                    cboCardTypeList.Items.Add(new ListItem(cardTypeListItem.CardTypeName,
                                                            cardTypeListItem.CardTypeId.ToString()));
                 }
             }
@@ -358,9 +388,22 @@ namespace GTI.Modules.ProductCenter.UI
             {
                 ListItem li = (ListItem)cboCardTypeList.SelectedItem;
                 int num = 0;
-                if (li != null)
+                if(li != null)
                     int.TryParse(li.Value, out num);
                 return num;
+            }
+            set
+            {
+                foreach(ListItem li in cboCardTypeList.Items) // DE13858
+                {
+                    int num = 0;
+                    int.TryParse(li.Value, out num);
+                    if(num == value)
+                    {
+                        cboCardTypeList.SelectedItem = li;
+                        break;
+                    }
+                }
             }
         }
 
@@ -374,11 +417,74 @@ namespace GTI.Modules.ProductCenter.UI
                 ListItem li = (ListItem)cboCardTypeList.SelectedItem;
                 return li != null ? li.Text : string.Empty;
             }
-            set{cboCardTypeList.Text = value;}
+            set { cboCardTypeList.Text = value; }
+        }
+
+        /// <summary>
+        /// Actions that occur when the selected card type changes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cboCardTypeList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(CardTypeId == (int)CardType.Star)
+            {
+                editStarDefBtn.Visible = true;
+            }
+            else
+            {
+                editStarDefBtn.Visible = false;
+            }
+        }
+
+        #endregion
+        #region Star Information
+
+        /// <summary>
+        /// Which star map to use when generating a card face
+        /// </summary>
+        public int CardPositionsMapId
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Position mapped to star code
+        /// </summary>
+        public SortedList<byte, byte> PositionStarCodes
+        {
+            get;
+            set;
+        }
+
+        private void editStarDefBtn_Click(object sender, EventArgs e)
+        {
+            StarCardPositionMapsForm mapForm = new StarCardPositionMapsForm(CardPositionsMapId, PositionStarCodes);
+
+            mapForm.ShowDialog(this);
+            if(mapForm.DialogResult == System.Windows.Forms.DialogResult.OK)
+            {
+                CardPositionsMapId = mapForm.SelectedStarPositionMap.Id;
+
+                PositionStarCodes.Clear();
+                var starCounts = mapForm.StarCounts;
+                byte nextPosition = 0;
+                for(int i = 0; i < starCounts.Count; i++)
+                {
+                    var sc = starCounts[i];
+                    for(int j = 0; j < sc.Count; j++)
+                    {
+                        PositionStarCodes.Add(nextPosition, sc.StarCode.Code);
+                        nextPosition++;
+                    }
+                }
+                UpdateDoneAdd();
+            }
         }
         #endregion
         #region Card Media
-        
+
         /// <summary>
         /// Gets the Selected Card Media Id.
         /// </summary>
@@ -399,7 +505,7 @@ namespace GTI.Modules.ProductCenter.UI
             get
             {
                 return CardMedia.Electronic.ToString();
-            }      
+            }
         }
         #endregion
         #region Game Category
@@ -411,9 +517,9 @@ namespace GTI.Modules.ProductCenter.UI
             set
             {
                 cboGameCategoryList.Items.Clear();
-                foreach (GameCategory gameCategoryListItem in value)
+                foreach(GameCategory gameCategoryListItem in value)
                 {
-                    cboGameCategoryList.Items.Add(new ListItem(gameCategoryListItem.Name, 
+                    cboGameCategoryList.Items.Add(new ListItem(gameCategoryListItem.Name,
                                                                gameCategoryListItem.Id.ToString()));
                 }
             }
@@ -427,7 +533,7 @@ namespace GTI.Modules.ProductCenter.UI
             {
                 ListItem li = (ListItem)cboGameCategoryList.SelectedItem;
                 int num = 0;
-                if (li != null)
+                if(li != null)
                     int.TryParse(li.Value, out num);
                 return num;
             }
@@ -456,7 +562,7 @@ namespace GTI.Modules.ProductCenter.UI
             {
                 // Save the current game type in use
                 var strTemp = "";
-                if (!string.IsNullOrEmpty(cboGameTypeList.Text))
+                if(!string.IsNullOrEmpty(cboGameTypeList.Text))
                 {
                     strTemp = cboGameTypeList.Text;
                 }
@@ -464,18 +570,18 @@ namespace GTI.Modules.ProductCenter.UI
                 cboGameTypeList.Items.Clear();
 
                 // Populate the List.
-                foreach (GameTypeListItem gameTypeListItem in value)
+                foreach(GameTypeListItem gameTypeListItem in value)
                 {
                     // FIX TA5759
                     //if (gameTypeListItem.GameTypeName == "Crystal Ball")
-                    if (gameTypeListItem.GameTypeId == (int)GameType.CrystalBall)
+                    if(gameTypeListItem.GameTypeId == (int)GameType.CrystalBall)
                     {
-                        if ((ProductItem.ProductTypeId > 0) && (ProductItem.ProductTypeId < 5)) // CBB types 1, 2, 3, 4
+                        if((ProductItem.ProductTypeId > 0) && (ProductItem.ProductTypeId < 5)) // CBB types 1, 2, 3, 4
                         {
                             cboGameTypeList.Items.Add(new ListItem(gameTypeListItem.GameTypeName, gameTypeListItem.GameTypeId.ToString()));
                         }
                     }
-                    else if (gameTypeListItem.GameTypeId != (int)GameType.PickYurPlatter)
+                    else if(gameTypeListItem.GameTypeId != (int)GameType.PickYurPlatter)
                     {
                         cboGameTypeList.Items.Add(new ListItem(gameTypeListItem.GameTypeName, gameTypeListItem.GameTypeId.ToString()));
                     }
@@ -483,7 +589,7 @@ namespace GTI.Modules.ProductCenter.UI
                 }
 
                 // Restore the current game type in use
-                if (!string.IsNullOrEmpty(strTemp))
+                if(!string.IsNullOrEmpty(strTemp))
                 {
                     cboGameTypeList.Text = strTemp;
                 }
@@ -498,7 +604,7 @@ namespace GTI.Modules.ProductCenter.UI
             {
                 var li = (ListItem)cboGameTypeList.SelectedItem;
                 int num = 0;
-                if (li != null)
+                if(li != null)
                     int.TryParse(li.Value, out num);
                 return num;
             }
@@ -523,17 +629,17 @@ namespace GTI.Modules.ProductCenter.UI
         {
             //START RALLY 4125
             //START RALLY TA 5744
-            if (Settings.PlayWithPaper)
+            if(Settings.PlayWithPaper)
             {
                 CardTypeName = "Standard";
                 cboCardTypeList.Enabled = false;
             }
             //END RALLY TA 5744
-            
-            
+
+
             else
             {
-                switch ((GameType)GameTypeId)
+                switch((GameType)GameTypeId)
                 {
                     case GameType.B13:
                     case GameType.AllStar:
@@ -565,17 +671,17 @@ namespace GTI.Modules.ProductCenter.UI
                         cboCardTypeList.Enabled = true;
                         break;
                 }
-            }       
+            }
             // END DE4125
 
 
             // FIX TA5873
-            if (productItem.PaperLayoutCount == 0)
+            if(productItem.PaperLayoutCount == 0)
             {
-                if (GameTypeName.ToLower().Contains("on") ||
+                if(GameTypeName.ToLower().Contains("on") ||
                     GameTypeName.ToLower().Contains("pot-of-gold"))
                 {
-                    if (!ValidateMultiples())
+                    if(!ValidateMultiples())
                     {
                         CardCount = gameTypeMultipleNumber.ToString();
                     }
@@ -592,7 +698,7 @@ namespace GTI.Modules.ProductCenter.UI
             set;
         }
         #endregion
-        
+
         // END DE4125
         #region Points Per Quantity
         /// <summary>
@@ -634,7 +740,22 @@ namespace GTI.Modules.ProductCenter.UI
             get { return checkBoxPointQualify.Checked; }
             set { checkBoxPointQualify.Checked = value; }
         }
-
+        #endregion
+        #region Prepaid
+        /// <summary>
+        /// Get/Set whether or not the product is prepaid
+        /// </summary>
+        public bool Prepaid
+        {
+            get
+            {
+                return checkBoxPrepaid.Checked;
+            }
+            set
+            {
+                checkBoxPrepaid.Checked = value;
+            }
+        }
         #endregion
         #region Price
         public string Price
@@ -695,7 +816,7 @@ namespace GTI.Modules.ProductCenter.UI
         public string CardCount
         {
             get { return txtCardCount.Text; }
-            set { txtCardCount.Text = string.IsNullOrEmpty(value) ? "1" : value; } 
+            set { txtCardCount.Text = string.IsNullOrEmpty(value) ? "1" : value; }
         }
         public string Quantity
         {
@@ -713,16 +834,16 @@ namespace GTI.Modules.ProductCenter.UI
         private void txtCardCount_TextChanged(object sender, EventArgs e)
         {
             // START RALLY TA5873
-            if (productItem.PaperLayoutCount > 0)
+            if(productItem.PaperLayoutCount > 0)
             {
                 txtCardCount.BackColor = Color.FromArgb(215, 251, 193);
             }
             // END RALLY TA5873
             // START RALLY DE4125
-            if (GameTypeName.ToLower().Contains("on") ||
-                
+            if(GameTypeName.ToLower().Contains("on") ||
+
                 GameTypeName.ToLower().Contains("pot-of-gold"))
-                // END DE4125
+            // END DE4125
             {
                 txtCardCount.BackColor = !ValidateMultiples() ? Color.LightPink : Color.FromArgb(215, 251, 193);
             }
@@ -735,8 +856,6 @@ namespace GTI.Modules.ProductCenter.UI
             txtQuantity.BackColor = !isOk ? Color.LightPink : Color.FromArgb(215, 251, 193);
         }
         #endregion
-
-       
 
     }
 }

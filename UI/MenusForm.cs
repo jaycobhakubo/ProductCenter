@@ -18,6 +18,8 @@ using GTI.Modules.ProductCenter.Properties;
 using GTI.Modules.ProductCenter.Data;
 using GTI.Modules.Shared.Business;
 using GTI.Modules.Shared.Data;
+using GTI.Modules.ProductCenter.Business;
+using System.ComponentModel;
 
 namespace GTI.Modules.ProductCenter.UI
 {
@@ -28,7 +30,9 @@ namespace GTI.Modules.ProductCenter.UI
         protected const string ALL_DEVICES_SELECTED = "[All]";
         protected const string NO_DEVICES_SELECTED = "[None]";
         protected const string MANY_DEVICES_SELECTED = "Multiple";
-        #endregion Cosntants and Data types
+        protected const int MENUS_BASE_NODE_IDX = 0; // the base node index for the future menus
+        protected const int DAILY_MENUS_BASE_NODE_IDX = 1; // the base node index for the daily menus
+        #endregion Constants and Data types
 
         #region Member Variables
         private static MenuDetailForm menuDetailForm;
@@ -38,23 +42,31 @@ namespace GTI.Modules.ProductCenter.UI
         private static POSMenuItem copiedMenu;
         private static PageItem copiedPage;
         private static ImageButton copiedButton = new ImageButton();
-        private readonly List<ButtonGraphic> graphics;
-        private readonly string crLf = Convert.ToChar(13) + Convert.ToChar(10).ToString();
+        private int m_operatorId;
+        private List<ButtonGraphic> graphics;
         private List<Device> m_devicesForPage; // DE13556 NOTE: This should only be set in the UpdateDevicesUI(), but can be read any time after.
+        private Dictionary<POSMenuItem, List<DailyMenuButton>> m_dailyMenus;
+        private TreeNode dailyRootNode;
+        private List<CardMediaListItem> m_cardMediaList;    // US1772
+        private List<GameCategory> m_gameCategoryList;      // US1772
+        private List<GameTypeListItem> m_gameTypeList;      // US1772
+        private List<CardLevelItem> m_cardLevelList;        // US1772
+        private WaitForm m_waitForm;
+        private BackgroundWorker saveAndLoadWorker;         // US1772
+        private BackgroundWorker loadWorker;                // US1772
+        private bool m_canEditDaily = false;                // US1772
         #endregion Member Variables
 
         #region Member Properties
-        /// <summary>
-        /// Sets the Operator Id
-        /// </summary>
-        public int OperatorId { private get; set; }
 
         /// <summary>
-        /// US3692
-        /// If the system only allows whole points do not
-        /// allow function discounts
+        /// The settings for this application
         /// </summary>
-        public bool WholePoints { get; set; }
+        public ProductCenterSettings ProdCenterSettings
+        {
+            get;
+            set;
+        }
 
         /// <summary>
         /// Populates the Menu LIst.
@@ -64,36 +76,107 @@ namespace GTI.Modules.ProductCenter.UI
             set
             {
                 // Clear the Menu Item List.
-                MenuTreeView.SelectedNode = MenuTreeView.Nodes[0];
+                MenuTreeView.SelectedNode = MenuTreeView.Nodes[MENUS_BASE_NODE_IDX];
                 MenuTreeView.SelectedNode.Nodes.Clear();
 
                 // Populate the Menu Item List;
                 foreach (POSMenuItem menuItemList in value)
                 {
                     // Add child node to root node
-                    var treeNode = new TreeNode(menuItemList.MenuName) {Tag = menuItemList};
-                    MenuTreeView.SelectedNode = MenuTreeView.Nodes[0];
+                    var treeNode = new TreeNode(menuItemList.MenuName) { Tag = menuItemList };
+                    MenuTreeView.SelectedNode = MenuTreeView.Nodes[MENUS_BASE_NODE_IDX];
                     MenuTreeView.SelectedNode.Nodes.Add(treeNode);
                 }
                 // Set the root node as default node and expand it.
-                MenuTreeView.SelectedNode = MenuTreeView.Nodes[0];
+                MenuTreeView.SelectedNode = MenuTreeView.Nodes[MENUS_BASE_NODE_IDX];
                 MenuTreeView.Focus();
                 MenuTreeView.SelectedNode.Expand();
+            }
+        }
+
+        /// <summary>
+        /// Populates the Daily Menu List.
+        /// </summary>
+        public Dictionary<POSMenuItem, List<DailyMenuButton>> PopulateDailyMenuList
+        {
+            set
+            {
+                if (this.InvokeRequired)
+                {
+                    Invoke(new MethodInvoker(() =>
+                    {
+                        PopulateDailyMenuList = value;
+                    }));
+                }
+                else
+                {
+                    if (dailyRootNode == null)  // that node was removed. We can't reference it.
+                        return;
+                    // Clear the Daily Menu Item List.
+                    dailyRootNode.Nodes.Clear();
+                    m_dailyMenus = value;
+
+                    // Populate the Daily Menu Item List;
+                    if (value != null)
+                    {
+                        if (!MenuTreeView.Nodes.Contains(dailyRootNode))
+                            MenuTreeView.Nodes.Add(dailyRootNode);
+
+                        foreach (KeyValuePair<POSMenuItem, List<DailyMenuButton>> pair in value)
+                        {
+                            POSMenuItem menuItem = pair.Key;
+                            // Add child node to root node
+                            POSMenuItem temp = new POSMenuItem() { IsDailyMenu = true, MenuId = menuItem.MenuId, MenuName = menuItem.MenuName, MenuTypeId = menuItem.MenuTypeId };
+                            var treeNode = new TreeNode(menuItem.MenuName) { Tag = temp };
+                            dailyRootNode.Nodes.Add(treeNode);
+                        }
+                        dailyRootNode.Expand();
+                    }
+                    else
+                    {
+                        MenuTreeView.Nodes.Remove(dailyRootNode);
+                    }
+                }
             }
         }
         #endregion Member Properties
 
         #region Constructors
-        public MenusForm()
+        public MenusForm(int operatorId = 0, List<int> staffPermissions = null)
         {
             InitializeComponent();
 
-            //Set new flat background
-            //System.Drawing.Color defaultBackground = System.Drawing.ColorTranslator.FromHtml("#44658D");
-            //this.BackColor = defaultBackground;
-            //this.ForeColor = System.Drawing.Color.White;
+            #region Daily Setup
+            dailyRootNode = MenuTreeView.Nodes[DAILY_MENUS_BASE_NODE_IDX];
+            Font temp = new System.Drawing.Font(MenuTreeView.Font, FontStyle.Bold);
+            dailyRootNode.NodeFont = temp;
+            MenuTreeView.Nodes.Remove(dailyRootNode);
 
-            graphics = GetButtonGraphicsMessage.GetButtonGraphics(-1);
+            saveAndLoadWorker = new BackgroundWorker();
+            saveAndLoadWorker.DoWork += new DoWorkEventHandler(SaveDaily);
+            saveAndLoadWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(SaveCompleted);
+
+            loadWorker = new BackgroundWorker();
+            loadWorker.DoWork += new DoWorkEventHandler(ReloadDaily);
+            loadWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(LoadDailyCompleted);
+
+            m_waitForm = new WaitForm();
+            m_waitForm.WaitImage = Resources.PleaseWait;
+            m_waitForm.Cursor = Cursors.WaitCursor;
+            m_waitForm.ProgressBarVisible = false;
+            m_waitForm.CancelButtonVisible = false;
+            if (staffPermissions != null && staffPermissions.Any(x => x == (int)ModuleFeature.EditDailyMenu))
+                m_canEditDaily = true;
+
+            if(!m_canEditDaily)
+                m_chkShowDaily.Visible = false;
+            #endregion
+
+            m_operatorId = operatorId;
+
+            MenuTreeView.ExpandAll();
+            System.Threading.Thread t = new System.Threading.Thread(LoadData);
+            t.Start();
         }
 
         public void HookIdle()
@@ -111,40 +194,67 @@ namespace GTI.Modules.ProductCenter.UI
             //When form is in idle state will execute this.
             //Enable or Disable controls here.
 
-            // Context Menu Stuff
-            editMenuToolStripMenuItem.Enabled = MenuTreeView.SelectedNode.Level == 1;
-            copyMenuToolStripMenuItem.Enabled = MenuTreeView.SelectedNode.Level == 1;
-            pasteMenuToolStripMenuItem.Enabled = !string.IsNullOrEmpty(copiedMenu.MenuName);
-            deleteMenuToolStripMenuItem.Enabled = MenuTreeView.SelectedNode.Level == 1;
+            bool selectedDailyMenu = false; // US1772
+            if (MenuTreeView.SelectedNode.Level == 0) // base node 
+            {
+                if (MenuTreeView.SelectedNode == dailyRootNode)
+                    selectedDailyMenu = true;
+            }
+            else if (MenuTreeView.SelectedNode.Level == 1) // menus
+            {
+                if (MenuTreeView.SelectedNode.Tag is POSMenuItem)
+                    selectedDailyMenu = ((POSMenuItem)MenuTreeView.SelectedNode.Tag).IsDailyMenu;
+            }
+            else if (MenuTreeView.SelectedNode.Level == 2) // menu pages
+            {
+                if (MenuTreeView.SelectedNode.Parent.Tag is POSMenuItem)
+                    selectedDailyMenu = ((POSMenuItem)MenuTreeView.SelectedNode.Parent.Tag).IsDailyMenu;
+            }
 
-            addPageToolStripMenuItem.Enabled = MenuTreeView.SelectedNode.Level == 1;
-            assignPageToDeviceToolStripMenuItem.Enabled = MenuTreeView.SelectedNode.Level == 2;
-            copyPageToolStripMenuItem.Enabled = MenuTreeView.SelectedNode.Level == 2;
-            pastePageToolStripMenuItem.Enabled = (copiedPage.MenuId != 0) && (MenuTreeView.SelectedNode.Level == 1);
+            // Context Menu Stuff
+            addMenuToolStripMenuItem.Enabled = !selectedDailyMenu;
+            editMenuToolStripMenuItem.Enabled = MenuTreeView.SelectedNode.Level == 1 && !selectedDailyMenu;
+            copyMenuToolStripMenuItem.Enabled = MenuTreeView.SelectedNode.Level == 1 && !selectedDailyMenu;
+            pasteMenuToolStripMenuItem.Enabled = !string.IsNullOrEmpty(copiedMenu.MenuName) && !selectedDailyMenu;
+            deleteMenuToolStripMenuItem.Enabled = MenuTreeView.SelectedNode.Level == 1 && !selectedDailyMenu;
+
+            addPageToolStripMenuItem.Enabled = MenuTreeView.SelectedNode.Level == 1 && !selectedDailyMenu;
+            assignPageToDeviceToolStripMenuItem.Enabled = MenuTreeView.SelectedNode.Level == 2 && !selectedDailyMenu;
+            copyPageToolStripMenuItem.Enabled = MenuTreeView.SelectedNode.Level == 2 && !selectedDailyMenu;
+            pastePageToolStripMenuItem.Enabled = (copiedPage.Menu.MenuId != 0) && (MenuTreeView.SelectedNode.Level == 1)
+                                                  && !selectedDailyMenu;
             deletePageToolStripMenuItem.Enabled = MenuTreeView.SelectedNode.Level == 2
                                                   && MenuTreeView.SelectedNode.Parent.Nodes.Count
-                                                  == MenuTreeView.SelectedNode.Index + 1;
+                                                  == MenuTreeView.SelectedNode.Index + 1
+                                                  && !selectedDailyMenu;
 
             // Top Menu Stuff
-            editMenuToolStripMenuItem1.Enabled = MenuTreeView.SelectedNode.Level == 1;
-            copyMenuToolStripMenuItem1.Enabled = MenuTreeView.SelectedNode.Level == 1;
-            pasteMenuToolStripMenuItem1.Enabled = !string.IsNullOrEmpty(copiedMenu.MenuName);
-            deleteMenuToolStripMenuItem1.Enabled = MenuTreeView.SelectedNode.Level == 1;
+            addMenuToolStripMenuItem1.Enabled = !selectedDailyMenu;
+            editMenuToolStripMenuItem1.Enabled = MenuTreeView.SelectedNode.Level == 1 && !selectedDailyMenu;
+            copyMenuToolStripMenuItem1.Enabled = MenuTreeView.SelectedNode.Level == 1 && !selectedDailyMenu;
+            pasteMenuToolStripMenuItem1.Enabled = !string.IsNullOrEmpty(copiedMenu.MenuName) && !selectedDailyMenu;
+            deleteMenuToolStripMenuItem1.Enabled = MenuTreeView.SelectedNode.Level == 1 && !selectedDailyMenu;
 
-            addPageToolStripMenuItem1.Enabled = MenuTreeView.SelectedNode.Level == 1;
-            assignPageToDeviceToolStripMenuItem1.Enabled = MenuTreeView.SelectedNode.Level == 2;
-            copyPageToolStripMenuItem1.Enabled = MenuTreeView.SelectedNode.Level == 2;
-            pastePageToolStripMenuItem1.Enabled = (copiedPage.MenuId != 0) && (MenuTreeView.SelectedNode.Level == 1);
+            addPageToolStripMenuItem1.Enabled = MenuTreeView.SelectedNode.Level == 1 && !selectedDailyMenu;
+            assignPageToDeviceToolStripMenuItem1.Enabled = MenuTreeView.SelectedNode.Level == 2 && !selectedDailyMenu;
+            copyPageToolStripMenuItem1.Enabled = MenuTreeView.SelectedNode.Level == 2 && !selectedDailyMenu;
+            pastePageToolStripMenuItem1.Enabled = (copiedPage.Menu.MenuId != 0) && (MenuTreeView.SelectedNode.Level == 1)
+                                                   && !selectedDailyMenu;
             deletePageToolStripMenuItem1.Enabled = MenuTreeView.SelectedNode.Level == 2
                                                    && MenuTreeView.SelectedNode.Parent.Nodes.Count
-                                                   == MenuTreeView.SelectedNode.Index + 1;
+                                                   == MenuTreeView.SelectedNode.Index + 1
+                                                   && !selectedDailyMenu;
 
             // Menu List Stuff
             if (MenuTreeView.SelectedNode.Level == 2)
             {
                 // Show the buttons to the user
                 ButtonPanel.Show();
-                DragInfoLabel.Show();
+
+                if(selectedDailyMenu)
+                    DragInfoLabel.Hide();
+                else
+                    DragInfoLabel.Show();
             }
             else
             {
@@ -157,6 +267,212 @@ namespace GTI.Modules.ProductCenter.UI
         #endregion On Idle
 
         #endregion Constructors
+
+        #region Private Misc Methods
+
+        /// <summary>
+        /// allows the developer to load some data that doesn't change often on a background thread
+        /// </summary>
+        private void LoadData()
+        {
+            if (graphics == null)
+            {
+                try
+                {
+                    // Note: this should probably be first in case the user tries to click on a menu page very quickly.
+                    //     Since one message is sent at a time, this will be processed before the pages are loaded, so everything should be fine
+                    graphics = GetButtonGraphicsMessage.GetButtonGraphics(-1);
+                }
+                catch (Exception ex)
+                {
+                    ProductCenter.Business.ProductCenter.Log("Unable to get button graphics: " + ex.ToString(), LoggerLevel.Severe);
+                    graphics = new List<ButtonGraphic>(); // keep other things from throwing exceptions
+                }
+            }
+
+            // JAN - note that the user can change some of these things while we're running, but since we're loading these for the 
+            //     "daily" menu items; the data will be valid until the user starts editing them (and the edit window loads its own copies when it starts)
+            if (m_cardMediaList == null)
+            {
+                m_cardMediaList = new List<CardMediaListItem>();
+                try
+                {
+                    m_cardMediaList.AddRange(GetCardMediaMessage.GetArray(0));
+                }
+                catch (Exception ex)
+                {
+                    ProductCenter.Business.ProductCenter.Log("Unable to get card media list: " + ex.ToString(), LoggerLevel.Severe);
+                }
+            }
+            if (m_gameCategoryList == null)
+            {
+                m_gameCategoryList = new List<GameCategory>();
+                try
+                {
+                    m_gameCategoryList.AddRange(GetGameCategoriesMessage.GetArray());
+                }
+                catch (Exception ex)
+                {
+                    ProductCenter.Business.ProductCenter.Log("Unable to get game category list: " + ex.ToString(), LoggerLevel.Severe);
+                }
+            }
+            if (m_gameTypeList == null)
+            {
+                m_gameTypeList = new List<GameTypeListItem>();
+                try
+                {
+                    m_gameTypeList.AddRange(GetGameTypeMessage.GetArray());
+                }
+                catch (Exception ex)
+                {
+                    ProductCenter.Business.ProductCenter.Log("Unable to get game type list: " + ex.ToString(), LoggerLevel.Severe);
+                }
+            }
+            if (m_cardLevelList == null)
+            {
+                m_cardLevelList = new List<CardLevelItem>();
+                try
+                {
+                    m_cardLevelList.AddRange(GetCardLevelMessage.CardLevels(0).ToArray());
+                }
+                catch (Exception ex)
+                {
+                    ProductCenter.Business.ProductCenter.Log("Unable to get level list: " + ex.ToString(), LoggerLevel.Severe);
+                }
+            }
+        }
+
+        /// US1772
+        /// <summary>
+        /// Fills in the list of daily menus
+        /// </summary>
+        private void GetDailyMenus()
+        {
+            if (m_canEditDaily)
+            {
+                Dictionary<POSMenuItem, List<DailyMenuButton>> temp = new Dictionary<POSMenuItem, List<DailyMenuButton>>();
+                POSMenuItem loadingMenu = new POSMenuItem();
+                loadingMenu.IsDailyMenu = true;
+                loadingMenu.MenuName = "(loading...)";
+                temp.Add(loadingMenu, new List<DailyMenuButton>());
+                PopulateDailyMenuList = temp;
+
+                DateTime gamingDate = DateTime.Now;
+                try
+                {
+                    GetGamingDateMessage dateMessage = new GetGamingDateMessage(m_operatorId);
+                    dateMessage.Send();
+                    if (dateMessage.ServerReturnCode == GTIServerReturnCode.Success)
+                        gamingDate = dateMessage.GamingDate;
+                }
+                catch (Exception ex)
+                {
+                    ProductCenter.Business.ProductCenter.Log("Unable to get gaming date: " + ex.ToString(), LoggerLevel.Severe);
+                }
+
+                //Populate the Daily Menu List
+                try
+                {
+                    PopulateDailyMenuList = GetDailyStaffMenusMessage.GetDailyStaffMenus(gamingDate);
+                }
+                catch (ServerException ex)
+                {
+                    string err = String.Format("Unable to get daily menu. Reason: {0}",
+                        GameTech.Elite.Client.ServerErrorTranslator.GetReturnCodeMessage((GameTech.Elite.Client.ServerReturnCode)ex.ReturnCode));
+                    ProductCenter.Business.ProductCenter.Log(err, LoggerLevel.Severe);
+                    MessageForm.Show(err);
+                    PopulateDailyMenuList = null;
+                }
+                catch (Exception ex)
+                {
+                    string err = "Unable to get daily menu: " + ex.ToString();
+                    ProductCenter.Business.ProductCenter.Log(err, LoggerLevel.Severe);
+                    MessageForm.Show(err);
+                    PopulateDailyMenuList = null;
+                }
+            }
+            else
+            {
+                PopulateDailyMenuList = null;
+            }
+        }
+
+        /// US1772
+        /// <summary>
+        /// Saves the daily menu button edit and reloads the menu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SaveDaily(object sender, DoWorkEventArgs e)
+        {
+            Tuple<POSMenuItem, DailyMenuButton> tup = (Tuple<POSMenuItem, DailyMenuButton>)e.Argument;
+            if (tup != null)
+            {
+                POSMenuItem menu = tup.Item1;
+                DailyMenuButton button = tup.Item2;
+
+                try
+                {
+                    // Save the button info to the database
+                    UpdateDailyMenuDataMessage.UpdateDailyMenuData(menu, button);
+                }
+                catch (ServerException ex)
+                {
+                    string err = String.Format("Unable to save daily menu. Reason: {0}",
+                        GameTech.Elite.Client.ServerErrorTranslator.GetReturnCodeMessage((GameTech.Elite.Client.ServerReturnCode)ex.ReturnCode));
+                    ProductCenter.Business.ProductCenter.Log(err, LoggerLevel.Severe);
+                    MessageForm.Show(err);
+                }
+                catch (Exception ex)
+                {
+                    string err = "Unable to save daily menu: " + ex.ToString();
+                    ProductCenter.Business.ProductCenter.Log(err, LoggerLevel.Severe);
+                    MessageForm.Show(err);
+                }
+            }
+        }
+
+        /// US1772
+        /// <summary>
+        /// Runs the load worker
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SaveCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (loadWorker != null && !loadWorker.IsBusy)
+            {
+                loadWorker.RunWorkerAsync();
+                m_waitForm.Message = "Loading daily menu";
+            }
+        }
+
+        /// US1772
+        /// <summary>
+        /// Saves the daily menu button edit and reloads the menu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ReloadDaily(object sender, DoWorkEventArgs e)
+        {
+            GetDailyMenus();
+        }
+
+        /// US1772
+        /// <summary>
+        /// Closes the wait form and resets the cursor
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LoadDailyCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (m_waitForm != null && !m_waitForm.IsDisposed)
+            {
+                m_waitForm.CloseForm();
+            }
+            Cursor = Cursors.Default;
+        }
+        #endregion
 
         #region Menu Events
 
@@ -176,7 +492,7 @@ namespace GTI.Modules.ProductCenter.UI
             {
                 Cursor = Cursors.WaitCursor;
 
-                SetMenuMessage.Save(0, OperatorId, menuDetailForm.MenuName, int.Parse(menuDetailForm.MenuTypeId));
+                SetMenuMessage.Save(0, m_operatorId, menuDetailForm.MenuName, int.Parse(menuDetailForm.MenuTypeId));
 
                 // Set the root node as default node
                 MenuTreeView.SelectedNode = MenuTreeView.Nodes[0];
@@ -184,7 +500,8 @@ namespace GTI.Modules.ProductCenter.UI
                 MenuTreeView.SelectedNode.Expand();
 
                 // Populate the Menu List.
-                PopulateMenuList = MenuItems.NameSorted(OperatorId).ToArray();
+                PopulateMenuList = MenuItems.NameSorted(m_operatorId).ToArray();
+
                 Application.DoEvents();
 
                 // Again... Set the root node as default node
@@ -200,7 +517,7 @@ namespace GTI.Modules.ProductCenter.UI
         #region Edit Menu
         private void EditMenuClick(object sender, EventArgs e)
         {
-            if (MenuTreeView.SelectedNode.Level == 1)
+            if (MenuTreeView.SelectedNode.Level == 1 && MenuTreeView.SelectedNode.Tag is POSMenuItem && !((POSMenuItem)MenuTreeView.SelectedNode.Tag).IsDailyMenu)
             {
                 Cursor = Cursors.WaitCursor;
 
@@ -227,7 +544,7 @@ namespace GTI.Modules.ProductCenter.UI
                     menuItem.MenuTypeId = int.Parse(menuDetailForm.MenuTypeId);
                     MenuTreeView.SelectedNode.Tag = menuItem;
 
-                    SetMenuMessage.Save(menuItem.MenuId, OperatorId, menuItem.MenuName, menuItem.MenuTypeId);
+                    SetMenuMessage.Save(menuItem.MenuId, m_operatorId, menuItem.MenuName, menuItem.MenuTypeId);
 
                     Cursor = Cursors.Default;
                 }
@@ -270,7 +587,7 @@ namespace GTI.Modules.ProductCenter.UI
                     Cursor = Cursors.WaitCursor;
 
                     // Add the menu to the database
-                    var menuId = SetMenuMessage.Save(0, OperatorId, menuDetailForm.MenuName,
+                    var menuId = SetMenuMessage.Save(0, m_operatorId, menuDetailForm.MenuName,
                                                      int.Parse(menuDetailForm.MenuTypeId));
 
                     // Create a new Menu Item object to store it in the node's tag
@@ -287,7 +604,7 @@ namespace GTI.Modules.ProductCenter.UI
                     MenuTreeView.SelectedNode.Expand();
 
                     // Add Child node to root node
-                    var treeNode = new TreeNode(menuDetailForm.MenuName) {Tag = menuItem};
+                    var treeNode = new TreeNode(menuDetailForm.MenuName) { Tag = menuItem };
                     MenuTreeView.SelectedNode.Nodes.Add(treeNode);
 
                     // Set the last node as default node.
@@ -304,7 +621,8 @@ namespace GTI.Modules.ProductCenter.UI
                     for (var i = 1; i <= totalPages; i++)
                     {
                         var treeNodePage = new TreeNode("Page " + i);
-                        var pageItem = new PageItem { MenuId = menuId, MenuPage = (byte)i };
+                        var pageItem = new PageItem { MenuPage = (byte)i };
+                        pageItem.Menu.MenuId = menuId;
                         treeNodePage.Tag = pageItem;
                         MenuTreeView.SelectedNode.Nodes.Add(treeNodePage);
                     }
@@ -347,7 +665,7 @@ namespace GTI.Modules.ProductCenter.UI
                     MenuTreeView.SelectedNode.Remove();
 
                     //// Remove it from the database
-                    DelMenuMessage.DeleteMenu(OperatorId, menuItem.MenuId);
+                    DelMenuMessage.DeleteMenu(m_operatorId, menuItem.MenuId);
 
                     Cursor = Cursors.Default;
                 }
@@ -367,7 +685,7 @@ namespace GTI.Modules.ProductCenter.UI
             if (MenuTreeView.SelectedNode.Level > 0)
             {
                 // Get the menu pages
-                if (MenuTreeView.SelectedNode.Level == 1)
+                if (MenuTreeView.SelectedNode.Level == 1 && MenuTreeView.SelectedNode.Tag != null)
                 {
                     Cursor = Cursors.WaitCursor;
 
@@ -375,15 +693,29 @@ namespace GTI.Modules.ProductCenter.UI
                     var menuItem = (POSMenuItem)MenuTreeView.SelectedNode.Tag;
 
                     // Get the Page List from the database.
-                    int totalPages;
-                    GetMenuButtonMessage.GetButtons(menuItem.MenuId, 0, out totalPages);
+                    int totalPages = 0;
+                    if (menuItem.IsDailyMenu) // US1772 if this is a daily menu, we already have the info stored
+                    {
+                        if (m_dailyMenus != null && m_dailyMenus.ContainsKey(menuItem))
+                        {
+                            foreach (var button in m_dailyMenus[menuItem])
+                            {
+                                if (button.PageNumber > totalPages)
+                                    totalPages = button.PageNumber;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        GetMenuButtonMessage.GetButtons(menuItem.MenuId, 0, out totalPages);
+                    }
 
                     // Add pages to the menu item in the treeview
                     MenuTreeView.SelectedNode.Nodes.Clear();
                     for (var i = 1; i <= totalPages; i++)
                     {
                         var treeNode = new TreeNode("Page " + i);
-                        var pageItem = new PageItem { MenuId = menuItem.MenuId, MenuPage = (byte)i };
+                        var pageItem = new PageItem { Menu = menuItem, MenuPage = (byte)i };
                         treeNode.Tag = pageItem;
                         MenuTreeView.SelectedNode.Nodes.Add(treeNode);
                     }
@@ -400,21 +732,61 @@ namespace GTI.Modules.ProductCenter.UI
                     var pageItem = (PageItem)MenuTreeView.SelectedNode.Tag;
 
                     //// Populate the buttons
-                    int totalPages;
-                    List<MenuButtonList> menuButtons = GetMenuButtonMessage.GetButtons(pageItem.MenuId, pageItem.MenuPage, out totalPages);
-                    CreateMenuButtons(menuButtons.ToArray());
+                    if (pageItem.Menu.IsDailyMenu) // US1772
+                    {
+                        if (m_dailyMenus != null && m_dailyMenus.ContainsKey(pageItem.Menu))
+                        {
+                            IEnumerable<DailyMenuButton> pageButtons = m_dailyMenus[pageItem.Menu].Where(x => x.PageNumber == pageItem.MenuPage);
+                            CreateMenuButtons(pageButtons.ToArray());
+                        }
 
-                    List<Device> devicesForPage = null;
+                        DeviceInfoLabel.Visible = DeviceTypeLinkLabel.Visible = false; // don't display the device for daily menus
+                    }
+                    else
+                    {
+                        int totalPages;
+                        List<MenuButtonList> menuButtons = GetMenuButtonMessage.GetButtons(pageItem.Menu.MenuId, pageItem.MenuPage, out totalPages);
+                        CreateMenuButtons(menuButtons.ToArray());
 
-                    if (menuButtons != null && menuButtons.Count > 0)
-                        devicesForPage = menuButtons.First().ValidDevices; // devices are technically assigned per button, but UI only supports per-page
+                        List<Device> devicesForPage = null;
 
-                    UpdateDevicesUI(devicesForPage);
+                        if (menuButtons != null && menuButtons.Count > 0)
+                            devicesForPage = menuButtons.First().ValidDevices; // devices are technically assigned per button, but UI only supports per-page
+
+                        UpdateDevicesUI(devicesForPage);
+                    }
                 }
             }
             Cursor = Cursors.Default;
         }
         #endregion Menu List After Select
+
+        #region Show Daily Checkbox
+
+        /// <summary>
+        /// Actions that occur when the "show daily" checkbox changes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ShowDaily_CheckedChanged(object sender, EventArgs e)
+        {
+            if ((sender as CheckBox).Checked)
+            {
+                if (loadWorker != null && !loadWorker.IsBusy)
+                {
+                    loadWorker.RunWorkerAsync();
+                    m_waitForm.Message = "Loading daily menu";
+                    m_waitForm.ShowDialog(this);
+                }
+            }
+            else
+            {
+                PopulateDailyMenuList = null;
+            }
+
+        }
+
+        #endregion
 
         #endregion
 
@@ -431,11 +803,11 @@ namespace GTI.Modules.ProductCenter.UI
 
             // Add the new empty page
             TreeNode treeNode = new TreeNode("Page " + nextPage);
-            PageItem pageItem = new PageItem {MenuId = menuItem.MenuId, MenuPage = (byte)nextPage};
+            PageItem pageItem = new PageItem { Menu = menuItem, MenuPage = (byte)nextPage };
             treeNode.Tag = pageItem;
             // Get a list of all buttons for all pages
             int totalPages;
-            List<MenuButtonList> buttonList = GetMenuButtonMessage.GetButtons(pageItem.MenuId, 0, out totalPages);
+            List<MenuButtonList> buttonList = GetMenuButtonMessage.GetButtons(pageItem.Menu.MenuId, 0, out totalPages);
             // FIX : TA5013 adding menu with out packages causes index exception
             if (PackageItems.Sorted.Count == 0)
             {
@@ -457,7 +829,7 @@ namespace GTI.Modules.ProductCenter.UI
                                PackageId = pkg.PackageId
                            });
             // Save the new button list.
-            SetMenuButtonMessage.Save(pageItem.MenuId, buttonList.ToArray());
+            SetMenuButtonMessage.Save(pageItem.Menu.MenuId, buttonList.ToArray());
         }
         #endregion Add Page
 
@@ -474,13 +846,13 @@ namespace GTI.Modules.ProductCenter.UI
         #region Paste Page
         private void PastePageClick(object sender, EventArgs e)
         {
-            if ((copiedPage.MenuId != 0) && (MenuTreeView.SelectedNode.Level == 1))
+            if ((copiedPage.Menu.MenuId != 0) && (MenuTreeView.SelectedNode.Level == 1))
             {
                 Cursor = Cursors.WaitCursor;
 
                 // Get the Menu Buttons for the copied page
                 int totalPages;
-                var buttons = GetMenuButtonMessage.GetButtons(copiedPage.MenuId, copiedPage.MenuPage, out totalPages);
+                var buttons = GetMenuButtonMessage.GetButtons(copiedPage.Menu.MenuId, copiedPage.MenuPage, out totalPages);
 
                 // Get the button list
                 var menuButtonList = buttons.ToArray();
@@ -506,7 +878,7 @@ namespace GTI.Modules.ProductCenter.UI
 
                 // Add the new copied page
                 var treeNode = new TreeNode("Page " + nextPage);
-                var pageItem = new PageItem {MenuId = menuItem.MenuId, MenuPage = (byte)nextPage};
+                var pageItem = new PageItem { Menu = menuItem, MenuPage = (byte)nextPage };
                 treeNode.Tag = pageItem;
                 MenuTreeView.SelectedNode.Nodes.Add(treeNode);
                 MenuTreeView.Focus();
@@ -515,7 +887,7 @@ namespace GTI.Modules.ProductCenter.UI
                 Cursor = Cursors.Default;
             }
         }
-        #endregion Paset Page
+        #endregion Paste Page
 
         #region Delete Page
         private void DeletePageClick(object sender, EventArgs e)
@@ -581,7 +953,7 @@ namespace GTI.Modules.ProductCenter.UI
                     }
 
                     // Set the Menu Buttons for this page
-                    SetMenuButtonMessage.Save(pageItem.MenuId, menuButtonList);
+                    SetMenuButtonMessage.Save(pageItem.Menu.MenuId, menuButtonList);
 
                     Cursor = Cursors.Default;
                 }
@@ -633,12 +1005,12 @@ namespace GTI.Modules.ProductCenter.UI
                         menuButtonList.Add(mbl);
                     }
                 }
-                
+
                 // Save the menu buttons if any
                 if (menuButtonList.Count > 0)
                 {
                     // Copy the button info to the database
-                    SetMenuButtonMessage.Save(pageItem.MenuId, menuButtonList.ToArray());
+                    SetMenuButtonMessage.Save(pageItem.Menu.MenuId, menuButtonList.ToArray());
 
                     Application.DoEvents();
                     //Get the Menu Buttons Panel
@@ -651,7 +1023,7 @@ namespace GTI.Modules.ProductCenter.UI
 
                         // Populate the buttons
                         int totalPages;
-                        List<MenuButtonList> menuButtons = GetMenuButtonMessage.GetButtons(pageItem.MenuId, pageItem.MenuPage, out totalPages);
+                        List<MenuButtonList> menuButtons = GetMenuButtonMessage.GetButtons(pageItem.Menu.MenuId, pageItem.MenuPage, out totalPages);
                         CreateMenuButtons(menuButtons.ToArray());
                         devicesForPage = null;
 
@@ -701,15 +1073,14 @@ namespace GTI.Modules.ProductCenter.UI
         #endregion
 
         #endregion
-        
-        #region Create Menu Buttons
-        /// <summary>
-        /// Creates and adds MenuButtons to the panel.
-        /// </summary>
-        private void CreateMenuButtons(MenuButtonList[] menuButtonList)
-        {
-            ButtonPanel.SuspendLayout();
 
+        #region Create Menu Buttons
+
+        /// <summary>
+        /// Fills in the UI with a blank button page
+        /// </summary>
+        private void CreateBlankPage()
+        {
             // Remove all the old buttons.
             ButtonPanel.Controls.Clear();
             var currentColumn = 0;
@@ -720,17 +1091,17 @@ namespace GTI.Modules.ProductCenter.UI
             for (var x = 0; x < btnDisplayMode.MenuButtonsPerPage; x++)
             {
                 var button = new ImageButton
-                             {
-                                 Name = "MenuButton" + x,
-                                 Font = btnDisplayMode.MenuButtonFont,
-                                 Size = btnDisplayMode.MenuButtonSize,
-                                 ImageNormal = Resources.GrayButtonUp,
-                                 ImagePressed = Resources.GrayButtonDown,
-                                 UseMnemonic = false,
-                                 ShowFocus = false,
-                                 TabIndex = 0,
-                                 TabStop = false
-                             };
+                {
+                    Name = "MenuButton" + x,
+                    Font = btnDisplayMode.MenuButtonFont,
+                    Size = btnDisplayMode.MenuButtonSize,
+                    ImageNormal = Resources.GrayButtonUp,
+                    ImagePressed = Resources.GrayButtonDown,
+                    UseMnemonic = false,
+                    ShowFocus = false,
+                    TabIndex = 0,
+                    TabStop = false
+                };
 
                 // Add Button Double Click Event
                 button.MouseClick += ButtonClick;
@@ -774,6 +1145,16 @@ namespace GTI.Modules.ProductCenter.UI
                     currentColumn++;
                 }
             }
+        }
+
+        /// <summary>
+        /// Creates and adds MenuButtons to the panel.
+        /// </summary>
+        private void CreateMenuButtons(MenuButtonList[] menuButtonList)
+        {
+            ButtonPanel.SuspendLayout();
+
+            CreateBlankPage();
 
             // Set Button's data
             for (var j = 0; j < menuButtonList.Length; j++)
@@ -785,7 +1166,7 @@ namespace GTI.Modules.ProductCenter.UI
                     PackageItem pkg = PackageItems.GetPackageItem(intId);
                     decimal dec = Convert.ToDecimal(pkg.PackagePrice);
                     string strAmt = String.Format("{0:C}", dec);
-                    ButtonPanel.Controls[menuButtonList[j].KeyNum].Text = menuButtonList[j].KeyText + crLf + strAmt;
+                    ButtonPanel.Controls[menuButtonList[j].KeyNum].Text = menuButtonList[j].KeyText + Environment.NewLine + strAmt;
                 }
                 else
                 {
@@ -796,13 +1177,58 @@ namespace GTI.Modules.ProductCenter.UI
 
                 // Disable drag and drop on these...
                 ButtonPanel.Controls[menuButtonList[j].KeyNum].AllowDrop = false;
-                SetButtonGraphic(menuButtonList[j]);
+                SetButtonGraphic(menuButtonList[j].ButtonGraphicId, menuButtonList[j].KeyNum);
             }
 
             ButtonPanel.ResumeLayout();
         }
 
-        private void SetButtonGraphic(MenuButtonList menuButton) 
+        /// <summary>
+        /// Creates and adds DailyMenuButtons to the panel
+        /// </summary>
+        /// <param name="menuButtonList"></param>
+        private void CreateMenuButtons(DailyMenuButton[] menuButtonList)
+        {
+            ButtonPanel.SuspendLayout();
+
+            CreateBlankPage();
+
+            // Set Button's data
+            for (var j = 0; j < menuButtonList.Length; j++)
+            {
+                if (menuButtonList[j].PackageId != 0)
+                {
+                    decimal dec = 0;
+                    if (menuButtonList[j].ProductItems != null)
+                    {
+                        foreach (var item in menuButtonList[j].ProductItems)
+                            dec += Convert.ToDecimal(item.Price) * (decimal)item.Quantity;
+                    }
+
+                    string strAmt = String.Format("{0:C}", dec);
+                    ButtonPanel.Controls[menuButtonList[j].KeyNum].Text = menuButtonList[j].KeyText + Environment.NewLine + strAmt;
+                }
+                else
+                {
+                    ButtonPanel.Controls[menuButtonList[j].KeyNum].Text = menuButtonList[j].KeyText;
+                }
+                // END: DE2406 TA3217 Button text shows package price on discounts and functions
+                ButtonPanel.Controls[menuButtonList[j].KeyNum].Tag = menuButtonList[j];
+
+                // Disable drag and drop on these...
+                ButtonPanel.Controls[menuButtonList[j].KeyNum].AllowDrop = false;
+                SetButtonGraphic(menuButtonList[j].ButtonGraphicId, menuButtonList[j].KeyNum);
+            }
+
+            ButtonPanel.ResumeLayout();
+        }
+
+        /// <summary>
+        /// Applies the graphic to the sent-in button
+        /// </summary>
+        /// <param name="buttonGraphicId"></param>
+        /// <param name="keyNum"></param>
+        private void SetButtonGraphic(int buttonGraphicId, int keyNum)
         {
             Image normalImage = Resources.GrayButtonUp;
             Image pressedImage = Resources.GrayButtonDown;
@@ -811,7 +1237,7 @@ namespace GTI.Modules.ProductCenter.UI
 
             foreach (var bg in graphics)
             {
-                if (bg.ButtonGraphicId == menuButton.ButtonGraphicId) 
+                if (bg.ButtonGraphicId == buttonGraphicId)
                 {
                     graphicName = bg.ButtonGraphicDescription;
                     break;
@@ -908,7 +1334,7 @@ namespace GTI.Modules.ProductCenter.UI
                     pressedImage = Resources.YellowButtonDown;
                     isStretch = true;
                     break;
-  
+
                 // END: US2098
 
                 //US4885
@@ -1134,9 +1560,9 @@ namespace GTI.Modules.ProductCenter.UI
                     isStretch = false;
                     break;
             }
-            ((ImageButton)ButtonPanel.Controls[menuButton.KeyNum]).ImageNormal = normalImage;
-            ((ImageButton)ButtonPanel.Controls[menuButton.KeyNum]).ImagePressed = pressedImage;
-            ((ImageButton)ButtonPanel.Controls[menuButton.KeyNum]).Stretch = isStretch;
+            ((ImageButton)ButtonPanel.Controls[keyNum]).ImageNormal = normalImage;
+            ((ImageButton)ButtonPanel.Controls[keyNum]).ImagePressed = pressedImage;
+            ((ImageButton)ButtonPanel.Controls[keyNum]).Stretch = isStretch;
         }
         #endregion Create Menu Buttons
 
@@ -1153,22 +1579,40 @@ namespace GTI.Modules.ProductCenter.UI
 
             var button = sender as ImageButton;
             if (button == null)
-            {
                 return;
-            }
-
-            //button.ImageNormal = Resources.BlueButtonDown;
 
             Cursor = Cursors.WaitCursor;
 
             // Initialize the Form
+            bool isDailyMenu = // US1772
+                MenuTreeView.SelectedNode != null && MenuTreeView.SelectedNode.Parent != null // we should have a menu page selected, so get the parent (the menu)
+                && MenuTreeView.SelectedNode.Parent.Tag is POSMenuItem
+                && ((POSMenuItem)MenuTreeView.SelectedNode.Parent.Tag).IsDailyMenu; // if this is a daily menu, then we should edit it in a different way
+
+
+            if (isDailyMenu)
+            {
+                ClickDailyButton(button, skipDialog);
+            }
+            else
+            {
+                ClickHistoryButton(button, skipDialog);
+            }
+            Cursor = Cursors.Default;
+        }
+
+        /// <summary>
+        /// Actions that occur when the user clicks on a "history" POS button
+        /// </summary>
+        /// <param name="button"></param>
+        /// <param name="skipDialog"></param>
+        private void ClickHistoryButton(ImageButton button, bool skipDialog)
+        {
             // US3692
-            buttonDetailForm = new ButtonDetailForm(OperatorId, WholePoints);
+            buttonDetailForm = new ButtonDetailForm(m_operatorId, ProdCenterSettings);
 
             if (string.IsNullOrEmpty(button.Text))
-            {
                 buttonDetailForm.IsCreateMode = true;
-            }
 
             // Populate the Package List
             buttonDetailForm.PopulatePackageList = PackageItems.Sorted.ToArray();
@@ -1184,38 +1628,37 @@ namespace GTI.Modules.ProductCenter.UI
             //buttonDetailForm.PopulateButtonGraphicsComboBox = GetButtonGraphicsMessage.GetButtonGraphics(-1).ToArray();
 
             // Load the Button info from the seleced button
-            var menuButtonList = (MenuButtonList)button.Tag;
+            var menuButton = (MenuButtonList)button.Tag;
 
             // Set the form's values for editing.
-            if (menuButtonList.PackageId > 0)
+            if (menuButton.PackageId > 0)
             {
                 buttonDetailForm.IsPackage = true;
-                buttonDetailForm.PackageId = menuButtonList.PackageId;
+                buttonDetailForm.PackageId = menuButton.PackageId;
                 buttonDetailForm.IsCreateMode = false;
             }
-
-            else if (menuButtonList.DiscountId > 0)
+            else if (menuButton.DiscountId > 0)
             {
                 buttonDetailForm.IsDiscount = true;
-                buttonDetailForm.DiscountId = menuButtonList.DiscountId;
+                buttonDetailForm.DiscountId = menuButton.DiscountId;
                 buttonDetailForm.IsCreateMode = true;
             }
-
-            else if (menuButtonList.FunctionId > 0)
+            else if (menuButton.FunctionId > 0)
             {
                 buttonDetailForm.IsFunction = true;
-                buttonDetailForm.FunctionId = menuButtonList.FunctionId;
+                buttonDetailForm.FunctionId = menuButton.FunctionId;
                 buttonDetailForm.IsCreateMode = true;
             }
 
-            buttonDetailForm.ButtonGraphicId = menuButtonList.ButtonGraphicId;
+            buttonDetailForm.ButtonGraphicId = menuButton.ButtonGraphicId;
             buttonDetailForm.curImage = button.ImageNormal; //US4935
             buttonDetailForm.isStretch = button.Stretch; //US4935
             buttonDetailForm.PageNumber = int.Parse(MenuTreeView.SelectedNode.Text.Substring(4));
-            buttonDetailForm.KeyLocked = menuButtonList.KeyLocked;
+            buttonDetailForm.KeyLocked = menuButton.KeyLocked;
             buttonDetailForm.KeyNumber = ButtonPanel.Controls.IndexOf(button);
-            buttonDetailForm.PlayerRequired = menuButtonList.PlayerRequired;
-            buttonDetailForm.KeyText = menuButtonList.KeyText ?? "";
+            buttonDetailForm.PlayerRequired = menuButton.PlayerRequired;
+            buttonDetailForm.KeyText = menuButton.KeyText ?? "";
+            buttonDetailForm.DefaultValidation = menuButton.DefaultValidation;
             Cursor = Cursors.Default;
 
             // Display the form
@@ -1240,12 +1683,13 @@ namespace GTI.Modules.ProductCenter.UI
                     menuButtonItem[0].FunctionId = buttonDetailForm.FunctionId;
                 menuButtonItem[0].PageNumber = (byte)buttonDetailForm.PageNumber;
                 menuButtonItem[0].KeyNum = (byte)buttonDetailForm.KeyNumber;
-                menuButtonItem[0].KeyText = buttonDetailForm.KeyText.Length > 40 ? buttonDetailForm.KeyText.Substring(0,40) : buttonDetailForm.KeyText;
+                menuButtonItem[0].KeyText = buttonDetailForm.KeyText.Length > 40 ? buttonDetailForm.KeyText.Substring(0, 40) : buttonDetailForm.KeyText;
                 menuButtonItem[0].ButtonGraphicId = buttonDetailForm.ButtonGraphicId;
                 menuButtonItem[0].KeyLocked = buttonDetailForm.KeyLocked;
                 menuButtonItem[0].PlayerRequired = buttonDetailForm.PlayerRequired;
                 menuButtonItem[0].RemoveButton = (byte)(buttonDetailForm.Cleared ? 1 : 0);
                 menuButtonItem[0].ValidDevices = m_devicesForPage; // the devices this page is valid for
+                menuButtonItem[0].DefaultValidation = buttonDetailForm.DefaultValidation;
 
                 // Get the Page's info from the selected node
                 var pageItem = (PageItem)MenuTreeView.SelectedNode.Tag;
@@ -1263,8 +1707,11 @@ namespace GTI.Modules.ProductCenter.UI
                         }
                     }
                 }
+                
                 // Save the button info to the database
-                SetMenuButtonMessage.Save(pageItem.MenuId, menuButtonItem);
+                SetMenuButtonMessage.Save(pageItem.Menu.MenuId, menuButtonItem);
+
+                //!! NOTE: When we start allowing for editing the package-products from this form, we should save that here !!
 
                 // Update the button's info tag
                 button.Text = menuButtonItem[0].KeyText;
@@ -1293,15 +1740,172 @@ namespace GTI.Modules.ProductCenter.UI
                 // Populate the buttons
                 int totalPages;
                 CreateMenuButtons(
-                    GetMenuButtonMessage.GetButtons(pageItem.MenuId, pageItem.MenuPage, out totalPages).ToArray());
+                    GetMenuButtonMessage.GetButtons(pageItem.Menu.MenuId, pageItem.MenuPage, out totalPages).ToArray());
 
                 Cursor = Cursors.Default;
+            }
+        }
+
+        /// US1772
+        /// <summary>
+        /// Actions that occur when the user clicks on a "daily" POS button
+        /// </summary>
+        /// <param name="button"></param>
+        /// <param name="skipDialog"></param>
+        private void ClickDailyButton(ImageButton button, bool skipDialog)
+        {
+            if (string.IsNullOrEmpty(button.Text))
+                return; // we can't currently add new buttons
+
+            // US3692
+            buttonDetailForm = new ButtonDetailForm(m_operatorId, ProdCenterSettings, true);
+
+            // Populate the Package List
+            buttonDetailForm.PopulatePackageList = PackageItems.Sorted.ToArray();
+
+            // Populate the Discount List
+            var discountList = GetDiscountMessage.GetDiscountList();
+            buttonDetailForm.PopulateDiscountList = discountList.ToArray();
+
+            // Populate the Function List
+            buttonDetailForm.PopulateFunctionList = GetFunctionMessage.GetFunctionList(0).ToArray();
+
+            // Load the Button info from the seleced button
+            var menuButton = (DailyMenuButton)button.Tag;
+
+            if (menuButton != null)
+            {
+                foreach (var packageProduct in menuButton.ProductItems)
+                {
+                    if (packageProduct.CardMediaId != 0 && String.IsNullOrWhiteSpace(packageProduct.CardMediaName)) // we don't get them from the server with the media name; fill it in.
+                    {
+                        if (m_cardMediaList.Any(x => x.CardMediaId == packageProduct.CardMediaId))
+                            packageProduct.CardMediaName = m_cardMediaList.First(x => x.CardMediaId == packageProduct.CardMediaId).CardMediaName;
+                    }
+                    if (packageProduct.GameCategoryId != 0 && String.IsNullOrWhiteSpace(packageProduct.GameCategoryName))
+                    {
+                        if (m_gameCategoryList != null && m_gameCategoryList.Any(x => x.Id == packageProduct.GameCategoryId))
+                            packageProduct.GameCategoryName = m_gameCategoryList.First(x => x.Id == packageProduct.GameCategoryId).Name;
+                    }
+                    if (packageProduct.GameTypeId != 0 && String.IsNullOrWhiteSpace(packageProduct.GameTypeName))
+                    {
+                        if (m_gameTypeList != null && m_gameTypeList.Any(x => x.GameTypeId == packageProduct.GameTypeId))
+                            packageProduct.GameTypeName = m_gameTypeList.First(x => x.GameTypeId == packageProduct.GameTypeId).GameTypeName;
+                    }
+                    if (packageProduct.CardLevelId != 0 && String.IsNullOrWhiteSpace(packageProduct.CardLevelName))
+                    {
+                        if (m_cardLevelList != null && m_cardLevelList.Any(x => x.CardLevelId == packageProduct.CardLevelId))
+                            packageProduct.CardLevelName = m_cardLevelList.First(x => x.CardLevelId == packageProduct.CardLevelId).CardLevelName;
+                    }
+                }
+            }
+
+            // Set the form's values for editing.
+            if (menuButton.PackageId > 0)
+            {
+                buttonDetailForm.IsPackage = true;
+                buttonDetailForm.PackageId = menuButton.PackageId;
+                buttonDetailForm.IsCreateMode = false;
+            }
+            else if (menuButton.DiscountId > 0)
+            {
+                buttonDetailForm.IsDiscount = true;
+                buttonDetailForm.DiscountId = menuButton.DiscountId;
+                buttonDetailForm.IsCreateMode = true;
+            }
+            else if (menuButton.FunctionId > 0)
+            {
+                buttonDetailForm.IsFunction = true;
+                buttonDetailForm.FunctionId = menuButton.FunctionId;
+                buttonDetailForm.IsCreateMode = true;
+            }
+
+            buttonDetailForm.ButtonGraphicId = menuButton.ButtonGraphicId;
+            buttonDetailForm.curImage = button.ImageNormal; //US4935
+            buttonDetailForm.isStretch = button.Stretch; //US4935
+            buttonDetailForm.PageNumber = int.Parse(MenuTreeView.SelectedNode.Text.Substring(4));
+            buttonDetailForm.KeyLocked = menuButton.KeyLocked;
+            buttonDetailForm.KeyNumber = ButtonPanel.Controls.IndexOf(button);
+            buttonDetailForm.PlayerRequired = menuButton.PlayerRequired;
+            buttonDetailForm.DailyProductList = menuButton.ProductItems;
+            buttonDetailForm.DefaultValidation = menuButton.DefaultValidation;
+
+            if (!String.IsNullOrWhiteSpace(menuButton.KeyText)) // DE13855 Note: Set the ProductItems first because it changes the KeyText 
+                buttonDetailForm.KeyText = menuButton.KeyText;
+            
+            Cursor = Cursors.Default;
+
+            // Display the form
+            if (!skipDialog)
+                buttonDetailForm.ShowDialog(this);
+            else
+                buttonDetailForm.Canceled = false;
+
+            // Check if has not been canceled
+            if (!buttonDetailForm.Canceled)
+            {
+                Cursor = Cursors.WaitCursor;
+
+                // Get the button info
+                var menuButtonItem = new DailyMenuButton();
+                
+                menuButtonItem.MenuButtonId = menuButton.MenuButtonId;
+
+                if (buttonDetailForm.IsPackage)
+                    menuButtonItem.PackageId = buttonDetailForm.PackageId;
+                else if (buttonDetailForm.IsDiscount)
+                    menuButtonItem.DiscountId = buttonDetailForm.DiscountId;
+                else if (buttonDetailForm.IsFunction)
+                    menuButtonItem.FunctionId = buttonDetailForm.FunctionId;
+                
+                menuButtonItem.PageNumber = (byte)buttonDetailForm.PageNumber;
+                menuButtonItem.KeyNum = (byte)buttonDetailForm.KeyNumber;
+                menuButtonItem.KeyText = buttonDetailForm.KeyText.Length > 40 ? buttonDetailForm.KeyText.Substring(0, 40) : buttonDetailForm.KeyText;
+                menuButtonItem.ButtonGraphicId = buttonDetailForm.ButtonGraphicId;
+                menuButtonItem.KeyLocked = buttonDetailForm.KeyLocked;
+                menuButtonItem.PlayerRequired = buttonDetailForm.PlayerRequired;
+                menuButtonItem.RemoveButton = buttonDetailForm.Cleared;
+                menuButtonItem.ProductItems = buttonDetailForm.DailyProductList;
+                menuButtonItem.DefaultValidation = buttonDetailForm.DefaultValidation;
+
+                // DE13827 things the button form doesn't know about that we need to grab from the original item
+                menuButtonItem.PackageId = menuButton.PackageId;
+                menuButtonItem.DiscountId = menuButton.DiscountId;
+                menuButtonItem.FunctionId = menuButton.FunctionId;
+                menuButtonItem.ChargeDeviceFee = menuButton.ChargeDeviceFee;
+                menuButtonItem.ReceiptText = menuButton.ReceiptText;
+                menuButtonItem.KeyColor = menuButton.KeyColor;
+
+                // Get the Page's info from the selected node
+                var pageItem = (PageItem)MenuTreeView.SelectedNode.Tag;
+
+                if (buttonDetailForm.DiscountId > 0)
+                {
+                    foreach (var dis in discountList)
+                    {
+                        if (dis.DiscountId == buttonDetailForm.DiscountId)
+                        {
+                            menuButtonItem.DiscountAmount = Convert.ToDecimal(dis.DiscountAmount);
+                            menuButtonItem.DiscountPointsPerDollar = Convert.ToDecimal(dis.PointsPerDollar);
+                            menuButtonItem.DiscountTypeId = (int)dis.Type;
+                            break;
+                        }
+                    }
+                }
+                
+                Cursor = Cursors.WaitCursor;
+                Tuple<POSMenuItem, DailyMenuButton> tup = new Tuple<POSMenuItem, DailyMenuButton>(pageItem.Menu, menuButtonItem);
+                saveAndLoadWorker.RunWorkerAsync(tup);
+
+                m_waitForm.Message = "Saving daily menu";
+                m_waitForm.ShowDialog(this);
             }
 
         }
         #endregion Button Click
 
         #region Button Drag & Drop
+
         private void ButtonDragDrop(object sender, DragEventArgs e)
         {
             var button = sender as ImageButton;
@@ -1334,15 +1938,14 @@ namespace GTI.Modules.ProductCenter.UI
                 menuButtonItem[1] = (MenuButtonList)button.Tag;
                 if (draggedButton.ButtonGraphicId != 0)
                 {
-                    SetButtonGraphic(draggedButton);
+                    SetButtonGraphic(draggedButton.ButtonGraphicId, draggedButton.KeyNum);
                 }
             }
 
             // Set the button list
-            SetMenuButtonMessage.Save(pageItem.MenuId, menuButtonItem);
+            SetMenuButtonMessage.Save(pageItem.Menu.MenuId, menuButtonItem);
             Cursor = Cursors.Default;
         }
-        #endregion Button Drag & Drop
 
         #region Button Mouse Down
         private void ButtonMouseDown(object sender, MouseEventArgs e)
@@ -1350,6 +1953,11 @@ namespace GTI.Modules.ProductCenter.UI
             var button = sender as ImageButton;
             if (button != null)
             {
+                bool isDailyMenu = // US1772. DE13856, DE13857
+                    MenuTreeView.SelectedNode != null && MenuTreeView.SelectedNode.Parent != null // we should have a menu page selected, so get the parent (the menu)
+                    && MenuTreeView.SelectedNode.Parent.Tag is POSMenuItem
+                    && ((POSMenuItem)MenuTreeView.SelectedNode.Parent.Tag).IsDailyMenu;
+
                 // If the user holds the button down for more than 200 ms then is a drag and drop event
                 // otherwise is a button click event.
                 if (button.Text != string.Empty && e.Button == MouseButtons.Left)
@@ -1361,12 +1969,12 @@ namespace GTI.Modules.ProductCenter.UI
                 // Enable/Disable context menu options depending on the button's state
                 if (e.Button == MouseButtons.Right)
                 {
-                    addButtonToolStripMenuItem.Enabled = button.Text == string.Empty;
+                    addButtonToolStripMenuItem.Enabled = button.Text == string.Empty && !isDailyMenu;
                     editButtonToolStripMenuItem.Enabled = button.Text != string.Empty;
-                    copyButtonToolStripMenuItem.Enabled = button.Text != string.Empty;
+                    copyButtonToolStripMenuItem.Enabled = button.Text != string.Empty && !isDailyMenu;
                     pasteButtonToolStripMenuItem.Enabled = button.Text == string.Empty
-                                                           && !string.IsNullOrEmpty(copiedButton.Text);
-                    deleteButtonToolStripMenuItem.Enabled = button.Text != string.Empty;
+                                                           && !string.IsNullOrEmpty(copiedButton.Text) && !isDailyMenu;
+                    deleteButtonToolStripMenuItem.Enabled = button.Text != string.Empty && !isDailyMenu;
                     buttonContextMenu.Tag = button; // Pass the button to the control tag
                 }
             }
@@ -1440,7 +2048,7 @@ namespace GTI.Modules.ProductCenter.UI
             var pageItem = (PageItem)MenuTreeView.SelectedNode.Tag;
 
             // Save the button info to the database
-            SetMenuButtonMessage.Save(pageItem.MenuId, menuButtonItem);
+            SetMenuButtonMessage.Save(pageItem.Menu.MenuId, menuButtonItem);
 
             // Update the button's info tag
             button.Text = string.Empty;
@@ -1513,7 +2121,7 @@ namespace GTI.Modules.ProductCenter.UI
                 var button = ti.Tag as ImageButton;
 
                 // Load the Button info from the seleced button
-                if (button != null)
+                if (button != null && button.Tag is MenuButtonList) // DE14013 temporarily don't allow daily button dragging
                 {
                     draggedButton = (MenuButtonList)button.Tag;
 
@@ -1537,6 +2145,8 @@ namespace GTI.Modules.ProductCenter.UI
         }
         #endregion Button Timer Tick
 
+        #endregion Button Drag & Drop
+
         #region Menu List Key Down
         private void m_menuList_KeyDown(object sender, KeyEventArgs e)
         {
@@ -1554,6 +2164,5 @@ namespace GTI.Modules.ProductCenter.UI
             }
         }
         #endregion Menu List Key Down
-
     }
 }

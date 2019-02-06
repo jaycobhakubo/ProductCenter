@@ -80,10 +80,10 @@ namespace GTI.Modules.ProductCenter.Data
         {
             List<ProductItemList> srtlist = NameSorted(operatorId, creditEnabled, showInactive);
             int productTypeID;
+
             if(int.TryParse(productTypeIdString, out productTypeID))
             {
-                //search by name only
-                if(productTypeID == 0)
+                if (productTypeID == 0) //search by name only
                 {
                     if(string.IsNullOrEmpty(productName))
                     {
@@ -95,13 +95,11 @@ namespace GTI.Modules.ProductCenter.Data
                         return srtlist.FindAll(i => i.ProductItemName.ToUpper().Contains(productName.ToUpper()));
                     }
                 }
-                //search by product type only
-                else if(string.IsNullOrEmpty(productName))
+                else if (string.IsNullOrEmpty(productName)) //search by product type only
                 {
                     return srtlist.FindAll(i => i.ProductTypeId == productTypeID);
                 }
-                //search by name and product type
-                else
+                else //search by name and product type
                 {
                     return srtlist.FindAll(
                         i => i.ProductItemName.ToUpper().Contains(productName.ToUpper()) 
@@ -109,6 +107,7 @@ namespace GTI.Modules.ProductCenter.Data
                         );
                 }
             }
+
             return srtlist;
         }
     }

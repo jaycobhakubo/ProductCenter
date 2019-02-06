@@ -29,7 +29,7 @@ namespace GTI.Modules.ProductCenter.UI
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductCenterMdiForm));
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -37,6 +37,7 @@ namespace GTI.Modules.ProductCenter.UI
             this.packagesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cardLevelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cardColorSetTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.couponManagementsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DiscountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.validationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,19 +45,20 @@ namespace GTI.Modules.ProductCenter.UI
             this.m_searchMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1.SuspendLayout();
+            this.cardPositionMapsTSMI = new System.Windows.Forms.ToolStripMenuItem();
+            this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
-            // menuStrip1
+            // mainMenuStrip
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(222)))), ((int)(((byte)(237)))));
-            resources.ApplyResources(this.menuStrip1, "menuStrip1");
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mainMenuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(222)))), ((int)(((byte)(237)))));
+            resources.ApplyResources(this.mainMenuStrip, "mainMenuStrip");
+            this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.setupToolStripMenuItem,
             this.helpToolStripMenuItem});
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Click += new System.EventHandler(this.menuStrip1_Click);
+            this.mainMenuStrip.Name = "mainMenuStrip";
+            this.mainMenuStrip.Click += new System.EventHandler(this.mainMenuStrip_Click);
             // 
             // fileToolStripMenuItem
             // 
@@ -82,9 +84,11 @@ namespace GTI.Modules.ProductCenter.UI
             this.packagesToolStripMenuItem,
             this.menusToolStripMenuItem,
             this.cardLevelsToolStripMenuItem,
+            this.cardColorSetTSMI,
             this.couponManagementsToolStripMenuItem,
             this.DiscountToolStripMenuItem,
             this.validationToolStripMenuItem,
+            this.cardPositionMapsTSMI,
             this.toolStripSeparator1,
             this.m_searchMenuItem});
             this.setupToolStripMenuItem.Name = "setupToolStripMenuItem";
@@ -115,6 +119,12 @@ namespace GTI.Modules.ProductCenter.UI
             this.cardLevelsToolStripMenuItem.Name = "cardLevelsToolStripMenuItem";
             resources.ApplyResources(this.cardLevelsToolStripMenuItem, "cardLevelsToolStripMenuItem");
             this.cardLevelsToolStripMenuItem.Click += new System.EventHandler(this.cardLevelsToolStripMenuItem_Click);
+            // 
+            // cardColorSetTSMI
+            // 
+            this.cardColorSetTSMI.Name = "cardColorSetTSMI";
+            resources.ApplyResources(this.cardColorSetTSMI, "cardColorSetTSMI");
+            this.cardColorSetTSMI.Click += new System.EventHandler(this.cardColorSetTSMI_Click);
             // 
             // couponManagementsToolStripMenuItem
             // 
@@ -160,21 +170,28 @@ namespace GTI.Modules.ProductCenter.UI
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
+            // cardPositionMapsTSMI
+            // 
+            this.cardPositionMapsTSMI.Name = "cardPositionMapsTSMI";
+            resources.ApplyResources(this.cardPositionMapsTSMI, "cardPositionMapsTSMI");
+            this.cardPositionMapsTSMI.Click += new System.EventHandler(this.cardPositionMapsTSMI_Click);
+            // 
             // ProductCenterMdiForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.mainMenuStrip);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.IsMdiContainer = true;
-            this.MainMenuStrip = this.menuStrip1;
+            this.MainMenuStrip = this.mainMenuStrip;
             this.MaximizeBox = false;
             this.Name = "ProductCenterMdiForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ProductCenterMdiForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ProductCenterMDIForm_FormClosed);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.mainMenuStrip.ResumeLayout(false);
+            this.mainMenuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -194,8 +211,10 @@ namespace GTI.Modules.ProductCenter.UI
         private System.Windows.Forms.ToolStripMenuItem m_searchMenuItem;
         private System.Windows.Forms.ToolStripMenuItem couponManagementsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem DiscountToolStripMenuItem;
-        public System.Windows.Forms.MenuStrip menuStrip1;
+        public System.Windows.Forms.MenuStrip mainMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem validationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cardPositionMapsTSMI;
+        private System.Windows.Forms.ToolStripMenuItem cardColorSetTSMI;
 
     }
 }

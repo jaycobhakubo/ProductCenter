@@ -187,66 +187,53 @@ namespace GTI.Modules.ProductCenter.Business
             }
             return version;
         }
-
+                
         /// <summary>
         /// Writes a message to the Product Center's log.
         /// </summary>
         /// <param name="message">The message to write to the log.</param>
         /// <param name="level">The level of the message.</param>
-        /// <returns>true if success; otherwise false.</returns>
-        internal bool Log(string message, LoggerLevel level)
+        internal static void Log(string message, LoggerLevel level)
         {
-            lock (logSync)
+            try
             {
-                if (loggingEnabled)
+                var frame = new StackFrame(1, true);
+                var fileName = frame.GetFileName();
+                var lineNumber = frame.GetFileLineNumber();
+                message = LogPrefix + message;
+
+                switch (level)
                 {
-                    var frame = new StackFrame(1, true);
-                    var fileName = frame.GetFileName();
-                    var lineNumber = frame.GetFileLineNumber();
-                    message = LogPrefix + message;
+                    case LoggerLevel.Severe:
+                        Logger.LogSevere(message, fileName, lineNumber);
+                        break;
 
-                    try
-                    {
-                        switch (level)
-                        {
-                            case LoggerLevel.Severe:
-                                Logger.LogSevere(message, fileName, lineNumber);
-                                break;
+                    case LoggerLevel.Warning:
+                        Logger.LogWarning(message, fileName, lineNumber);
+                        break;
 
-                            case LoggerLevel.Warning:
-                                Logger.LogWarning(message, fileName, lineNumber);
-                                break;
+                    default:
+                        Logger.LogInfo(message, fileName, lineNumber);
+                        break;
 
-                            default:
-                                Logger.LogInfo(message, fileName, lineNumber);
-                                break;
+                    case LoggerLevel.Configuration:
+                        Logger.LogConfig(message, fileName, lineNumber);
+                        break;
 
-                            case LoggerLevel.Configuration:
-                                Logger.LogConfig(message, fileName, lineNumber);
-                                break;
+                    case LoggerLevel.Debug:
+                        Logger.LogDebug(message, fileName, lineNumber);
+                        break;
 
-                            case LoggerLevel.Debug:
-                                Logger.LogDebug(message, fileName, lineNumber);
-                                break;
+                    case LoggerLevel.Message:
+                        Logger.LogMessage(message, fileName, lineNumber);
+                        break;
 
-                            case LoggerLevel.Message:
-                                Logger.LogMessage(message, fileName, lineNumber);
-                                break;
-
-                            case LoggerLevel.SQL:
-                                Logger.LogSql(message, fileName, lineNumber);
-                                break;
-                        }
-
-                        return true;
-                    }
-                    catch (Exception)
-                    {
-                        return false;
-                    }
+                    case LoggerLevel.SQL:
+                        Logger.LogSql(message, fileName, lineNumber);
+                        break;
                 }
-                return false;
             }
+            catch (Exception) { }
         }
 
         /// <summary>

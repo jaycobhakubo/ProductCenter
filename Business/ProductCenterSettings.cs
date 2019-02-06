@@ -95,7 +95,7 @@ namespace GTI.Modules.ProductCenter.Business
         public bool InventoryCenterEnabled { get; set; }//RALLY US1863
 
         //Store the systemsetting for coupon management.
-        public bool IsCouponManagement { get; set; }
+        public bool AllowCouponManagement { get; set; }
 
         public bool EnableValidation { get; set; }
 
@@ -241,7 +241,7 @@ namespace GTI.Modules.ProductCenter.Business
                         break;
 
                     case Setting.EnableCouponManagement:
-                        IsCouponManagement = Convert.ToBoolean(setting.Value);
+                        AllowCouponManagement = Convert.ToBoolean(setting.Value);
                         break;
 
                     case Setting.EnableValidation:

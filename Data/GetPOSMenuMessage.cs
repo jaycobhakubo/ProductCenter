@@ -19,14 +19,35 @@ namespace GTI.Modules.ProductCenter.Data
         public int MenuId;
         public string MenuName;
         public int MenuTypeId;
+        /// US1772
+        /// <summary>
+        /// Whether or not this menu is a daily menu
+        /// </summary>
+        public bool IsDailyMenu;
+
+        public override bool Equals(object obj)
+        {
+            if (obj is POSMenuItem)
+            {
+                POSMenuItem other = (POSMenuItem)obj;
+                return other.MenuId == this.MenuId;
+            }
+            else
+                return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return MenuId.GetHashCode();
+        }
     }
 
     /// <summary>
     /// Represents a Page Number for a specific Menu Id.
     /// </summary>
-    internal  struct PageItem
+    internal struct PageItem
     {
-        public int MenuId;
+        public POSMenuItem Menu;
         public byte MenuPage;
     }
 

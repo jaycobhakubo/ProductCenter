@@ -36,7 +36,7 @@ namespace GTI.Modules.ProductCenter.Data
             {
                 msg.Send();
             }
-            catch (ServerCommException ex)
+            catch(ServerCommException ex)
             {
                 throw new Exception("SetDiscountMessage: " + ex.Message);
             }
@@ -69,16 +69,16 @@ namespace GTI.Modules.ProductCenter.Data
 
             // Discount Award Type Id
             requestWriter.Write((int)DiscountItem.DiscountAwardType);
-            
+
             //Require Player
             requestWriter.Write(DiscountItem.IsPlayerRequired);
 
             //Spend Level Count
             requestWriter.Write((ushort)DiscountItem.SpendLevels.Count);
 
-            if (DiscountItem.SpendLevels != null)
+            if(DiscountItem.SpendLevels != null)
             {
-                foreach (var spendLevels in DiscountItem.SpendLevels)
+                foreach(var spendLevels in DiscountItem.SpendLevels)
                 {
                     //Sequence
                     requestWriter.Write(spendLevels.Sequence);
@@ -96,9 +96,9 @@ namespace GTI.Modules.ProductCenter.Data
 
             //Restriction
             requestWriter.Write(DiscountItem.RestrictedProductIds == null ? (ushort)0 : (ushort)DiscountItem.RestrictedProductIds.Count);
-            if (DiscountItem.RestrictedProductIds != null)
+            if(DiscountItem.RestrictedProductIds != null)
             {
-                foreach (var restrictedProduct in DiscountItem.RestrictedProductIds)
+                foreach(var restrictedProduct in DiscountItem.RestrictedProductIds)
                 {
                     requestWriter.Write(restrictedProduct);
                 }
@@ -106,12 +106,12 @@ namespace GTI.Modules.ProductCenter.Data
 
             // Start Date
             requestWriter.Write(DiscountItem.StartDate.HasValue);
-            if (DiscountItem.StartDate.HasValue)
+            if(DiscountItem.StartDate.HasValue)
                 WriteDateTime(requestWriter, DiscountItem.StartDate.Value);
 
             // End Date
             requestWriter.Write(DiscountItem.EndDate.HasValue);
-            if (DiscountItem.EndDate.HasValue)
+            if(DiscountItem.EndDate.HasValue)
                 WriteDateTime(requestWriter, DiscountItem.EndDate.Value);
 
             // Allow Partial Discounts
@@ -123,19 +123,27 @@ namespace GTI.Modules.ProductCenter.Data
             // Minimum Spend
             WriteDecimal(requestWriter, DiscountItem.MinimumSpend);
 
+            // Minimum Packs
+            requestWriter.Write((byte)(DiscountItem.MinimumPacks > 100 ? 100 : DiscountItem.MinimumPacks));
+
+            requestWriter.Write(DiscountItem.MinimumPacksEligibleIds == null ? (ushort)0 : (ushort)DiscountItem.MinimumPacksEligibleIds.Count);
+            if(DiscountItem.MinimumPacksEligibleIds != null)
+                foreach(var packageId in DiscountItem.MinimumPacksEligibleIds)
+                    requestWriter.Write((int)packageId);
+
             // Schedule list
             requestWriter.Write(DiscountItem.DiscountSchedule == null ? (ushort)0 : (ushort)DiscountItem.DiscountSchedule.Count);
-            if (DiscountItem.DiscountSchedule != null)
+            if(DiscountItem.DiscountSchedule != null)
             {
-                foreach (var schedule in DiscountItem.DiscountSchedule)
+                foreach(var schedule in DiscountItem.DiscountSchedule)
                 {
                     // Day of Week
                     if(schedule.DayOfWeek.HasValue)
-                        requestWriter.Write((byte)((byte)schedule.DayOfWeek.Value+1)); // convert the DOW into a 1-base like MsSQL and have zero mean "none"
+                        requestWriter.Write((byte)((byte)schedule.DayOfWeek.Value + 1)); // convert the DOW into a 1-base like MsSQL and have zero mean "none"
                     else
                         requestWriter.Write((byte)0);
                     // Session Number
-                    if (schedule.SessionNumber.HasValue)
+                    if(schedule.SessionNumber.HasValue)
                         requestWriter.Write((byte)schedule.SessionNumber.Value);
                     else
                         requestWriter.Write((byte)0);
@@ -151,16 +159,16 @@ namespace GTI.Modules.ProductCenter.Data
 
             // US4942 Restricted Package Count
             requestWriter.Write(DiscountItem.RestrictedPackageIds == null ? (ushort)0 : (ushort)DiscountItem.RestrictedPackageIds.Count);
-            if (DiscountItem.RestrictedPackageIds != null)
+            if(DiscountItem.RestrictedPackageIds != null)
             {
-                foreach (int packageID in DiscountItem.RestrictedPackageIds)
+                foreach(int packageID in DiscountItem.RestrictedPackageIds)
                 {
                     // US4942 Restricted Package ID
                     requestWriter.Write((int)packageID);
                 }
             }
 
-			//US4321 Advance Type
+            //US4321 Advance Type
             requestWriter.Write((int)DiscountItem.AdvancedType);
 
             //US4321 buy quantity
@@ -191,7 +199,7 @@ namespace GTI.Modules.ProductCenter.Data
             var responseReader = new BinaryReader(responseStream, Encoding.Unicode);
 
             // Check the response length.
-            if (responseStream.Length < MinResponseMessageLength)
+            if(responseStream.Length < MinResponseMessageLength)
                 throw new MessageWrongSizeException("Set Discount Item");
 
             // Try to unpack the data.
@@ -203,11 +211,11 @@ namespace GTI.Modules.ProductCenter.Data
                 // Get the Discount Id.
                 DiscountId = responseReader.ReadInt32();
             }
-            catch (EndOfStreamException e)
+            catch(EndOfStreamException e)
             {
                 throw new MessageWrongSizeException("Set Discount Item", e);
             }
-            catch (Exception e)
+            catch(Exception e)
             {
                 throw new ServerException("Set Discount Item", e);
             }

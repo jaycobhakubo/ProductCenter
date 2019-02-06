@@ -336,6 +336,24 @@ namespace GTI.Modules.ProductCenter.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to display add product form:.
+        /// </summary>
+        internal static string ButtonDetailAddProductError {
+            get {
+                return ResourceManager.GetString("ButtonDetailAddProductError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Button detail error.
+        /// </summary>
+        internal static string ButtonDetailErrorTitle {
+            get {
+                return ResourceManager.GetString("ButtonDetailErrorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You must have at least one card level.
         /// </summary>
         internal static string CannotDelete {
@@ -392,6 +410,15 @@ namespace GTI.Modules.ProductCenter.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to deactivate the selected item?.
+        /// </summary>
+        internal static string ConfirmDeactivation {
+            get {
+                return ResourceManager.GetString("ConfirmDeactivation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to delete the selected item?.
         /// </summary>
         internal static string ConfirmDelete {
@@ -415,15 +442,6 @@ namespace GTI.Modules.ProductCenter.Properties {
         internal static string ConfirmDeletePage {
             get {
                 return ResourceManager.GetString("ConfirmDeletePage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to inactivate the selected item?.
-        /// </summary>
-        internal static string ConfirmInactivation {
-            get {
-                return ResourceManager.GetString("ConfirmInactivation", resourceCulture);
             }
         }
         
@@ -467,6 +485,15 @@ namespace GTI.Modules.ProductCenter.Properties {
         internal static string Deactivate {
             get {
                 return ResourceManager.GetString("Deactivate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deactivate Product.
+        /// </summary>
+        internal static string DeactivateProductTitle {
+            get {
+                return ResourceManager.GetString("DeactivateProductTitle", resourceCulture);
             }
         }
         
@@ -742,6 +769,16 @@ namespace GTI.Modules.ProductCenter.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap GradientFull {
+            get {
+                object obj = ResourceManager.GetObject("GradientFull", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap GrayButtonDown {
             get {
                 object obj = ResourceManager.GetObject("GrayButtonDown", resourceCulture);
@@ -874,15 +911,6 @@ namespace GTI.Modules.ProductCenter.Properties {
         internal static string HideInactive {
             get {
                 return ResourceManager.GetString("HideInactive", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Inactivate Product.
-        /// </summary>
-        internal static string InactivateProductTitle {
-            get {
-                return ResourceManager.GetString("InactivateProductTitle", resourceCulture);
             }
         }
         
@@ -1393,6 +1421,16 @@ namespace GTI.Modules.ProductCenter.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PleaseWait {
+            get {
+                object obj = ResourceManager.GetObject("PleaseWait", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Product Center.
         /// </summary>
         internal static string ProductCenterName {
@@ -1661,15 +1699,6 @@ namespace GTI.Modules.ProductCenter.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Data Source=GtiServer;Persist Security Info=True;Password=&quot;Guardian1&quot;;User ID=sa;Initial Catalog=Daily.
-        /// </summary>
-        internal static string SQLConnection {
-            get {
-                return ResourceManager.GetString("SQLConnection", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Starting Product Center..
         /// </summary>
         internal static string StartingProductCenter {
@@ -1724,15 +1753,6 @@ namespace GTI.Modules.ProductCenter.Properties {
         internal static string ValidateMultiplesTitle {
             get {
                 return ResourceManager.GetString("ValidateMultiplesTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 1.0.3.
-        /// </summary>
-        internal static string Version {
-            get {
-                return ResourceManager.GetString("Version", resourceCulture);
             }
         }
         

@@ -31,14 +31,14 @@ namespace GTI.Modules.ProductCenter.UI
             //this.BackColor = defaultBackground;
             //this.ForeColor = System.Drawing.Color.White;
             Application.Idle += OnIdle;
+            //AcceptButton = btnDone;
+            //CancelButton = btnCancel;
         }
 
         private void PaperProductDetailForm_Load(object sender, EventArgs e)
         {
             txtPointsPerQuantity.SelectionStart = 0;
             txtPointsPerQuantity.SelectionLength = txtPointsPerQuantity.Text.Length;
-            AcceptButton = btnDone;
-            CancelButton = btnCancel;
             txtPointsPerQuantity.Focus();
 
             // US3692 
@@ -83,7 +83,9 @@ namespace GTI.Modules.ProductCenter.UI
                     price1 != price2 || altPrice1 != altPrice2 ||
                     IsTaxed != PackageProduct.IsTaxed ||
                     CardLevelId != PackageProduct.CardLevelId ||  // US4516
+                    CardTypeId != PackageProduct.CardTypeId ||  // DE14016
                     CountsTowardsQualifyingSpend != PackageProduct.CountsTowardsQualifyingSpend || // US4587
+                    Prepaid != PackageProduct.Prepaid ||
                     Quantity != PackageProduct.Quantity.ToString())
                     && qty > 0;
                 btnDone.Enabled = doEnable;
@@ -227,7 +229,22 @@ namespace GTI.Modules.ProductCenter.UI
             get { return checkBoxPointQualify.Checked; }
             set { checkBoxPointQualify.Checked = value; }
         }
-
+        #endregion
+        #region Prepaid
+        /// <summary>
+        /// Get/Set whether or not the product is prepaid
+        /// </summary>
+        public bool Prepaid
+        {
+            get
+            {
+                return checkBoxPrepaid.Checked;
+            }
+            set
+            {
+                checkBoxPrepaid.Checked = value;
+            }
+        }
         #endregion
         #region Price
         public string Price
@@ -355,5 +372,63 @@ namespace GTI.Modules.ProductCenter.UI
         // US3692
         public bool WholePoints { get; set; }
         #endregion
+        #region Card Type
+        /// <summary>
+        /// Sets the Card Type List.
+        /// </summary>
+        public Array CardTypeList
+        {
+            set
+            {
+                cboCardTypeList.Items.Clear();
+                foreach(CardTypeListItem cardTypeListItem in value)
+                {
+                    cboCardTypeList.Items.Add(new ListItem(cardTypeListItem.CardTypeName,
+                                                           cardTypeListItem.CardTypeId.ToString()));
+                }
+            }
+        }
+        /// <summary>
+        /// Gets the Selected Card Type Id.
+        /// </summary>
+        public int CardTypeId
+        {
+            get
+            {
+                ListItem li = (ListItem)cboCardTypeList.SelectedItem;
+                int num = 0;
+                if(li != null)
+                    int.TryParse(li.Value, out num);
+                return num;
+            }
+            set
+            {
+                foreach(ListItem li in cboCardTypeList.Items)
+                {
+                    int num = 0;
+                    int.TryParse(li.Value, out num);
+                    if(num == value)
+                    {
+                        cboCardTypeList.SelectedItem = li;
+                        break;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets or Sets the Card Type Name.
+        /// </summary>
+        public string CardTypeName
+        {
+            get
+            {
+                ListItem li = (ListItem)cboCardTypeList.SelectedItem;
+                return li != null ? li.Text : string.Empty;
+            }
+            set { cboCardTypeList.Text = value; }
+        }
+        #endregion
+
     }
 }

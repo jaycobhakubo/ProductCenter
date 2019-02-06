@@ -9,6 +9,7 @@
 //US4695: Product Center: Move validations setup into Validations
 
 using System;
+using System.Linq;
 using System.Diagnostics;
 using System.Reflection;
 using System.Windows.Forms;
@@ -19,6 +20,7 @@ using GTI.Modules.ProductCenter.Business;
 using GTI.Modules.ProductCenter.Properties;
 using GTI.Modules.ProductCenter.UI.Discounts;
 using GTI.Modules.Shared.Data;
+using System.Collections.Generic;
 
 namespace GTI.Modules.ProductCenter.UI
 {
@@ -31,7 +33,9 @@ namespace GTI.Modules.ProductCenter.UI
         private static PackagesForm m_packagesForm;
         private static MenusForm m_menusForm; 
         private static CardLevelForm m_cardLevelForm;
+        private static CardColorSetManagementForm m_cardColorSetForm;
         private static CouponManagementForm m_couponManagementForm;
+        private static PositionMaps.CardPositionMapManagementForm m_cardPositionMapManagementForm;
         private static CouponMangementAddForm m_cmAddForm;
         private static ElementHost m_elementhost;
         private static DiscountView m_discountView;
@@ -39,6 +43,7 @@ namespace GTI.Modules.ProductCenter.UI
         protected DisplayMode m_displayMode = new NormalDisplayMode();
         private readonly ProductCenterSettings m_productCenterSettings;
         private bool m_isCouponManagement = false;//US3979
+        private List<int> m_staffPermissions; // the staff's permission tokens
    
         #endregion
         
@@ -62,10 +67,35 @@ namespace GTI.Modules.ProductCenter.UI
         {
             InitializeComponent();
             Cursor = Cursors.WaitCursor;
-
-            if (m_productCenterSettings.WholeProductPoints)
+            ModuleComm moduleCom = new ModuleComm();
+            int staffid = moduleCom.GetStaffId();
+            m_staffPermissions = new List<int>();
+            try
             {
-                //discountsToolStripMenuItem.Visible = false;
+                GetStaffModuleFeaturesMessage featuresMessage = new GetStaffModuleFeaturesMessage(staffid, (int)EliteModule.ProductCenter, 0);//Get all the permission for this staff on product center.
+                featuresMessage.Send();
+                if (featuresMessage.ModuleFeatureList != null)
+                {
+                    foreach (int token in featuresMessage.ModuleFeatureList)
+                    {
+                        if(!m_staffPermissions.Any(x=>x == token))
+                            m_staffPermissions.Add(token);
+                    }
+                }
+            }
+            catch (ServerException ex)
+            {
+                string err = String.Format("Unable to get staff's permissions. Reason: {0}",
+                    GameTech.Elite.Client.ServerErrorTranslator.GetReturnCodeMessage((GameTech.Elite.Client.ServerReturnCode)ex.ReturnCode));
+                ProductCenter.Business.ProductCenter.Log(err, LoggerLevel.Severe);
+                MessageForm.Show(err);
+            }
+            catch (Exception ex)
+            {
+                m_menusForm.PopulateDailyMenuList = null;
+                string err = "Unable to get staff's permissions. Reason: " + ex.ToString();
+                ProductCenter.Business.ProductCenter.Log(err, LoggerLevel.Severe);
+                MessageForm.Show(err);
             }
 
             //Set the Operator Id
@@ -79,34 +109,10 @@ namespace GTI.Modules.ProductCenter.UI
                 MessageForm.Show( ModuleName + "Unable to obtain Operator Id " + ex.Message, Resources.GetOperatorIDTitle, MessageFormTypes.OK, 0);
             }
 
+            // DE14108 display coupon management if the setting is enabled and they have permission to
+            couponManagementsToolStripMenuItem.Visible = m_productCenterSettings.AllowCouponManagement && m_staffPermissions.Any(x => x == (int)ModuleFeature.CouponManagement);
 
-            if (m_productCenterSettings.IsCouponManagement) //Check if the system setting for coupon management is true.
-            {
-                ModuleComm getstaffId = new ModuleComm(); // Check if the staff has accessed to Coupon Management
-                int staffid = getstaffId.GetStaffId();
-                GetStaffModuleFeaturesMessage sendMessage = new GetStaffModuleFeaturesMessage(staffid, (int)EliteModule.ProductCenter, 0);//Get all the permission for this staff on product center.
-                sendMessage.Send();
-                bool isModuleFeatureExists = false;
-
-                foreach (int moduleFeatureId in sendMessage.ModuleFeatureList)
-                {
-                    if (moduleFeatureId == 39)//Find if ths staff has permession to view coupon management.
-                    {
-                        isModuleFeatureExists = true;
-                        (menuStrip1.Items[1] as ToolStripMenuItem).DropDownItems[5].Visible = true;
-                        break;         
-                    }
-                }
-
-                if (isModuleFeatureExists == false)//Hide coupon management subitem if the staff dont have permission.
-                {
-                    (menuStrip1.Items[1] as ToolStripMenuItem).DropDownItems[5].Visible = false;
-                }
-            }
-            else//Hide coupon management subitem if the system setting for coupon is false.
-            {
-                (menuStrip1.Items[1] as ToolStripMenuItem).DropDownItems[5].Visible = false;
-            }
+            cardPositionMapsTSMI.Visible = m_staffPermissions.Any(p => p == (int)ModuleFeature.CardPositionMapManagement);
 
             StartPosition = FormStartPosition.CenterScreen;
             productsToolStripMenuItem_Click(null, null);
@@ -116,15 +122,24 @@ namespace GTI.Modules.ProductCenter.UI
         #endregion
         
         #region Events
-
-        public static void CloseThisModule()
-        {
-            
-        }
-
+        
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void ProductCenterMdiForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if(m_cardColorSetForm != null && m_cardColorSetForm.EditMode)
+            {
+                var dr = MessageForm.Show(this, "Card color set form has unsaved changes." + Environment.NewLine
+                                            + "Closing now will discard any unsaved changes." + Environment.NewLine
+                                            + Environment.NewLine
+                                            + "Do you want to discard changes and close?"
+                                            , "Unsaved Changes", MessageFormTypes.YesNo);
+                if(dr != System.Windows.Forms.DialogResult.Yes)
+                    e.Cancel = true;
+            }
         }
 
         private void ProductCenterMDIForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -204,6 +219,11 @@ namespace GTI.Modules.ProductCenter.UI
                     toolStripSeparator1.Visible = true;
                     m_searchMenuItem.Visible = true;
                     break;
+                case "CardColorSets":
+                    m_searchMenuItem.Text = "&Search...";
+                    toolStripSeparator1.Visible = false;
+                    m_searchMenuItem.Visible = false;
+                    break;
                 case "Validation":
                     toolStripSeparator1.Visible = false;
                     m_searchMenuItem.Visible = false;
@@ -270,12 +290,23 @@ namespace GTI.Modules.ProductCenter.UI
             Cursor = Cursors.WaitCursor;
             // To prevent multiple instances of the same form
             if (m_menusForm == null || m_menusForm.IsDisposed)
-                m_menusForm = new MenusForm();
+                m_menusForm = new MenusForm(m_operatorId, m_staffPermissions);
 
-            // Set the form's current Operator Id;
-            m_menusForm.OperatorId = m_operatorId;
+            DateTime gamingDate = DateTime.Now;
+            try
+            {
+                GetGamingDateMessage dateMessage = new GetGamingDateMessage(m_operatorId);
+                dateMessage.Send();
+                if (dateMessage.ServerReturnCode == GTIServerReturnCode.Success)
+                    gamingDate = dateMessage.GamingDate;
+            }
+            catch (Exception ex)
+            {
+                ProductCenter.Business.ProductCenter.Log("Error getting gaming date: " + ex.ToString(), LoggerLevel.Severe);
+            }
 
-            m_menusForm.WholePoints = m_productCenterSettings.WholeProductPoints;
+            // Pass in the Product Center Global Settings.
+            m_menusForm.ProdCenterSettings = m_productCenterSettings;
 
             // Populate the Menu List.
             m_menusForm.PopulateMenuList = MenuItems.NameSorted(m_operatorId).ToArray();
@@ -306,6 +337,30 @@ namespace GTI.Modules.ProductCenter.UI
             Cursor = Cursors.Default;
             m_cardLevelForm.Show();
             m_cardLevelForm.BringToFront();
+        }
+
+        private void cardColorSetTSMI_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+
+            if(m_cardColorSetForm == null || m_cardColorSetForm.IsDisposed)
+            {
+                m_cardColorSetForm = new CardColorSetManagementForm();
+                m_cardColorSetForm.EditModeChanged += cardColorSetForm_EditModeChanged;
+            }
+
+            m_cardColorSetForm.MdiParent = this;
+            m_cardColorSetForm.Dock = DockStyle.Fill;
+            OnIdleHandlerSetup("CardColorSets");
+            SetIsCouponManagementToFalse();
+            Cursor = Cursors.Default;
+            m_cardColorSetForm.Show();
+            m_cardColorSetForm.BringToFront();
+        }
+
+        void cardColorSetForm_EditModeChanged(object sender, EventArgs e)
+        {
+            setupToolStripMenuItem.Enabled = !m_cardColorSetForm.EditMode;
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -405,6 +460,21 @@ namespace GTI.Modules.ProductCenter.UI
             //m_elementhost.Show();
         }
 
+        private void cardPositionMapsTSMI_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            // To prevent multiple instances of the same form
+            if(m_cardPositionMapManagementForm == null || m_cardPositionMapManagementForm.IsDisposed)
+                m_cardPositionMapManagementForm = new PositionMaps.CardPositionMapManagementForm();
+
+            m_cardPositionMapManagementForm.MdiParent = this;
+            m_cardPositionMapManagementForm.Dock = DockStyle.Fill;
+            SetIsCouponManagementToFalse();
+            Cursor = Cursors.Default;
+            m_cardPositionMapManagementForm.Show();
+            m_cardPositionMapManagementForm.BringToFront();
+        }
+
         //Open coupon management UI.
         private void couponManagementsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -421,8 +491,7 @@ namespace GTI.Modules.ProductCenter.UI
             m_couponManagementForm.BringToFront();
         }
 
-        
-        private void menuStrip1_Click(object sender, EventArgs e)
+        private void mainMenuStrip_Click(object sender, EventArgs e)
         {
             if (m_isCouponManagement == true)
             {
@@ -516,6 +585,8 @@ namespace GTI.Modules.ProductCenter.UI
                 m_couponManagementForm.Hide();
             if (m_cmAddForm != null)
                 m_cmAddForm.Hide();
+            if(m_cardColorSetForm != null)
+                m_cardColorSetForm.Hide();
         }
         #endregion
 

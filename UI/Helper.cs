@@ -162,6 +162,11 @@ namespace GTI.Modules.ProductCenter.UI
             return result.ToString("F", GetNumberFormat());
         }
 
+        public static string DecimalStringToMoneyString(decimal decimalInput)
+        {
+            return decimalInput.ToString("F", GetNumberFormat());
+        }
+
         
         public static string MoneyStringToDecimalString(string moneyInput)
         {

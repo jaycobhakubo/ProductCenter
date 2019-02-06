@@ -28,7 +28,7 @@
                     </Grid.RowDefinitions>
                     <Label Grid.Row="0" Content="Discount name" FontSize="15" Margin="25,0"/>
                     <TextBox Grid.Row="1" x:Name="txtbxDiscountName" Margin="25,5" Height="32" Text="" PreviewKeyDown="txtbxSearchName_PreviewKeyDown" />
-                    <Label Grid.Row="2" Content="*Leave blank to not filter by name" FontSize="15" Margin="25,5,0,25"/>
+                    <Label Grid.Row="2" Content="*Leave blank not to filter by name" FontSize="15" Margin="25,5,0,25"/>
 
                     <Grid Grid.Row="3">
                         <Grid.ColumnDefinitions>
