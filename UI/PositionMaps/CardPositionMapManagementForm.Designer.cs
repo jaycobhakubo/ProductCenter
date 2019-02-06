@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CardPositionMapManagementForm));
             this.mainGB = new System.Windows.Forms.GroupBox();
+            this.importCmd = new GTI.Controls.ImageButton();
+            this.saveCmd = new GTI.Controls.ImageButton();
+            this.revertCmd = new GTI.Controls.ImageButton();
             this.importCmd2 = new System.Windows.Forms.Button();
             this.revertCmd2 = new System.Windows.Forms.Button();
             this.saveCmd2 = new System.Windows.Forms.Button();
@@ -38,9 +41,6 @@
             this.allowOnElecDGVChk = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.mapUUIDDGVCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.importBGW = new System.ComponentModel.BackgroundWorker();
-            this.revertCmd = new GTI.Controls.ImageButton();
-            this.saveCmd = new GTI.Controls.ImageButton();
-            this.importCmd = new GTI.Controls.ImageButton();
             this.mainGB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.positionMapsDGV)).BeginInit();
             this.SuspendLayout();
@@ -58,6 +58,35 @@
             this.mainGB.Controls.Add(this.positionMapsDGV);
             this.mainGB.Name = "mainGB";
             this.mainGB.TabStop = false;
+            // 
+            // importCmd
+            // 
+            resources.ApplyResources(this.importCmd, "importCmd");
+            this.importCmd.FocusColor = System.Drawing.Color.Black;
+            this.importCmd.ImageNormal = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonUp;
+            this.importCmd.ImagePressed = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonDown;
+            this.importCmd.Name = "importCmd";
+            this.importCmd.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.importCmd.Click += new System.EventHandler(this.importCmd_Click);
+            // 
+            // saveCmd
+            // 
+            resources.ApplyResources(this.saveCmd, "saveCmd");
+            this.saveCmd.FocusColor = System.Drawing.Color.Black;
+            this.saveCmd.ImageNormal = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonUp;
+            this.saveCmd.ImagePressed = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonDown;
+            this.saveCmd.Name = "saveCmd";
+            this.saveCmd.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.saveCmd.Click += new System.EventHandler(this.saveCmd_Click);
+            // 
+            // revertCmd
+            // 
+            resources.ApplyResources(this.revertCmd, "revertCmd");
+            this.revertCmd.FocusColor = System.Drawing.Color.Black;
+            this.revertCmd.ImageNormal = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonUp;
+            this.revertCmd.Name = "revertCmd";
+            this.revertCmd.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.revertCmd.Click += new System.EventHandler(this.revertCmd_Click);
             // 
             // importCmd2
             // 
@@ -122,35 +151,6 @@
             this.importBGW.WorkerReportsProgress = true;
             this.importBGW.WorkerSupportsCancellation = true;
             this.importBGW.DoWork += new System.ComponentModel.DoWorkEventHandler(this.importBGW_DoWork);
-            // 
-            // revertCmd
-            // 
-            this.revertCmd.FocusColor = System.Drawing.Color.Black;
-            this.revertCmd.ImageNormal = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonUp;
-            resources.ApplyResources(this.revertCmd, "revertCmd");
-            this.revertCmd.Name = "revertCmd";
-            this.revertCmd.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
-            this.revertCmd.Click += new System.EventHandler(this.revertCmd_Click);
-            // 
-            // saveCmd
-            // 
-            this.saveCmd.FocusColor = System.Drawing.Color.Black;
-            this.saveCmd.ImageNormal = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonUp;
-            this.saveCmd.ImagePressed = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonDown;
-            resources.ApplyResources(this.saveCmd, "saveCmd");
-            this.saveCmd.Name = "saveCmd";
-            this.saveCmd.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
-            this.saveCmd.Click += new System.EventHandler(this.saveCmd_Click);
-            // 
-            // importCmd
-            // 
-            this.importCmd.FocusColor = System.Drawing.Color.Black;
-            this.importCmd.ImageNormal = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonUp;
-            this.importCmd.ImagePressed = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonDown;
-            resources.ApplyResources(this.importCmd, "importCmd");
-            this.importCmd.Name = "importCmd";
-            this.importCmd.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
-            this.importCmd.Click += new System.EventHandler(this.importCmd_Click);
             // 
             // CardPositionMapManagementForm
             // 

@@ -121,6 +121,9 @@
   <data name="mainGB.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
   </data>
+  <data name="importCmd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="importCmd.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 513</value>
@@ -149,6 +152,9 @@
   </data>
   <data name="&gt;&gt;importCmd.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="saveCmd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
   </data>
   <data name="saveCmd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -179,6 +185,9 @@
   </data>
   <data name="&gt;&gt;saveCmd.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="revertCmd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
   </data>
   <data name="revertCmd.Location" type="System.Drawing.Point, System.Drawing">
     <value>819, 510</value>
@@ -224,6 +233,9 @@
   </data>
   <data name="importCmd2.Text" xml:space="preserve">
     <value>Import</value>
+  </data>
+  <data name="importCmd2.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;importCmd2.Name" xml:space="preserve">
     <value>importCmd2</value>
@@ -290,6 +302,9 @@
   </data>
   <data name="saveCmd2.Text" xml:space="preserve">
     <value>Save</value>
+  </data>
+  <data name="saveCmd2.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;saveCmd2.Name" xml:space="preserve">
     <value>saveCmd2</value>
