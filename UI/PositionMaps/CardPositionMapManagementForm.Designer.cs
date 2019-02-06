@@ -37,11 +37,11 @@
             this.saveCmd = new GTI.Controls.ImageButton();
             this.revertCmd = new GTI.Controls.ImageButton();
             this.positionMapsDGV = new System.Windows.Forms.DataGridView();
+            this.importBGW = new System.ComponentModel.BackgroundWorker();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.mapNameDGVC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.allowOnElecDGVChk = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.mapUUIDDGVCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.importBGW = new System.ComponentModel.BackgroundWorker();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.mainGB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.positionMapsDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -121,31 +121,11 @@
             this.positionMapsDGV.MultiSelect = false;
             this.positionMapsDGV.Name = "positionMapsDGV";
             this.positionMapsDGV.RowHeadersVisible = false;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 12F);
             this.positionMapsDGV.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.positionMapsDGV.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.positionMapsDGV_CellValueChanged);
             this.positionMapsDGV.CurrentCellDirtyStateChanged += new System.EventHandler(this.positionMapsDGV_CurrentCellDirtyStateChanged);
-            // 
-            // mapNameDGVC
-            // 
-            this.mapNameDGVC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            resources.ApplyResources(this.mapNameDGVC, "mapNameDGVC");
-            this.mapNameDGVC.Name = "mapNameDGVC";
-            // 
-            // allowOnElecDGVChk
-            // 
-            this.allowOnElecDGVChk.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.allowOnElecDGVChk.FalseValue = "";
-            resources.ApplyResources(this.allowOnElecDGVChk, "allowOnElecDGVChk");
-            this.allowOnElecDGVChk.Name = "allowOnElecDGVChk";
-            this.allowOnElecDGVChk.TrueValue = "";
-            // 
-            // mapUUIDDGVCol
-            // 
-            this.mapUUIDDGVCol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            resources.ApplyResources(this.mapUUIDDGVCol, "mapUUIDDGVCol");
-            this.mapUUIDDGVCol.Name = "mapUUIDDGVCol";
-            this.mapUUIDDGVCol.ReadOnly = true;
             // 
             // importBGW
             // 
@@ -169,6 +149,27 @@
             this.splitContainer1.Panel2.Controls.Add(this.importCmd);
             this.splitContainer1.Panel2.Controls.Add(this.revertCmd);
             this.splitContainer1.Panel2.Controls.Add(this.saveCmd);
+            // 
+            // mapNameDGVC
+            // 
+            this.mapNameDGVC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            resources.ApplyResources(this.mapNameDGVC, "mapNameDGVC");
+            this.mapNameDGVC.Name = "mapNameDGVC";
+            // 
+            // allowOnElecDGVChk
+            // 
+            this.allowOnElecDGVChk.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.allowOnElecDGVChk.FalseValue = "";
+            resources.ApplyResources(this.allowOnElecDGVChk, "allowOnElecDGVChk");
+            this.allowOnElecDGVChk.Name = "allowOnElecDGVChk";
+            this.allowOnElecDGVChk.TrueValue = "";
+            // 
+            // mapUUIDDGVCol
+            // 
+            this.mapUUIDDGVCol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            resources.ApplyResources(this.mapUUIDDGVCol, "mapUUIDDGVCol");
+            this.mapUUIDDGVCol.Name = "mapUUIDDGVCol";
+            this.mapUUIDDGVCol.ReadOnly = true;
             // 
             // CardPositionMapManagementForm
             // 
@@ -196,13 +197,13 @@
 
         private System.Windows.Forms.GroupBox mainGB;
         private System.Windows.Forms.DataGridView positionMapsDGV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mapNameDGVC;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn allowOnElecDGVChk;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mapUUIDDGVCol;
         private System.ComponentModel.BackgroundWorker importBGW;
         private Controls.ImageButton revertCmd;
         private Controls.ImageButton saveCmd;
         private Controls.ImageButton importCmd;
         private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mapNameDGVC;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn allowOnElecDGVChk;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mapUUIDDGVCol;
     }
 }

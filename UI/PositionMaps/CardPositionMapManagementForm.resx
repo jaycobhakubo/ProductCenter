@@ -384,6 +384,12 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Validation Setup</value>
   </data>
+  <data name="&gt;&gt;importBGW.Name" xml:space="preserve">
+    <value>importBGW</value>
+  </data>
+  <data name="&gt;&gt;importBGW.Type" xml:space="preserve">
+    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;mapNameDGVC.Name" xml:space="preserve">
     <value>mapNameDGVC</value>
   </data>
@@ -401,12 +407,6 @@
   </data>
   <data name="&gt;&gt;mapUUIDDGVCol.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;importBGW.Name" xml:space="preserve">
-    <value>importBGW</value>
-  </data>
-  <data name="&gt;&gt;importBGW.Type" xml:space="preserve">
-    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>CardPositionMapManagementForm</value>
