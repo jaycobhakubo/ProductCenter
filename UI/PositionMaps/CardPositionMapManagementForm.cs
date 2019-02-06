@@ -63,7 +63,7 @@ namespace GTI.Modules.ProductCenter.UI.PositionMaps
                     m_isModified = value;
                     saveCmd.Enabled = m_isModified;
                     revertCmd.Enabled = m_isModified;
-                    importCmd.Enabled = !m_isModified;
+                    importCmd2.Enabled = !m_isModified;
                 }
             }
         }

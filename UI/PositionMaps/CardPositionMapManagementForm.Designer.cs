@@ -30,14 +30,17 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CardPositionMapManagementForm));
             this.mainGB = new System.Windows.Forms.GroupBox();
-            this.importCmd = new System.Windows.Forms.Button();
-            this.revertCmd = new System.Windows.Forms.Button();
-            this.saveCmd = new System.Windows.Forms.Button();
+            this.importCmd2 = new System.Windows.Forms.Button();
+            this.revertCmd2 = new System.Windows.Forms.Button();
+            this.saveCmd2 = new System.Windows.Forms.Button();
             this.positionMapsDGV = new System.Windows.Forms.DataGridView();
             this.mapNameDGVC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.allowOnElecDGVChk = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.mapUUIDDGVCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.importBGW = new System.ComponentModel.BackgroundWorker();
+            this.revertCmd = new GTI.Controls.ImageButton();
+            this.saveCmd = new GTI.Controls.ImageButton();
+            this.importCmd = new GTI.Controls.ImageButton();
             this.mainGB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.positionMapsDGV)).BeginInit();
             this.SuspendLayout();
@@ -47,32 +50,35 @@
             this.mainGB.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.mainGB, "mainGB");
             this.mainGB.Controls.Add(this.importCmd);
-            this.mainGB.Controls.Add(this.revertCmd);
             this.mainGB.Controls.Add(this.saveCmd);
+            this.mainGB.Controls.Add(this.revertCmd);
+            this.mainGB.Controls.Add(this.importCmd2);
+            this.mainGB.Controls.Add(this.revertCmd2);
+            this.mainGB.Controls.Add(this.saveCmd2);
             this.mainGB.Controls.Add(this.positionMapsDGV);
             this.mainGB.Name = "mainGB";
             this.mainGB.TabStop = false;
             // 
-            // importCmd
+            // importCmd2
             // 
-            resources.ApplyResources(this.importCmd, "importCmd");
-            this.importCmd.Name = "importCmd";
-            this.importCmd.UseVisualStyleBackColor = false;
-            this.importCmd.Click += new System.EventHandler(this.importCmd_Click);
+            resources.ApplyResources(this.importCmd2, "importCmd2");
+            this.importCmd2.Name = "importCmd2";
+            this.importCmd2.UseVisualStyleBackColor = false;
+            this.importCmd2.Click += new System.EventHandler(this.importCmd_Click);
             // 
-            // revertCmd
+            // revertCmd2
             // 
-            resources.ApplyResources(this.revertCmd, "revertCmd");
-            this.revertCmd.Name = "revertCmd";
-            this.revertCmd.UseVisualStyleBackColor = false;
-            this.revertCmd.Click += new System.EventHandler(this.revertCmd_Click);
+            resources.ApplyResources(this.revertCmd2, "revertCmd2");
+            this.revertCmd2.Name = "revertCmd2";
+            this.revertCmd2.UseVisualStyleBackColor = false;
+            this.revertCmd2.Click += new System.EventHandler(this.revertCmd_Click);
             // 
-            // saveCmd
+            // saveCmd2
             // 
-            resources.ApplyResources(this.saveCmd, "saveCmd");
-            this.saveCmd.Name = "saveCmd";
-            this.saveCmd.UseVisualStyleBackColor = false;
-            this.saveCmd.Click += new System.EventHandler(this.saveCmd_Click);
+            resources.ApplyResources(this.saveCmd2, "saveCmd2");
+            this.saveCmd2.Name = "saveCmd2";
+            this.saveCmd2.UseVisualStyleBackColor = false;
+            this.saveCmd2.Click += new System.EventHandler(this.saveCmd_Click);
             // 
             // positionMapsDGV
             // 
@@ -117,6 +123,35 @@
             this.importBGW.WorkerSupportsCancellation = true;
             this.importBGW.DoWork += new System.ComponentModel.DoWorkEventHandler(this.importBGW_DoWork);
             // 
+            // revertCmd
+            // 
+            this.revertCmd.FocusColor = System.Drawing.Color.Black;
+            this.revertCmd.ImageNormal = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonUp;
+            resources.ApplyResources(this.revertCmd, "revertCmd");
+            this.revertCmd.Name = "revertCmd";
+            this.revertCmd.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.revertCmd.Click += new System.EventHandler(this.revertCmd_Click);
+            // 
+            // saveCmd
+            // 
+            this.saveCmd.FocusColor = System.Drawing.Color.Black;
+            this.saveCmd.ImageNormal = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonUp;
+            this.saveCmd.ImagePressed = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonDown;
+            resources.ApplyResources(this.saveCmd, "saveCmd");
+            this.saveCmd.Name = "saveCmd";
+            this.saveCmd.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.saveCmd.Click += new System.EventHandler(this.saveCmd_Click);
+            // 
+            // importCmd
+            // 
+            this.importCmd.FocusColor = System.Drawing.Color.Black;
+            this.importCmd.ImageNormal = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonUp;
+            this.importCmd.ImagePressed = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonDown;
+            resources.ApplyResources(this.importCmd, "importCmd");
+            this.importCmd.Name = "importCmd";
+            this.importCmd.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.importCmd.Click += new System.EventHandler(this.importCmd_Click);
+            // 
             // CardPositionMapManagementForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -139,12 +174,15 @@
 
         private System.Windows.Forms.GroupBox mainGB;
         private System.Windows.Forms.DataGridView positionMapsDGV;
-        private System.Windows.Forms.Button importCmd;
-        private System.Windows.Forms.Button revertCmd;
-        private System.Windows.Forms.Button saveCmd;
+        private System.Windows.Forms.Button importCmd2;
+        private System.Windows.Forms.Button revertCmd2;
+        private System.Windows.Forms.Button saveCmd2;
         private System.Windows.Forms.DataGridViewTextBoxColumn mapNameDGVC;
         private System.Windows.Forms.DataGridViewCheckBoxColumn allowOnElecDGVChk;
         private System.Windows.Forms.DataGridViewTextBoxColumn mapUUIDDGVCol;
         private System.ComponentModel.BackgroundWorker importBGW;
+        private Controls.ImageButton revertCmd;
+        private Controls.ImageButton saveCmd;
+        private Controls.ImageButton importCmd;
     }
 }

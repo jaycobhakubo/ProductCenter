@@ -121,22 +121,19 @@
   <data name="mainGB.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
   </data>
-  <data name="importCmd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="importCmd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="importCmd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 493</value>
+    <value>10, 513</value>
+  </data>
+  <data name="importCmd.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
   </data>
   <data name="importCmd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 47</value>
+    <value>130, 30</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="importCmd.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="importCmd.Text" xml:space="preserve">
     <value>Import</value>
@@ -145,7 +142,7 @@
     <value>importCmd</value>
   </data>
   <data name="&gt;&gt;importCmd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1324, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;importCmd.Parent" xml:space="preserve">
     <value>mainGB</value>
@@ -153,53 +150,20 @@
   <data name="&gt;&gt;importCmd.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="revertCmd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="revertCmd.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="revertCmd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="saveCmd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="revertCmd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>816, 493</value>
-  </data>
-  <data name="revertCmd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 47</value>
-  </data>
-  <data name="revertCmd.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="revertCmd.Text" xml:space="preserve">
-    <value>Revert</value>
-  </data>
-  <data name="&gt;&gt;revertCmd.Name" xml:space="preserve">
-    <value>revertCmd</value>
-  </data>
-  <data name="&gt;&gt;revertCmd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;revertCmd.Parent" xml:space="preserve">
-    <value>mainGB</value>
-  </data>
-  <data name="&gt;&gt;revertCmd.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="saveCmd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
-  </data>
-  <data name="saveCmd.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="saveCmd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>674, 493</value>
+    <value>679, 510</value>
+  </data>
+  <data name="saveCmd.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
   </data>
   <data name="saveCmd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 47</value>
+    <value>130, 30</value>
   </data>
   <data name="saveCmd.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>5</value>
   </data>
   <data name="saveCmd.Text" xml:space="preserve">
     <value>Save</value>
@@ -208,13 +172,136 @@
     <value>saveCmd</value>
   </data>
   <data name="&gt;&gt;saveCmd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1324, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;saveCmd.Parent" xml:space="preserve">
     <value>mainGB</value>
   </data>
   <data name="&gt;&gt;saveCmd.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="revertCmd.Location" type="System.Drawing.Point, System.Drawing">
+    <value>819, 510</value>
+  </data>
+  <data name="revertCmd.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="revertCmd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 30</value>
+  </data>
+  <data name="revertCmd.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="revertCmd.Text" xml:space="preserve">
+    <value>Revert</value>
+  </data>
+  <data name="&gt;&gt;revertCmd.Name" xml:space="preserve">
+    <value>revertCmd</value>
+  </data>
+  <data name="&gt;&gt;revertCmd.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1324, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;revertCmd.Parent" xml:space="preserve">
+    <value>mainGB</value>
+  </data>
+  <data name="&gt;&gt;revertCmd.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="importCmd2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="importCmd2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="importCmd2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>355, 509</value>
+  </data>
+  <data name="importCmd2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 26</value>
+  </data>
+  <data name="importCmd2.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="importCmd2.Text" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="&gt;&gt;importCmd2.Name" xml:space="preserve">
+    <value>importCmd2</value>
+  </data>
+  <data name="&gt;&gt;importCmd2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;importCmd2.Parent" xml:space="preserve">
+    <value>mainGB</value>
+  </data>
+  <data name="&gt;&gt;importCmd2.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="revertCmd2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="revertCmd2.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="revertCmd2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="revertCmd2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>594, 513</value>
+  </data>
+  <data name="revertCmd2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 23</value>
+  </data>
+  <data name="revertCmd2.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="revertCmd2.Text" xml:space="preserve">
+    <value>Revert</value>
+  </data>
+  <data name="revertCmd2.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;revertCmd2.Name" xml:space="preserve">
+    <value>revertCmd2</value>
+  </data>
+  <data name="&gt;&gt;revertCmd2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;revertCmd2.Parent" xml:space="preserve">
+    <value>mainGB</value>
+  </data>
+  <data name="&gt;&gt;revertCmd2.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="saveCmd2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="saveCmd2.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="saveCmd2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>487, 513</value>
+  </data>
+  <data name="saveCmd2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 21</value>
+  </data>
+  <data name="saveCmd2.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="saveCmd2.Text" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="&gt;&gt;saveCmd2.Name" xml:space="preserve">
+    <value>saveCmd2</value>
+  </data>
+  <data name="&gt;&gt;saveCmd2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;saveCmd2.Parent" xml:space="preserve">
+    <value>mainGB</value>
+  </data>
+  <data name="&gt;&gt;saveCmd2.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="positionMapsDGV.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -253,7 +340,7 @@
     <value>Vertical</value>
   </data>
   <data name="positionMapsDGV.Size" type="System.Drawing.Size, System.Drawing">
-    <value>943, 455</value>
+    <value>943, 471</value>
   </data>
   <data name="positionMapsDGV.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -268,7 +355,7 @@
     <value>mainGB</value>
   </data>
   <data name="&gt;&gt;positionMapsDGV.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="mainGB.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -352,6 +439,6 @@
     <value>CardPositionMapManagementForm</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>GTI.Modules.Shared.GradientForm, ManagedEliteModule, Version=1.3.42.1197, Culture=neutral, PublicKeyToken=f7ab3ec26b04c7cf</value>
+    <value>GTI.Modules.Shared.GradientForm, ManagedEliteModule, Version=1.3.42.1325, Culture=neutral, PublicKeyToken=f7ab3ec26b04c7cf</value>
   </data>
 </root>
