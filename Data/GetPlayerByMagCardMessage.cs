@@ -10,19 +10,22 @@ namespace GTI.Modules.ProductCenter.Data
     class GetPlayerByMagCardMessage : ServerMessage
     {
         private string m_magcardnumber;
+        private int m_thirdPartyInterfaceID;
         private PlayerName flname = new PlayerName();
         //private string m_lname;
 
-        public GetPlayerByMagCardMessage(string magcardnumber)
+        public GetPlayerByMagCardMessage(string magcardnumber, int thirdPartyInterfaceID)
         {
             m_id = 8012;
             m_magcardnumber = magcardnumber;
+            m_thirdPartyInterfaceID = thirdPartyInterfaceID;
+            
         }
 
 
-        public static PlayerName RunMessage(string magcardnumber)
+        public static PlayerName RunMessage(string magcardnumber, int thirdPartyInterfaceID)
         {
-            GetPlayerByMagCardMessage msg = new GetPlayerByMagCardMessage(magcardnumber);
+            GetPlayerByMagCardMessage msg = new GetPlayerByMagCardMessage(magcardnumber, thirdPartyInterfaceID);
             try
             {
                 msg.Send();
@@ -70,15 +73,13 @@ namespace GTI.Modules.ProductCenter.Data
                     data.PlayerID =  responseReader.ReadInt32(); //PlayerID
                     responseReader.ReadBoolean();//Pin Required
 
-                    // Third party player card PIN error
-                    responseReader.ReadBoolean();
-
-                    // Third party player points correct
-                    responseReader.ReadBoolean();
-
-                    // Third party interface down
-                    responseReader.ReadBoolean();
-                    
+                    //Skip this data if thirdpartyinterfaceID == 0
+                    //if (m_thirdPartyInterfaceID != 0)
+                    //{
+                        responseReader.ReadBoolean();// Third party player card PIN error
+                        responseReader.ReadBoolean();   // Third party player points correct
+                        responseReader.ReadBoolean();       // Third party interface down
+                    //}  
                     ushort stringLen = responseReader.ReadUInt16();
                     data.Fname = new string(responseReader.ReadChars(stringLen));
 

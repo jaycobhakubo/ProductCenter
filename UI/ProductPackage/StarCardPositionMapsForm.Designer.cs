@@ -43,6 +43,9 @@
             this.starCountPriorityIncreaseBtn = new GTI.Controls.ImageButton();
             this.starCountPriorityDecreaseBtn = new GTI.Controls.ImageButton();
             this.removeBtn = new GTI.Controls.ImageButton();
+            this.lblStarsPerCard = new System.Windows.Forms.Label();
+            this.lblTotalStarsOnCard = new System.Windows.Forms.Label();
+            this.lblStarTotalText = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnDone
@@ -55,7 +58,7 @@
             this.btnDone.ImageNormal = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonUp;
             this.btnDone.ImagePressed = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonDown;
             this.btnDone.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnDone.Location = new System.Drawing.Point(138, 400);
+            this.btnDone.Location = new System.Drawing.Point(138, 440);
             this.btnDone.MinimumSize = new System.Drawing.Size(30, 30);
             this.btnDone.Name = "btnDone";
             this.btnDone.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
@@ -76,7 +79,7 @@
             this.btnCancel.ImageNormal = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonUp;
             this.btnCancel.ImagePressed = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonDown;
             this.btnCancel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnCancel.Location = new System.Drawing.Point(298, 400);
+            this.btnCancel.Location = new System.Drawing.Point(298, 440);
             this.btnCancel.MinimumSize = new System.Drawing.Size(30, 30);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
@@ -103,17 +106,19 @@
             this.starCountsLst.TabIndex = 9;
             this.starCountsLst.UseCompatibleStateImageBehavior = false;
             this.starCountsLst.View = System.Windows.Forms.View.Details;
+            this.starCountsLst.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.starCountsLst_ColumnWidthChanging);
             this.starCountsLst.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.starCountsLst_ItemSelectionChanged);
             // 
             // columnHeader1
             // 
-            this.columnHeader1.Text = "Star type";
-            this.columnHeader1.Width = 209;
+            this.columnHeader1.Text = "Star Type";
+            this.columnHeader1.Width = 320;
             // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "Count";
-            this.columnHeader2.Width = 126;
+            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader2.Width = 62;
             // 
             // starPositionMapsSelector
             // 
@@ -127,6 +132,7 @@
             this.starPositionMapsSelector.Size = new System.Drawing.Size(386, 28);
             this.starPositionMapsSelector.Sorted = true;
             this.starPositionMapsSelector.TabIndex = 10;
+            this.starPositionMapsSelector.SelectedIndexChanged += new System.EventHandler(this.starPositionMapsSelector_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -138,12 +144,12 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(110, 20);
             this.label1.TabIndex = 100;
-            this.label1.Text = "Star definition";
+            this.label1.Text = "Star Definition";
             // 
             // txtStarCount
             // 
             this.txtStarCount.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStarCount.Location = new System.Drawing.Point(233, 347);
+            this.txtStarCount.Location = new System.Drawing.Point(233, 392);
             this.txtStarCount.Mask = GTI.Controls.TextBoxNumeric.TextBoxType.Integer;
             this.txtStarCount.MaxLength = 4;
             this.txtStarCount.Name = "txtStarCount";
@@ -158,11 +164,11 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Trebuchet MS", 11F, System.Drawing.FontStyle.Bold);
             this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label2.Location = new System.Drawing.Point(2, 322);
+            this.label2.Location = new System.Drawing.Point(2, 367);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 20);
             this.label2.TabIndex = 102;
-            this.label2.Text = "Star type";
+            this.label2.Text = "Star Type";
             // 
             // addBtn
             // 
@@ -173,7 +179,7 @@
             this.addBtn.ImageNormal = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonUp;
             this.addBtn.ImagePressed = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonDown;
             this.addBtn.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.addBtn.Location = new System.Drawing.Point(322, 345);
+            this.addBtn.Location = new System.Drawing.Point(322, 390);
             this.addBtn.MinimumSize = new System.Drawing.Size(30, 30);
             this.addBtn.Name = "addBtn";
             this.addBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
@@ -189,7 +195,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Trebuchet MS", 11F, System.Drawing.FontStyle.Bold);
             this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(229, 322);
+            this.label3.Location = new System.Drawing.Point(229, 367);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 20);
             this.label3.TabIndex = 106;
@@ -200,7 +206,7 @@
             this.starCodeSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.starCodeSelector.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.starCodeSelector.FormattingEnabled = true;
-            this.starCodeSelector.Location = new System.Drawing.Point(6, 345);
+            this.starCodeSelector.Location = new System.Drawing.Point(6, 390);
             this.starCodeSelector.Name = "starCodeSelector";
             this.starCodeSelector.Size = new System.Drawing.Size(195, 30);
             this.starCodeSelector.TabIndex = 107;
@@ -256,9 +262,8 @@
             this.removeBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.removeBtn.BackColor = System.Drawing.Color.Transparent;
             this.removeBtn.Enabled = false;
-            this.removeBtn.FitImageIcon = true;
             this.removeBtn.FocusColor = System.Drawing.Color.Black;
-            this.removeBtn.Font = new System.Drawing.Font("Trebuchet MS", 14F, System.Drawing.FontStyle.Bold);
+            this.removeBtn.Font = new System.Drawing.Font("Trebuchet MS", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.removeBtn.ForeColor = System.Drawing.Color.Black;
             this.removeBtn.ImageDisabled = global::GTI.Modules.ProductCenter.Properties.Resources.GrayFlatButtonUp;
             this.removeBtn.ImageNormal = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonUp;
@@ -274,13 +279,52 @@
             this.removeBtn.UseVisualStyleBackColor = false;
             this.removeBtn.Click += new System.EventHandler(this.removeBtn_Click);
             // 
+            // lblStarsPerCard
+            // 
+            this.lblStarsPerCard.BackColor = System.Drawing.Color.Transparent;
+            this.lblStarsPerCard.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStarsPerCard.Location = new System.Drawing.Point(163, 13);
+            this.lblStarsPerCard.Name = "lblStarsPerCard";
+            this.lblStarsPerCard.Size = new System.Drawing.Size(229, 17);
+            this.lblStarsPerCard.TabIndex = 113;
+            this.lblStarsPerCard.Text = "Stars per card:";
+            this.lblStarsPerCard.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblStarsPerCard.Visible = false;
+            // 
+            // lblTotalStarsOnCard
+            // 
+            this.lblTotalStarsOnCard.BackColor = System.Drawing.Color.Transparent;
+            this.lblTotalStarsOnCard.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalStarsOnCard.Location = new System.Drawing.Point(321, 317);
+            this.lblTotalStarsOnCard.Name = "lblTotalStarsOnCard";
+            this.lblTotalStarsOnCard.Size = new System.Drawing.Size(70, 23);
+            this.lblTotalStarsOnCard.TabIndex = 114;
+            this.lblTotalStarsOnCard.Text = "0";
+            this.lblTotalStarsOnCard.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lblTotalStarsOnCard.Visible = false;
+            // 
+            // lblStarTotalText
+            // 
+            this.lblStarTotalText.BackColor = System.Drawing.Color.Transparent;
+            this.lblStarTotalText.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStarTotalText.Location = new System.Drawing.Point(229, 318);
+            this.lblStarTotalText.Name = "lblStarTotalText";
+            this.lblStarTotalText.Size = new System.Drawing.Size(86, 23);
+            this.lblStarTotalText.TabIndex = 115;
+            this.lblStarTotalText.Text = "Total Stars:";
+            this.lblStarTotalText.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblStarTotalText.Visible = false;
+            // 
             // StarCardPositionMapsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(440, 442);
+            this.ClientSize = new System.Drawing.Size(440, 482);
             this.ControlBox = false;
+            this.Controls.Add(this.lblStarTotalText);
+            this.Controls.Add(this.lblTotalStarsOnCard);
+            this.Controls.Add(this.lblStarsPerCard);
             this.Controls.Add(this.removeBtn);
             this.Controls.Add(this.starCountPriorityDecreaseBtn);
             this.Controls.Add(this.starCountPriorityIncreaseBtn);
@@ -320,5 +364,8 @@
         private Controls.ImageButton starCountPriorityIncreaseBtn;
         private Controls.ImageButton starCountPriorityDecreaseBtn;
         private Controls.ImageButton removeBtn;
+        private System.Windows.Forms.Label lblStarsPerCard;
+        private System.Windows.Forms.Label lblTotalStarsOnCard;
+        private System.Windows.Forms.Label lblStarTotalText;
     }
 }

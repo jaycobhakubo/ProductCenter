@@ -129,7 +129,7 @@ namespace GTI.Modules.ProductCenter.Data
                     else
                         requestWriter.Write(packageProduct.CardPositionsMapId);
 
-                    if(packageProduct.PositionStarCodes == null || packageProduct.PositionStarCodes.Count == 0)
+                    if(packageProduct.m_positionStarCodes == null || packageProduct.m_positionStarCodes.Count == 0)
                     {
                         requestWriter.Write((byte)1);
                         requestWriter.Write((byte)0);
@@ -137,8 +137,8 @@ namespace GTI.Modules.ProductCenter.Data
                     }
                     else
                     {
-                        requestWriter.Write((byte)packageProduct.PositionStarCodes.Count);
-                        foreach(var kvp in packageProduct.PositionStarCodes)
+                        requestWriter.Write((byte)packageProduct.m_positionStarCodes.Count);
+                        foreach(var kvp in packageProduct.m_positionStarCodes)
                         {
                             requestWriter.Write(kvp.Key);
                             requestWriter.Write(kvp.Value);

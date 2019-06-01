@@ -1574,7 +1574,7 @@ namespace GTI.Modules.ProductCenter.UI
 
         private void ButtonClick(object sender, bool skipDialog)
         {
-            // The user released the mouse quickly therefore is a button click eveent
+            // The user released the mouse quickly therefore is a button click event
             timer1.Enabled = false;
 
             var button = sender as ImageButton;
@@ -1659,6 +1659,7 @@ namespace GTI.Modules.ProductCenter.UI
             buttonDetailForm.PlayerRequired = menuButton.PlayerRequired;
             buttonDetailForm.KeyText = menuButton.KeyText ?? "";
             buttonDetailForm.DefaultValidation = menuButton.DefaultValidation;
+            buttonDetailForm.RequiresAuthorization = menuButton.RequiresAuthorization;
             Cursor = Cursors.Default;
 
             // Display the form
@@ -1690,6 +1691,7 @@ namespace GTI.Modules.ProductCenter.UI
                 menuButtonItem[0].RemoveButton = (byte)(buttonDetailForm.Cleared ? 1 : 0);
                 menuButtonItem[0].ValidDevices = m_devicesForPage; // the devices this page is valid for
                 menuButtonItem[0].DefaultValidation = buttonDetailForm.DefaultValidation;
+                menuButtonItem[0].RequiresAuthorization = buttonDetailForm.RequiresAuthorization;
 
                 // Get the Page's info from the selected node
                 var pageItem = (PageItem)MenuTreeView.SelectedNode.Tag;
@@ -1760,6 +1762,8 @@ namespace GTI.Modules.ProductCenter.UI
             // US3692
             buttonDetailForm = new ButtonDetailForm(m_operatorId, ProdCenterSettings, true);
 
+            buttonDetailForm.OurDailyMenuButton = (DailyMenuButton)button.Tag;
+
             // Populate the Package List
             buttonDetailForm.PopulatePackageList = PackageItems.Sorted.ToArray();
 
@@ -1771,7 +1775,7 @@ namespace GTI.Modules.ProductCenter.UI
             buttonDetailForm.PopulateFunctionList = GetFunctionMessage.GetFunctionList(0).ToArray();
 
             // Load the Button info from the seleced button
-            var menuButton = (DailyMenuButton)button.Tag;
+            var menuButton = buttonDetailForm.OurDailyMenuButton;
 
             if (menuButton != null)
             {
@@ -1829,6 +1833,7 @@ namespace GTI.Modules.ProductCenter.UI
             buttonDetailForm.PlayerRequired = menuButton.PlayerRequired;
             buttonDetailForm.DailyProductList = menuButton.ProductItems;
             buttonDetailForm.DefaultValidation = menuButton.DefaultValidation;
+            buttonDetailForm.RequiresAuthorization = menuButton.RequiresAuthorization;
 
             if (!String.IsNullOrWhiteSpace(menuButton.KeyText)) // DE13855 Note: Set the ProductItems first because it changes the KeyText 
                 buttonDetailForm.KeyText = menuButton.KeyText;
@@ -1867,6 +1872,7 @@ namespace GTI.Modules.ProductCenter.UI
                 menuButtonItem.RemoveButton = buttonDetailForm.Cleared;
                 menuButtonItem.ProductItems = buttonDetailForm.DailyProductList;
                 menuButtonItem.DefaultValidation = buttonDetailForm.DefaultValidation;
+                menuButtonItem.RequiresAuthorization = buttonDetailForm.RequiresAuthorization;
 
                 // DE13827 things the button form doesn't know about that we need to grab from the original item
                 menuButtonItem.PackageId = menuButton.PackageId;

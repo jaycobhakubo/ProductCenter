@@ -213,8 +213,6 @@ namespace GTI.Modules.ProductCenter.Data
 
                     //END RALLY US1796
                     ProductItems.Add(productItem);
-
-                   
                 }
             }
             catch (EndOfStreamException e)

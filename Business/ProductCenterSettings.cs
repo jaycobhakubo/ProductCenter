@@ -99,9 +99,13 @@ namespace GTI.Modules.ProductCenter.Business
 
         public bool EnableValidation { get; set; }
 
+        public bool ActiveSalesSessionEnabled { get; set; }
+
         public int CardCountValidation { get; set; }
 
         public int MaxValidationsPerTransaction { get; set; }
+
+        public int ThirdPartyPlayerInterfaceID { get; set; }
 
         #endregion
 
@@ -124,6 +128,7 @@ namespace GTI.Modules.ProductCenter.Business
             AccrualEnabled = false;
             WholeProductPoints = false;
             MSRSettingInfo = new MSRSettings();
+            ThirdPartyPlayerInterfaceID = 0;
         }
         #endregion]
 
@@ -248,6 +253,10 @@ namespace GTI.Modules.ProductCenter.Business
                         EnableValidation = Convert.ToBoolean(setting.Value);
                         break;
 
+                    case Setting.EnableActiveSalesSession:
+                        ActiveSalesSessionEnabled = Convert.ToBoolean(setting.Value);
+                        break;
+
                     case Setting.ProductValidationCardCount:
                         CardCountValidation = Convert.ToInt32(setting.Value, CultureInfo.InvariantCulture);
                         break;
@@ -256,7 +265,9 @@ namespace GTI.Modules.ProductCenter.Business
                         MaxValidationsPerTransaction = Convert.ToInt32(setting.Value, CultureInfo.InvariantCulture);
                         break;
 
-
+                    case Setting.ThirdPartyPlayerInterfaceID:
+                        ThirdPartyPlayerInterfaceID = Convert.ToInt32(setting.Value, CultureInfo.InvariantCulture);
+                        break;
 
                 }
             }

@@ -39,7 +39,7 @@ namespace GTI.Modules.ProductCenter.UI
         public BingoProductDetailForm()
         {
             InitializeComponent();
-            PositionStarCodes = new SortedList<byte, byte>();
+            m_positionStarCodes = new SortedList<byte, byte>();
 
             // Create and assign the form's idle event
             Application.Idle += OnIdle;
@@ -108,14 +108,14 @@ namespace GTI.Modules.ProductCenter.UI
                 // Check to see if stars have changed
                 if(!doEnable)
                 {
-                    if(PositionStarCodes.Count != PackageProduct.PositionStarCodes.Count)
+                    if(m_positionStarCodes.Count != PackageProduct.m_positionStarCodes.Count)
                         doEnable = true;
                     else
                     {
-                        foreach(var kvp in PositionStarCodes)
+                        foreach(var kvp in m_positionStarCodes)
                         {
-                            if(!PackageProduct.PositionStarCodes.ContainsKey(kvp.Key)
-                                || PackageProduct.PositionStarCodes[kvp.Key] != kvp.Value)
+                            if(!PackageProduct.m_positionStarCodes.ContainsKey(kvp.Key)
+                                || PackageProduct.m_positionStarCodes[kvp.Key] != kvp.Value)
                             {
                                 doEnable = true;
                                 break;
@@ -440,6 +440,8 @@ namespace GTI.Modules.ProductCenter.UI
         #endregion
         #region Star Information
 
+        public SortedList<byte, byte> m_positionStarCodes = null;
+
         /// <summary>
         /// Which star map to use when generating a card face
         /// </summary>
@@ -449,25 +451,19 @@ namespace GTI.Modules.ProductCenter.UI
             set;
         }
 
-        /// <summary>
-        /// Position mapped to star code
-        /// </summary>
-        public SortedList<byte, byte> PositionStarCodes
-        {
-            get;
-            set;
-        }
-
         private void editStarDefBtn_Click(object sender, EventArgs e)
         {
-            StarCardPositionMapsForm mapForm = new StarCardPositionMapsForm(CardPositionsMapId, PositionStarCodes);
+            if (m_positionStarCodes == null)
+                m_positionStarCodes = new SortedList<byte, byte>();
+
+            StarCardPositionMapsForm mapForm = new StarCardPositionMapsForm(CardPositionsMapId, m_positionStarCodes);
 
             mapForm.ShowDialog(this);
             if(mapForm.DialogResult == System.Windows.Forms.DialogResult.OK)
             {
                 CardPositionsMapId = mapForm.SelectedStarPositionMap.Id;
 
-                PositionStarCodes.Clear();
+                m_positionStarCodes.Clear();
                 var starCounts = mapForm.StarCounts;
                 byte nextPosition = 0;
                 for(int i = 0; i < starCounts.Count; i++)
@@ -475,7 +471,7 @@ namespace GTI.Modules.ProductCenter.UI
                     var sc = starCounts[i];
                     for(int j = 0; j < sc.Count; j++)
                     {
-                        PositionStarCodes.Add(nextPosition, sc.StarCode.Code);
+                        m_positionStarCodes.Add(nextPosition, sc.StarCode.Code);
                         nextPosition++;
                     }
                 }
@@ -576,7 +572,7 @@ namespace GTI.Modules.ProductCenter.UI
                     //if (gameTypeListItem.GameTypeName == "Crystal Ball")
                     if(gameTypeListItem.GameTypeId == (int)GameType.CrystalBall)
                     {
-                        if((ProductItem.ProductTypeId > 0) && (ProductItem.ProductTypeId < 5)) // CBB types 1, 2, 3, 4
+                        if ((ProductItem.ProductTypeId > 0 && ProductItem.ProductTypeId < 5) || ProductItem.ProductTypeId == 21) // CBB types 1, 2, 3, 4, & 21
                         {
                             cboGameTypeList.Items.Add(new ListItem(gameTypeListItem.GameTypeName, gameTypeListItem.GameTypeId.ToString()));
                         }

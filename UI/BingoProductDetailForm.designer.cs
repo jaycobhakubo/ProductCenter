@@ -30,6 +30,7 @@
         {
             this.btnCancel = new GTI.Controls.ImageButton();
             this.groupBoxCards = new System.Windows.Forms.GroupBox();
+            this.editStarDefBtn = new GTI.Controls.ImageButton();
             this.txtCardCount = new GTI.Controls.TextBoxNumeric();
             this.lblCardLevelList = new System.Windows.Forms.Label();
             this.cboCardLevelList = new System.Windows.Forms.ComboBox();
@@ -68,7 +69,6 @@
             this.checkBoxTaxed = new System.Windows.Forms.CheckBox();
             this.lblQuantity = new System.Windows.Forms.Label();
             this.btnDone = new GTI.Controls.ImageButton();
-            this.editStarDefBtn = new GTI.Controls.ImageButton();
             this.groupBoxCards.SuspendLayout();
             this.groupProduct.SuspendLayout();
             this.groupBoxGame.SuspendLayout();
@@ -116,6 +116,26 @@
             this.groupBoxCards.TabStop = false;
             this.groupBoxCards.Text = "Cards";
             // 
+            // editStarDefBtn
+            // 
+            this.editStarDefBtn.BackColor = System.Drawing.Color.Transparent;
+            this.editStarDefBtn.FocusColor = System.Drawing.Color.Black;
+            this.editStarDefBtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold);
+            this.editStarDefBtn.ForeColor = System.Drawing.Color.Black;
+            this.editStarDefBtn.ImageNormal = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonUp;
+            this.editStarDefBtn.ImagePressed = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonDown;
+            this.editStarDefBtn.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.editStarDefBtn.Location = new System.Drawing.Point(61, 124);
+            this.editStarDefBtn.MinimumSize = new System.Drawing.Size(30, 30);
+            this.editStarDefBtn.Name = "editStarDefBtn";
+            this.editStarDefBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.editStarDefBtn.Size = new System.Drawing.Size(194, 30);
+            this.editStarDefBtn.TabIndex = 100;
+            this.editStarDefBtn.Text = "Edit Star Definitions";
+            this.editStarDefBtn.UseVisualStyleBackColor = false;
+            this.editStarDefBtn.Visible = false;
+            this.editStarDefBtn.Click += new System.EventHandler(this.editStarDefBtn_Click);
+            // 
             // txtCardCount
             // 
             this.txtCardCount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(251)))), ((int)(((byte)(193)))));
@@ -141,7 +161,6 @@
             // 
             // cboCardLevelList
             // 
-            this.cboCardLevelList.BackColor = System.Drawing.SystemColors.Window;
             this.cboCardLevelList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCardLevelList.Font = new System.Drawing.Font("Trebuchet MS", 11F);
             this.cboCardLevelList.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -240,7 +259,7 @@
             this.txtProductType.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txtProductType.Location = new System.Drawing.Point(121, 60);
             this.txtProductType.Name = "txtProductType";
-            this.txtProductType.Size = new System.Drawing.Size(104, 20);
+            this.txtProductType.Size = new System.Drawing.Size(103, 20);
             this.txtProductType.TabIndex = 101;
             this.txtProductType.Text = "Product Name";
             // 
@@ -252,7 +271,7 @@
             this.txtProductName.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txtProductName.Location = new System.Drawing.Point(121, 22);
             this.txtProductName.Name = "txtProductName";
-            this.txtProductName.Size = new System.Drawing.Size(104, 20);
+            this.txtProductName.Size = new System.Drawing.Size(103, 20);
             this.txtProductName.TabIndex = 100;
             this.txtProductName.Text = "Product Name";
             // 
@@ -605,26 +624,6 @@
             this.btnDone.Text = "Done";
             this.btnDone.UseVisualStyleBackColor = false;
             this.btnDone.Click += new System.EventHandler(this.DoneClick);
-            // 
-            // editStarDefBtn
-            // 
-            this.editStarDefBtn.BackColor = System.Drawing.Color.Transparent;
-            this.editStarDefBtn.FocusColor = System.Drawing.Color.Black;
-            this.editStarDefBtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold);
-            this.editStarDefBtn.ForeColor = System.Drawing.Color.Black;
-            this.editStarDefBtn.ImageNormal = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonUp;
-            this.editStarDefBtn.ImagePressed = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonDown;
-            this.editStarDefBtn.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.editStarDefBtn.Location = new System.Drawing.Point(61, 124);
-            this.editStarDefBtn.MinimumSize = new System.Drawing.Size(30, 30);
-            this.editStarDefBtn.Name = "editStarDefBtn";
-            this.editStarDefBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
-            this.editStarDefBtn.Size = new System.Drawing.Size(194, 30);
-            this.editStarDefBtn.TabIndex = 100;
-            this.editStarDefBtn.Text = "Edit star definitions";
-            this.editStarDefBtn.UseVisualStyleBackColor = false;
-            this.editStarDefBtn.Visible = false;
-            this.editStarDefBtn.Click += new System.EventHandler(this.editStarDefBtn_Click);
             // 
             // BingoProductDetailForm
             // 

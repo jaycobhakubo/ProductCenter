@@ -55,6 +55,7 @@ namespace GTI.Modules.ProductCenter.UI
             this.btnEditProduct = new GTI.Controls.ImageButton();
             this.btnDeleteProduct = new GTI.Controls.ImageButton();
             this.checkBoxDefaultValidation = new System.Windows.Forms.CheckBox();
+            this.checkBoxRequiresAuthorization = new System.Windows.Forms.CheckBox();
             this.groupBoxMode.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -307,11 +308,19 @@ namespace GTI.Modules.ProductCenter.UI
             this.checkBoxDefaultValidation.Name = "checkBoxDefaultValidation";
             this.checkBoxDefaultValidation.UseVisualStyleBackColor = false;
             // 
+            // checkBoxRequiresAuthorization
+            // 
+            this.checkBoxRequiresAuthorization.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.checkBoxRequiresAuthorization, "checkBoxRequiresAuthorization");
+            this.checkBoxRequiresAuthorization.Name = "checkBoxRequiresAuthorization";
+            this.checkBoxRequiresAuthorization.UseVisualStyleBackColor = false;
+            // 
             // ButtonDetailForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
+            this.Controls.Add(this.checkBoxRequiresAuthorization);
             this.Controls.Add(this.checkBoxDefaultValidation);
             this.Controls.Add(this.btnDeleteProduct);
             this.Controls.Add(this.btnAddProduct);
@@ -375,6 +384,7 @@ namespace GTI.Modules.ProductCenter.UI
         private Controls.ImageButton btnDeleteProduct;
         private System.Windows.Forms.ColumnHeader qtyHeader;
         private System.Windows.Forms.CheckBox checkBoxDefaultValidation;
+        private System.Windows.Forms.CheckBox checkBoxRequiresAuthorization;
 
     }
 }

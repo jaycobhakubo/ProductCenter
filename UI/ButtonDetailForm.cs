@@ -31,6 +31,7 @@ namespace GTI.Modules.ProductCenter.UI
         protected readonly int operatorId;
         protected static ButtonGraphicSelection buttonGraphicSelection;
         protected bool _isDailyButton;
+        protected DailyMenuButton m_dailyMenuButton = null;
         protected Array _productList; // the list of products available for the packages
         private static List<ProductTypeListItem> _productTypes;
         private static string DAILY_EDIT_WARNING = "Are you sure you want to edit this daily button?"
@@ -120,7 +121,11 @@ namespace GTI.Modules.ProductCenter.UI
         public bool WholePoints { get; set; } //US3692
         public System.Drawing.Image curImage { get; set; } //US4935
         public bool isStretch { get; set; }//US4935
-
+        public DailyMenuButton OurDailyMenuButton
+        {
+            get;
+            set;
+        }
         /// <summary>
         /// Gets or Sets the Key Text
         /// </summary>
@@ -339,6 +344,19 @@ namespace GTI.Modules.ProductCenter.UI
             set
             {
                 checkBoxDefaultValidation.Checked = value;
+            }
+        }
+
+        public bool RequiresAuthorization
+        {
+            get
+            {
+                return checkBoxRequiresAuthorization.Checked;
+            }
+
+            set
+            {
+                checkBoxRequiresAuthorization.Checked = value;
             }
         }
 
@@ -581,12 +599,34 @@ namespace GTI.Modules.ProductCenter.UI
                 if (li != null)
                 {
                     KeyText = li.Text.Length > 25 ? li.Text.Substring(0, 25) : li.Text;//RALLY DE 6659
+
+                    bool daily = ((ButtonDetailForm)this)._isDailyButton;
                     int packageId = int.Parse(li.Value);
-                    var packageProducts = GetPackageProductMessage.GetPackageProducts(packageId, operatorId);
+                    List<DailyProductPackageItem> dailyPackageProducts = null;
+                    List<PackageProduct> packageProducts = null;                    
+                    
+                    if (daily)
+                        dailyPackageProducts = ((ButtonDetailForm)this).OurDailyMenuButton.ProductItems;
+                    else
+                        packageProducts = GetPackageProductMessage.GetPackageProducts(packageId, operatorId);
+                    
                     listViewProducts.Items.Clear();
-                    foreach (var packageProductListItem in packageProducts)
+
+                    if (daily)
                     {
-                        AddProductToListView(packageProductListItem);
+                        if (dailyPackageProducts != null)
+                        {
+                            foreach (var dailyPackageProductListItem in dailyPackageProducts)
+                                AddProductToListView(dailyPackageProductListItem);
+                        }
+                    }
+                    else
+                    {
+                        if (packageProducts != null)
+                        {
+                            foreach (var packageProductListItem in packageProducts)
+                                AddProductToListView(packageProductListItem);
+                        }
                     }
                 }
 
@@ -675,7 +715,9 @@ namespace GTI.Modules.ProductCenter.UI
                                 ProductSalesSourceName = packageProduct.SalesSourceName,
                                 ProductTypeId = packageProduct.ProductTypeId,
                                 ProductTypeName = packageProduct.ProductTypeName,
-                                SalesSourceId = packageProduct.SalesSourceId
+                                SalesSourceId = packageProduct.SalesSourceId,
+                                Validate = ((DailyProductPackageItem)listViewProducts.SelectedItems[0].Tag).IsValidated,
+                                BarcodedPaper = ((DailyProductPackageItem)listViewProducts.SelectedItems[0].Tag).IsBarcodedPaper,
                             };
 
                             DisplayProductDetails(productItem, packageProduct, true, false);
@@ -738,6 +780,7 @@ namespace GTI.Modules.ProductCenter.UI
                 case ProductType.CrystalBallScan:
                 case ProductType.CrystalBallHandPick:
                 case ProductType.CrystalBallPrompt:
+                case ProductType.CrystalBallFavorites:
                     // FIX : TA6092 Support CBB license file flag
                     // FIX : TA7890
                     if (ProdCenterSettings.CrystalBallEnabled)
@@ -873,6 +916,7 @@ namespace GTI.Modules.ProductCenter.UI
                 try
                 {
                     Cursor = Cursors.WaitCursor;
+
                     var packageProduct = (objPackageProduct == null)
                                              ? new PackageProduct()
                                              : (PackageProduct)objPackageProduct;
@@ -929,7 +973,7 @@ namespace GTI.Modules.ProductCenter.UI
                         bingoProductDetailForm.PointsPerDollar = packageProduct.PointsPerDollar;
                         bingoProductDetailForm.PointsToRedeem = packageProduct.PointsToRedeem;
                         bingoProductDetailForm.CardPositionsMapId = packageProduct.CardPositionsMapId;
-                        bingoProductDetailForm.PositionStarCodes = new SortedList<byte,byte>(packageProduct.PositionStarCodes);
+                        DailyProductPackageItem.CopyPositionStarCodes(packageProduct.m_positionStarCodes, ref bingoProductDetailForm.m_positionStarCodes);
                     }
                     // FIX TA5873
                     else
@@ -951,6 +995,7 @@ namespace GTI.Modules.ProductCenter.UI
 
                     // Display the form
                     diagRes = bingoProductDetailForm.ShowDialog(this);
+                    
                     if (diagRes != DialogResult.Cancel)
                     {
                         Cursor = Cursors.WaitCursor;
@@ -986,6 +1031,7 @@ namespace GTI.Modules.ProductCenter.UI
                                 CardCount = ushort.Parse(bingoProductDetailForm.CardCount),
                                 Price = bingoProductDetailForm.Price,
                                 AltPrice = bingoProductDetailForm.AltPrice,// US4543
+                                Prepaid = bingoProductDetailForm.Prepaid,
                                 PointsPerQuantity = bingoProductDetailForm.PointsPerQuantity,
                                 PointsPerDollar = bingoProductDetailForm.PointsPerDollar,
                                 PointsToRedeem = bingoProductDetailForm.PointsToRedeem,
@@ -996,8 +1042,9 @@ namespace GTI.Modules.ProductCenter.UI
                                 ProgramCBBGameId = 0,
                                 CountsTowardsQualifyingSpend = bingoProductDetailForm.CountsTowardsQualifyingSpend, //DE12974
                                 CardPositionsMapId = bingoProductDetailForm.CardPositionsMapId,
-                                PositionStarCodes = bingoProductDetailForm.PositionStarCodes,
                             };
+
+                            DailyProductPackageItem.CopyPositionStarCodes(bingoProductDetailForm.m_positionStarCodes, ref packageProductListItem.m_positionStarCodes);
 
                             if (isEdit)
                             {
@@ -1294,6 +1341,7 @@ namespace GTI.Modules.ProductCenter.UI
                         basicProductDetailForm.PointsPerQuantity = packageProduct.PointsPerQuantity;
                         basicProductDetailForm.PointsPerDollar = packageProduct.PointsPerDollar;
                         basicProductDetailForm.PointsToRedeem = packageProduct.PointsToRedeem;
+                        basicProductDetailForm.Prepaid = packageProduct.Prepaid;
                     }
 
                     //US4459: (US4428) Product Center: Create validation package
@@ -1344,6 +1392,7 @@ namespace GTI.Modules.ProductCenter.UI
                                 CardCount = 0,
                                 Price = basicProductDetailForm.Price,
                                 AltPrice = basicProductDetailForm.AltPrice,// US4543
+                                Prepaid = basicProductDetailForm.Prepaid,
                                 CountsTowardsQualifyingSpend = basicProductDetailForm.CountsTowardsQualifyingSpend, // US4587
                                 PointsPerQuantity = basicProductDetailForm.PointsPerQuantity,
                                 PointsPerDollar = basicProductDetailForm.PointsPerDollar,
@@ -1457,8 +1506,10 @@ namespace GTI.Modules.ProductCenter.UI
                         Quantity = "1",
                         GameCategoryList = gameCategoryList,
                         AllowAddAnother = !(isEdit || isPaste),
-                        WholePoints = ProdCenterSettings.WholeProductPoints
+                        WholePoints = ProdCenterSettings.WholeProductPoints,
+                        Prepaid = packageProduct.Prepaid
                     };
+
                     if (isEdit || isPaste)
                     {
                         // Set the form's value for editing.
@@ -1475,12 +1526,13 @@ namespace GTI.Modules.ProductCenter.UI
                         paperProductDetailForm.PointsPerDollar = packageProduct.PointsPerDollar;
                         paperProductDetailForm.PointsToRedeem = packageProduct.PointsToRedeem;
                         paperProductDetailForm.GameCategoryName = packageProduct.GameCategoryName;
-
                     }
+
                     Cursor = Cursors.Default;
 
                     // Display the form
                     diagRes = paperProductDetailForm.ShowDialog(this);
+                    
                     if (diagRes != DialogResult.Cancel)
                     {
                         Cursor = Cursors.WaitCursor;
@@ -1517,6 +1569,7 @@ namespace GTI.Modules.ProductCenter.UI
                                 CardCount = 0,
                                 Price = paperProductDetailForm.Price,
                                 AltPrice = paperProductDetailForm.AltPrice,
+                                Prepaid = paperProductDetailForm.Prepaid,
                                 CountsTowardsQualifyingSpend = paperProductDetailForm.CountsTowardsQualifyingSpend, // US4587
                                 PointsPerQuantity = paperProductDetailForm.PointsPerQuantity,
                                 PointsPerDollar = paperProductDetailForm.PointsPerDollar,

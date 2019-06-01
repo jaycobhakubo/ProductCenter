@@ -1020,11 +1020,16 @@ namespace GTI.Modules.ProductCenter.UI
 
             System.Data.DataColumn currentCol;
 
+            var limitPerText = "Limit per";
+            //limitPerText = "Max Usage";
+
             #region General Limits
             var generalLimitsDT = new System.Data.DataTable();
             generalLimitsDT.Columns.Add("General", typeof(String)).ReadOnly = true;
-            generalLimitsDT.Columns.Add("Max Usage", typeof(String));
-            programLimitR = generalLimitsDT.Rows.Add("Program", "");
+            generalLimitsDT.Columns.Add(limitPerText, typeof(String));
+            programLimitR = generalLimitsDT.Rows.Add("Session/Program", "");
+            if(!m_productCenterSettings.ActiveSalesSessionEnabled)
+                generalLimitsDT.Rows.Remove(programLimitR);
             dailyLimitR = generalLimitsDT.Rows.Add("Daily", "");
             weeklyLimitR = generalLimitsDT.Rows.Add("Weekly", "");
             monthlyLimitR = generalLimitsDT.Rows.Add("Monthly", "");
@@ -1040,7 +1045,7 @@ namespace GTI.Modules.ProductCenter.UI
             #region Specific Program Limits
             programLimitsDT = new System.Data.DataTable();
             programLimitsDT.Columns.Add("Program Name", typeof(String)).ReadOnly = true;
-            programLimitsDT.Columns.Add("Max Usage", typeof(String));
+            programLimitsDT.Columns.Add(limitPerText, typeof(String));
             currentCol = programLimitsDT.Columns.Add("ProgramId", typeof(int));
             programLimitsDT.PrimaryKey = new[] { currentCol };
 
@@ -1053,17 +1058,27 @@ namespace GTI.Modules.ProductCenter.UI
                     programLimitsDT.Rows.Add("*" + pd.Name, "", pd.ProgramId);
 
             programLimitsDGV.DataSource = programLimitsDT;
-            programLimitsDGV.Columns[0].DefaultCellStyle = dcs;
-            programLimitsDGV.Columns[0].SortMode = DataGridViewColumnSortMode.NotSortable;
-            programLimitsDGV.Columns[1].SortMode = DataGridViewColumnSortMode.NotSortable;
-            programLimitsDGV.Columns[2].Visible = false;
-            programLimitsDGV.EditingControlShowing += limitsDGV_EditingControlShowing;
+
+            if(!m_productCenterSettings.ActiveSalesSessionEnabled)
+            {
+                programLimitsLbl.Visible = false;
+                programLimitsDGV.Visible = false;
+                programLimitsNoteLbl.Visible = false;
+            }
+            else
+            {
+                programLimitsDGV.Columns[0].DefaultCellStyle = dcs;
+                programLimitsDGV.Columns[0].SortMode = DataGridViewColumnSortMode.NotSortable;
+                programLimitsDGV.Columns[1].SortMode = DataGridViewColumnSortMode.NotSortable;
+                programLimitsDGV.Columns[2].Visible = false;
+                programLimitsDGV.EditingControlShowing += limitsDGV_EditingControlShowing;
+            }
             #endregion
 
             #region Day of Week Limits
             dayOfWeekLimitsDT = new System.Data.DataTable();
             dayOfWeekLimitsDT.Columns.Add("Day Of Week", typeof(String)).ReadOnly = true;
-            dayOfWeekLimitsDT.Columns.Add("Max Usage", typeof(String));
+            dayOfWeekLimitsDT.Columns.Add(limitPerText, typeof(String));
             currentCol = dayOfWeekLimitsDT.Columns.Add("DayOfWeek", typeof(DayOfWeek));
             dayOfWeekLimitsDT.PrimaryKey = new[] { currentCol };
 
@@ -1086,7 +1101,7 @@ namespace GTI.Modules.ProductCenter.UI
             #region Month of Year Limits
             monthOfYearLimitsDT = new System.Data.DataTable();
             monthOfYearLimitsDT.Columns.Add("Month", typeof(String)).ReadOnly = true;
-            monthOfYearLimitsDT.Columns.Add("Max Usage", typeof(String));
+            monthOfYearLimitsDT.Columns.Add(limitPerText, typeof(String));
             currentCol = monthOfYearLimitsDT.Columns.Add("MonthNum", typeof(byte));
             monthOfYearLimitsDT.PrimaryKey = new[] { currentCol };
 
@@ -1115,7 +1130,7 @@ namespace GTI.Modules.ProductCenter.UI
             #region Sesssion Number Limits
             sessionLimitsDT = new System.Data.DataTable();
             sessionLimitsDT.Columns.Add("Session #", typeof(String)).ReadOnly = true;
-            sessionLimitsDT.Columns.Add("Max Usage", typeof(String));
+            sessionLimitsDT.Columns.Add(limitPerText, typeof(String));
             currentCol = sessionLimitsDT.Columns.Add("Session Number", typeof(int));
             sessionLimitsDT.PrimaryKey = new[] { currentCol };
 
@@ -1123,13 +1138,21 @@ namespace GTI.Modules.ProductCenter.UI
                 sessionLimitsDT.Rows.Add(String.Format("Session {0}", i), "", i);
 
             sessionLimitsDGV.DataSource = sessionLimitsDT;
-            sessionLimitsDGV.Columns[0].DefaultCellStyle = dcs;
-            sessionLimitsDGV.Columns[0].SortMode = DataGridViewColumnSortMode.NotSortable;
-            sessionLimitsDGV.Columns[1].SortMode = DataGridViewColumnSortMode.NotSortable;
-            sessionLimitsDGV.Columns[2].Visible = false;
-            sessionLimitsDGV.EditingControlShowing += limitsDGV_EditingControlShowing;
-            sessionLimitsDGV.ScrollBars = ScrollBars.Vertical;
 
+            if(!m_productCenterSettings.ActiveSalesSessionEnabled)
+            {
+                sessionLimitsLbl.Visible = false;
+                sessionLimitsDGV.Visible = false;
+            }
+            else
+            {
+                sessionLimitsDGV.Columns[0].DefaultCellStyle = dcs;
+                sessionLimitsDGV.Columns[0].SortMode = DataGridViewColumnSortMode.NotSortable;
+                sessionLimitsDGV.Columns[1].SortMode = DataGridViewColumnSortMode.NotSortable;
+                sessionLimitsDGV.Columns[2].Visible = false;
+                sessionLimitsDGV.EditingControlShowing += limitsDGV_EditingControlShowing;
+                sessionLimitsDGV.ScrollBars = ScrollBars.Vertical;
+            }
             #endregion
         }
 

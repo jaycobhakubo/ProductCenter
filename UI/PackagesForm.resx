@@ -404,7 +404,7 @@
     <value>6, 6, 6, 6</value>
   </data>
   <data name="listViewProducts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>577, 514</value>
+    <value>597, 514</value>
   </data>
   <data name="listViewProducts.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -413,7 +413,7 @@
     <value>listViewProducts</value>
   </data>
   <data name="&gt;&gt;listViewProducts.Type" xml:space="preserve">
-    <value>GTI.Controls.GTIListView, GTIControls, Version=1.3.11.925, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.GTIListView, GTIControls, Version=1.3.11.1387, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;listViewProducts.Parent" xml:space="preserve">
     <value>splitContainer.Panel2</value>
@@ -590,7 +590,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;mainMenuStrip.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -751,6 +751,18 @@
   <data name="&gt;&gt;numbersRequiredHeader.Type" xml:space="preserve">
     <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;qualifiyingSpendHeader.Name" xml:space="preserve">
+    <value>qualifiyingSpendHeader</value>
+  </data>
+  <data name="&gt;&gt;qualifiyingSpendHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;prepaidHeader.Name" xml:space="preserve">
+    <value>prepaidHeader</value>
+  </data>
+  <data name="&gt;&gt;prepaidHeader.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;contextMenuAddProduct.Name" xml:space="preserve">
     <value>contextMenuAddProduct</value>
   </data>
@@ -853,22 +865,10 @@
   <data name="&gt;&gt;editMenuDeleteProduct.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;qualifiyingSpendHeader.Name" xml:space="preserve">
-    <value>qualifiyingSpendHeader</value>
-  </data>
-  <data name="&gt;&gt;qualifiyingSpendHeader.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;prepaidHeader.Name" xml:space="preserve">
-    <value>prepaidHeader</value>
-  </data>
-  <data name="&gt;&gt;prepaidHeader.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>PackagesForm</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>GTI.Modules.Shared.GradientForm, ManagedEliteModule, Version=1.3.42.925, Culture=neutral, PublicKeyToken=f7ab3ec26b04c7cf</value>
+    <value>GTI.Modules.Shared.GradientForm, ManagedEliteModule, Version=1.3.42.1388, Culture=neutral, PublicKeyToken=f7ab3ec26b04c7cf</value>
   </data>
 </root>

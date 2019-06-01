@@ -879,6 +879,7 @@ namespace GTI.Modules.ProductCenter.UI
                 case ProductType.CrystalBallScan:
                 case ProductType.CrystalBallHandPick:
                 case ProductType.CrystalBallPrompt:
+                case ProductType.CrystalBallFavorites:
                     // FIX : TA6092 Support CBB license file flag
                     // FIX : TA7890
                     if (ProdCenterSettings.CrystalBallEnabled)
@@ -1048,7 +1049,7 @@ namespace GTI.Modules.ProductCenter.UI
                         bingoProductDetailForm.PointsPerDollar = packageProduct.PointsPerDollar;
                         bingoProductDetailForm.PointsToRedeem = packageProduct.PointsToRedeem;
                         bingoProductDetailForm.CardPositionsMapId = packageProduct.CardPositionsMapId;
-                        bingoProductDetailForm.PositionStarCodes = new SortedList<byte,byte>(packageProduct.PositionStarCodes);
+                        bingoProductDetailForm.m_positionStarCodes = new SortedList<byte,byte>(packageProduct.m_positionStarCodes);
                     }
                     // FIX TA5873
                     else
@@ -1108,7 +1109,7 @@ namespace GTI.Modules.ProductCenter.UI
                                                          CountsTowardsQualifyingSpend = bingoProductDetailForm.CountsTowardsQualifyingSpend, //DE12974
                                                          Prepaid = bingoProductDetailForm.Prepaid,
                                                          CardPositionsMapId = bingoProductDetailForm.CardPositionsMapId,
-                                                         PositionStarCodes = bingoProductDetailForm.PositionStarCodes,
+                                                         m_positionStarCodes = bingoProductDetailForm.m_positionStarCodes,
                                                      };
 
                         if (IsProductADuplicate(packageProductListItem))
@@ -1358,7 +1359,7 @@ namespace GTI.Modules.ProductCenter.UI
                             ProgramGameName = string.Empty,
                             NumbersRequired = 0,
                             ProgramCBBGameId = 0,
-                            PositionStarCodes = new SortedList<byte, byte>()
+                            m_positionStarCodes = new SortedList<byte, byte>()
                         };
 
                         if (IsProductADuplicate(packageProductListItem))
@@ -1507,7 +1508,5 @@ namespace GTI.Modules.ProductCenter.UI
             return result == DialogResult.Retry ? true : false;
         }
         #endregion Display Product Forms
-
-        
     }
 }

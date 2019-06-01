@@ -59,6 +59,8 @@ namespace GTI.Modules.ProductCenter.UI
             this.pointsPerDollarHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pointsToRedeemHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.numbersRequiredHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.qualifiyingSpendHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.prepaidHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuProduct = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuAddProduct = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuEditProduct = new System.Windows.Forms.ToolStripMenuItem();
@@ -78,8 +80,6 @@ namespace GTI.Modules.ProductCenter.UI
             this.editMenuCopyProduct = new System.Windows.Forms.ToolStripMenuItem();
             this.editMenuPasteProduct = new System.Windows.Forms.ToolStripMenuItem();
             this.editMenuDeleteProduct = new System.Windows.Forms.ToolStripMenuItem();
-            this.qualifiyingSpendHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.prepaidHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.packagesGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
@@ -304,6 +304,16 @@ namespace GTI.Modules.ProductCenter.UI
             this.numbersRequiredHeader.Tag = "numeric";
             resources.ApplyResources(this.numbersRequiredHeader, "numbersRequiredHeader");
             // 
+            // qualifiyingSpendHeader
+            // 
+            this.qualifiyingSpendHeader.Tag = "alpha";
+            resources.ApplyResources(this.qualifiyingSpendHeader, "qualifiyingSpendHeader");
+            // 
+            // prepaidHeader
+            // 
+            this.prepaidHeader.Tag = "alpha";
+            resources.ApplyResources(this.prepaidHeader, "prepaidHeader");
+            // 
             // contextMenuProduct
             // 
             this.contextMenuProduct.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -436,16 +446,6 @@ namespace GTI.Modules.ProductCenter.UI
             this.editMenuDeleteProduct.Name = "editMenuDeleteProduct";
             resources.ApplyResources(this.editMenuDeleteProduct, "editMenuDeleteProduct");
             this.editMenuDeleteProduct.Click += new System.EventHandler(this.DeleteProductClick);
-            // 
-            // qualifiyingSpendHeader
-            // 
-            this.qualifiyingSpendHeader.Tag = "alpha";
-            resources.ApplyResources(this.qualifiyingSpendHeader, "qualifiyingSpendHeader");
-            // 
-            // prepaidHeader
-            // 
-            this.prepaidHeader.Tag = "alpha";
-            resources.ApplyResources(this.prepaidHeader, "prepaidHeader");
             // 
             // PackagesForm
             // 

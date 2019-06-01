@@ -27,7 +27,7 @@ namespace GTI.Modules.ProductCenter.Data
 
         private DateTime m_gamingDate;
         private bool m_ignoreDeviceType = true;
-        private bool m_getDailyMenuButtonIDs = true;
+        private bool m_getDailyMenuButtonIDsAndStarInfo = true;
 
         #endregion
 
@@ -103,7 +103,7 @@ namespace GTI.Modules.ProductCenter.Data
                 requestWriter.Write(m_ignoreDeviceType);
 
                 //Get daily menu button IDs
-                requestWriter.Write(m_getDailyMenuButtonIDs);
+                requestWriter.Write(m_getDailyMenuButtonIDsAndStarInfo);
 
                 // Set the bytes to be sent.
                 m_requestPayload = requestStream.ToArray();
@@ -207,7 +207,7 @@ namespace GTI.Modules.ProductCenter.Data
                             {
                                 DailyMenuButton button = new DailyMenuButton();
 
-                                if (m_getDailyMenuButtonIDs)
+                                if (m_getDailyMenuButtonIDsAndStarInfo)
                                     button.MenuButtonId = reader.ReadInt32();
 
                                 // Package Id
@@ -243,6 +243,8 @@ namespace GTI.Modules.ProductCenter.Data
                                 //Use as default validation package for menu
                                 bool defaultValidationPackage = reader.ReadBoolean();
                                 bool isValidationPackage = false;
+
+                                button.RequiresAuthorization = reader.ReadBoolean();
 
                                 // Discount Type Id
                                 int discountTypeId = reader.ReadInt32();
@@ -354,11 +356,32 @@ namespace GTI.Modules.ProductCenter.Data
                                         product.CountsTowardsQualifyingSpend = reader.ReadBoolean();
 
                                         //get prepaid flag
-                                        reader.ReadBoolean();
+                                        product.Prepaid = reader.ReadBoolean();
 
                                         // Compatible Devices
                                         reader.ReadInt32();
 
+                                        product.m_positionStarCodes = null;
+
+                                        if (m_getDailyMenuButtonIDsAndStarInfo && product.CardTypeId == (int)CardType.Star)
+                                        {
+                                            product.CardPositionsMapId = reader.ReadInt32();
+
+                                            UInt16 starCnt = reader.ReadUInt16();
+
+                                            if (starCnt != 0)
+                                            {
+                                                product.m_positionStarCodes = new SortedList<byte, byte>();
+
+                                                for (int i = 0; i < starCnt; i++)
+                                                {
+                                                    byte pos = reader.ReadByte();
+                                                    byte code = reader.ReadByte();
+
+                                                    product.m_positionStarCodes.Add(pos, code);
+                                                }
+                                            }
+                                        }
                                         button.ProductItems.Add(product);
                                     }
                                 }

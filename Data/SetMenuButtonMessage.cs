@@ -116,6 +116,9 @@ namespace GTI.Modules.ProductCenter.Data
 
                 // Use as default validation
                 requestWriter.Write(menuButtonList.DefaultValidation);
+
+                // Requires Authorization
+                requestWriter.Write(menuButtonList.RequiresAuthorization);
             }
 
             // Set the bytes to be sent.

@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CouponMangementAddForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.mainTC = new System.Windows.Forms.TabControl();
             this.basicTP = new System.Windows.Forms.TabPage();
             this.awardTypeDetailsFLP = new System.Windows.Forms.FlowLayoutPanel();
@@ -69,6 +69,8 @@
             this.endWhenLbl = new System.Windows.Forms.Label();
             this.beginWhenHourCombo = new System.Windows.Forms.ComboBox();
             this.usageLimitsTP = new System.Windows.Forms.TabPage();
+            this.sessionLimitsLbl = new System.Windows.Forms.Label();
+            this.sessionLimitsDGV = new System.Windows.Forms.DataGridView();
             this.maxUsageUnlimitedLbl = new System.Windows.Forms.Label();
             this.monthOfYearLimitsDGV = new System.Windows.Forms.DataGridView();
             this.dayOfWeekLimitsDGV = new System.Windows.Forms.DataGridView();
@@ -110,21 +112,20 @@
             this.acceptBtn = new GTI.Controls.ImageButton();
             this.cancelBtn = new GTI.Controls.ImageButton();
             this.lblUnableToEditCoupon = new System.Windows.Forms.Label();
-            this.sessionLimitsDGV = new System.Windows.Forms.DataGridView();
-            this.sessionLimitsLbl = new System.Windows.Forms.Label();
+            this.programLimitsNoteLbl = new System.Windows.Forms.Label();
             this.mainTC.SuspendLayout();
             this.basicTP.SuspendLayout();
             this.awardTypeDetailsFLP.SuspendLayout();
             this.awardTypeAutoPnl.SuspendLayout();
             this.awardTypeWindowTypePnl.SuspendLayout();
             this.usageLimitsTP.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sessionLimitsDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.monthOfYearLimitsDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dayOfWeekLimitsDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.generalLimitsDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.programLimitsDGV)).BeginInit();
             this.qualifyingSpendTP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.formEP)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sessionLimitsDGV)).BeginInit();
             this.SuspendLayout();
             // 
             // mainTC
@@ -401,6 +402,7 @@
             // usageLimitsTP
             // 
             resources.ApplyResources(this.usageLimitsTP, "usageLimitsTP");
+            this.usageLimitsTP.Controls.Add(this.programLimitsNoteLbl);
             this.usageLimitsTP.Controls.Add(this.sessionLimitsLbl);
             this.usageLimitsTP.Controls.Add(this.sessionLimitsDGV);
             this.usageLimitsTP.Controls.Add(this.maxUsageUnlimitedLbl);
@@ -417,6 +419,34 @@
             this.usageLimitsTP.Controls.Add(this.generalLimitsLbl);
             this.usageLimitsTP.Name = "usageLimitsTP";
             this.usageLimitsTP.UseVisualStyleBackColor = true;
+            // 
+            // sessionLimitsLbl
+            // 
+            resources.ApplyResources(this.sessionLimitsLbl, "sessionLimitsLbl");
+            this.sessionLimitsLbl.BackColor = System.Drawing.Color.Transparent;
+            this.sessionLimitsLbl.Name = "sessionLimitsLbl";
+            // 
+            // sessionLimitsDGV
+            // 
+            this.sessionLimitsDGV.AllowUserToAddRows = false;
+            this.sessionLimitsDGV.AllowUserToDeleteRows = false;
+            this.sessionLimitsDGV.AllowUserToResizeRows = false;
+            this.sessionLimitsDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.sessionLimitsDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.sessionLimitsDGV.DefaultCellStyle = dataGridViewCellStyle1;
+            resources.ApplyResources(this.sessionLimitsDGV, "sessionLimitsDGV");
+            this.sessionLimitsDGV.MultiSelect = false;
+            this.sessionLimitsDGV.Name = "sessionLimitsDGV";
+            this.sessionLimitsDGV.RowHeadersVisible = false;
+            this.sessionLimitsDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.sessionLimitsDGV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.limitsDGV_CellClick);
             // 
             // maxUsageUnlimitedLbl
             // 
@@ -504,6 +534,7 @@
             this.programLimitsDGV.AllowUserToAddRows = false;
             this.programLimitsDGV.AllowUserToDeleteRows = false;
             this.programLimitsDGV.AllowUserToResizeRows = false;
+            resources.ApplyResources(this.programLimitsDGV, "programLimitsDGV");
             this.programLimitsDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.programLimitsDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -514,7 +545,6 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.programLimitsDGV.DefaultCellStyle = dataGridViewCellStyle5;
-            resources.ApplyResources(this.programLimitsDGV, "programLimitsDGV");
             this.programLimitsDGV.MultiSelect = false;
             this.programLimitsDGV.Name = "programLimitsDGV";
             this.programLimitsDGV.RowHeadersVisible = false;
@@ -837,33 +867,11 @@
             this.lblUnableToEditCoupon.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.lblUnableToEditCoupon.Name = "lblUnableToEditCoupon";
             // 
-            // sessionLimitsDGV
+            // programLimitsNoteLbl
             // 
-            this.sessionLimitsDGV.AllowUserToAddRows = false;
-            this.sessionLimitsDGV.AllowUserToDeleteRows = false;
-            this.sessionLimitsDGV.AllowUserToResizeRows = false;
-            this.sessionLimitsDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.sessionLimitsDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.sessionLimitsDGV.DefaultCellStyle = dataGridViewCellStyle1;
-            resources.ApplyResources(this.sessionLimitsDGV, "sessionLimitsDGV");
-            this.sessionLimitsDGV.MultiSelect = false;
-            this.sessionLimitsDGV.Name = "sessionLimitsDGV";
-            this.sessionLimitsDGV.RowHeadersVisible = false;
-            this.sessionLimitsDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.sessionLimitsDGV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.limitsDGV_CellClick);
-            // 
-            // sessionLimitsLbl
-            // 
-            resources.ApplyResources(this.sessionLimitsLbl, "sessionLimitsLbl");
-            this.sessionLimitsLbl.BackColor = System.Drawing.Color.Transparent;
-            this.sessionLimitsLbl.Name = "sessionLimitsLbl";
+            resources.ApplyResources(this.programLimitsNoteLbl, "programLimitsNoteLbl");
+            this.programLimitsNoteLbl.BackColor = System.Drawing.Color.Transparent;
+            this.programLimitsNoteLbl.Name = "programLimitsNoteLbl";
             // 
             // CouponMangementAddForm
             // 
@@ -896,6 +904,7 @@
             this.awardTypeWindowTypePnl.PerformLayout();
             this.usageLimitsTP.ResumeLayout(false);
             this.usageLimitsTP.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sessionLimitsDGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.monthOfYearLimitsDGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dayOfWeekLimitsDGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.generalLimitsDGV)).EndInit();
@@ -903,7 +912,6 @@
             this.qualifyingSpendTP.ResumeLayout(false);
             this.qualifyingSpendTP.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.formEP)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sessionLimitsDGV)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -988,5 +996,6 @@
         private System.Windows.Forms.Label awardTypeWindowTypeStartLbl;
         private System.Windows.Forms.Label sessionLimitsLbl;
         private System.Windows.Forms.DataGridView sessionLimitsDGV;
+        private System.Windows.Forms.Label programLimitsNoteLbl;
     }
 }

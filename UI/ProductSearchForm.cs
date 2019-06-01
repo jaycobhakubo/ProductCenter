@@ -39,7 +39,7 @@ namespace GTI.Modules.ProductCenter.UI
 
                     if (!CrystalBallEnabled)
                     {
-                        if (productTypeListItem.ProductTypeId > 0 && productTypeListItem.ProductTypeId < 5)
+                        if ((productTypeListItem.ProductTypeId > 0 && productTypeListItem.ProductTypeId < 5) || productTypeListItem.ProductTypeId == 21)
                             continue;
                     }
 

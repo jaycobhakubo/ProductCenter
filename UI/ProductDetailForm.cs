@@ -207,7 +207,7 @@ namespace GTI.Modules.ProductCenter.UI
                     // FIX : TA6092 Support CBB license file flag                   
                     if (!CrystalBallEnabled) //RALLY DE 6557 
                     {
-                        if (productTypeListItem.ProductTypeId > 0 && productTypeListItem.ProductTypeId < 5)
+                        if ((productTypeListItem.ProductTypeId > 0 && productTypeListItem.ProductTypeId < 5) || productTypeListItem.ProductTypeId == 21)
                             continue;
                     }
                     // END : TA6092 Support CBB license file flag

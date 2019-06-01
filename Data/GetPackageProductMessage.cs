@@ -45,7 +45,7 @@ namespace GTI.Modules.ProductCenter.Data
         public bool CountsTowardsQualifyingSpend; // US4587
         public bool Prepaid;
         public int CardPositionsMapId;
-        public SortedList<byte, byte> PositionStarCodes;
+        public SortedList<byte, byte> m_positionStarCodes;
         public string PointsPerQuantity;
         public string PointsPerDollar;
         public string PointsToRedeem;
@@ -72,7 +72,7 @@ namespace GTI.Modules.ProductCenter.Data
                           && CountsTowardsQualifyingSpend == other.CountsTowardsQualifyingSpend
                           && Prepaid == other.Prepaid
                           && CardPositionsMapId == other.CardPositionsMapId
-                          && PositionStarCodes.Count == other.PositionStarCodes.Count
+                          && (m_positionStarCodes == null ? 0 : m_positionStarCodes.Count) == (other.m_positionStarCodes == null ? 0 : other.m_positionStarCodes.Count)
                           );
 
             if(isSame) // short-circuit if the two are already not equal
@@ -87,8 +87,8 @@ namespace GTI.Modules.ProductCenter.Data
 
                 if(isSame)
                 {
-                    foreach(var kvp in PositionStarCodes)
-                        if(!other.PositionStarCodes.ContainsKey(kvp.Key) || other.PositionStarCodes[kvp.Key] != kvp.Value)
+                    foreach(var kvp in m_positionStarCodes)
+                        if(!other.m_positionStarCodes.ContainsKey(kvp.Key) || other.m_positionStarCodes[kvp.Key] != kvp.Value)
                         {
                             isSame = false;
                             break;
@@ -300,7 +300,7 @@ namespace GTI.Modules.ProductCenter.Data
                     // Prepaid
                     packageProduct.Prepaid = responseReader.ReadBoolean();
 
-                    packageProduct.PositionStarCodes = new SortedList<byte, byte>();
+                    packageProduct.m_positionStarCodes = new SortedList<byte, byte>();
                     if(packageProduct.CardTypeId == (int)CardType.Star)
                     {
                         packageProduct.CardPositionsMapId = responseReader.ReadInt32();
@@ -309,7 +309,7 @@ namespace GTI.Modules.ProductCenter.Data
                         {
                             var positionIndex = responseReader.ReadByte();
                             var starCode = responseReader.ReadByte();
-                            packageProduct.PositionStarCodes.Add(positionIndex, starCode);
+                            packageProduct.m_positionStarCodes.Add(positionIndex, starCode);
                         }
                     }
 

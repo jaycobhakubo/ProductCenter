@@ -17,6 +17,7 @@ namespace GTI.Modules.ProductCenter.UI.ProductPackage
     {
         private List<CardPositionMapHandle> m_starPositionMaps;
         List<StarCodeInfo> m_starCodeInfo;
+        private int m_maxCardPositions = 0;
 
         private List<StarCount> m_starCounts = new List<StarCount>();
 
@@ -35,29 +36,45 @@ namespace GTI.Modules.ProductCenter.UI.ProductPackage
         {
             InitializeComponent();
 
+            starCountsLst.Columns[0].AutoResize(ColumnHeaderAutoResizeStyle.None);
+            starCountsLst.Columns[1].AutoResize(ColumnHeaderAutoResizeStyle.None);
+
             LoadData(starPositionMapID);
 
             byte prevCode = 0;
             byte currentCount = 0;
-            foreach(var kvp in positionStarCodes)
-            {
-                var currentCode = kvp.Value;
-                if(currentCode != prevCode)
-                {
-                    if(currentCount > 0)
-                    {
-                        var prevCodeInfo = m_starCodeInfo.FirstOrDefault((c) => c.Code == prevCode);
-                        if(prevCodeInfo == null)
-                            prevCodeInfo = new StarCodeInfo() { Code = prevCode, Name = String.Format("[Code {0}]", prevCode) };
-                        AddStarCount(new StarCount() { StarCode = prevCodeInfo, Count = currentCount });
-                    }
 
-                    currentCount = 1;
-                    prevCode = currentCode;
+            if (positionStarCodes != null)
+            {
+                foreach (var kvp in positionStarCodes)
+                {
+                    var currentCode = kvp.Value;
+                    if (currentCode != prevCode)
+                    {
+                        if (currentCount > 0)
+                        {
+                            var prevCodeInfo = m_starCodeInfo.FirstOrDefault((c) => c.Code == prevCode);
+                            if (prevCodeInfo == null)
+                                prevCodeInfo = new StarCodeInfo()
+                                {
+                                    Code = prevCode,
+                                    Name = String.Format("[Code {0}]", prevCode)
+                                };
+                            AddStarCount(new StarCount()
+                            {
+                                StarCode = prevCodeInfo,
+                                Count = currentCount
+                            });
+                        }
+
+                        currentCount = 1;
+                        prevCode = currentCode;
+                    }
+                    else
+                        currentCount++;
                 }
-                else
-                    currentCount++;
             }
+
             if(currentCount > 0)
             {
                 var prevCodeInfo = m_starCodeInfo.FirstOrDefault((c) => c.Code == prevCode);
@@ -112,6 +129,27 @@ namespace GTI.Modules.ProductCenter.UI.ProductPackage
 
         private void btnDone_Click(object sender, EventArgs e)
         {
+            if(starPositionMapsSelector.SelectedIndex == -1)
+            {
+                MessageBox.Show("A Star definition must be selected.", "Invalid Specification");
+                starPositionMapsSelector.Focus();
+                return;
+            }
+
+            if(m_starCounts.Sum(i => i.Count) < 1)
+            {
+                MessageBox.Show("At least one Star must be defined.", "Invalid Specification");
+                starCodeSelector.Focus();
+                return;
+            }
+
+            if (m_starCounts.Sum(i => i.Count) > m_maxCardPositions)
+            {
+                MessageBox.Show("No more than "+m_maxCardPositions.ToString()+" Star"+(m_maxCardPositions == 1? "" : "s")+" may be defined.", "Invalid Specification");
+                starCodeSelector.Focus();
+                return;
+            }
+
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.Close();
         }
@@ -126,6 +164,26 @@ namespace GTI.Modules.ProductCenter.UI.ProductPackage
                 starCountsLst.Items.Remove(lvi);
                 m_starCounts.Remove(lvi.Tag as StarCount);
             }
+
+            UpdateStarsTotal();
+        }
+
+        private void starPositionMapsSelector_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //find the max stars for the card
+            if (starPositionMapsSelector.SelectedIndex == -1)
+            {
+                m_maxCardPositions = 0;
+                lblStarsPerCard.Hide();
+            }
+            else
+            {
+                m_maxCardPositions = ((CardPositionMapHandle)starPositionMapsSelector.SelectedItem).SequenceLength;
+                lblStarsPerCard.Text = "Stars per card: 1" + (m_maxCardPositions > 1 ? " to " + m_maxCardPositions.ToString() : "");
+                lblStarsPerCard.Show();
+            }
+
+            UpdateStarsTotal();
         }
 
         private void addBtn_Click(object sender, EventArgs e)
@@ -166,6 +224,31 @@ namespace GTI.Modules.ProductCenter.UI.ProductPackage
             lvi.Tag = cc;
             if(selected)
                 lvi.Selected = true;
+
+            UpdateStarsTotal();
+        }
+
+        private void UpdateStarsTotal()
+        {
+            int stars = m_starCounts.Sum(i => i.Count);
+
+            if (stars == 0)
+            {
+                lblStarTotalText.Hide();
+                lblTotalStarsOnCard.Hide();
+            }
+            else
+            {
+                lblStarTotalText.Show();
+                lblTotalStarsOnCard.Text = stars.ToString();
+
+                if (stars > m_maxCardPositions)
+                    lblTotalStarsOnCard.ForeColor = Color.Red;
+                else
+                    lblTotalStarsOnCard.ForeColor = Color.Black;
+
+                lblTotalStarsOnCard.Show();
+            }
         }
 
         private void starCountsLst_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
@@ -175,6 +258,12 @@ namespace GTI.Modules.ProductCenter.UI.ProductPackage
             removeBtn.Enabled = selectionCount != 0;
             starCountPriorityIncreaseBtn.Enabled = selectionCount == 1 && i > 0;
             starCountPriorityDecreaseBtn.Enabled = selectionCount == 1 && i < (starCountsLst.Items.Count - 1);
+        }
+
+        private void starCountsLst_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = starCountsLst.Columns[e.ColumnIndex].Width;
         }
 
         private void starCountPriorityIncreaseBtn_Click(object sender, EventArgs e)

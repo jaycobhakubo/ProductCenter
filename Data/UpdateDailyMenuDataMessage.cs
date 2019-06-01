@@ -134,6 +134,9 @@ namespace GTI.Modules.ProductCenter.Data
                 // Default Validation
                 requestWriter.Write(MenuButton.DefaultValidation);
 
+                // Requires Authorization
+                requestWriter.Write(MenuButton.RequiresAuthorization);
+
                 // Product-Package Count
                 requestWriter.Write(MenuButton.ProductItems == null ? (ushort)0 : (ushort)MenuButton.ProductItems.Count);
                 foreach (var productItem in MenuButton.ProductItems)
@@ -203,6 +206,30 @@ namespace GTI.Modules.ProductCenter.Data
 
                     //Is Qualifying
                     requestWriter.Write(productItem.CountsTowardsQualifyingSpend);
+
+                    //Prepaid
+                    requestWriter.Write(productItem.Prepaid);
+
+                    if (productItem.CardTypeId == (int)CardType.Star)
+                    {
+                        //Add star info
+                        requestWriter.Write(productItem.CardPositionsMapId);
+
+                        if (productItem.m_positionStarCodes == null)
+                        {
+                            requestWriter.Write((UInt16)0);
+                        }
+                        else
+                        {
+                            requestWriter.Write((UInt16)productItem.m_positionStarCodes.Count);
+
+                            foreach (KeyValuePair<byte, byte> pair in productItem.m_positionStarCodes)
+                            {
+                                requestWriter.Write(pair.Key);
+                                requestWriter.Write(pair.Value);
+                            }
+                        }
+                    }
                 }
 
 

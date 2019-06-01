@@ -32,60 +32,40 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.mainGB = new System.Windows.Forms.GroupBox();
-            this.importCmd = new GTI.Controls.ImageButton();
-            this.saveCmd = new GTI.Controls.ImageButton();
-            this.revertCmd = new GTI.Controls.ImageButton();
-            this.positionMapsDGV = new System.Windows.Forms.DataGridView();
-            this.importBGW = new System.ComponentModel.BackgroundWorker();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.positionMapsDGV = new System.Windows.Forms.DataGridView();
             this.mapNameDGVC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.allowOnElecDGVChk = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.mapUUIDDGVCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mainGB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.positionMapsDGV)).BeginInit();
+            this.importCmd = new GTI.Controls.ImageButton();
+            this.revertCmd = new GTI.Controls.ImageButton();
+            this.saveCmd = new GTI.Controls.ImageButton();
+            this.mainGB = new System.Windows.Forms.GroupBox();
+            this.importBGW = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.positionMapsDGV)).BeginInit();
+            this.mainGB.SuspendLayout();
             this.SuspendLayout();
             // 
-            // mainGB
+            // splitContainer1
             // 
-            this.mainGB.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.mainGB, "mainGB");
-            this.mainGB.Controls.Add(this.splitContainer1);
-            this.mainGB.Name = "mainGB";
-            this.mainGB.TabStop = false;
+            resources.ApplyResources(this.splitContainer1, "splitContainer1");
+            this.splitContainer1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.splitContainer1.Name = "splitContainer1";
             // 
-            // importCmd
+            // splitContainer1.Panel1
             // 
-            resources.ApplyResources(this.importCmd, "importCmd");
-            this.importCmd.FocusColor = System.Drawing.Color.Black;
-            this.importCmd.ImageNormal = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonUp;
-            this.importCmd.ImagePressed = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonDown;
-            this.importCmd.Name = "importCmd";
-            this.importCmd.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
-            this.importCmd.Click += new System.EventHandler(this.importCmd_Click);
+            this.splitContainer1.Panel1.Controls.Add(this.positionMapsDGV);
+            resources.ApplyResources(this.splitContainer1.Panel1, "splitContainer1.Panel1");
             // 
-            // saveCmd
+            // splitContainer1.Panel2
             // 
-            resources.ApplyResources(this.saveCmd, "saveCmd");
-            this.saveCmd.FocusColor = System.Drawing.Color.Black;
-            this.saveCmd.ImageNormal = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonUp;
-            this.saveCmd.ImagePressed = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonDown;
-            this.saveCmd.Name = "saveCmd";
-            this.saveCmd.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
-            this.saveCmd.Click += new System.EventHandler(this.saveCmd_Click);
-            // 
-            // revertCmd
-            // 
-            resources.ApplyResources(this.revertCmd, "revertCmd");
-            this.revertCmd.FocusColor = System.Drawing.Color.Black;
-            this.revertCmd.ImageNormal = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonUp;
-            this.revertCmd.Name = "revertCmd";
-            this.revertCmd.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
-            this.revertCmd.Click += new System.EventHandler(this.revertCmd_Click);
+            this.splitContainer1.Panel2.Controls.Add(this.importCmd);
+            this.splitContainer1.Panel2.Controls.Add(this.revertCmd);
+            this.splitContainer1.Panel2.Controls.Add(this.saveCmd);
             // 
             // positionMapsDGV
             // 
@@ -97,7 +77,7 @@
             this.positionMapsDGV.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Trebuchet MS", 12F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -127,29 +107,6 @@
             this.positionMapsDGV.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.positionMapsDGV_CellValueChanged);
             this.positionMapsDGV.CurrentCellDirtyStateChanged += new System.EventHandler(this.positionMapsDGV_CurrentCellDirtyStateChanged);
             // 
-            // importBGW
-            // 
-            this.importBGW.WorkerReportsProgress = true;
-            this.importBGW.WorkerSupportsCancellation = true;
-            this.importBGW.DoWork += new System.ComponentModel.DoWorkEventHandler(this.importBGW_DoWork);
-            // 
-            // splitContainer1
-            // 
-            resources.ApplyResources(this.splitContainer1, "splitContainer1");
-            this.splitContainer1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.positionMapsDGV);
-            resources.ApplyResources(this.splitContainer1.Panel1, "splitContainer1.Panel1");
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.importCmd);
-            this.splitContainer1.Panel2.Controls.Add(this.revertCmd);
-            this.splitContainer1.Panel2.Controls.Add(this.saveCmd);
-            // 
             // mapNameDGVC
             // 
             this.mapNameDGVC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -171,6 +128,49 @@
             this.mapUUIDDGVCol.Name = "mapUUIDDGVCol";
             this.mapUUIDDGVCol.ReadOnly = true;
             // 
+            // importCmd
+            // 
+            resources.ApplyResources(this.importCmd, "importCmd");
+            this.importCmd.FocusColor = System.Drawing.Color.Black;
+            this.importCmd.ImageNormal = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonUp;
+            this.importCmd.ImagePressed = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonDown;
+            this.importCmd.Name = "importCmd";
+            this.importCmd.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.importCmd.Click += new System.EventHandler(this.importCmd_Click);
+            // 
+            // revertCmd
+            // 
+            resources.ApplyResources(this.revertCmd, "revertCmd");
+            this.revertCmd.FocusColor = System.Drawing.Color.Black;
+            this.revertCmd.ImageNormal = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonUp;
+            this.revertCmd.Name = "revertCmd";
+            this.revertCmd.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.revertCmd.Click += new System.EventHandler(this.revertCmd_Click);
+            // 
+            // saveCmd
+            // 
+            resources.ApplyResources(this.saveCmd, "saveCmd");
+            this.saveCmd.FocusColor = System.Drawing.Color.Black;
+            this.saveCmd.ImageNormal = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonUp;
+            this.saveCmd.ImagePressed = global::GTI.Modules.ProductCenter.Properties.Resources.BlueButtonDown;
+            this.saveCmd.Name = "saveCmd";
+            this.saveCmd.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.saveCmd.Click += new System.EventHandler(this.saveCmd_Click);
+            // 
+            // mainGB
+            // 
+            this.mainGB.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.mainGB, "mainGB");
+            this.mainGB.Controls.Add(this.splitContainer1);
+            this.mainGB.Name = "mainGB";
+            this.mainGB.TabStop = false;
+            // 
+            // importBGW
+            // 
+            this.importBGW.WorkerReportsProgress = true;
+            this.importBGW.WorkerSupportsCancellation = true;
+            this.importBGW.DoWork += new System.ComponentModel.DoWorkEventHandler(this.importBGW_DoWork);
+            // 
             // CardPositionMapManagementForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -183,12 +183,12 @@
             this.Name = "CardPositionMapManagementForm";
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.mainGB.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.positionMapsDGV)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.positionMapsDGV)).EndInit();
+            this.mainGB.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

@@ -74,6 +74,13 @@ namespace GTI.Modules.ProductCenter.Data
             get;
             set;
         }
+
+        public bool RequiresAuthorization
+        {
+            get;
+            set;
+        }
+
         public bool IsValidationPackage
         {
             get;
@@ -141,6 +148,7 @@ namespace GTI.Modules.ProductCenter.Data
             RemoveButton = button.RemoveButton != 0;
             ButtonGraphicId = button.ButtonGraphicId;
             DefaultValidation = button.DefaultValidation;
+            RequiresAuthorization = button.RequiresAuthorization;
 
             if (products != null)
                 ProductItems = products;
@@ -199,7 +207,7 @@ namespace GTI.Modules.ProductCenter.Data
         public bool IsBarcodedPaper { get; set; }
         public bool IsValidated { get; set; }
         public int CardPositionsMapId { get; set; }
-        public SortedList<byte, byte> PositionStarCodes { get; set; }
+        public SortedList<byte, byte> m_positionStarCodes = null;
 
         public DailyProductPackageItem()
         {
@@ -276,8 +284,27 @@ namespace GTI.Modules.ProductCenter.Data
             retVal.PointsPerDollar = PointsPerDollar;
             retVal.PointsToRedeem = PointsToRedeem;
             retVal.NumbersRequired = NumbersRequired;
-
+            retVal.CardPositionsMapId = CardPositionsMapId;
+            CopyPositionStarCodes(m_positionStarCodes, ref retVal.m_positionStarCodes);
+            
             return retVal;
+        }
+
+        public static void CopyPositionStarCodes(SortedList<byte, byte> fromList, ref SortedList<byte, byte> toList)
+        {
+            if (fromList == null)
+            {
+                toList = fromList;
+                return;
+            }
+
+            if(toList == null)
+                toList = new SortedList<byte, byte>();
+
+            toList.Clear();
+
+            foreach (KeyValuePair<byte, byte> pair in fromList)
+                toList.Add(pair.Key, pair.Value);
         }
     }
 }

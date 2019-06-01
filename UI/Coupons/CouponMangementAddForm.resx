@@ -710,7 +710,7 @@
     <value>awardTypeWindowTypeDaysBeforeTxtNm</value>
   </data>
   <data name="&gt;&gt;awardTypeWindowTypeDaysBeforeTxtNm.Type" xml:space="preserve">
-    <value>GTI.Controls.TextBoxNumeric, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.TextBoxNumeric, GTIControls, Version=1.3.11.1324, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;awardTypeWindowTypeDaysBeforeTxtNm.Parent" xml:space="preserve">
     <value>awardTypeWindowTypePnl</value>
@@ -737,7 +737,7 @@
     <value>awardTypeWindowTypeDaysFollowingTxtNm</value>
   </data>
   <data name="&gt;&gt;awardTypeWindowTypeDaysFollowingTxtNm.Type" xml:space="preserve">
-    <value>GTI.Controls.TextBoxNumeric, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.TextBoxNumeric, GTIControls, Version=1.3.11.1324, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;awardTypeWindowTypeDaysFollowingTxtNm.Parent" xml:space="preserve">
     <value>awardTypeWindowTypePnl</value>
@@ -902,7 +902,7 @@
     <value>cmbxCouponPackage</value>
   </data>
   <data name="&gt;&gt;cmbxCouponPackage.Type" xml:space="preserve">
-    <value>GTI.Controls.CheckedComboBox, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.CheckedComboBox, GTIControls, Version=1.3.11.1324, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;cmbxCouponPackage.Parent" xml:space="preserve">
     <value>basicTP</value>
@@ -1193,7 +1193,7 @@
     <value>txtbxValue</value>
   </data>
   <data name="&gt;&gt;txtbxValue.Type" xml:space="preserve">
-    <value>GTI.Controls.TextBoxNumeric, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.TextBoxNumeric, GTIControls, Version=1.3.11.1324, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;txtbxValue.Parent" xml:space="preserve">
     <value>basicTP</value>
@@ -1799,6 +1799,39 @@
   <data name="usageLimitsTP.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
   </data>
+  <data name="programLimitsNoteLbl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="programLimitsNoteLbl.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="programLimitsNoteLbl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt, style=Italic</value>
+  </data>
+  <data name="programLimitsNoteLbl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>645, 511</value>
+  </data>
+  <data name="programLimitsNoteLbl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>196, 15</value>
+  </data>
+  <data name="programLimitsNoteLbl.TabIndex" type="System.Int32, mscorlib">
+    <value>84</value>
+  </data>
+  <data name="programLimitsNoteLbl.Text" xml:space="preserve">
+    <value>* indicates retired/inactive program</value>
+  </data>
+  <data name="&gt;&gt;programLimitsNoteLbl.Name" xml:space="preserve">
+    <value>programLimitsNoteLbl</value>
+  </data>
+  <data name="&gt;&gt;programLimitsNoteLbl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;programLimitsNoteLbl.Parent" xml:space="preserve">
+    <value>usageLimitsTP</value>
+  </data>
+  <data name="&gt;&gt;programLimitsNoteLbl.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="sessionLimitsLbl.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1809,7 +1842,7 @@
     <value>NoControl</value>
   </data>
   <data name="sessionLimitsLbl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 281</value>
+    <value>16, 270</value>
   </data>
   <data name="sessionLimitsLbl.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 22</value>
@@ -1830,13 +1863,13 @@
     <value>usageLimitsTP</value>
   </data>
   <data name="&gt;&gt;sessionLimitsLbl.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="sessionLimitsDGV.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 306</value>
+    <value>19, 295</value>
   </data>
   <data name="sessionLimitsDGV.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 202</value>
+    <value>181, 211</value>
   </data>
   <data name="sessionLimitsDGV.TabIndex" type="System.Int32, mscorlib">
     <value>81</value>
@@ -1851,7 +1884,7 @@
     <value>usageLimitsTP</value>
   </data>
   <data name="&gt;&gt;sessionLimitsDGV.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="maxUsageUnlimitedLbl.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1881,13 +1914,13 @@
     <value>usageLimitsTP</value>
   </data>
   <data name="&gt;&gt;maxUsageUnlimitedLbl.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="monthOfYearLimitsDGV.Location" type="System.Drawing.Point, System.Drawing">
-    <value>435, 117</value>
+    <value>464, 117</value>
   </data>
   <data name="monthOfYearLimitsDGV.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 289</value>
+    <value>162, 289</value>
   </data>
   <data name="monthOfYearLimitsDGV.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1902,10 +1935,10 @@
     <value>usageLimitsTP</value>
   </data>
   <data name="&gt;&gt;monthOfYearLimitsDGV.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="dayOfWeekLimitsDGV.Location" type="System.Drawing.Point, System.Drawing">
-    <value>222, 117</value>
+    <value>267, 117</value>
   </data>
   <data name="dayOfWeekLimitsDGV.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 189</value>
@@ -1923,13 +1956,13 @@
     <value>usageLimitsTP</value>
   </data>
   <data name="&gt;&gt;dayOfWeekLimitsDGV.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="generalLimitsDGV.Location" type="System.Drawing.Point, System.Drawing">
     <value>19, 117</value>
   </data>
   <data name="generalLimitsDGV.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 136</value>
+    <value>242, 136</value>
   </data>
   <data name="generalLimitsDGV.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1944,7 +1977,7 @@
     <value>usageLimitsTP</value>
   </data>
   <data name="&gt;&gt;generalLimitsDGV.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="maxUsageLbl.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1977,7 +2010,10 @@
     <value>usageLimitsTP</value>
   </data>
   <data name="&gt;&gt;maxUsageLbl.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
+  </data>
+  <data name="programLimitsDGV.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left</value>
   </data>
   <data name="programLimitsDGV.Location" type="System.Drawing.Point, System.Drawing">
     <value>648, 117</value>
@@ -1998,7 +2034,7 @@
     <value>usageLimitsTP</value>
   </data>
   <data name="&gt;&gt;programLimitsDGV.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="maxUsageTxtNm.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt</value>
@@ -2019,13 +2055,13 @@
     <value>maxUsageTxtNm</value>
   </data>
   <data name="&gt;&gt;maxUsageTxtNm.Type" xml:space="preserve">
-    <value>GTI.Controls.TextBoxNumeric, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.TextBoxNumeric, GTIControls, Version=1.3.11.1324, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;maxUsageTxtNm.Parent" xml:space="preserve">
     <value>usageLimitsTP</value>
   </data>
   <data name="&gt;&gt;maxUsageTxtNm.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="monthOfYearLimitsLbl.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2037,7 +2073,7 @@
     <value>NoControl</value>
   </data>
   <data name="monthOfYearLimitsLbl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>431, 92</value>
+    <value>460, 92</value>
   </data>
   <data name="monthOfYearLimitsLbl.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 22</value>
@@ -2058,7 +2094,7 @@
     <value>usageLimitsTP</value>
   </data>
   <data name="&gt;&gt;monthOfYearLimitsLbl.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="programLimitsLbl.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2091,7 +2127,7 @@
     <value>usageLimitsTP</value>
   </data>
   <data name="&gt;&gt;programLimitsLbl.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="dayOfWeekLimitsLbl.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2103,7 +2139,7 @@
     <value>NoControl</value>
   </data>
   <data name="dayOfWeekLimitsLbl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>218, 92</value>
+    <value>263, 92</value>
   </data>
   <data name="dayOfWeekLimitsLbl.Size" type="System.Drawing.Size, System.Drawing">
     <value>102, 22</value>
@@ -2124,7 +2160,7 @@
     <value>usageLimitsTP</value>
   </data>
   <data name="&gt;&gt;dayOfWeekLimitsLbl.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="usageLimitsNotesLbl.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2157,7 +2193,7 @@
     <value>usageLimitsTP</value>
   </data>
   <data name="&gt;&gt;usageLimitsNotesLbl.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="generalLimitsLbl.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2190,7 +2226,7 @@
     <value>usageLimitsTP</value>
   </data>
   <data name="&gt;&gt;generalLimitsLbl.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="usageLimitsTP.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -2796,7 +2832,7 @@
     <value>packageExclusionsClearBtn</value>
   </data>
   <data name="&gt;&gt;packageExclusionsClearBtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1324, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;packageExclusionsClearBtn.Parent" xml:space="preserve">
     <value>qualifyingSpendTP</value>
@@ -2930,7 +2966,7 @@
     <value>packageExclusionsAddSelectedBtn</value>
   </data>
   <data name="&gt;&gt;packageExclusionsAddSelectedBtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1324, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;packageExclusionsAddSelectedBtn.Parent" xml:space="preserve">
     <value>qualifyingSpendTP</value>
@@ -2984,7 +3020,7 @@
     <value>minSpendToQualifyTxtNm</value>
   </data>
   <data name="&gt;&gt;minSpendToQualifyTxtNm.Type" xml:space="preserve">
-    <value>GTI.Controls.TextBoxNumeric, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.TextBoxNumeric, GTIControls, Version=1.3.11.1324, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;minSpendToQualifyTxtNm.Parent" xml:space="preserve">
     <value>qualifyingSpendTP</value>
@@ -3145,7 +3181,7 @@
     <value>packageExclusionsRemoveSelectedBtn</value>
   </data>
   <data name="&gt;&gt;packageExclusionsRemoveSelectedBtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1324, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;packageExclusionsRemoveSelectedBtn.Parent" xml:space="preserve">
     <value>qualifyingSpendTP</value>
@@ -3246,7 +3282,7 @@
     <value>packageExclusionsAddAllBtn</value>
   </data>
   <data name="&gt;&gt;packageExclusionsAddAllBtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1324, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;packageExclusionsAddAllBtn.Parent" xml:space="preserve">
     <value>qualifyingSpendTP</value>
@@ -3347,7 +3383,7 @@
     <value>productExclusionsClearBtn</value>
   </data>
   <data name="&gt;&gt;productExclusionsClearBtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1324, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;productExclusionsClearBtn.Parent" xml:space="preserve">
     <value>qualifyingSpendTP</value>
@@ -3448,7 +3484,7 @@
     <value>productExclusionsRemoveSelectedBtn</value>
   </data>
   <data name="&gt;&gt;productExclusionsRemoveSelectedBtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1324, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;productExclusionsRemoveSelectedBtn.Parent" xml:space="preserve">
     <value>qualifyingSpendTP</value>
@@ -3549,7 +3585,7 @@
     <value>productExclusionsAddSelectedBtn</value>
   </data>
   <data name="&gt;&gt;productExclusionsAddSelectedBtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1324, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;productExclusionsAddSelectedBtn.Parent" xml:space="preserve">
     <value>qualifyingSpendTP</value>
@@ -3650,7 +3686,7 @@
     <value>productExclusionsAddAllBtn</value>
   </data>
   <data name="&gt;&gt;productExclusionsAddAllBtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1324, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;productExclusionsAddAllBtn.Parent" xml:space="preserve">
     <value>qualifyingSpendTP</value>
@@ -4127,7 +4163,7 @@
     <value>acceptBtn</value>
   </data>
   <data name="&gt;&gt;acceptBtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1324, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;acceptBtn.Parent" xml:space="preserve">
     <value>$this</value>
@@ -4231,7 +4267,7 @@
     <value>cancelBtn</value>
   </data>
   <data name="&gt;&gt;cancelBtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1324, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;cancelBtn.Parent" xml:space="preserve">
     <value>$this</value>
@@ -4258,6 +4294,6 @@
     <value>CouponMangementAddForm</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>GTI.Modules.Shared.GradientForm, ManagedEliteModule, Version=1.3.42.1277, Culture=neutral, PublicKeyToken=f7ab3ec26b04c7cf</value>
+    <value>GTI.Modules.Shared.GradientForm, ManagedEliteModule, Version=1.3.42.1325, Culture=neutral, PublicKeyToken=f7ab3ec26b04c7cf</value>
   </data>
 </root>

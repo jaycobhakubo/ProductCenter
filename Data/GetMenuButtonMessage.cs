@@ -34,6 +34,7 @@ namespace GTI.Modules.ProductCenter.Data
         public byte RemoveButton;
         public int ButtonGraphicId;
         public bool DefaultValidation;
+        public bool RequiresAuthorization;
 
         /// <summary>
         /// The device list this button is valid for
@@ -196,6 +197,8 @@ namespace GTI.Modules.ProductCenter.Data
 
                     // Use as default validation
                     menuItem.DefaultValidation = responseReader.ReadBoolean();
+
+                    menuItem.RequiresAuthorization = responseReader.ReadBoolean();
 
                     // Remove Button
                     menuItem.RemoveButton = 0;

@@ -359,6 +359,27 @@ namespace GTI.Modules.ProductCenter.Business
                 mobjSetting.LoadSetting(setting);
             }
 
+            /////////////////////////////////////////////////
+            // Send message for global settings.
+            GetSettingsMessage posSettingsMsg = new GetSettingsMessage(machineId, operatorId, SettingsCategory.POSSettings);
+
+            try
+            {
+                posSettingsMsg.Send();
+            }
+            catch(Exception e)
+            {
+                ReformatException(e);
+            }
+
+            // Loop through each setting and parse the value.
+            SettingValue[] posSettings = posSettingsMsg.Settings;
+
+            foreach(SettingValue setting in posSettings)
+            {
+                mobjSetting.LoadSetting(setting);
+            }
+
             ////////////////////////////////////////////////////
             //// Now load all the ProductCenter specific settings.
             //settingsMsg = new GetSettingsMessage(machineId, 0, SettingsCategory.AllCategories, Setting.UsePrePrintedPacks);
