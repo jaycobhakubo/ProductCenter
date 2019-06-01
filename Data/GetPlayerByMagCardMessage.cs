@@ -10,22 +10,19 @@ namespace GTI.Modules.ProductCenter.Data
     class GetPlayerByMagCardMessage : ServerMessage
     {
         private string m_magcardnumber;
-        private int m_thirdPartyInterfaceID;
         private PlayerName flname = new PlayerName();
         //private string m_lname;
 
-        public GetPlayerByMagCardMessage(string magcardnumber, int thirdPartyInterfaceID)
+        public GetPlayerByMagCardMessage(string magcardnumber)
         {
             m_id = 8012;
             m_magcardnumber = magcardnumber;
-            m_thirdPartyInterfaceID = thirdPartyInterfaceID;
-            
         }
 
 
-        public static PlayerName RunMessage(string magcardnumber, int thirdPartyInterfaceID)
+        public static PlayerName RunMessage(string magcardnumber)
         {
-            GetPlayerByMagCardMessage msg = new GetPlayerByMagCardMessage(magcardnumber, thirdPartyInterfaceID);
+            GetPlayerByMagCardMessage msg = new GetPlayerByMagCardMessage(magcardnumber);
             try
             {
                 msg.Send();
@@ -70,27 +67,26 @@ namespace GTI.Modules.ProductCenter.Data
                 {
                     PlayerName data = new PlayerName();
 
-                    data.PlayerID =  responseReader.ReadInt32(); //PlayerID
-                    responseReader.ReadBoolean();//Pin Required
+                    data.PlayerID =             responseReader.ReadInt32(); //PlayerID
+                                                responseReader.ReadBoolean();//Pin Required
+                                                responseReader.ReadBoolean();// Third party player card PIN error
+                                                responseReader.ReadBoolean(); // Third party player points correct
+                                                responseReader.ReadBoolean(); // Third party interface down
+                    
+                    ushort stringLen =          responseReader.ReadUInt16();//???Not sure what is this. Need to ask Jaysen about the server message of 8012
+                    var testyy  =               responseReader.ReadChars(stringLen);
 
-                    //Skip this data if thirdpartyinterfaceID == 0
-                    //if (m_thirdPartyInterfaceID != 0)
-                    //{
-                        responseReader.ReadBoolean();// Third party player card PIN error
-                        responseReader.ReadBoolean();   // Third party player points correct
-                        responseReader.ReadBoolean();       // Third party interface down
-                    //}  
-                    ushort stringLen = responseReader.ReadUInt16();
-                    data.Fname = new string(responseReader.ReadChars(stringLen));
+                    stringLen =                 responseReader.ReadUInt16();//First Name Length
+                    data.Fname = new string (   responseReader.ReadChars(stringLen));//FName
 
-                    stringLen = responseReader.ReadUInt16();//MName len
-                    responseReader.ReadChars(stringLen);//Mname
+                    stringLen =                 responseReader.ReadUInt16();//Middle Name Length
+                    var testyyy  =              responseReader.ReadChars(stringLen);//MName
 
-                    stringLen = responseReader.ReadUInt16();
-                    data.Lname = new string(responseReader.ReadChars(stringLen));
+                    stringLen =                 responseReader.ReadUInt16();//Last Name Length
+                    data.Lname = new string(    responseReader.ReadChars(stringLen));//LName
 
-                    stringLen = responseReader.ReadUInt16();//Gender len
-                    responseReader.ReadChars(stringLen);//Gender
+                    stringLen =                 responseReader.ReadUInt16();//Gender len
+                    var testyyyr =              responseReader.ReadChars(stringLen);//Gender
 
                     flname = data;
                 }

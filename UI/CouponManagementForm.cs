@@ -42,9 +42,16 @@ namespace GTI.Modules.ProductCenter.UI
         #endregion
 
         public CouponManagementForm(ProductCenterSettings settings)
-        {   
-            InitializeComponent();
+        {
             m_productCenterSettings = settings;
+
+            InitializeComponent();
+
+            //Set new flat background
+            //System.Drawing.Color defaultBackground = System.Drawing.ColorTranslator.FromHtml("#44658D");
+            //this.BackColor = defaultBackground;
+            //this.ForeColor = System.Drawing.Color.White;
+
             lCouponItem = new List<PlayerComp>();
             AcceptButton = imgbtnUpdate;
         }
@@ -209,13 +216,41 @@ namespace GTI.Modules.ProductCenter.UI
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void imageButton1_Click_1(object sender, EventArgs e)
-        {           
+        {
+            //SAVE(knc.20150722)
+            //===================================
+            //MagneticCardReader magCardReader = new MagneticCardReader(Configuration.mSentinels) { StripNonAlphanumericChars = Configuration.mStripNonAlphanumeric };
+            //magCardReader.BeginReading();
+            //PlayerSearchForm search = new PlayerSearchForm(false, Configuration.operatorID, magCardReader,
+            //                                Configuration.mMachineAccounts, Configuration.mForceEnglish);
+
+            //search.ShowDialog();
+            //magCardReader.EndReading();
+
+            //if (search.DialogResult == DialogResult.OK)
+            //{
+            //    //fieldPerson.Text = search.SelectedPlayer.ToString(!Configuration.mMachineAccounts);
+            //   m_playerID = search.SelectedPlayer.Id;
+            //}
+            //else
+            //{
+            //    //fieldPerson.Text = "All";
+            //    m_playerID = 0;
+
+            //    if (search.DialogResult == DialogResult.Abort)
+            //    {
+            //        MessageForm.Show("");
+            //    }
+            //}
+            //========================================
+
+
             clearAnyDisplayMessage();
-            CouponAwardToPlayer catp = new CouponAwardToPlayer(Settings.MSRSettingInfo, Settings.ThirdPartyPlayerInterfaceID);//knc
+            CouponAwardToPlayer catp = new CouponAwardToPlayer(Settings.MSRSettingInfo);
             catp.compSelected = couponItemSelected.Name;
             catp.compIDSeleccted = couponItemSelected.Id;
-            catp.ShowDialog();
 
+            catp.ShowDialog();
             if(CouponAwardToPlayer.isAwarded == true)
             {
                 ListViewItem singleItem = gtiListViewCoupon.Items[gtiListViewCoupon.FocusedItem.Index];
@@ -227,7 +262,9 @@ namespace GTI.Modules.ProductCenter.UI
                     lblSavedSuccessfully.Text = "       Awarded Successfully";
                 }
 
+                //?Why do we need to repopulate the list if we are just rewarding the coupon to a player?
                 PopulateCoupon = CouponItems.Sorted("");//Repopulate the listview coupon.
+
             }
         }
 

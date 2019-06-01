@@ -105,8 +105,6 @@ namespace GTI.Modules.ProductCenter.Business
 
         public int MaxValidationsPerTransaction { get; set; }
 
-        public int ThirdPartyPlayerInterfaceID { get; set; }
-
         #endregion
 
         #region Constructor
@@ -128,7 +126,6 @@ namespace GTI.Modules.ProductCenter.Business
             AccrualEnabled = false;
             WholeProductPoints = false;
             MSRSettingInfo = new MSRSettings();
-            ThirdPartyPlayerInterfaceID = 0;
         }
         #endregion]
 
@@ -265,9 +262,7 @@ namespace GTI.Modules.ProductCenter.Business
                         MaxValidationsPerTransaction = Convert.ToInt32(setting.Value, CultureInfo.InvariantCulture);
                         break;
 
-                    case Setting.ThirdPartyPlayerInterfaceID:
-                        ThirdPartyPlayerInterfaceID = Convert.ToInt32(setting.Value, CultureInfo.InvariantCulture);
-                        break;
+
 
                 }
             }

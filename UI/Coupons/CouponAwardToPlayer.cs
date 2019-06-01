@@ -30,15 +30,14 @@ namespace GTI.Modules.ProductCenter.UI
         protected bool m_detectedSwipe; // PDTS 1064
         protected bool m_readWholeCard;
         protected StringBuilder m_cardData = new StringBuilder(); // PDTS 1064
+        #endregion
+
+        private bool IsMagCard = false;
+        private bool IsLastChar = false;
         private PlayerName playername = new PlayerName();
         private string m_compSelected;// = CouponManagementForm.compSelected;
         private int m_compIDSelected;// = CouponManagementForm.compIdSelected;
-        private int m_thirdPartyInterfaceID;
-        private bool IsMagCard = false;
-        #endregion
-
         public static bool isAwarded = false;
- 
 
 
         #region Constructors
@@ -59,10 +58,9 @@ namespace GTI.Modules.ProductCenter.UI
         /// Initializes a new instance of the MagCardForm class in window 
         /// mode.  The form will also return all key presses captured.
         /// </summary>
-        public CouponAwardToPlayer(MSRSettings magCardSettings, int thirdPartyInterfaceID)
+        public CouponAwardToPlayer(MSRSettings magCardSettings)
             : base(new NormalDisplayMode())
         {
-            m_thirdPartyInterfaceID = thirdPartyInterfaceID;
             m_magCardReader = new MagneticCardReader(magCardSettings);
             m_barcodeReader = new BarcodeReader();
 
@@ -122,7 +120,9 @@ namespace GTI.Modules.ProductCenter.UI
             //this.ForeColor = System.Drawing.Color.White;
         }
 
-
+        private bool isSwipe = false;
+        private bool isSwipeLastCharacter = false;
+        private int count = 0;
 
         /// <summary>
         /// Handles the form's KeyPress event.
@@ -202,11 +202,8 @@ namespace GTI.Modules.ProductCenter.UI
                 return;
 
             if (txtbxCardNumber.Text != string.Empty)
-            {
+                playername = GetPlayerByMagCardMessage.RunMessage(txtbxCardNumber.Text);
                 
-                playername = GetPlayerByMagCardMessage.RunMessage(txtbxCardNumber.Text, m_thirdPartyInterfaceID);
-            }
-   
             if (playername.PlayerID != 0)
             {
                 DialogResult dialogResult = MessageForm.Show("Do you want to award " + compSelected + " to "   + playername.Fname + " " + playername.Lname + "?", "Confirm", MessageFormTypes.YesCancel);
@@ -255,3 +252,102 @@ namespace GTI.Modules.ProductCenter.UI
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//        public CouponAwardToPlayer()
+//        {
+//            InitializeComponent();
+//        }
+
+//        private void imgbtnAdd_Click(object sender, EventArgs e)
+//        {
+//            //MessageForm.Show("The player dont exists.", "", MessageFormTypes.OK);
+//            //0,		-- Player or Staff Flag
+//            //0,		-- Player or Staff Login Number
+//            //N'',	-- First Name
+//            //N'',	-- Last Name
+//            //N''		-- Mag Card
+//            //18104
+//            //exec spFindPlayerOrStaff 0,0,N'',N'Camac',N''
+//        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//        private void rdoByName_CheckedChanged(object sender, EventArgs e)
+//        {
+
+//            SetAllEntryToDisable();
+//            RadioButton selectedRdo = (RadioButton)sender;
+//            if (selectedRdo.Name == "rdoByName")
+//            {
+//                if (panel1.Enabled != true) { panel1.Enabled = true; }
+//            }
+//            else if (selectedRdo.Name == "rdoByPlayer")
+//            {
+//                if (txtbxPlayerNumber.Enabled != true) {txtbxPlayerNumber.Enabled = true;}
+//            }
+//            else if (selectedRdo.Name == "rdoByCardNumber") 
+//            {
+//                if (txtbxFirstName.Enabled != true) { txtbxCardNumber.Enabled = true; }
+//            }
+//        }
+
+
+//        private void SetAllEntryToDisable()
+//        {
+//            if (panel1.Enabled != false) { panel1.Enabled = false; }
+//            if (txtbxPlayerNumber.Enabled != false) { txtbxPlayerNumber.Enabled = false; }
+//            if (txtbxCardNumber.Enabled != false) { txtbxCardNumber.Enabled = false; }
+//        }
+//    }
+//}
