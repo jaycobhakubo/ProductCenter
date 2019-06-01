@@ -74,19 +74,19 @@ namespace GTI.Modules.ProductCenter.Data
                                                 responseReader.ReadBoolean(); // Third party interface down
                     
                     ushort stringLen =          responseReader.ReadUInt16();//???Not sure what is this. Need to ask Jaysen about the server message of 8012
-                    var testyy  =               responseReader.ReadChars(stringLen);
+                    var testunknown  =          responseReader.ReadChars(stringLen);
 
                     stringLen =                 responseReader.ReadUInt16();//First Name Length
-                    data.Fname = new string (   responseReader.ReadChars(stringLen));//FName
+                    data.Fname= new string (    responseReader.ReadChars(stringLen));//FName
 
                     stringLen =                 responseReader.ReadUInt16();//Middle Name Length
-                    var testyyy  =              responseReader.ReadChars(stringLen);//MName
+                    var testMName =             responseReader.ReadChars(stringLen);//MName
 
                     stringLen =                 responseReader.ReadUInt16();//Last Name Length
                     data.Lname = new string(    responseReader.ReadChars(stringLen));//LName
 
                     stringLen =                 responseReader.ReadUInt16();//Gender len
-                    var testyyyr =              responseReader.ReadChars(stringLen);//Gender
+                    var testGender=             responseReader.ReadChars(stringLen);//Gender
 
                     flname = data;
                 }
