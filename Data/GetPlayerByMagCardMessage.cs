@@ -67,26 +67,29 @@ namespace GTI.Modules.ProductCenter.Data
                 {
                     PlayerName data = new PlayerName();
 
-                    data.PlayerID =             responseReader.ReadInt32(); //PlayerID
-                                                responseReader.ReadBoolean();//Pin Required
-                                                responseReader.ReadBoolean();// Third party player card PIN error
-                                                responseReader.ReadBoolean(); // Third party player points correct
-                                                responseReader.ReadBoolean(); // Third party interface down
+                    data.PlayerID =  responseReader.ReadInt32(); //PlayerID
+                    responseReader.ReadBoolean();//Pin Required
+
+                    // Third party player card PIN error
+                    responseReader.ReadBoolean();
+
+                    // Third party player points correct
+                    responseReader.ReadBoolean();
+
+                    // Third party interface down
+                    responseReader.ReadBoolean();
                     
-                    ushort stringLen =          responseReader.ReadUInt16();//???Not sure what is this. Need to ask Jaysen about the server message of 8012
-                    var testunknown  =          responseReader.ReadChars(stringLen);
+                    ushort stringLen = responseReader.ReadUInt16();
+                    data.Fname = new string(responseReader.ReadChars(stringLen));
 
-                    stringLen =                 responseReader.ReadUInt16();//First Name Length
-                    data.Fname= new string (    responseReader.ReadChars(stringLen));//FName
+                    stringLen = responseReader.ReadUInt16();//MName len
+                    responseReader.ReadChars(stringLen);//Mname
 
-                    stringLen =                 responseReader.ReadUInt16();//Middle Name Length
-                    var testMName =             responseReader.ReadChars(stringLen);//MName
+                    stringLen = responseReader.ReadUInt16();
+                    data.Lname = new string(responseReader.ReadChars(stringLen));
 
-                    stringLen =                 responseReader.ReadUInt16();//Last Name Length
-                    data.Lname = new string(    responseReader.ReadChars(stringLen));//LName
-
-                    stringLen =                 responseReader.ReadUInt16();//Gender len
-                    var testGender=             responseReader.ReadChars(stringLen);//Gender
+                    stringLen = responseReader.ReadUInt16();//Gender len
+                    responseReader.ReadChars(stringLen);//Gender
 
                     flname = data;
                 }
