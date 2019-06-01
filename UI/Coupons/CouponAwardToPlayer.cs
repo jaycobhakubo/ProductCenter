@@ -29,14 +29,13 @@ namespace GTI.Modules.ProductCenter.UI
         protected BarcodeReader m_barcodeReader;
         protected bool m_detectedSwipe; // PDTS 1064
         protected bool m_readWholeCard;
-        protected StringBuilder m_cardData = new StringBuilder(); // PDTS 1064
-        #endregion
-
+        protected StringBuilder m_cardData = new StringBuilder(); // PDTS 1064   
         private bool IsMagCard = false;
-        private bool IsLastChar = false;
         private PlayerName playername = new PlayerName();
         private string m_compSelected;// = CouponManagementForm.compSelected;
         private int m_compIDSelected;// = CouponManagementForm.compIdSelected;
+        #endregion
+       
         public static bool isAwarded = false;
 
 
@@ -63,21 +62,11 @@ namespace GTI.Modules.ProductCenter.UI
         {
             m_magCardReader = new MagneticCardReader(magCardSettings);
             m_barcodeReader = new BarcodeReader();
-
             m_magCardReader.CardSwiped += new MagneticCardSwipedHandler(m_magCardReader_CardSwiped);
             m_magCardReader.BeginReading();
-
             m_barcodeReader.BarcodeScanned += new BarcodeScanHandler(m_barcodeReader_BarcodeScanned);
-
             InitializeComponent();
-
             ApplyDisplayMode();
-
-            //Set new flat background
-            //System.Drawing.Color defaultBackground = System.Drawing.ColorTranslator.FromHtml("#44658D");
-            //this.BackColor = defaultBackground;
-            //this.ForeColor = System.Drawing.Color.White;
-
             rdoByCardNumber.Checked = true;
             rdoByName.Visible = false;
         }
@@ -120,9 +109,6 @@ namespace GTI.Modules.ProductCenter.UI
             //this.ForeColor = System.Drawing.Color.White;
         }
 
-        private bool isSwipe = false;
-        private bool isSwipeLastCharacter = false;
-        private int count = 0;
 
         /// <summary>
         /// Handles the form's KeyPress event.

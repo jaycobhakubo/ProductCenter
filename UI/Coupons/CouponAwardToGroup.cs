@@ -61,13 +61,6 @@ namespace GTI.Modules.ProductCenter.UI
         public CouponAwardToGroup()
         {
             InitializeComponent();
-
-            //Set new flat background
-            //System.Drawing.Color defaultBackground = System.Drawing.ColorTranslator.FromHtml("#44658D");
-            //this.BackColor = defaultBackground;
-            //this.ForeColor = System.Drawing.Color.White;
-
-
             LoadPlayerListGroupCmbx();
         }
         #endregion
